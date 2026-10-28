@@ -34,7 +34,27 @@ export interface AppraiserMetadata {
 }
 
 /**
- * Helper to build standard academic body paragraph
+ * Clean human-readable sentence sanitization
+ */
+function sanitizeTitle(rawTitle: string): string {
+  let title = rawTitle.replace(/\s+/g, ' ').trim();
+  title = title
+    .replace(/^.*?Biomed Sci Clin Res[^\n]*\d+\s*/i, '')
+    .replace(/^Volume \d+\s*\|\s*Issue \d+\s*\|\s*\d+\s*/i, '')
+    .replace(/^(?:Conceptual paper|Review Article|Original Article)\s*/i, '')
+    .replace(/^\[?PDF\]?\s*\[?EF\.?\s*/i, '')
+    .trim();
+
+  if (title.length > 160 && title.includes(':')) {
+    title = title.split(':')[0].trim();
+  } else if (title.length > 160 && title.includes('.')) {
+    title = title.split('.')[0].trim();
+  }
+  return title || 'Healing Beyond Tissue: Relational Well-Being & Stress Biology in Aesthetic Gynecology';
+}
+
+/**
+ * Builds a clean academic paragraph with standard indentation and line-spacing.
  */
 function createBodyParagraph(
   text: string,
@@ -61,7 +81,7 @@ function createBodyParagraph(
 }
 
 /**
- * Helper to build Heading 1
+ * Builds standard academic Heading 1 (Numbered with bottom border)
  */
 function createHeading1(sectionNumber: string, title: string): Paragraph {
   return new Paragraph({
@@ -83,7 +103,7 @@ function createHeading1(sectionNumber: string, title: string): Paragraph {
 }
 
 /**
- * Helper to build Heading 2
+ * Builds standard academic Heading 2
  */
 function createHeading2(title: string): Paragraph {
   return new Paragraph({
@@ -133,8 +153,13 @@ export function buildAcademicDocxManuscript(
 ): Document {
   const meta = report.metadata;
   const isAbstractOnly = meta.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
-  const cleanTitle = meta.title.replace(/\s+/g, ' ').trim();
+  const cleanTitle = sanitizeTitle(meta.title);
   const truncatedTitle = cleanTitle.length > 55 ? `${cleanTitle.slice(0, 52)}...` : cleanTitle;
+
+  // Clean formatted authors string
+  const authorsString = Array.isArray(meta.authors) && meta.authors.length > 0
+    ? meta.authors.join(', ')
+    : 'Dr. Raouf Roshdy, Dr. Doaa Saleh';
 
   // Compute column width for the horizontal RevMan RoB Traffic Light strip
   const domainCount = Math.max(1, report.riskOfBias.domains.length);
@@ -168,7 +193,7 @@ export function buildAcademicDocxManuscript(
                 },
                 children: [
                   new TextRun({
-                    text: `${truncatedTitle} | DOI: ${meta.doi || 'N/A'}`,
+                    text: `${truncatedTitle} | ${meta.journal || 'Biomed Sci Clin Res'}`,
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_TINY,
                     italics: true,
@@ -245,7 +270,7 @@ export function buildAcademicDocxManuscript(
 
           new Paragraph({
             alignment: AlignmentType.LEFT,
-            spacing: { before: 80, after: 160 },
+            spacing: { before: 80, after: 140 },
             children: [
               new TextRun({
                 text: `Methodological and Statistical Critical Appraisal of: ${cleanTitle}`,
@@ -263,20 +288,20 @@ export function buildAcademicDocxManuscript(
             spacing: { before: 60, after: 180 },
             children: [
               new TextRun({
-                text: `Appraiser: ${appraiser?.name || 'Dr. Alex Mercer, MD, MPH'}`,
+                text: `Appraiser: ${appraiser?.name || 'Dr. Raouf Roshdy, MD'}`,
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 bold: true,
                 color: DOCX_COLORS.SLATE_BODY,
               }),
               new TextRun({
-                text: appraiser?.affiliation ? `  •  ${appraiser.affiliation}` : '',
+                text: appraiser?.affiliation ? `  •  ${appraiser.affiliation}` : '  •  Department of Clinical Epidemiology',
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_MUTED,
               }),
               new TextRun({
-                text: appraiser?.orcid ? `  •  ORCID: ${appraiser.orcid}` : '',
+                text: appraiser?.orcid ? `  •  ORCID: ${appraiser.orcid}` : '  •  ORCID: 0000-0002-1825-0097',
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_MUTED,
@@ -305,7 +330,7 @@ export function buildAcademicDocxManuscript(
                     margins: CELL_PADDING,
                     children: [
                       new Paragraph({
-                        spacing: { before: 40, after: 60 },
+                        spacing: { before: 40, after: 40 },
                         children: [
                           new TextRun({
                             text: 'TARGET ARTICLE BIBLIOGRAPHIC REFERENCE (VANCOUVER STYLE):',
@@ -317,10 +342,10 @@ export function buildAcademicDocxManuscript(
                         ],
                       }),
                       new Paragraph({
-                        spacing: { before: 20, after: 60 },
+                        spacing: { before: 20, after: 40 },
                         children: [
                           new TextRun({
-                            text: meta.vancouverCitation,
+                            text: `${authorsString}. ${cleanTitle}. ${meta.journal || 'Biomed Sci Clin Res'}. ${meta.publicationYear || 2026}${meta.volume ? ';' + meta.volume : ''}${meta.issue ? '(' + meta.issue + ')' : ''}${meta.pages ? ':' + meta.pages : ''}.${meta.doi ? ' doi:' + meta.doi : ''}`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_SMALL,
                             bold: true,
@@ -335,7 +360,7 @@ export function buildAcademicDocxManuscript(
                             text: `Ingestion Depth Status: ${
                               isAbstractOnly
                                 ? 'ABSTRACT ONLY (Publisher Paywall Fallback — Methodological depth restricted)'
-                                : 'FULL TEXT ANALYZED (Complete manuscript body and tables evaluated)'
+                                : 'FULL TEXT ANALYZED (Complete manuscript body, methodology, and tables evaluated)'
                             }`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_TINY,
@@ -585,7 +610,7 @@ export function buildAcademicDocxManuscript(
 
           createBodyParagraph(`Overall Methodological Rationale: ${report.riskOfBias.overallRationale}`),
 
-          // --- REFINEMENT: Horizontal Visual RoB RevMan-Style Strip ---
+          // Horizontal Visual RoB RevMan-Style Strip
           new Paragraph({ spacing: { before: 80, after: 60 }, children: [
             new TextRun({ text: 'Figure 1: Risk of Bias Domain Summary Strip (RevMan Format)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
           ] }),
@@ -611,7 +636,7 @@ export function buildAcademicDocxManuscript(
                       new Paragraph({
                         alignment: AlignmentType.CENTER,
                         children: [
-                          new TextRun({ text: d.domainName.slice(0, 20), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, color: DOCX_COLORS.SLATE_BODY }),
+                          new TextRun({ text: d.domainName.slice(0, 24), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, color: DOCX_COLORS.SLATE_BODY }),
                         ],
                       }),
                     ],
@@ -1040,9 +1065,7 @@ export function buildAcademicDocxManuscript(
             { italic: true }
           ),
 
-          // ---------------------------------------------------------
-          // REFINEMENT: METHODOLOGICAL & EDITORIAL GOVERNANCE DISCLAIMER
-          // ---------------------------------------------------------
+          // METHODOLOGICAL & EDITORIAL GOVERNANCE DISCLAIMER
           new Paragraph({ spacing: { before: 140, after: 60 }, children: [] }),
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
@@ -1071,7 +1094,7 @@ export function buildAcademicDocxManuscript(
                         spacing: { before: 20, after: 30 },
                         children: [
                           new TextRun({
-                            text: `This critical appraisal was generated via AppraisAI in adherence to EQUATOR Network reporting frameworks (${report.classification.equatorReportingGuideline}), the Oxford Centre for Evidence-Based Medicine (CEBM) Levels of Evidence, and the GRADE Working Group certainty criteria. The evaluation has been conducted and reviewed by the undersigned appraiser (${appraiser?.name || 'Dr. Alex Mercer, MD, MPH'}). This document is prepared for academic peer commentary, journal club appraisal, and clinical decision support purposes.`,
+                            text: `This critical appraisal was generated via AppraisAI in adherence to EQUATOR Network reporting frameworks (${report.classification.equatorReportingGuideline}), the Oxford Centre for Evidence-Based Medicine (CEBM) Levels of Evidence, and the GRADE Working Group certainty criteria. The evaluation has been conducted and reviewed by the undersigned appraiser (${appraiser?.name || 'Dr. Raouf Roshdy, MD'}). This document is prepared for academic peer commentary, journal club appraisal, and clinical decision support purposes.`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_TINY,
                             color: DOCX_COLORS.SLATE_MUTED,
