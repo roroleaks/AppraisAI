@@ -206,26 +206,34 @@ export function buildAcademicDocxManuscript(
         headers: {
           default: new Header({
             children: [
+              // Line 1: Publication Category & Monograph Scope
               new Paragraph({
                 alignment: AlignmentType.RIGHT,
-                spacing: { after: 120 },
+                spacing: { before: 0, after: 20 },
+                children: [
+                  new TextRun({
+                    text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT',
+                    font: TYPOGRAPHY.FONT_PRIMARY,
+                    size: TYPOGRAPHY.SIZE_SMALL,
+                    bold: true,
+                    color: DOCX_COLORS.NAVY_PRIMARY,
+                  }),
+                ],
+              }),
+              // Line 2: Index Paper Title & Journal with Bottom Border Rule
+              new Paragraph({
+                alignment: AlignmentType.RIGHT,
+                spacing: { before: 20, after: 120 },
                 border: {
                   bottom: { style: BorderStyle.SINGLE, size: 6, color: DOCX_COLORS.BORDER_LIGHT },
                 },
                 children: [
                   new TextRun({
-                    text: `${truncatedHeaderTitle} | ${meta.journal || 'Biomedical Science and Clinical Research'}`,
+                    text: `${truncatedHeaderTitle}  •  ${meta.journal || 'Biomedical Science and Clinical Research'}`,
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_SMALL,
                     italics: true,
                     color: DOCX_COLORS.SLATE_MUTED,
-                  }),
-                  new TextRun({
-                    text: '   •   EVIDENCE-BASED CRITICAL APPRAISAL',
-                    font: TYPOGRAPHY.FONT_PRIMARY,
-                    size: TYPOGRAPHY.SIZE_SMALL,
-                    bold: true,
-                    color: DOCX_COLORS.NAVY_PRIMARY,
                   }),
                 ],
               }),

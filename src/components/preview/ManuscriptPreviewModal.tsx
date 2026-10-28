@@ -72,10 +72,16 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
         {/* Paper Simulation Body */}
         <div className="flex-1 overflow-y-auto p-8 sm:p-12 bg-slate-100 font-serif text-slate-900 leading-relaxed text-xs space-y-6">
           <div className="max-w-[760px] mx-auto bg-white p-8 sm:p-12 shadow-sm border border-slate-200 space-y-6">
-            {/* Running Header */}
-            <div className="border-b border-slate-300 pb-2 flex justify-between text-[10px] text-slate-500 uppercase tracking-widest font-sans">
-              <span className="italic truncate max-w-xs">{displayTitle}</span>
-              <span className="font-bold text-slate-700">AppraisAI Critical Appraisal</span>
+            {/* 2-Line Running Header */}
+            <div className="border-b border-slate-300 pb-2.5 font-sans space-y-1">
+              <div className="flex justify-between items-center text-[10px] uppercase tracking-wider font-bold text-slate-800">
+                <span>EVIDENCE-BASED CLINICAL MEDICINE</span>
+                <span className="text-brand-700">CRITICAL APPRAISAL REPORT</span>
+              </div>
+              <div className="flex justify-between items-center text-[10px] text-slate-500 italic">
+                <span className="truncate max-w-md">{displayTitle}</span>
+                <span className="not-italic shrink-0">{report.metadata.journal || 'Biomed Sci Clin Res'}</span>
+              </div>
             </div>
 
             {/* Title Block */}
@@ -83,8 +89,8 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
               <span className="text-[11px] font-bold text-brand-700 uppercase tracking-widest font-sans block">
                 Evidence-Based Critical Appraisal & Methodological Commentary
               </span>
-              <h1 className="text-xl sm:text-2xl font-bold font-sans text-slate-900 leading-snug">
-                Methodological and Statistical Critical Appraisal of: {displayTitle}
+              <h1 className="text-lg font-bold font-sans text-slate-900 leading-snug">
+                Methodological and Statistical Critical Appraisal: {displayTitle}
               </h1>
               <p className="text-slate-600 text-[11px] font-sans">
                 Authors: {displayAuthors} | Appraisal Date: {new Date(report.completedAt).toLocaleDateString()} | EQUATOR & Cochrane RoB 2.0 Governed
@@ -124,7 +130,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 1: Abstract */}
             <div className="space-y-2">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase border-b border-slate-200 pb-1">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 1. Executive Structured Commentary Abstract
               </h2>
               <div className="p-4 bg-slate-50/60 border border-slate-200 rounded space-y-2 text-xs">
@@ -137,7 +143,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 2: PICO */}
             <div className="space-y-2">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase border-b border-slate-200 pb-1">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 2. PICO / PECO Deconstruction & Study Characteristics
               </h2>
               <div className="border border-slate-200 text-xs">
@@ -166,7 +172,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 3: Risk of Bias */}
             <div className="space-y-2">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase border-b border-slate-200 pb-1">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 3. Risk of Bias Assessment Matrix ({report.riskOfBias.governingTool})
               </h2>
               <p className="text-[11px] text-slate-600">Overall Rationale: {report.riskOfBias.overallRationale}</p>
@@ -200,7 +206,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 4: EQUATOR */}
             <div className="space-y-2">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase border-b border-slate-200 pb-1">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 4. EQUATOR Network Compliance ({report.equatorChecklist.guidelineName})
               </h2>
               <p className="text-xs font-sans font-bold text-slate-700">
@@ -210,7 +216,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 5: Stats & Spin */}
             <div className="space-y-2">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase border-b border-slate-200 pb-1">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 5. Statistical & Methodological Rigor Audit
               </h2>
               <p><strong>Power Calculation:</strong> {report.statisticalAudit.sampleSizePowerCalculation.adequacyAssessment}</p>
@@ -222,7 +228,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 6: Strengths & GRADE */}
             <div className="space-y-2">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase border-b border-slate-200 pb-1">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 6. Validity & GRADE Certainty Synthesis
               </h2>
               <p><strong>Internal Validity:</strong> {report.validitySynthesis.internalValidity}</p>
@@ -234,7 +240,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 7: Clinical Verdict */}
             <div className="space-y-2">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase border-b border-slate-200 pb-1">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 7. Clinical Practice Translation & Bottom Line
               </h2>
               <p className="font-bold">Takeaway: {report.clinicalPracticeBottomLine.keyTakeawayForClinicians}</p>
@@ -251,7 +257,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
             {/* Section 8: References */}
             <div className="space-y-2 pt-2 border-t border-slate-200">
-              <h2 className="text-sm font-bold font-serif text-slate-900 uppercase">
+              <h2 className="text-base font-bold font-sans text-slate-900 uppercase border-b border-slate-200 pb-1">
                 8. References (Vancouver Style)
               </h2>
               <ol className="list-decimal pl-5 space-y-1 text-slate-700 text-[11px]">

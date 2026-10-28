@@ -43,9 +43,9 @@ export const PAGE_GEOMETRY = {
 export const TYPOGRAPHY = {
   FONT_PRIMARY: 'Arial',
   FONT_HEADING: 'Arial',
-  SIZE_TITLE: 48,       // 24pt
-  SIZE_H1: 36,          // 18pt
-  SIZE_H2: 26,          // 13pt
+  SIZE_TITLE: 36,       // 18pt (18 * 2 = 36 half-points)
+  SIZE_H1: 32,          // 16pt (16 * 2 = 32 half-points)
+  SIZE_H2: 25,          // 12.5pt
   SIZE_H3: 22,          // 11pt Bold
   SIZE_BODY: 21,        // 10.5pt
   SIZE_TABLE: 19,       // 9.5pt
