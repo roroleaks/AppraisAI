@@ -32,7 +32,16 @@ export function normalizeIdentifier(input: string): ParsedIdentifier {
     };
   }
 
-  // 3. Check for PMID (Pubmed URL or pure 7-9 digits)
+  // 3. Check for PMID (Pubmed URL, PMID: 1234567, or pure 6-9 digits)
+  const pmidPrefixedMatch = trimmed.match(/^PMID[:\s]*(\d{6,9})$/i);
+  if (pmidPrefixedMatch) {
+    return {
+      type: 'PMID',
+      normalizedValue: pmidPrefixedMatch[1],
+      originalInput: trimmed,
+    };
+  }
+
   const pubmedUrlMatch = trimmed.match(/pubmed\.ncbi\.nlm\.nih\.gov\/(\d+)/i);
   if (pubmedUrlMatch) {
     return {

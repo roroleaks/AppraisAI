@@ -22,15 +22,32 @@ export function formatVancouverAuthors(
   const formattedList = authors.map((auth) => {
     if (typeof auth === 'string') {
       const trimmed = auth.trim();
-      // If already formatted like "Smith JA" or "Smith, J. A."
-      if (trimmed.includes(',')) {
-        const parts = trimmed.split(',');
+      
+      // Strip honorific prefixes & degrees: "Dr.", "Prof.", ", MD", ", PhD"
+      let cleanAuth = trimmed
+        .replace(/^(?:Dr\.?|Prof\.?|Assoc\.?\s*Prof\.?)\s+/i, '')
+        .replace(/,\s*(?:MD|PhD|MBBS|MS|FRCS|FRCOG|FACS|FACP)[^,]*$/i, '')
+        .trim();
+
+      // If already in standard Vancouver format: e.g. "Smith JA" or "Taha I"
+      if (/^[A-Za-z'-]+\s+[A-Z]{1,3}$/.test(cleanAuth)) {
+        return cleanAuth;
+      }
+
+      // If comma-separated: "Smith, John A." or "Roshdy, R."
+      if (cleanAuth.includes(',')) {
+        const parts = cleanAuth.split(',');
         const surname = parts[0].trim();
         const initials = parts.slice(1).join(' ').trim().replace(/[\.\s-]/g, '').toUpperCase();
         return `${surname} ${initials}`.trim();
       }
-      const words = trimmed.split(/\s+/);
+
+      const words = cleanAuth.split(/\s+/);
       if (words.length > 1) {
+        // If last word is uppercase initials: "Taha I"
+        if (/^[A-Z]{1,3}$/.test(words[words.length - 1])) {
+          return `${words.slice(0, -1).join(' ')} ${words[words.length - 1]}`;
+        }
         const surname = words[words.length - 1];
         const initials = words
           .slice(0, words.length - 1)
@@ -38,7 +55,7 @@ export function formatVancouverAuthors(
           .join('');
         return `${surname} ${initials}`;
       }
-      return trimmed;
+      return cleanAuth;
     }
 
     // Object format (Crossref style: { family: "Smith", given: "John A." })

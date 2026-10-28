@@ -91,10 +91,11 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
           'Wells GA, Shea B, O’Connell D, et al. The Newcastle-Ottawa Scale (NOS) for assessing the quality of nonrandomised studies in meta-analyses. Ottawa Hospital Research Institute; 2021.',
         defaultOxfordLevel: 'Level 2b',
         robMandatoryDomains: [
-          { domainName: 'Selection: Representativeness of Exposed/Cohort', description: 'Selection bias and ascertainment of exposure status' },
-          { domainName: 'Comparability: Confounding Adjustment', description: 'Adjustment for key prognostic factors via multivariable regression or propensity matching' },
-          { domainName: 'Outcome: Assessment & Follow-Up Duration', description: 'Blinded/objective outcome assessment and adequacy of follow-up (<20% attrition)' },
-          { domainName: 'Information Bias: Measurement Error', description: 'Recall bias or misclassification of exposures/outcomes' },
+          { domainName: 'Domain 1: Selection & Representativeness of Cohort', description: 'Selection bias and ascertainment of exposure status' },
+          { domainName: 'Domain 2: Comparability & Confounding Adjustment', description: 'Adjustment for key prognostic factors via multivariable regression or propensity matching' },
+          { domainName: 'Domain 3: Exposure Ascertainment & Misclassification', description: 'Objective ascertainment of exposure and validation against medical records' },
+          { domainName: 'Domain 4: Outcome Assessment & Detection Bias', description: 'Blinded/objective outcome assessment independent of exposure status' },
+          { domainName: 'Domain 5: Attrition & Adequacy of Follow-Up', description: 'Completeness of follow-up (<20% attrition) and handling of dropouts' },
         ],
         equatorMandatoryItems: [
           { itemNumberAndSection: 'Item 1: Title & Abstract', requirement: 'State study design with commonly used terms' },

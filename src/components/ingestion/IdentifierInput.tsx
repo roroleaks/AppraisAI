@@ -38,10 +38,14 @@ export const IdentifierInput: React.FC = () => {
   };
 
   const sampleIdentifiers = [
-    { label: 'NEJM (Aspirin Primary Prevention)', val: '10.1056/NEJMoa1800722' },
+    {
+      label: 'Opast PDF (Vaginal Restoration)',
+      val: 'https://www.opastpublishers.com/open-access-articles/vaginal-restoration-after-vaginal-delivery-commentary-review-regarding-pathophysiology-assessment-evidencebased-manageme.pdf',
+    },
+    { label: 'NEJM (Aspirin Prevention)', val: '10.1056/NEJMoa1800722' },
     { label: 'Lancet (COVID-19 Hydroxychloroquine)', val: '10.1016/S0140-6736(20)31180-6' },
     { label: 'PubMed ID (SGLT2i in HF)', val: '31535829' },
-    { label: 'Europe PMC Open Access JATS', val: 'PMC7118652' },
+    { label: 'Europe PMC JATS', val: 'PMC7118652' },
   ];
 
   return (

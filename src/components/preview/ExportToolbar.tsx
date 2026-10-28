@@ -13,6 +13,7 @@ import {
   UserCheck,
   Loader2,
   Sparkles,
+  Edit3,
 } from 'lucide-react';
 
 const DEFAULT_PROFILE = {
@@ -22,7 +23,7 @@ const DEFAULT_PROFILE = {
 };
 
 export const ExportToolbar: React.FC = () => {
-  const { currentAppraisal } = useAppraisalStore();
+  const { currentAppraisal, isEditMode, setEditMode } = useAppraisalStore();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isCopiedCitation, setIsCopiedCitation] = useState(false);
@@ -211,6 +212,19 @@ export const ExportToolbar: React.FC = () => {
 
         {/* Right Action Buttons */}
         <div className="flex flex-wrap items-center gap-2">
+          {/* Edit Mode Toggle */}
+          <button
+            onClick={() => setEditMode(!isEditMode)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition ${
+              isEditMode
+                ? 'border-[#0f6b6b] bg-[#e3f2f2] text-[#0f6b6b] shadow-xs'
+                : 'border-slate-200 hover:bg-slate-50 text-slate-700'
+            }`}
+          >
+            <Edit3 className="w-3.5 h-3.5" />
+            <span>{isEditMode ? 'Finish Editing' : 'Edit Mode'}</span>
+          </button>
+
           {/* Copy Citation */}
           <button
             onClick={handleCopyCitation}

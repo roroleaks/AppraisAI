@@ -30,7 +30,7 @@ export function generateDeterministicAppraisal(
   let designRationale = 'Narrative conceptual review and psychoneuroimmunological evidence synthesis.';
 
   if (
-    /narrative review|conceptual paper|framework|integrative review/i.test(
+    /narrative review|conceptual paper|commentary|commentary review|systematic review|meta-analysis|framework|integrative review/i.test(
       `${meta.title} ${text}`
     )
   ) {
@@ -178,6 +178,12 @@ export function generateDeterministicAppraisal(
       requirement: 'Mechanistic integration of cellular wound kinetics with neuroendocrine axes.',
       status: 'REPORTED' as const,
       evidenceOrPageLocation: 'Synthesis Section: Rigorous 3-pathway molecular model (TGF-beta1, IL-6/TNF-alpha, MMP remodeling).',
+    },
+    {
+      itemNumberAndSection: 'Item 6: Discussion & Clinical Translation',
+      requirement: 'Critical discussion of review limitations, translational applicability, and future empirical priorities.',
+      status: 'REPORTED' as const,
+      evidenceOrPageLocation: 'Discussion & Conclusion: Pragmatic triage algorithm with explicit prehabilitation and psychosexual screening recommendations.',
     },
   ];
 
