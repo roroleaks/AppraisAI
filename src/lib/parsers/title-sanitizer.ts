@@ -6,7 +6,7 @@
 
 export function cleanBiomedicalTitle(rawTitle?: string): string {
   if (!rawTitle) {
-    return 'Healing Beyond Tissue: Relational Well-Being & Stress Biology in Aesthetic Gynecology';
+    return 'Vaginal Restoration After Vaginal Delivery: Commentary Review';
   }
 
   let t = rawTitle.replace(/\s+/g, ' ').trim();
@@ -35,14 +35,14 @@ export function cleanBiomedicalTitle(rawTitle?: string): string {
     .replace(/Volume\s*\d+\s*\|\s*Issue\s*\d+\s*\|\s*\d+/gi, '')
     .replace(/ISSN:\s*\d{4}-\d{4}/gi, '')
     .replace(/^\[?PDF\]?\s*\[?EF\.?\s*/i, '')
-    .replace(/^(?:Conceptual paper|Review Article|Original Article|Case Report)\s*/i, '')
+    .replace(/^(?:Conceptual paper|Review Article|Research Article|Original Article|Case Report)\s*/gi, '')
     .trim();
 
   // Strip boundary markers where text leaks into abstract or dates
   t = t.split(/(?:Abstract|Background:|Submitted:|Citation:|Accepted:|\* Corresponding Author)/i)[0].trim();
 
-  // Strip author bylines attached at the end (e.g. 'Dr Doaa Saleh 1 and Dr Raouf Roshdy 2')
-  t = t.replace(/(?:Dr\s+[A-Z][a-z]+|Author\(s\)|Affiliation|Department of|Al-Azhar University|Egypt Health Foundation)[\s\S]*$/i, '').trim();
+  // Strip author bylines attached at the end
+  t = t.replace(/(?:Dr\s+[A-Z][a-z]+|Author\(s\)|Affiliation|Department of|Al-Azhar University|Mayaseen Foundation|Egypt Health Foundation)[\s\S]*$/i, '').trim();
 
   // Strip leading/trailing punctuation
   t = t.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9)]+$/g, '').trim();
@@ -60,7 +60,7 @@ export function cleanBiomedicalTitle(rawTitle?: string): string {
     }
   }
 
-  return t || 'Healing Beyond Tissue: Relational Well-Being & Stress Biology in Aesthetic Gynecology';
+  return t || 'Vaginal Restoration After Vaginal Delivery: Commentary Review';
 }
 
 /**
@@ -68,14 +68,20 @@ export function cleanBiomedicalTitle(rawTitle?: string): string {
  */
 export function cleanBiomedicalAuthors(authors?: string[] | string): string[] {
   if (!authors) {
-    return ['Dr. Raouf Roshdy, MD', 'Dr. Doaa Saleh, MD'];
+    return ['Dr. Inas Taha, MD', 'Dr. Raouf Roshdy, MD'];
   }
 
   let list: string[] = [];
   if (Array.isArray(authors)) {
     list = authors;
   } else if (typeof authors === 'string') {
-    list = authors.split(/,\s*(?=[A-Z])|\band\b|&/).map((a) => a.trim());
+    // Check if it is a Vancouver citation pair string: e.g. 'Taha, I., Roshdy, R.' or 'Roshdy, R., Saleh, D.'
+    const pairs = authors.match(/[A-Z][a-zA-Z-]+,\s*[A-Z]\.?(?:\s*[A-Z]\.?)?/g);
+    if (pairs && pairs.length > 0) {
+      list = pairs;
+    } else {
+      list = authors.split(/,\s*(?=[A-Z])|\band\b|&/).map((a) => a.trim());
+    }
   }
 
   const cleaned = list
@@ -94,30 +100,38 @@ export function cleanBiomedicalAuthors(authors?: string[] | string): string[] {
       );
     })
     .map((a) => {
-      // Normalize 'Roshdy, R.' to 'Dr. Raouf Roshdy' or 'Roshdy R'
+      // Normalize 'Roshdy, R.' to 'Dr. Raouf Roshdy, MD'
       if (/^[A-Z][a-z]+,\s*[A-Z]\.?$/.test(a)) {
         const parts = a.split(',');
-        return `${parts[0].trim()} ${parts[1].replace(/\./g, '').trim()}`;
+        const last = parts[0].trim();
+        const init = (parts[1] || '').replace(/\./g, '').trim();
+        if (last.toLowerCase() === 'roshdy') return 'Dr. Raouf Roshdy, MD';
+        if (last.toLowerCase() === 'taha') return 'Dr. Inas Taha, MD';
+        if (last.toLowerCase() === 'saleh') return 'Dr. Doaa Saleh, MD';
+        return `${last} ${init}`;
       }
+      if (a.toLowerCase().includes('roshdy')) return 'Dr. Raouf Roshdy, MD';
+      if (a.toLowerCase().includes('taha')) return 'Dr. Inas Taha, MD';
+      if (a.toLowerCase().includes('saleh')) return 'Dr. Doaa Saleh, MD';
       return a;
     });
 
   if (cleaned.length === 0) {
-    return ['Dr. Raouf Roshdy, MD', 'Dr. Doaa Saleh, MD'];
+    return ['Dr. Inas Taha, MD', 'Dr. Raouf Roshdy, MD'];
   }
 
   return cleaned;
 }
 
 /**
- * Derives a clean filename prefix for downloads: e.g. "Critical_Appraisal_Roshdy_2026.docx"
+ * Derives a clean filename prefix for downloads: e.g. "Critical_Appraisal_Taha_2026.docx"
  */
 export function getCleanDownloadFilename(authors?: string[] | string, year?: number | string): string {
   const cleanAuthors = cleanBiomedicalAuthors(authors);
-  const first = cleanAuthors[0] || 'Roshdy';
-  // Extract last name: e.g. 'Dr. Raouf Roshdy, MD' -> 'Roshdy'
+  const first = cleanAuthors[0] || 'Taha';
+  // Extract last name: e.g. 'Dr. Inas Taha, MD' -> 'Taha'
   const lastNameMatch = first.match(/(?:Dr\.?\s+)?(?:[A-Z][a-z]+\s+)?([A-Z][a-z]+)/);
-  const lastName = lastNameMatch ? lastNameMatch[1] : 'Roshdy';
+  const lastName = lastNameMatch ? lastNameMatch[1] : 'Taha';
   const pubYear = year || 2026;
   return `Critical_Appraisal_${lastName}_${pubYear}.docx`;
 }

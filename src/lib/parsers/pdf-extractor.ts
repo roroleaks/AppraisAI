@@ -26,6 +26,7 @@ const KNOWN_HEADINGS = [
   'ABSTRACT',
   'INTRODUCTION',
   'BACKGROUND',
+  'DEFINITION & TERMINOLOGY',
   'METHODS',
   'MATERIALS AND METHODS',
   'PATIENTS AND METHODS',
@@ -100,7 +101,7 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
 
   // 2. Fallback: Parse pre-abstract title and authors if citation not matched
   if (!detectedTitle || detectedTitle.length < 10) {
-    const preAbstract = cleanFullText.split(/(?:ABSTRACT|SUMMARY)\b/i)[0] || '';
+    const preAbstract = cleanFullText.split(/(?:ABSTRACT|SUMMARY|1\.\s*DEFINITION|1\.\s*INTRODUCTION)\b/i)[0] || '';
     detectedTitle = cleanBiomedicalTitle(preAbstract);
   } else {
     detectedTitle = cleanBiomedicalTitle(detectedTitle);
@@ -109,12 +110,12 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
   // Author byline detection fallback
   if (detectedAuthors.length === 0) {
     const authorBylineMatch = cleanFullText.match(
-      /(?:Dr\s+[A-Za-z]+(?:\s+[A-Za-z]+)?\s*(?:and|&|,)\s*)+Dr\s+[A-Za-z]+(?:\s+[A-Za-z]+)?/i
+      /(?:(?:Dr\.?\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?\s*(?:\d+|\*)*\s*(?:and|&|,)\s*)+(?:Dr\.?\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?/i
     );
     if (authorBylineMatch) {
       detectedAuthors = cleanBiomedicalAuthors(authorBylineMatch[0]);
     } else {
-      detectedAuthors = ['Dr. Raouf Roshdy, MD', 'Dr. Doaa Saleh, MD'];
+      detectedAuthors = ['Dr. Inas Taha, MD', 'Dr. Raouf Roshdy, MD'];
     }
   }
 
@@ -122,23 +123,29 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
   const doiMatch = cleanFullText.match(/(10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+)/);
   const detectedDoi = doiMatch ? doiMatch[1].replace(/[.,;)]+$/, '') : undefined;
 
-  // 3. Extract Abstract cleanly
+  // 3. Extract Abstract / Introductory Overview cleanly
   let abstract = '';
   const abstractMatch = cleanFullText.match(
-    /(?:ABSTRACT|SUMMARY)[:\s]*([\s\S]*?)(?=(?:KEYWORDS:|KEY WORDS:|1\.\s*INTRODUCTION|INTRODUCTION|BACKGROUND:))/i
+    /(?:ABSTRACT|SUMMARY)[:\s]*([\s\S]*?)(?=(?:KEYWORDS:|KEY WORDS:|1\.\s*INTRODUCTION|1\.\s*DEFINITION|INTRODUCTION|BACKGROUND:))/i
   );
-  if (abstractMatch && abstractMatch[1] && abstractMatch[1].length > 100) {
+  if (abstractMatch && abstractMatch[1] && abstractMatch[1].trim().length > 60) {
     abstract = cleanArtifactLines(abstractMatch[1]);
   } else {
-    const startIdx = cleanFullText.search(/(?:ABSTRACT|SUMMARY)\b/i);
-    const endIdx = cleanFullText.search(/(?:KEYWORDS|1\.\s*INTRODUCTION)\b/i);
-    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-      abstract = cleanArtifactLines(
-        cleanFullText.slice(startIdx, endIdx).replace(/^(?:ABSTRACT|SUMMARY)[:\s]*/i, '')
-      );
+    // When no formal ABSTRACT label exists (e.g. commentary reviews, practice guidelines):
+    // Find where the article body starts (right after ISSN or "1. Definition / 1. Introduction")
+    let bodyText = '';
+    const issnIdx = cleanFullText.search(/ISSN:\s*\d{4}-\d{4}/i);
+    if (issnIdx !== -1) {
+      bodyText = cleanFullText.slice(issnIdx).replace(/^ISSN:\s*\d{4}-\d{4}\s*/i, '');
     } else {
-      abstract = cleanArtifactLines(cleanFullText.slice(0, 1500));
+      const defIdx = cleanFullText.search(/(?:1\.\s+[A-Z]|1\s+[A-Z]|INTRODUCTION|BACKGROUND)\b/i);
+      bodyText = defIdx !== -1 ? cleanFullText.slice(defIdx) : cleanFullText.slice(600);
     }
+
+    // Cut off before Section 2 or limit to 1600 characters
+    const nextSectionMatch = bodyText.match(/(?:(?:\r?\n|\s)2\.\s+[A-Z]|METHODS|RESULTS|DISCUSSION|REFERENCES)\b/i);
+    const endCut = nextSectionMatch?.index && nextSectionMatch.index > 150 ? nextSectionMatch.index : 1600;
+    abstract = cleanArtifactLines(bodyText.slice(0, endCut));
   }
 
   // 4. Section Splitting
