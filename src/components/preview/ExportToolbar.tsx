@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { ManuscriptPreviewModal } from './ManuscriptPreviewModal';
+import { getCleanDownloadFilename } from '@/lib/parsers/title-sanitizer';
 import {
   Download,
   Eye,
@@ -95,9 +96,10 @@ export const ExportToolbar: React.FC = () => {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      const firstAuthor =
-        currentAppraisal.metadata.authors?.[0]?.replace(/[^a-zA-Z0-9]/g, '_') || 'Article';
-      a.download = `Critical_Appraisal_${firstAuthor}_${currentAppraisal.metadata.publicationYear}.docx`;
+      a.download = getCleanDownloadFilename(
+        currentAppraisal.metadata.authors,
+        currentAppraisal.metadata.publicationYear
+      );
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

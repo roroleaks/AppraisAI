@@ -3,6 +3,7 @@
 import React from 'react';
 import { MasterAppraisalReport } from '@/lib/schemas/appraisal.schema';
 import { X, Printer, Download, BookOpen, ShieldCheck } from 'lucide-react';
+import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '@/lib/parsers/title-sanitizer';
 
 interface ManuscriptPreviewModalProps {
   isOpen: boolean;
@@ -18,6 +19,9 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
   onDownloadDocx,
 }) => {
   if (!isOpen) return null;
+
+  const displayTitle = cleanBiomedicalTitle(report.metadata.title);
+  const displayAuthors = cleanBiomedicalAuthors(report.metadata.authors).join(', ');
 
   const renderRevManBadge = (judgement: string) => {
     switch (judgement) {
@@ -70,7 +74,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
           <div className="max-w-[760px] mx-auto bg-white p-8 sm:p-12 shadow-sm border border-slate-200 space-y-6">
             {/* Running Header */}
             <div className="border-b border-slate-300 pb-2 flex justify-between text-[10px] text-slate-500 uppercase tracking-widest font-sans">
-              <span className="italic truncate max-w-xs">{report.metadata.title}</span>
+              <span className="italic truncate max-w-xs">{displayTitle}</span>
               <span className="font-bold text-slate-700">AppraisAI Critical Appraisal</span>
             </div>
 
@@ -79,11 +83,11 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
               <span className="text-[11px] font-bold text-brand-700 uppercase tracking-widest font-sans block">
                 Evidence-Based Critical Appraisal & Methodological Commentary
               </span>
-              <h1 className="text-xl sm:text-2xl font-bold font-serif text-slate-900 leading-snug">
-                Methodological and Statistical Critical Appraisal of: {report.metadata.title}
+              <h1 className="text-xl sm:text-2xl font-bold font-sans text-slate-900 leading-snug">
+                Methodological and Statistical Critical Appraisal of: {displayTitle}
               </h1>
               <p className="text-slate-600 text-[11px] font-sans">
-                Appraisal Date: {new Date(report.completedAt).toLocaleDateString()} | EQUATOR & Cochrane RoB 2.0 Governed
+                Authors: {displayAuthors} | Appraisal Date: {new Date(report.completedAt).toLocaleDateString()} | EQUATOR & Cochrane RoB 2.0 Governed
               </p>
             </div>
 

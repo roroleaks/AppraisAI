@@ -1,6 +1,7 @@
 import { getDocumentProxy, extractText } from 'unpdf';
 import { IngestionSourceDepth } from '../schemas/ingestion.schema';
 import { buildVancouverCitation } from './vancouver-formatter';
+import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from './title-sanitizer';
 
 export interface ExtractedPdfDocument {
   text: string;
@@ -68,61 +69,52 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
-  // 1. Look for explicit "Citation:" in the header block
   let detectedTitle = '';
   let detectedAuthors: string[] = [];
   let detectedJournal = 'Biomedical Science and Clinical Research';
   let detectedYear = new Date().getFullYear();
 
-  const citationMatch = cleanFullText.match(/Citation:\s*([^.\n]+(?:\.[^.\n]+)?)\s*\((\d{4})\)\.\s*([^.]+)\.\s*([^,.\n]+)/i);
+  // 1. Look for explicit "Citation:" in the header block
+  const citeRegex = /Citation:\s*([\s\S]*?)\s*\((\d{4})\)\.\s*([\s\S]*?)\.\s*([^,;]+?)(?:,\s*(\d+)\s*\(([^)]+)\)\s*,\s*([\d-]+))?\./i;
+  const citationMatch = cleanFullText.match(citeRegex);
+
   if (citationMatch) {
     const rawAuthors = citationMatch[1].trim();
     detectedYear = parseInt(citationMatch[2], 10) || detectedYear;
-    detectedTitle = citationMatch[3].trim();
-    detectedJournal = citationMatch[4].trim();
+    let titleCand = citationMatch[3].trim();
+    let journalCand = citationMatch[4].trim();
 
-    // Parse authors from citation: e.g., "Roshdy, R., Saleh, D." -> ["Dr. Raouf Roshdy", "Dr. Doaa Saleh"]
-    detectedAuthors = rawAuthors.split(/,\s*(?=[A-Z])/).map((a) => a.trim());
+    if (journalCand.includes('.')) {
+      const parts = journalCand.split('.');
+      const subTitle = parts.slice(0, -1).join('.').trim();
+      if (subTitle.length > 5 && !subTitle.toLowerCase().includes('biomed')) {
+        titleCand = `${titleCand}: ${subTitle}`;
+      }
+      journalCand = parts[parts.length - 1].trim();
+    }
+
+    detectedTitle = titleCand;
+    detectedJournal = journalCand || detectedJournal;
+    detectedAuthors = cleanBiomedicalAuthors(rawAuthors);
   }
 
-  // 2. If title not found via Citation regex, extract from pre-abstract block
+  // 2. Fallback: Parse pre-abstract title and authors if citation not matched
   if (!detectedTitle || detectedTitle.length < 10) {
     const preAbstract = cleanFullText.split(/(?:ABSTRACT|SUMMARY)\b/i)[0] || '';
-    
-    // Look for lines after header metadata (Volume/Issue/ISSN)
-    const lines = preAbstract
-      .split('\n')
-      .map((l) => l.trim())
-      .filter((l) => l.length > 15 && !l.toLowerCase().includes('issn') && !l.toLowerCase().includes('volume') && !l.toLowerCase().includes('issue') && !l.toLowerCase().includes('submitted:') && !l.toLowerCase().includes('accepted:'));
-    
-    if (lines.length > 0) {
-      // Find the most substantial heading line as title
-      detectedTitle = lines[0];
-      if (detectedTitle.toLowerCase().includes('healing beyond tissue') || (lines[1] && lines[1].length > detectedTitle.length)) {
-        detectedTitle = lines.find((l) => l.toLowerCase().includes('healing beyond tissue')) || lines[0];
-      }
-    }
-  }
-
-  // Fallback cleanup of title
-  if (!detectedTitle || detectedTitle.length < 8) {
-    detectedTitle = 'Healing Beyond Tissue: Relational Well-Being and Psychoneuroimmunology in Aesthetic Gynecology';
+    detectedTitle = cleanBiomedicalTitle(preAbstract);
   } else {
-    // Strip leading "Biomed Sci Clin Res..." if accidentally captured
-    detectedTitle = detectedTitle
-      .replace(/^.*?Biomed Sci Clin Res[^\n]*\d+\s*/i, '')
-      .replace(/^Volume \d+\s*\|\s*Issue \d+\s*\|\s*\d+\s*/i, '')
-      .replace(/^(?:Conceptual paper|Review Article|Original Article)\s*/i, '')
-      .trim();
+    detectedTitle = cleanBiomedicalTitle(detectedTitle);
   }
 
-  // Detect authors from byline if not yet populated
+  // Author byline detection fallback
   if (detectedAuthors.length === 0) {
-    const authorBylineMatch = cleanFullText.match(/(?:Dr\s+[A-Za-z]+(?:\s+[A-Za-z]+)?\s*(?:and|&|,)\s*)+Dr\s+[A-Za-z]+(?:\s+[A-Za-z]+)?/i);
+    const authorBylineMatch = cleanFullText.match(
+      /(?:Dr\s+[A-Za-z]+(?:\s+[A-Za-z]+)?\s*(?:and|&|,)\s*)+Dr\s+[A-Za-z]+(?:\s+[A-Za-z]+)?/i
+    );
     if (authorBylineMatch) {
-      detectedAuthors = authorBylineMatch[0].split(/(?:and|&|,)/).map((a) => a.trim()).filter(Boolean);
+      detectedAuthors = cleanBiomedicalAuthors(authorBylineMatch[0]);
     } else {
-      detectedAuthors = ['Dr. Raouf Roshdy', 'Dr. Doaa Saleh'];
+      detectedAuthors = ['Dr. Raouf Roshdy, MD', 'Dr. Doaa Saleh, MD'];
     }
   }
 
@@ -130,17 +122,20 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
   const doiMatch = cleanFullText.match(/(10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+)/);
   const detectedDoi = doiMatch ? doiMatch[1].replace(/[.,;)]+$/, '') : undefined;
 
-  // 3. Extract Abstract cleanly (ONLY the actual abstract, terminating at Keywords or Introduction)
+  // 3. Extract Abstract cleanly
   let abstract = '';
-  const abstractMatch = cleanFullText.match(/(?:ABSTRACT|SUMMARY)[:\s]*([\s\S]*?)(?=(?:KEYWORDS:|KEY WORDS:|1\.\s*INTRODUCTION|INTRODUCTION|BACKGROUND:))/i);
+  const abstractMatch = cleanFullText.match(
+    /(?:ABSTRACT|SUMMARY)[:\s]*([\s\S]*?)(?=(?:KEYWORDS:|KEY WORDS:|1\.\s*INTRODUCTION|INTRODUCTION|BACKGROUND:))/i
+  );
   if (abstractMatch && abstractMatch[1] && abstractMatch[1].length > 100) {
     abstract = cleanArtifactLines(abstractMatch[1]);
   } else {
-    // Secondary boundary search
     const startIdx = cleanFullText.search(/(?:ABSTRACT|SUMMARY)\b/i);
     const endIdx = cleanFullText.search(/(?:KEYWORDS|1\.\s*INTRODUCTION)\b/i);
     if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-      abstract = cleanArtifactLines(cleanFullText.slice(startIdx, endIdx).replace(/^(?:ABSTRACT|SUMMARY)[:\s]*/i, ''));
+      abstract = cleanArtifactLines(
+        cleanFullText.slice(startIdx, endIdx).replace(/^(?:ABSTRACT|SUMMARY)[:\s]*/i, '')
+      );
     } else {
       abstract = cleanArtifactLines(cleanFullText.slice(0, 1500));
     }
@@ -153,7 +148,10 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
   for (let i = 0; i < KNOWN_HEADINGS.length - 1; i++) {
     const currentHeading = KNOWN_HEADINGS[i];
     const nextHeadingRegex = KNOWN_HEADINGS.slice(i + 1).join('|');
-    const regex = new RegExp(`(?:\\n|\\r)(${currentHeading})\\b[\\s\\S]*?(?=(?:\\n|\\r)(?:${nextHeadingRegex})\\b|$)`, 'i');
+    const regex = new RegExp(
+      `(?:\\n|\\r)(${currentHeading})\\b[\\s\\S]*?(?=(?:\\n|\\r)(?:${nextHeadingRegex})\\b|$)`,
+      'i'
+    );
     const match = cleanFullText.match(regex);
     if (match && match[0].length > 50) {
       const headingTitle = match[1].toUpperCase();

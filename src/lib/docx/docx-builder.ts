@@ -22,9 +22,12 @@ import {
   PAGE_GEOMETRY,
   TYPOGRAPHY,
   CELL_PADDING,
+  CELL_PADDING_COMPACT,
   TABLE_BORDERS_CLEAN,
-  CALLOUT_BORDERS,
+  CALLOUT_BORDERS_TEAL,
+  CALLOUT_BORDERS_NAVY,
 } from './styles';
+import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '../parsers/title-sanitizer';
 
 export interface AppraiserMetadata {
   name: string;
@@ -34,38 +37,18 @@ export interface AppraiserMetadata {
 }
 
 /**
- * Clean human-readable sentence sanitization
- */
-function sanitizeTitle(rawTitle: string): string {
-  let title = rawTitle.replace(/\s+/g, ' ').trim();
-  title = title
-    .replace(/^.*?Biomed Sci Clin Res[^\n]*\d+\s*/i, '')
-    .replace(/^Volume \d+\s*\|\s*Issue \d+\s*\|\s*\d+\s*/i, '')
-    .replace(/^(?:Conceptual paper|Review Article|Original Article)\s*/i, '')
-    .replace(/^\[?PDF\]?\s*\[?EF\.?\s*/i, '')
-    .trim();
-
-  if (title.length > 160 && title.includes(':')) {
-    title = title.split(':')[0].trim();
-  } else if (title.length > 160 && title.includes('.')) {
-    title = title.split('.')[0].trim();
-  }
-  return title || 'Healing Beyond Tissue: Relational Well-Being & Stress Biology in Aesthetic Gynecology';
-}
-
-/**
- * Builds a clean academic paragraph with standard indentation and line-spacing.
+ * Creates a standard publication-grade body paragraph in Arial.
  */
 function createBodyParagraph(
   text: string,
-  options?: { bold?: boolean; italic?: boolean; before?: number; after?: number }
+  options?: { bold?: boolean; italic?: boolean; before?: number; after?: number; color?: string }
 ): Paragraph {
   return new Paragraph({
     alignment: AlignmentType.JUSTIFIED,
     spacing: {
       line: TYPOGRAPHY.LINE_SPACING_BODY,
       before: options?.before ?? 80,
-      after: options?.after ?? 80,
+      after: options?.after ?? 100,
     },
     children: [
       new TextRun({
@@ -74,21 +57,21 @@ function createBodyParagraph(
         size: TYPOGRAPHY.SIZE_BODY,
         bold: options?.bold,
         italics: options?.italic,
-        color: DOCX_COLORS.SLATE_BODY,
+        color: options?.color || DOCX_COLORS.SLATE_BODY,
       }),
     ],
   });
 }
 
 /**
- * Builds standard academic Heading 1 (Numbered with bottom border)
+ * Creates an executive Heading 1 with bottom border accent.
  */
 function createHeading1(sectionNumber: string, title: string): Paragraph {
   return new Paragraph({
     alignment: AlignmentType.LEFT,
-    spacing: { before: 280, after: 120 },
+    spacing: { before: 260, after: 120 },
     border: {
-      bottom: { style: BorderStyle.SINGLE, size: 6, color: DOCX_COLORS.BORDER_GREY },
+      bottom: { style: BorderStyle.SINGLE, size: 8, color: DOCX_COLORS.BORDER_GREY },
     },
     children: [
       new TextRun({
@@ -103,7 +86,7 @@ function createHeading1(sectionNumber: string, title: string): Paragraph {
 }
 
 /**
- * Builds standard academic Heading 2
+ * Creates a subsection Heading 2 in Accent Teal.
  */
 function createHeading2(title: string): Paragraph {
   return new Paragraph({
@@ -115,37 +98,62 @@ function createHeading2(title: string): Paragraph {
         font: TYPOGRAPHY.FONT_HEADING,
         size: TYPOGRAPHY.SIZE_H2,
         bold: true,
-        color: DOCX_COLORS.NAVY_PRIMARY,
+        color: DOCX_COLORS.TEAL_ACCENT,
       }),
     ],
   });
 }
 
 /**
- * Helper to format Risk of Bias or EQUATOR status cell with shading and symbol
+ * Creates a table header cell with solid Navy background and white bold text.
  */
-function getStatusShading(
+function createTableHeaderCell(text: string, widthDxa: number): TableCell {
+  return new TableCell({
+    width: { size: widthDxa, type: WidthType.DXA },
+    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.NAVY_PRIMARY },
+    margins: CELL_PADDING,
+    children: [
+      new Paragraph({
+        alignment: AlignmentType.LEFT,
+        children: [
+          new TextRun({
+            text,
+            font: TYPOGRAPHY.FONT_PRIMARY,
+            size: TYPOGRAPHY.SIZE_TABLE,
+            bold: true,
+            color: DOCX_COLORS.WHITE,
+          }),
+        ],
+      }),
+    ],
+  });
+}
+
+/**
+ * Returns traffic-light formatting tokens for Risk of Bias and EQUATOR statuses.
+ */
+function getStatusTokens(
   status: BiasJudgement | string
 ): { bg: string; text: string; label: string; symbol: string } {
   switch (status) {
     case 'LOW_RISK':
     case 'REPORTED':
-      return { bg: DOCX_COLORS.SUCCESS_BG, text: DOCX_COLORS.SUCCESS_TEXT, label: 'Low Risk', symbol: '(+) Low Risk' };
+      return { bg: DOCX_COLORS.SUCCESS_BG, text: DOCX_COLORS.SUCCESS_TEXT, label: 'Low Risk', symbol: '(+) LOW RISK' };
     case 'SOME_CONCERNS':
     case 'PARTIALLY_REPORTED':
-      return { bg: DOCX_COLORS.WARNING_BG, text: DOCX_COLORS.WARNING_TEXT, label: 'Some Concerns', symbol: '(?) Some Concerns' };
+      return { bg: DOCX_COLORS.WARNING_BG, text: DOCX_COLORS.WARNING_TEXT, label: 'Some Concerns', symbol: '(?) SOME CONCERNS' };
     case 'HIGH_RISK':
     case 'NOT_REPORTED':
-      return { bg: DOCX_COLORS.DANGER_BG, text: DOCX_COLORS.DANGER_TEXT, label: 'High Risk', symbol: '(-) High Risk' };
+      return { bg: DOCX_COLORS.DANGER_BG, text: DOCX_COLORS.DANGER_TEXT, label: 'High Risk', symbol: '(-) HIGH RISK' };
     case 'UNCLEAR_NOT_REPORTED':
     case 'NOT_APPLICABLE':
     default:
-      return { bg: DOCX_COLORS.NEUTRAL_BG, text: DOCX_COLORS.NEUTRAL_TEXT, label: 'Unclear', symbol: '[!] Unclear' };
+      return { bg: DOCX_COLORS.NEUTRAL_BG, text: DOCX_COLORS.NEUTRAL_TEXT, label: 'Unclear', symbol: '[!] UNCLEAR' };
   }
 }
 
 /**
- * Compiles MasterAppraisalReport into a publication-ready .docx document
+ * Compiles a publication-grade academic critical appraisal manuscript in Microsoft Word format.
  */
 export function buildAcademicDocxManuscript(
   report: MasterAppraisalReport,
@@ -153,19 +161,32 @@ export function buildAcademicDocxManuscript(
 ): Document {
   const meta = report.metadata;
   const isAbstractOnly = meta.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
-  const cleanTitle = sanitizeTitle(meta.title);
-  const truncatedTitle = cleanTitle.length > 55 ? `${cleanTitle.slice(0, 52)}...` : cleanTitle;
+  const cleanTitle = cleanBiomedicalTitle(meta.title);
+  const truncatedHeaderTitle = cleanTitle.length > 55 ? `${cleanTitle.slice(0, 52)}...` : cleanTitle;
+  const cleanAuthors = cleanBiomedicalAuthors(meta.authors);
+  const authorsString = cleanAuthors.join(', ');
 
-  // Clean formatted authors string
-  const authorsString = Array.isArray(meta.authors) && meta.authors.length > 0
-    ? meta.authors.join(', ')
-    : 'Dr. Raouf Roshdy, Dr. Doaa Saleh';
+  const activeAppraiserName = appraiser?.name || 'Dr. Raouf Roshdy, MD';
+  const activeAffiliation = appraiser?.affiliation || 'Department of Clinical Epidemiology & Evidence-Based Medicine';
+  const activeOrcid = appraiser?.orcid || '0000-0002-1825-0097';
 
-  // Compute column width for the horizontal RevMan RoB Traffic Light strip
+  // Compute RoB strip column width summing to exact printable width 9360 dxa
   const domainCount = Math.max(1, report.riskOfBias.domains.length);
-  const robStripColWidth = Math.floor(PAGE_GEOMETRY.CONTENT_WIDTH / domainCount);
+  const baseStripWidth = Math.floor(PAGE_GEOMETRY.CONTENT_WIDTH / domainCount);
+  const lastStripWidth = PAGE_GEOMETRY.CONTENT_WIDTH - baseStripWidth * (domainCount - 1);
 
   return new Document({
+    styles: {
+      default: {
+        document: {
+          run: {
+            font: TYPOGRAPHY.FONT_PRIMARY,
+            size: TYPOGRAPHY.SIZE_BODY,
+            color: DOCX_COLORS.SLATE_BODY,
+          },
+        },
+      },
+    },
     sections: [
       {
         properties: {
@@ -187,22 +208,22 @@ export function buildAcademicDocxManuscript(
             children: [
               new Paragraph({
                 alignment: AlignmentType.RIGHT,
-                spacing: { after: 100 },
+                spacing: { after: 120 },
                 border: {
-                  bottom: { style: BorderStyle.SINGLE, size: 4, color: DOCX_COLORS.HEADER_LINE },
+                  bottom: { style: BorderStyle.SINGLE, size: 6, color: DOCX_COLORS.BORDER_LIGHT },
                 },
                 children: [
                   new TextRun({
-                    text: `${truncatedTitle} | ${meta.journal || 'Biomed Sci Clin Res'}`,
+                    text: `${truncatedHeaderTitle} | ${meta.journal || 'Biomedical Science and Clinical Research'}`,
                     font: TYPOGRAPHY.FONT_PRIMARY,
-                    size: TYPOGRAPHY.SIZE_TINY,
+                    size: TYPOGRAPHY.SIZE_SMALL,
                     italics: true,
                     color: DOCX_COLORS.SLATE_MUTED,
                   }),
                   new TextRun({
-                    text: '     EVIDENCE-BASED CRITICAL APPRAISAL',
+                    text: '   •   EVIDENCE-BASED CRITICAL APPRAISAL',
                     font: TYPOGRAPHY.FONT_PRIMARY,
-                    size: TYPOGRAPHY.SIZE_TINY,
+                    size: TYPOGRAPHY.SIZE_SMALL,
                     bold: true,
                     color: DOCX_COLORS.NAVY_PRIMARY,
                   }),
@@ -216,33 +237,41 @@ export function buildAcademicDocxManuscript(
             children: [
               new Paragraph({
                 alignment: AlignmentType.RIGHT,
-                spacing: { before: 100 },
+                spacing: { before: 120 },
                 border: {
-                  top: { style: BorderStyle.SINGLE, size: 4, color: DOCX_COLORS.HEADER_LINE },
+                  top: { style: BorderStyle.SINGLE, size: 6, color: DOCX_COLORS.BORDER_LIGHT },
                 },
                 children: [
                   new TextRun({
-                    text: 'Generated via AppraisAI | EQUATOR, CEBM & GRADE Governed | Page ',
+                    text: 'Generated via AppraisAI  •  EQUATOR, CEBM & GRADE Governed  •  Page ',
                     font: TYPOGRAPHY.FONT_PRIMARY,
-                    size: TYPOGRAPHY.SIZE_TINY,
+                    size: TYPOGRAPHY.SIZE_SMALL,
                     color: DOCX_COLORS.SLATE_MUTED,
                   }),
                   new TextRun({
                     children: [PageNumber.CURRENT],
                     font: TYPOGRAPHY.FONT_PRIMARY,
-                    size: TYPOGRAPHY.SIZE_TINY,
-                    color: DOCX_COLORS.SLATE_MUTED,
+                    size: TYPOGRAPHY.SIZE_SMALL,
+                    bold: true,
+                    color: DOCX_COLORS.NAVY_PRIMARY,
                   }),
                   new TextRun({
                     text: ' of ',
                     font: TYPOGRAPHY.FONT_PRIMARY,
-                    size: TYPOGRAPHY.SIZE_TINY,
+                    size: TYPOGRAPHY.SIZE_SMALL,
                     color: DOCX_COLORS.SLATE_MUTED,
                   }),
                   new TextRun({
                     children: [PageNumber.TOTAL_PAGES],
                     font: TYPOGRAPHY.FONT_PRIMARY,
-                    size: TYPOGRAPHY.SIZE_TINY,
+                    size: TYPOGRAPHY.SIZE_SMALL,
+                    bold: true,
+                    color: DOCX_COLORS.NAVY_PRIMARY,
+                  }),
+                  new TextRun({
+                    text: `   |   ${activeAppraiserName}`,
+                    font: TYPOGRAPHY.FONT_PRIMARY,
+                    size: TYPOGRAPHY.SIZE_SMALL,
                     color: DOCX_COLORS.SLATE_MUTED,
                   }),
                 ],
@@ -252,29 +281,30 @@ export function buildAcademicDocxManuscript(
         },
         children: [
           // ---------------------------------------------------------
-          // MANUSCRIPT HEADER & TITLE
+          // DOCUMENT HEADER BANNER
           // ---------------------------------------------------------
           new Paragraph({
             alignment: AlignmentType.LEFT,
-            spacing: { before: 100, after: 60 },
+            spacing: { before: 120, after: 60 },
             children: [
               new TextRun({
-                text: 'EVIDENCE-BASED CLINICAL MEDICINE | CRITICAL APPRAISAL & METHODOLOGICAL COMMENTARY',
-                font: TYPOGRAPHY.FONT_HEADING,
+                text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  EXECUTIVE CRITICAL APPRAISAL MONOGRAPH',
+                font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 bold: true,
-                color: DOCX_COLORS.ACCENT_BLUE_TEXT,
+                color: DOCX_COLORS.TEAL_ACCENT,
               }),
             ],
           }),
 
+          // Document Title
           new Paragraph({
             alignment: AlignmentType.LEFT,
-            spacing: { before: 80, after: 140 },
+            spacing: { before: 60, after: 140 },
             children: [
               new TextRun({
-                text: `Methodological and Statistical Critical Appraisal of: ${cleanTitle}`,
-                font: TYPOGRAPHY.FONT_HEADING,
+                text: `Methodological & Statistical Critical Appraisal: ${cleanTitle}`,
+                font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_TITLE,
                 bold: true,
                 color: DOCX_COLORS.NAVY_PRIMARY,
@@ -285,29 +315,29 @@ export function buildAcademicDocxManuscript(
           // Appraiser Attribution
           new Paragraph({
             alignment: AlignmentType.LEFT,
-            spacing: { before: 60, after: 180 },
+            spacing: { before: 40, after: 180 },
             children: [
               new TextRun({
-                text: `Appraiser: ${appraiser?.name || 'Dr. Raouf Roshdy, MD'}`,
+                text: `Lead Clinical Appraiser: ${activeAppraiserName}`,
+                font: TYPOGRAPHY.FONT_PRIMARY,
+                size: TYPOGRAPHY.SIZE_BODY,
+                bold: true,
+                color: DOCX_COLORS.NAVY_PRIMARY,
+              }),
+              new TextRun({
+                text: `   •   ${activeAffiliation}`,
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
-                bold: true,
                 color: DOCX_COLORS.SLATE_BODY,
               }),
               new TextRun({
-                text: appraiser?.affiliation ? `  •  ${appraiser.affiliation}` : '  •  Department of Clinical Epidemiology',
+                text: `   •   ORCID: ${activeOrcid}`,
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_MUTED,
               }),
               new TextRun({
-                text: appraiser?.orcid ? `  •  ORCID: ${appraiser.orcid}` : '  •  ORCID: 0000-0002-1825-0097',
-                font: TYPOGRAPHY.FONT_PRIMARY,
-                size: TYPOGRAPHY.SIZE_SMALL,
-                color: DOCX_COLORS.SLATE_MUTED,
-              }),
-              new TextRun({
-                text: `  •  Appraisal Date: ${new Date(report.completedAt).toLocaleDateString()}`,
+                text: `   •   Appraisal Date: ${new Date(report.completedAt).toLocaleDateString()}`,
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_MUTED,
@@ -316,28 +346,28 @@ export function buildAcademicDocxManuscript(
           }),
 
           // ---------------------------------------------------------
-          // TARGET ARTICLE BIBLIOGRAPHIC CALLOUT BOX
+          // TARGET ARTICLE BIBLIOGRAPHIC CALLOUT CARD (Ice Teal Fill)
           // ---------------------------------------------------------
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
-            borders: CALLOUT_BORDERS,
+            borders: CALLOUT_BORDERS_TEAL,
             rows: [
               new TableRow({
                 children: [
                   new TableCell({
                     width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
+                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.TEAL_LIGHT },
                     margins: CELL_PADDING,
                     children: [
                       new Paragraph({
-                        spacing: { before: 40, after: 40 },
+                        spacing: { before: 20, after: 40 },
                         children: [
                           new TextRun({
                             text: 'TARGET ARTICLE BIBLIOGRAPHIC REFERENCE (VANCOUVER STYLE):',
                             font: TYPOGRAPHY.FONT_PRIMARY,
-                            size: TYPOGRAPHY.SIZE_TINY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
                             bold: true,
-                            color: DOCX_COLORS.SLATE_MUTED,
+                            color: DOCX_COLORS.TEAL_ACCENT,
                           }),
                         ],
                       }),
@@ -347,23 +377,23 @@ export function buildAcademicDocxManuscript(
                           new TextRun({
                             text: `${authorsString}. ${cleanTitle}. ${meta.journal || 'Biomed Sci Clin Res'}. ${meta.publicationYear || 2026}${meta.volume ? ';' + meta.volume : ''}${meta.issue ? '(' + meta.issue + ')' : ''}${meta.pages ? ':' + meta.pages : ''}.${meta.doi ? ' doi:' + meta.doi : ''}`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
-                            size: TYPOGRAPHY.SIZE_SMALL,
+                            size: TYPOGRAPHY.SIZE_BODY,
                             bold: true,
                             color: DOCX_COLORS.NAVY_PRIMARY,
                           }),
                         ],
                       }),
                       new Paragraph({
-                        spacing: { before: 20, after: 40 },
+                        spacing: { before: 20, after: 20 },
                         children: [
                           new TextRun({
-                            text: `Ingestion Depth Status: ${
+                            text: `Ingestion Depth Tracking: ${
                               isAbstractOnly
-                                ? 'ABSTRACT ONLY (Publisher Paywall Fallback — Methodological depth restricted)'
-                                : 'FULL TEXT ANALYZED (Complete manuscript body, methodology, and tables evaluated)'
+                                ? 'ABSTRACT ONLY (Publisher Paywall Fallback — In-depth surgical & table analysis restricted)'
+                                : 'FULL TEXT EVALUATED (Complete manuscript body, methodology, and tables analyzed)'
                             }`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
-                            size: TYPOGRAPHY.SIZE_TINY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
                             bold: true,
                             color: isAbstractOnly ? DOCX_COLORS.DANGER_TEXT : DOCX_COLORS.SUCCESS_TEXT,
                           }),
@@ -376,10 +406,10 @@ export function buildAcademicDocxManuscript(
             ],
           }),
 
-          new Paragraph({ spacing: { after: 120 }, children: [] }),
+          new Paragraph({ spacing: { after: 140 }, children: [] }),
 
           // ---------------------------------------------------------
-          // 4-COLUMN EVIDENCE CLASSIFICATION SUMMARY STRIP
+          // 4-COLUMN EVIDENCE CLASSIFICATION SUMMARY CARDS
           // ---------------------------------------------------------
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
@@ -400,7 +430,7 @@ export function buildAcademicDocxManuscript(
                       }),
                       new Paragraph({
                         children: [
-                          new TextRun({ text: report.classification.studyDesign.replace(/_/g, ' '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
+                          new TextRun({ text: report.classification.studyDesign.replace(/_/g, ' '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
                         ],
                       }),
                     ],
@@ -412,12 +442,12 @@ export function buildAcademicDocxManuscript(
                     children: [
                       new Paragraph({
                         children: [
-                          new TextRun({ text: 'CEBM OXFORD LEVEL', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true, color: DOCX_COLORS.SLATE_MUTED }),
+                          new TextRun({ text: 'OXFORD CEBM LEVEL', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true, color: DOCX_COLORS.SLATE_MUTED }),
                         ],
                       }),
                       new Paragraph({
                         children: [
-                          new TextRun({ text: report.classification.oxfordEvidenceLevel, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
+                          new TextRun({ text: report.classification.oxfordEvidenceLevel, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
                         ],
                       }),
                     ],
@@ -434,7 +464,7 @@ export function buildAcademicDocxManuscript(
                       }),
                       new Paragraph({
                         children: [
-                          new TextRun({ text: report.classification.equatorReportingGuideline, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
+                          new TextRun({ text: report.classification.equatorReportingGuideline, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
                         ],
                       }),
                     ],
@@ -451,7 +481,7 @@ export function buildAcademicDocxManuscript(
                       }),
                       new Paragraph({
                         children: [
-                          new TextRun({ text: `${report.validitySynthesis.gradeCertainty} CERTAINTY`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: DOCX_COLORS.ACCENT_BLUE_TEXT }),
+                          new TextRun({ text: `${report.validitySynthesis.gradeCertainty} CERTAINTY`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.TEAL_ACCENT }),
                         ],
                       }),
                     ],
@@ -468,7 +498,7 @@ export function buildAcademicDocxManuscript(
 
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
-            borders: TABLE_BORDERS_CLEAN,
+            borders: CALLOUT_BORDERS_NAVY,
             rows: [
               new TableRow({
                 children: [
@@ -478,21 +508,21 @@ export function buildAcademicDocxManuscript(
                     margins: CELL_PADDING,
                     children: [
                       new Paragraph({
-                        spacing: { before: 40, after: 40 },
+                        spacing: { before: 40, after: 60 },
                         children: [
                           new TextRun({ text: 'Background: ', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
                           new TextRun({ text: report.executiveAbstract.background, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, color: DOCX_COLORS.SLATE_BODY }),
                         ],
                       }),
                       new Paragraph({
-                        spacing: { before: 40, after: 40 },
+                        spacing: { before: 40, after: 60 },
                         children: [
                           new TextRun({ text: 'Methodological Summary: ', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
                           new TextRun({ text: report.executiveAbstract.methodologicalSummary, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, color: DOCX_COLORS.SLATE_BODY }),
                         ],
                       }),
                       new Paragraph({
-                        spacing: { before: 40, after: 40 },
+                        spacing: { before: 40, after: 60 },
                         children: [
                           new TextRun({ text: 'Key Findings: ', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
                           new TextRun({ text: report.executiveAbstract.keyFindings, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, color: DOCX_COLORS.SLATE_BODY }),
@@ -501,7 +531,7 @@ export function buildAcademicDocxManuscript(
                       new Paragraph({
                         spacing: { before: 40, after: 40 },
                         children: [
-                          new TextRun({ text: 'Critical Verdict: ', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true, color: DOCX_COLORS.ACCENT_BLUE_TEXT }),
+                          new TextRun({ text: 'Critical Verdict: ', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true, color: DOCX_COLORS.TEAL_ACCENT }),
                           new TextRun({ text: report.executiveAbstract.criticalVerdict, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
                         ],
                       }),
@@ -513,7 +543,7 @@ export function buildAcademicDocxManuscript(
           }),
 
           // ---------------------------------------------------------
-          // SECTION 2: PICO / PECO DECONSTRUCTION
+          // SECTION 2: PICO/PECO DECONSTRUCTION
           // ---------------------------------------------------------
           createHeading1('2.', 'PICO/PECO Deconstruction & Study Characteristics'),
 
@@ -524,16 +554,22 @@ export function buildAcademicDocxManuscript(
             rows: [
               new TableRow({
                 children: [
+                  createTableHeaderCell('PICO DIMENSION', 2400),
+                  createTableHeaderCell('CLINICAL & METHODOLOGICAL SPECIFICATION', 6960),
+                ],
+              }),
+              new TableRow({
+                children: [
                   new TableCell({
                     width: { size: 2400, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Population (P)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Population (P)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6960, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.population, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.population, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
@@ -543,12 +579,12 @@ export function buildAcademicDocxManuscript(
                     width: { size: 2400, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Intervention / Exposure (I)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Intervention / Exposure (I)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6960, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.interventionOrExposure, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.interventionOrExposure, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
@@ -558,12 +594,12 @@ export function buildAcademicDocxManuscript(
                     width: { size: 2400, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Comparator (C)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Comparator (C)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6960, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.comparator, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.comparator, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
@@ -573,12 +609,12 @@ export function buildAcademicDocxManuscript(
                     width: { size: 2400, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Primary Outcomes (O)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Primary Outcomes (O)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6960, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.primaryOutcomes.join('; '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.primaryOutcomes.join('; '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
@@ -588,12 +624,12 @@ export function buildAcademicDocxManuscript(
                     width: { size: 2400, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Timeframe & Setting', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Timeframe & Setting', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6960, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: `Follow-up: ${report.pico.timeframe}  |  Setting: ${report.pico.setting}`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: `Follow-up Window: ${report.pico.timeframe}  |  Clinical Setting: ${report.pico.setting}`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
@@ -608,24 +644,35 @@ export function buildAcademicDocxManuscript(
           // ---------------------------------------------------------
           createHeading1('3.', `Risk of Bias Assessment Matrix (${report.riskOfBias.governingTool})`),
 
-          createBodyParagraph(`Overall Methodological Rationale: ${report.riskOfBias.overallRationale}`),
+          createBodyParagraph(`Methodological Rationale: ${report.riskOfBias.overallRationale}`),
 
-          // Horizontal Visual RoB RevMan-Style Strip
-          new Paragraph({ spacing: { before: 80, after: 60 }, children: [
-            new TextRun({ text: 'Figure 1: Risk of Bias Domain Summary Strip (RevMan Format)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
-          ] }),
+          // Horizontal RoB Traffic-Light Visual Summary Strip
+          new Paragraph({
+            spacing: { before: 80, after: 60 },
+            children: [
+              new TextRun({
+                text: 'Figure 1: Risk of Bias Domain Summary Strip (RevMan Traffic-Light Format)',
+                font: TYPOGRAPHY.FONT_PRIMARY,
+                size: TYPOGRAPHY.SIZE_SMALL,
+                bold: true,
+                color: DOCX_COLORS.NAVY_PRIMARY,
+              }),
+            ],
+          }),
 
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
             rows: [
               new TableRow({
-                children: report.riskOfBias.domains.map((d) => {
-                  const s = getStatusShading(d.judgement);
+                children: report.riskOfBias.domains.map((d, idx) => {
+                  const s = getStatusTokens(d.judgement);
+                  const isLast = idx === report.riskOfBias.domains.length - 1;
+                  const colWidth = isLast ? lastStripWidth : baseStripWidth;
                   return new TableCell({
-                    width: { size: robStripColWidth, type: WidthType.DXA },
+                    width: { size: colWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: s.bg },
-                    margins: CELL_PADDING,
+                    margins: CELL_PADDING_COMPACT,
                     children: [
                       new Paragraph({
                         alignment: AlignmentType.CENTER,
@@ -635,8 +682,9 @@ export function buildAcademicDocxManuscript(
                       }),
                       new Paragraph({
                         alignment: AlignmentType.CENTER,
+                        spacing: { before: 20 },
                         children: [
-                          new TextRun({ text: d.domainName.slice(0, 24), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, color: DOCX_COLORS.SLATE_BODY }),
+                          new TextRun({ text: d.domainName, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, color: DOCX_COLORS.SLATE_BODY }),
                         ],
                       }),
                     ],
@@ -646,66 +694,46 @@ export function buildAcademicDocxManuscript(
             ],
           }),
 
-          new Paragraph({ spacing: { after: 100 }, children: [] }),
+          new Paragraph({ spacing: { after: 120 }, children: [] }),
 
           // Detailed RoB Table
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [2000, 1560, 3200, 2600],
+            columnWidths: [2200, 1800, 3160, 2200],
             rows: [
               new TableRow({
                 children: [
-                  new TableCell({
-                    width: { size: 2000, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Domain', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 1560, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Judgement', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 3200, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Supportive Text Evidence', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 2600, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Critical Significance', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
+                  createTableHeaderCell('DOMAIN', 2200),
+                  createTableHeaderCell('JUDGEMENT', 1800),
+                  createTableHeaderCell('SUPPORTIVE TEXT EVIDENCE', 3160),
+                  createTableHeaderCell('CRITICAL SIGNIFICANCE', 2200),
                 ],
               }),
               ...report.riskOfBias.domains.map((d) => {
-                const s = getStatusShading(d.judgement);
+                const s = getStatusTokens(d.judgement);
                 return new TableRow({
                   children: [
                     new TableCell({
-                      width: { size: 2000, type: WidthType.DXA },
+                      width: { size: 2200, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: d.domainName, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: d.domainName, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                     }),
                     new TableCell({
-                      width: { size: 1560, type: WidthType.DXA },
+                      width: { size: 1800, type: WidthType.DXA },
                       shading: { type: ShadingType.CLEAR, fill: s.bg },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: d.judgement.replace(/_/g, ' '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true, color: s.text })] })],
+                      children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: s.symbol, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: s.text })] })],
                     }),
                     new TableCell({
-                      width: { size: 3200, type: WidthType.DXA },
+                      width: { size: 3160, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: `"${d.supportiveEvidence}"`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, italics: true })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: `"${d.supportiveEvidence}"`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, italics: true })] })],
                     }),
                     new TableCell({
-                      width: { size: 2600, type: WidthType.DXA },
+                      width: { size: 2200, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: d.criticalSignificance, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: d.criticalSignificance, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                     }),
                   ],
                 });
@@ -725,60 +753,40 @@ export function buildAcademicDocxManuscript(
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [1800, 2800, 1560, 3200],
+            columnWidths: [1800, 2800, 1760, 3000],
             rows: [
               new TableRow({
                 children: [
-                  new TableCell({
-                    width: { size: 1800, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Item & Section', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 2800, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Requirement', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 1560, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Compliance Status', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 3200, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Manuscript Evidence / Location', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true })] })],
-                  }),
+                  createTableHeaderCell('ITEM & SECTION', 1800),
+                  createTableHeaderCell('REQUIREMENT', 2800),
+                  createTableHeaderCell('STATUS', 1760),
+                  createTableHeaderCell('MANUSCRIPT EVIDENCE / LOCATION', 3000),
                 ],
               }),
               ...report.equatorChecklist.criticalItemsAudit.map((item) => {
-                const s = getStatusShading(item.status);
+                const s = getStatusTokens(item.status);
                 return new TableRow({
                   children: [
                     new TableCell({
                       width: { size: 1800, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: item.itemNumberAndSection, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: item.itemNumberAndSection, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                     }),
                     new TableCell({
                       width: { size: 2800, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: item.requirement, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: item.requirement, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                     }),
                     new TableCell({
-                      width: { size: 1560, type: WidthType.DXA },
+                      width: { size: 1760, type: WidthType.DXA },
                       shading: { type: ShadingType.CLEAR, fill: s.bg },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: item.status.replace(/_/g, ' '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true, color: s.text })] })],
+                      children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: s.symbol, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: s.text })] })],
                     }),
                     new TableCell({
-                      width: { size: 3200, type: WidthType.DXA },
+                      width: { size: 3000, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: item.evidenceOrPageLocation, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, italics: true })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: item.evidenceOrPageLocation, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, italics: true })] })],
                     }),
                   ],
                 });
@@ -817,46 +825,16 @@ export function buildAcademicDocxManuscript(
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [2200, 1000, 1200, 1400, 1160, 2400],
+            columnWidths: [2200, 1100, 1300, 1400, 1160, 2200],
             rows: [
               new TableRow({
                 children: [
-                  new TableCell({
-                    width: { size: 2200, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Outcome', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 1000, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Metric', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 1200, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Estimate', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 1400, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: '95% CI', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 1160, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'P-Value', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
-                  }),
-                  new TableCell({
-                    width: { size: 2400, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
-                    margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Clinical Significance', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
-                  }),
+                  createTableHeaderCell('OUTCOME', 2200),
+                  createTableHeaderCell('METRIC', 1100),
+                  createTableHeaderCell('ESTIMATE', 1300),
+                  createTableHeaderCell('95% CI', 1400),
+                  createTableHeaderCell('P-VALUE', 1160),
+                  createTableHeaderCell('CLINICAL SIGNIFICANCE', 2200),
                 ],
               }),
               ...report.statisticalAudit.effectEstimates.map((est) => {
@@ -865,32 +843,32 @@ export function buildAcademicDocxManuscript(
                     new TableCell({
                       width: { size: 2200, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.outcome, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: est.outcome, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                     }),
                     new TableCell({
-                      width: { size: 1000, type: WidthType.DXA },
+                      width: { size: 1100, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.metric, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: est.metric, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                     }),
                     new TableCell({
-                      width: { size: 1200, type: WidthType.DXA },
+                      width: { size: 1300, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.pointEstimate, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY, bold: true })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: est.pointEstimate, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true })] })],
                     }),
                     new TableCell({
                       width: { size: 1400, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.confidenceInterval, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: est.confidenceInterval, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                     }),
                     new TableCell({
                       width: { size: 1160, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.pValue, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: est.pValue, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                     }),
                     new TableCell({
-                      width: { size: 2400, type: WidthType.DXA },
+                      width: { size: 2200, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.clinicalVsStatisticalSignificance, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TINY })] })],
+                      children: [new Paragraph({ children: [new TextRun({ text: est.clinicalVsStatisticalSignificance, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                     }),
                   ],
                 });
@@ -899,10 +877,10 @@ export function buildAcademicDocxManuscript(
           }),
 
           // Spin & Overinterpretation Callout Box
-          new Paragraph({ spacing: { before: 80, after: 60 }, children: [] }),
+          new Paragraph({ spacing: { before: 100, after: 60 }, children: [] }),
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
-            borders: CALLOUT_BORDERS,
+            borders: CALLOUT_BORDERS_NAVY,
             rows: [
               new TableRow({
                 children: [
@@ -917,12 +895,12 @@ export function buildAcademicDocxManuscript(
                     margins: CELL_PADDING,
                     children: [
                       new Paragraph({
-                        spacing: { before: 40, after: 40 },
+                        spacing: { before: 20, after: 30 },
                         children: [
                           new TextRun({
                             text: report.statisticalAudit.spinAndDiscrepancyAudit.spinDetected
                               ? 'SPIN & OVERINTERPRETATION WARNING DETECTED:'
-                              : 'SPIN AUDIT: NO DISCREPANCIES OR OVERINTERPRETATION IDENTIFIED',
+                              : 'SPIN AUDIT: NO METHODOLOGICAL DISCREPANCIES IDENTIFIED',
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_SMALL,
                             bold: true,
@@ -933,7 +911,7 @@ export function buildAcademicDocxManuscript(
                         ],
                       }),
                       new Paragraph({
-                        spacing: { before: 20, after: 40 },
+                        spacing: { before: 20, after: 30 },
                         children: [
                           new TextRun({
                             text: report.statisticalAudit.spinAndDiscrepancyAudit.discrepancyDetails,
@@ -944,10 +922,10 @@ export function buildAcademicDocxManuscript(
                         ],
                       }),
                       new Paragraph({
-                        spacing: { before: 20, after: 40 },
+                        spacing: { before: 20, after: 20 },
                         children: [
                           new TextRun({
-                            text: `Recommendation for Interpretation: ${report.statisticalAudit.spinAndDiscrepancyAudit.recommendationForInterpretation}`,
+                            text: `Recommendation for Clinical Interpretation: ${report.statisticalAudit.spinAndDiscrepancyAudit.recommendationForInterpretation}`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_SMALL,
                             bold: true,
@@ -984,16 +962,16 @@ export function buildAcademicDocxManuscript(
             (l) => createBodyParagraph(`•  ${l}`)
           ),
 
-          createHeading2('Internal Validity (Bias, Confounding & Chance)'),
+          createHeading2('Internal Validity (Confounding, Bias & Chance)'),
           createBodyParagraph(report.validitySynthesis.internalValidity),
 
-          createHeading2('External Validity & Generalizability'),
+          createHeading2('External Validity & Clinical Generalizability'),
           createBodyParagraph(report.validitySynthesis.externalValidityAndGeneralizability),
 
-          createHeading2('Conflicts of Interest & Commercial Funding Bias'),
+          createHeading2('Commercial Funding & Conflicts of Interest'),
           createBodyParagraph(report.validitySynthesis.conflictsOfInterestAndFundingCritique),
 
-          // GRADE Working Group Table
+          // GRADE Certainty Table
           createHeading2('GRADE Certainty of Evidence Synthesis'),
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
@@ -1002,16 +980,22 @@ export function buildAcademicDocxManuscript(
             rows: [
               new TableRow({
                 children: [
+                  createTableHeaderCell('GRADE DIMENSION', 2600),
+                  createTableHeaderCell('EVALUATION & SYNTHESIS', 6760),
+                ],
+              }),
+              new TableRow({
+                children: [
                   new TableCell({
                     width: { size: 2600, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Final GRADE Rating', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Final GRADE Rating', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6760, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: `${report.validitySynthesis.gradeCertainty} CERTAINTY OF EVIDENCE`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true, color: DOCX_COLORS.ACCENT_BLUE_TEXT })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: `${report.validitySynthesis.gradeCertainty} CERTAINTY OF EVIDENCE`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.TEAL_ACCENT })] })],
                   }),
                 ],
               }),
@@ -1021,12 +1005,12 @@ export function buildAcademicDocxManuscript(
                     width: { size: 2600, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Downgrading Factors', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Downgrading Factors', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6760, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: report.validitySynthesis.gradeDowngradingFactors.join('; ') || 'None', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: report.validitySynthesis.gradeDowngradingFactors.join('; ') || 'None', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
@@ -1036,12 +1020,12 @@ export function buildAcademicDocxManuscript(
                     width: { size: 2600, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: 'Synthesis Rationale', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY, bold: true })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Synthesis Rationale', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
                     width: { size: 6760, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: report.validitySynthesis.gradeRationale, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_BODY })] })],
+                    children: [new Paragraph({ children: [new TextRun({ text: report.validitySynthesis.gradeRationale, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
@@ -1049,13 +1033,13 @@ export function buildAcademicDocxManuscript(
           }),
 
           // ---------------------------------------------------------
-          // SECTION 7: CLINICAL PRACTICE TRANSLATION
+          // SECTION 7: CLINICAL PRACTICE TRANSLATION & VERDICT
           // ---------------------------------------------------------
           createHeading1('7.', 'Clinical Practice Translation & Verdict'),
 
           createBodyParagraph(
             `Key Takeaway for Clinicians: ${report.clinicalPracticeBottomLine.keyTakeawayForClinicians}`,
-            { bold: true }
+            { bold: true, color: DOCX_COLORS.NAVY_PRIMARY }
           ),
           createBodyParagraph(
             `Applicability to Real-World Clinical Practice: ${report.clinicalPracticeBottomLine.applicabilityToPractice}`
@@ -1069,35 +1053,35 @@ export function buildAcademicDocxManuscript(
           new Paragraph({ spacing: { before: 140, after: 60 }, children: [] }),
           new Table({
             width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
-            borders: TABLE_BORDERS_CLEAN,
+            borders: CALLOUT_BORDERS_TEAL,
             rows: [
               new TableRow({
                 children: [
                   new TableCell({
                     width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
-                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
+                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.TEAL_LIGHT },
                     margins: CELL_PADDING,
                     children: [
-                      new Paragraph({
-                        spacing: { before: 40, after: 30 },
-                        children: [
-                          new TextRun({
-                            text: 'METHODOLOGICAL GOVERNANCE & EDITORIAL DISCLAIMER:',
-                            font: TYPOGRAPHY.FONT_PRIMARY,
-                            size: TYPOGRAPHY.SIZE_TINY,
-                            bold: true,
-                            color: DOCX_COLORS.NAVY_PRIMARY,
-                          }),
-                        ],
-                      }),
                       new Paragraph({
                         spacing: { before: 20, after: 30 },
                         children: [
                           new TextRun({
-                            text: `This critical appraisal was generated via AppraisAI in adherence to EQUATOR Network reporting frameworks (${report.classification.equatorReportingGuideline}), the Oxford Centre for Evidence-Based Medicine (CEBM) Levels of Evidence, and the GRADE Working Group certainty criteria. The evaluation has been conducted and reviewed by the undersigned appraiser (${appraiser?.name || 'Dr. Raouf Roshdy, MD'}). This document is prepared for academic peer commentary, journal club appraisal, and clinical decision support purposes.`,
+                            text: 'METHODOLOGICAL GOVERNANCE & EDITORIAL DISCLAIMER:',
                             font: TYPOGRAPHY.FONT_PRIMARY,
-                            size: TYPOGRAPHY.SIZE_TINY,
-                            color: DOCX_COLORS.SLATE_MUTED,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            bold: true,
+                            color: DOCX_COLORS.TEAL_ACCENT,
+                          }),
+                        ],
+                      }),
+                      new Paragraph({
+                        spacing: { before: 20, after: 20 },
+                        children: [
+                          new TextRun({
+                            text: `This critical appraisal was authored and structured via AppraisAI in strict adherence to the EQUATOR Network reporting frameworks (${report.classification.equatorReportingGuideline}), the Oxford Centre for Evidence-Based Medicine (CEBM) Levels of Evidence, and the GRADE Working Group certainty criteria. The evaluation has been conducted and approved by the undersigned clinical appraiser (${activeAppraiserName}, ORCID: ${activeOrcid}). This document is prepared for academic peer commentary, journal club presentation, and clinical governance purposes.`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            color: DOCX_COLORS.SLATE_BODY,
                             italics: true,
                           }),
                         ],
@@ -1120,16 +1104,16 @@ export function buildAcademicDocxManuscript(
               spacing: { line: 240, before: 60, after: 60 },
               children: [
                 new TextRun({
-                  text: `${ref.number}.  `,
+                  text: `[${ref.number}]  `,
                   font: TYPOGRAPHY.FONT_PRIMARY,
-                  size: TYPOGRAPHY.SIZE_SMALL,
+                  size: TYPOGRAPHY.SIZE_TABLE,
                   bold: true,
                   color: DOCX_COLORS.NAVY_PRIMARY,
                 }),
                 new TextRun({
                   text: ref.vancouverCitation,
                   font: TYPOGRAPHY.FONT_PRIMARY,
-                  size: TYPOGRAPHY.SIZE_SMALL,
+                  size: TYPOGRAPHY.SIZE_TABLE,
                   color: DOCX_COLORS.SLATE_BODY,
                 }),
               ],
