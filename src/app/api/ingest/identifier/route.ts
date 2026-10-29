@@ -30,6 +30,16 @@ export async function POST(req: NextRequest) {
     }
 
     const normalized = normalizeIdentifier(rawInput);
+
+    if (normalized.type === 'UNKNOWN') {
+      return NextResponse.json(
+        {
+          error: `Invalid identifier "${rawInput}". Please enter a valid DOI (10.xxxx/...), PMID, PMCID (PMC...), or article URL.`,
+        },
+        { status: 422 }
+      );
+    }
+
     const isDirectUrl =
       normalized.type === 'URL' || /^https?:\/\//i.test(normalized.normalizedValue);
 
@@ -198,13 +208,6 @@ export async function POST(req: NextRequest) {
         console.warn(`Direct URL fetch failed for ${targetUrl}:`, urlFetchError?.message);
         // Fall through to Europe PMC / Crossref lookup if applicable
       }
-    }
-
-    if (normalized.type === 'UNKNOWN') {
-      return NextResponse.json(
-        { error: 'Could not recognize input as a valid DOI, PMID, PMCID, or article URL.' },
-        { status: 422 }
-      );
     }
 
     // -------------------------------------------------------------

@@ -41,10 +41,58 @@ function cleanXmlText(text: string): string {
 }
 
 /**
- * Parses JATS XML into structured clinical sections (Abstract, Methods, Results, Discussion)
- * and extracts any embedded `<table-wrap>` structures.
+ * Recursively extracts clean text from a parsed XML node.
+ * Gracefully handles nested formatted tags (bold, italic, xref, sup, sub)
+ * while strictly ignoring non-prose metadata, attributes, and raw JSON representations.
  */
-function parseJatsXmlToSections(xmlString: string): {
+export function extractNodeText(node: any): string {
+  if (node === null || node === undefined) return '';
+  if (typeof node === 'string' || typeof node === 'number') {
+    return cleanXmlText(String(node));
+  }
+  if (Array.isArray(node)) {
+    return node
+      .map(extractNodeText)
+      .filter((s) => s.length > 0)
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+  if (typeof node === 'object') {
+    const parts: string[] = [];
+    if (node['#text']) {
+      parts.push(cleanXmlText(String(node['#text'])));
+    }
+    for (const key of Object.keys(node)) {
+      // Discard attribute keys, metadata objects, and citation references
+      if (
+        !key.startsWith('@_') &&
+        key !== '#text' &&
+        key !== 'journal-id' &&
+        key !== 'issn' &&
+        key !== 'permissions' &&
+        key !== 'kwd-group' &&
+        key !== 'custom-meta-group' &&
+        key !== 'ref-list'
+      ) {
+        const text = extractNodeText(node[key]);
+        if (text) {
+          parts.push(text);
+        }
+      }
+    }
+    return parts.join(' ').replace(/\s+/g, ' ').trim();
+  }
+  return '';
+}
+
+/**
+ * Parses JATS XML into clean clinical sections (Abstract, Methods, Results, Discussion)
+ * strictly targeting article title, structured abstract, and body sections.
+ * Completely discards <journal-id>, <issn>, <permissions>, <kwd-group>, and metadata noise.
+ */
+export function parseJatsXmlToSections(xmlString: string): {
+  title?: string;
   abstract: string;
   fullText: string;
   sections: Array<{ heading: string; content: string }>;
@@ -60,56 +108,84 @@ function parseJatsXmlToSections(xmlString: string): {
   const sections: Array<{ heading: string; content: string }> = [];
   const tablesRaw: string[] = [];
 
-  // Extract Abstract
+  const articleMeta = parsed?.article?.front?.['article-meta'] || parsed?.['article-meta'];
+
+  // Extract Article Title from <title-group>/<article-title>
+  let title = '';
+  const titleNode = articleMeta?.['title-group']?.['article-title'];
+  if (titleNode) {
+    title = extractNodeText(titleNode);
+  }
+
+  // Extract Abstract targeting <abstract> with structured <sec> or <p>
   let abstract = '';
-  const abstractNode = parsed?.article?.front?.['article-meta']?.abstract;
+  const abstractNode = articleMeta?.abstract;
   if (abstractNode) {
     if (typeof abstractNode === 'string') {
       abstract = cleanXmlText(abstractNode);
-    } else if (abstractNode.p) {
-      const pNodes = Array.isArray(abstractNode.p) ? abstractNode.p : [abstractNode.p];
-      abstract = pNodes.map((p: any) => cleanXmlText(typeof p === 'string' ? p : JSON.stringify(p))).join('\n\n');
     } else if (abstractNode.sec) {
       const secs = Array.isArray(abstractNode.sec) ? abstractNode.sec : [abstractNode.sec];
       abstract = secs
         .map((s: any) => {
-          const title = cleanXmlText(s.title || '');
-          const p = s.p ? cleanXmlText(typeof s.p === 'string' ? s.p : JSON.stringify(s.p)) : '';
-          return title ? `**${title}**: ${p}` : p;
+          const secTitle = extractNodeText(s.title || '');
+          const secText = s.p ? extractNodeText(s.p) : extractNodeText(s);
+          return secTitle ? `**${secTitle}**: ${secText}` : secText;
         })
+        .filter(Boolean)
         .join('\n\n');
+    } else if (abstractNode.p) {
+      const pNodes = Array.isArray(abstractNode.p) ? abstractNode.p : [abstractNode.p];
+      abstract = pNodes
+        .map(extractNodeText)
+        .filter(Boolean)
+        .join('\n\n');
+    } else {
+      abstract = extractNodeText(abstractNode);
     }
   }
 
-  // Extract Body Sections & Table Wraps
-  const body = parsed?.article?.body;
+  // Extract Body Sections & Table Wraps exclusively from <body>
+  const body = parsed?.article?.body || parsed?.body;
   if (body) {
+    // If body has direct paragraphs before or without sections
+    if (body.p) {
+      const directP = Array.isArray(body.p) ? body.p : [body.p];
+      const pText = directP.map(extractNodeText).filter(Boolean).join('\n\n');
+      if (pText) {
+        sections.push({ heading: 'Introduction / Overview', content: pText });
+      }
+    }
+
     const rawSections = body.sec ? (Array.isArray(body.sec) ? body.sec : [body.sec]) : [];
 
     const processSec = (secObj: any) => {
-      const heading = cleanXmlText(secObj.title || 'Section');
+      const heading = extractNodeText(secObj.title) || 'Section';
       let content = '';
 
       if (secObj.p) {
         const paragraphs = Array.isArray(secObj.p) ? secObj.p : [secObj.p];
-        content = paragraphs.map((p: any) => cleanXmlText(typeof p === 'string' ? p : JSON.stringify(p))).join('\n\n');
+        content = paragraphs.map(extractNodeText).filter(Boolean).join('\n\n');
       }
 
       // Check table-wrap inside section
       if (secObj['table-wrap']) {
-        const tableWraps = Array.isArray(secObj['table-wrap']) ? secObj['table-wrap'] : [secObj['table-wrap']];
+        const tableWraps = Array.isArray(secObj['table-wrap'])
+          ? secObj['table-wrap']
+          : [secObj['table-wrap']];
         tableWraps.forEach((tw: any) => {
-          const label = cleanXmlText(tw.label || '');
-          const caption = cleanXmlText(tw.caption?.p || tw.caption?.title || '');
-          tablesRaw.push(`${label} ${caption}`.trim());
+          const label = extractNodeText(tw.label || '');
+          const caption = extractNodeText(tw.caption?.p || tw.caption?.title || '');
+          if (label || caption) {
+            tablesRaw.push(`${label} ${caption}`.trim());
+          }
         });
       }
 
-      if (content || heading) {
+      if (content || (heading && heading !== 'Section')) {
         sections.push({ heading, content });
       }
 
-      // Recursively handle nested sections
+      // Recursively handle nested sub-sections
       if (secObj.sec) {
         const nested = Array.isArray(secObj.sec) ? secObj.sec : [secObj.sec];
         nested.forEach(processSec);
@@ -119,24 +195,41 @@ function parseJatsXmlToSections(xmlString: string): {
     rawSections.forEach(processSec);
   }
 
-  // If XML didn't map cleanly into body.sec, extract fallback paragraphs
-  if (sections.length === 0) {
-    const fallbackText = cleanXmlText(xmlString);
-    if (fallbackText) {
-      sections.push({ heading: 'Main Text', content: fallbackText.slice(0, 50000) });
-    }
-  }
-
   const fullText = sections
     .map((s) => `## ${s.heading}\n\n${s.content}`)
     .join('\n\n');
 
   return {
-    abstract: abstract || cleanXmlText(xmlString).slice(0, 2000),
+    title: title || undefined,
+    abstract,
     fullText,
     sections,
     tablesRaw,
   };
+}
+
+/**
+ * Helper to fetch with 429-aware exponential backoff retry.
+ */
+async function fetchWithRetry(url: string, options: RequestInit, retries = 2, delayMs = 500): Promise<Response> {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const res = await fetch(url, options);
+      if (res.status === 429 && i < retries) {
+        const wait = delayMs * Math.pow(2, i);
+        await new Promise((r) => setTimeout(r, wait));
+        continue;
+      }
+      return res;
+    } catch (err) {
+      if (i < retries) {
+        await new Promise((r) => setTimeout(r, delayMs * Math.pow(2, i)));
+        continue;
+      }
+      throw err;
+    }
+  }
+  return fetch(url, options);
 }
 
 /**
@@ -147,7 +240,7 @@ export async function queryEuropePmc(query: string): Promise<any | null> {
   const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodedQuery}&resultType=core&format=json&pageSize=1`;
 
   try {
-    const res = await fetch(url, {
+    const res = await fetchWithRetry(url, {
       headers: { Accept: 'application/json' },
       next: { revalidate: 86400 },
     });
@@ -168,7 +261,7 @@ export async function fetchEuropePmcFullTextXml(pmcid: string): Promise<string |
   const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/PMC${cleanPmcId}/fullTextXML`;
 
   try {
-    const res = await fetch(url, {
+    const res = await fetchWithRetry(url, {
       headers: { Accept: 'application/xml, text/xml' },
       next: { revalidate: 86400 },
     });

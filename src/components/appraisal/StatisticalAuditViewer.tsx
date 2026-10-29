@@ -80,9 +80,23 @@ export const StatisticalAuditViewer: React.FC = () => {
               {statisticalAudit.sampleSizePowerCalculation.reported ? 'Reported' : 'Not Reported'}
             </span>
           </div>
-          <p className="text-slate-600 leading-relaxed">
-            {statisticalAudit.sampleSizePowerCalculation.adequacyAssessment}
-          </p>
+          {isEditMode ? (
+            <textarea
+              value={statisticalAudit.sampleSizePowerCalculation.adequacyAssessment}
+              onChange={(e) =>
+                updateAppraisalField(
+                  'statisticalAudit.sampleSizePowerCalculation.adequacyAssessment',
+                  e.target.value
+                )
+              }
+              className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+              rows={2}
+            />
+          ) : (
+            <p className="text-slate-600 leading-relaxed">
+              {statisticalAudit.sampleSizePowerCalculation.adequacyAssessment}
+            </p>
+          )}
           {(statisticalAudit.sampleSizePowerCalculation.alphaAndPower ||
             statisticalAudit.sampleSizePowerCalculation.assumedEffectSize) && (
             <div className="pt-1 text-[11px] text-slate-500 font-mono">
@@ -136,13 +150,95 @@ export const StatisticalAuditViewer: React.FC = () => {
               <tbody className="divide-y divide-slate-100">
                 {statisticalAudit.effectEstimates.map((est, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/50">
-                    <td className="py-2.5 px-3 font-medium text-slate-800">{est.outcome}</td>
-                    <td className="py-2.5 px-3 font-bold text-indigo-700">{est.metric}</td>
-                    <td className="py-2.5 px-3 font-mono font-bold text-slate-900">{est.pointEstimate}</td>
-                    <td className="py-2.5 px-3 font-mono text-slate-700">{est.confidenceInterval}</td>
-                    <td className="py-2.5 px-3 font-mono text-slate-700">{est.pValue}</td>
+                    <td className="py-2.5 px-3 font-medium text-slate-800">
+                      {isEditMode ? (
+                        <input
+                          type="text"
+                          value={est.outcome}
+                          onChange={(e) =>
+                            updateAppraisalField(`statisticalAudit.effectEstimates.${idx}.outcome`, e.target.value)
+                          }
+                          className="w-full p-1 border border-slate-300 rounded text-xs"
+                        />
+                      ) : (
+                        est.outcome
+                      )}
+                    </td>
+                    <td className="py-2.5 px-3 font-bold text-indigo-700">
+                      {isEditMode ? (
+                        <input
+                          type="text"
+                          value={est.metric}
+                          onChange={(e) =>
+                            updateAppraisalField(`statisticalAudit.effectEstimates.${idx}.metric`, e.target.value)
+                          }
+                          className="w-24 p-1 border border-slate-300 rounded text-xs"
+                        />
+                      ) : (
+                        est.metric
+                      )}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono font-bold text-slate-900">
+                      {isEditMode ? (
+                        <input
+                          type="text"
+                          value={est.pointEstimate}
+                          onChange={(e) =>
+                            updateAppraisalField(`statisticalAudit.effectEstimates.${idx}.pointEstimate`, e.target.value)
+                          }
+                          className="w-16 p-1 border border-slate-300 rounded text-xs font-mono"
+                        />
+                      ) : (
+                        est.pointEstimate
+                      )}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-slate-700">
+                      {isEditMode ? (
+                        <input
+                          type="text"
+                          value={est.confidenceInterval}
+                          onChange={(e) =>
+                            updateAppraisalField(
+                              `statisticalAudit.effectEstimates.${idx}.confidenceInterval`,
+                              e.target.value
+                            )
+                          }
+                          className="w-28 p-1 border border-slate-300 rounded text-xs font-mono"
+                        />
+                      ) : (
+                        est.confidenceInterval
+                      )}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-slate-700">
+                      {isEditMode ? (
+                        <input
+                          type="text"
+                          value={est.pValue}
+                          onChange={(e) =>
+                            updateAppraisalField(`statisticalAudit.effectEstimates.${idx}.pValue`, e.target.value)
+                          }
+                          className="w-20 p-1 border border-slate-300 rounded text-xs font-mono"
+                        />
+                      ) : (
+                        est.pValue
+                      )}
+                    </td>
                     <td className="py-2.5 px-3 text-slate-600 leading-tight">
-                      {est.clinicalVsStatisticalSignificance}
+                      {isEditMode ? (
+                        <input
+                          type="text"
+                          value={est.clinicalVsStatisticalSignificance}
+                          onChange={(e) =>
+                            updateAppraisalField(
+                              `statisticalAudit.effectEstimates.${idx}.clinicalVsStatisticalSignificance`,
+                              e.target.value
+                            )
+                          }
+                          className="w-full p-1 border border-slate-300 rounded text-xs"
+                        />
+                      ) : (
+                        est.clinicalVsStatisticalSignificance
+                      )}
                     </td>
                   </tr>
                 ))}

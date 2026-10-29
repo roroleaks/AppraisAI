@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { SourceDepthBadge } from './SourceDepthBadge';
 import {
@@ -13,9 +13,13 @@ import {
   Layers,
   FileText,
   AlignLeft,
+  ChevronDown,
+  ChevronUp,
+  Cpu,
 } from 'lucide-react';
 
 export const ManuscriptPreviewCard: React.FC = () => {
+  const [isAbstractExpanded, setIsAbstractExpanded] = useState(false);
   const {
     currentManuscript,
     clearManuscript,
@@ -181,7 +185,7 @@ export const ManuscriptPreviewCard: React.FC = () => {
           </div>
         </div>
 
-        {/* Abstract Section - Arranged into Professional Paragraphs */}
+        {/* Abstract Section - Arranged into Professional Paragraphs with 1500 char expander */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
@@ -193,13 +197,49 @@ export const ManuscriptPreviewCard: React.FC = () => {
             </span>
           </div>
 
-          <div className="p-5 bg-white border border-[#d8dee6] rounded-xl text-xs text-slate-800 font-serif leading-relaxed shadow-xs space-y-3 max-h-72 overflow-y-auto">
+          <div className="p-5 bg-white border border-[#d8dee6] rounded-xl text-xs text-slate-800 font-serif leading-relaxed shadow-xs space-y-3 max-h-80 overflow-y-auto">
             {abstractParagraphs.length > 0 ? (
-              abstractParagraphs.map((paragraph, idx) => (
-                <p key={idx} className="text-justify leading-relaxed">
-                  {paragraph}
-                </p>
-              ))
+              (() => {
+                const totalLength = abstract.length;
+                const isLong = totalLength > 1500;
+                let displayedText = abstract;
+                if (isLong && !isAbstractExpanded) {
+                  displayedText = abstract.slice(0, 1500) + '...';
+                }
+                const paras = displayedText
+                  .split(/(?:\r?\n){2,}|(?<=\.)\s+(?=[A-Z][a-z]+:)/g)
+                  .map((p) => p.trim())
+                  .filter((p) => p.length > 0);
+
+                return (
+                  <>
+                    {paras.map((paragraph, idx) => (
+                      <p key={idx} className="text-justify leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                    {isLong && (
+                      <div className="pt-2 text-center border-t border-slate-100">
+                        <button
+                          type="button"
+                          onClick={() => setIsAbstractExpanded(!isAbstractExpanded)}
+                          className="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-sans font-semibold rounded-md transition"
+                        >
+                          {isAbstractExpanded ? (
+                            <>
+                              <ChevronUp className="w-3.5 h-3.5" /> Show Less
+                            </>
+                          ) : (
+                            <>
+                              <ChevronDown className="w-3.5 h-3.5" /> Read More ({totalLength} chars)
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    )}
+                  </>
+                );
+              })()
             ) : (
               <p className="italic text-slate-500">Abstract text unavailable.</p>
             )}
@@ -208,9 +248,20 @@ export const ManuscriptPreviewCard: React.FC = () => {
 
         {/* Proceed to 4-Pass Appraisal Action Bar */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
-          <div className="flex items-center gap-2 text-xs text-slate-600">
-            <Layers className="w-4 h-4 text-[#0f6b6b]" />
-            <span>Ready for Governing 4-Pass Methodological & Statistical Appraisal</span>
+          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+            <div className="flex items-center gap-1.5">
+              <Layers className="w-4 h-4 text-[#0f6b6b]" />
+              <span>Ready for 4-Pass Methodological Appraisal</span>
+            </div>
+            {llmApiKey ? (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <Sparkles className="w-3 h-3 text-emerald-600" /> Neural LLM ({llmProvider.toUpperCase()})
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200">
+                <Cpu className="w-3 h-3 text-amber-600" /> Deterministic Mode Active
+              </span>
+            )}
           </div>
 
           <button

@@ -31,10 +31,19 @@ export default function HomePage() {
     currentAppraisal,
     isAppraising,
     appraisalError,
+    llmApiKey,
   } = useAppraisalStore();
 
   return (
     <div className="min-h-screen bg-[#f6f8fa] text-[#1a2332] flex flex-col font-sans">
+      {/* Skip to Content Accessible Link */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:p-2 focus:bg-white focus:text-[#0f6b6b] focus:font-semibold focus:shadow-md focus:rounded-md"
+      >
+        Skip to main content
+      </a>
+
       {/* Top Header - Exact AIMed & Sysrevai Signature Gradient & Avatar */}
       <header className="bg-gradient-to-r from-[#0f6b6b] to-[#0a4a4a] text-white py-4 px-4 sm:px-8 shadow-md sticky top-0 z-30">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
@@ -91,7 +100,7 @@ export default function HomePage() {
       </header>
 
       {/* Main Body Container */}
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
+      <main id="main" className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
         {/* Error Notification if Appraisal Fails */}
         {appraisalError && (
           <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl flex items-start gap-3 shadow-xs">
@@ -137,36 +146,39 @@ export default function HomePage() {
 
         {/* 4 Workflow Pillars (Matching AIMed / Sysrevai Style) */}
         {!currentManuscript && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 py-2 text-xs">
-            <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
-              <BookOpenCheck className="w-4 h-4 text-[#0f6b6b] shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-slate-800">Pass 1: PICO/PECO</p>
-                <p className="text-slate-500 text-[11px]">Design & demographic deconstruction</p>
+          <section aria-labelledby="pillars-heading" className="space-y-2">
+            <h2 id="pillars-heading" className="sr-only">Appraisal Methodology Pillars</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 py-2 text-xs">
+              <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
+                <BookOpenCheck className="w-4 h-4 text-[#0f6b6b] shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-semibold text-slate-800">Pass 1: PICO/PECO</h3>
+                  <p className="text-slate-500 text-[11px]">Design & demographic deconstruction</p>
+                </div>
+              </div>
+              <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-semibold text-slate-800">Pass 2: RoB & EQUATOR</h3>
+                  <p className="text-slate-500 text-[11px]">CONSORT, PRISMA, RoB 2.0 & NOS</p>
+                </div>
+              </div>
+              <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
+                <BarChart3 className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-semibold text-slate-800">Pass 3: Statistical Audit</h3>
+                  <p className="text-slate-500 text-[11px]">Power, ITT vs PP, spin & effect sizes</p>
+                </div>
+              </div>
+              <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
+                <Award className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-semibold text-slate-800">Pass 4: GRADE Synthesis</h3>
+                  <p className="text-slate-500 text-[11px]">Oxford Levels & clinical bottom line</p>
+                </div>
               </div>
             </div>
-            <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-slate-800">Pass 2: RoB & EQUATOR</p>
-                <p className="text-slate-500 text-[11px]">CONSORT, PRISMA, RoB 2.0 & NOS</p>
-              </div>
-            </div>
-            <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
-              <BarChart3 className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-slate-800">Pass 3: Statistical Audit</p>
-                <p className="text-slate-500 text-[11px]">Power, ITT vs PP, spin & effect sizes</p>
-              </div>
-            </div>
-            <div className="p-3.5 bg-white border border-[#d8dee6] rounded-xl shadow-xs flex items-start gap-2.5 hover:border-[#0f6b6b] transition-colors">
-              <Award className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-slate-800">Pass 4: GRADE Synthesis</p>
-                <p className="text-slate-500 text-[11px]">Oxford Levels & clinical bottom line</p>
-              </div>
-            </div>
-          </div>
+          </section>
         )}
 
         {/* Ingestion Tabs */}
@@ -210,6 +222,24 @@ export default function HomePage() {
         {/* Active Appraisal Workspace */}
         {currentAppraisal && (
           <div className="space-y-6">
+            {/* Deterministic Heuristic Analysis Alert Banner */}
+            {!llmApiKey && (
+              <div
+                role="alert"
+                className="w-full p-4 bg-amber-50 border border-amber-300 rounded-xl flex items-start gap-3 shadow-xs text-amber-900"
+              >
+                <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-bold text-xs uppercase tracking-wide text-amber-800">
+                    Deterministic Heuristic Analysis Active
+                  </p>
+                  <p className="text-xs leading-relaxed text-amber-900">
+                    DETERMINISTIC HEURISTIC ANALYSIS ACTIVE — Content is generated via rule-based clinical heuristic extraction without external neural reasoning. Configure an LLM provider (Gemini / Groq / OpenAI) in the header for deep multi-pass neural analysis.
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* Sticky Export Toolbar with Appraiser Stamp, Print-Preview & Word Download */}
             <ExportToolbar />
 
@@ -246,7 +276,7 @@ export default function HomePage() {
           EQUATOR Network (CONSORT, PRISMA, STROBE), CEBM Oxford Levels of Evidence, & GRADE Working Group Compliant
         </p>
         <p className="text-white/50 text-[10px] pt-1">
-          Designed & Developed by Dr. Raouf Roshdy © 2026 • All Rights Reserved
+          Designed & Developed by Dr. Raouf Roshdy © 2024–2026 • All Rights Reserved
         </p>
       </footer>
     </div>

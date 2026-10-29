@@ -99,7 +99,7 @@ export const LlmSettingsModal: React.FC = () => {
                 <Key className="w-5 h-5 text-teal-700" />
                 <h3 className="font-serif font-bold text-slate-900 text-base">LLM Provider & API Keys</h3>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-slate-600">
+              <button onClick={() => setIsOpen(false)} aria-label="Close settings" className="text-slate-400 hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>

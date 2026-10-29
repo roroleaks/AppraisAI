@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "tsx tests/suite.test.ts"
+    "test": "tsx tests/suite.test.ts && tsx tests/jats-parser.test.ts && tsx tests/invalid-input.test.ts && tsx tests/appraisal-content-parity.test.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

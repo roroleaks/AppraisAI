@@ -109,14 +109,34 @@ export const ValidityAndClinicalCard: React.FC = () => {
           <span className="font-sans font-bold text-slate-800 flex items-center gap-1.5 mb-1">
             <ShieldCheck className="w-4 h-4 text-emerald-600" /> Internal Validity (Bias & Confounding)
           </span>
-          <p className="text-slate-700">{validitySynthesis.internalValidity}</p>
+          {isEditMode ? (
+            <textarea
+              value={validitySynthesis.internalValidity}
+              onChange={(e) => updateAppraisalField('validitySynthesis.internalValidity', e.target.value)}
+              className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+              rows={3}
+            />
+          ) : (
+            <p className="text-slate-700">{validitySynthesis.internalValidity}</p>
+          )}
         </div>
 
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
           <span className="font-sans font-bold text-slate-800 flex items-center gap-1.5 mb-1">
             <Globe className="w-4 h-4 text-indigo-600" /> External Validity (Generalizability)
           </span>
-          <p className="text-slate-700">{validitySynthesis.externalValidityAndGeneralizability}</p>
+          {isEditMode ? (
+            <textarea
+              value={validitySynthesis.externalValidityAndGeneralizability}
+              onChange={(e) =>
+                updateAppraisalField('validitySynthesis.externalValidityAndGeneralizability', e.target.value)
+              }
+              className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+              rows={3}
+            />
+          ) : (
+            <p className="text-slate-700">{validitySynthesis.externalValidityAndGeneralizability}</p>
+          )}
         </div>
       </div>
 
@@ -135,15 +155,44 @@ export const ValidityAndClinicalCard: React.FC = () => {
         <span className="font-bold text-brand-900 flex items-center gap-1.5">
           <Stethoscope className="w-4 h-4 text-brand-700" /> Clinical Practice Bottom Line & Recommendations
         </span>
-        <p className="text-brand-950 font-serif leading-relaxed">
-          <strong>Key Takeaway for Clinicians:</strong> {clinicalPracticeBottomLine.keyTakeawayForClinicians}
-        </p>
-        <p className="text-brand-900 font-serif leading-relaxed">
-          <strong>Direct Applicability:</strong> {clinicalPracticeBottomLine.applicabilityToPractice}
-        </p>
-        <p className="text-brand-800 text-[11px] font-sans">
-          <strong>Future Research Needs:</strong> {clinicalPracticeBottomLine.recommendationsForFutureResearch}
-        </p>
+        {isEditMode ? (
+          <div className="space-y-2">
+            <div>
+              <label className="font-bold text-brand-950 block text-[11px]">Key Takeaway for Clinicians:</label>
+              <textarea
+                value={clinicalPracticeBottomLine.keyTakeawayForClinicians}
+                onChange={(e) =>
+                  updateAppraisalField('clinicalPracticeBottomLine.keyTakeawayForClinicians', e.target.value)
+                }
+                className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+                rows={2}
+              />
+            </div>
+            <div>
+              <label className="font-bold text-brand-950 block text-[11px]">Direct Applicability:</label>
+              <textarea
+                value={clinicalPracticeBottomLine.applicabilityToPractice}
+                onChange={(e) =>
+                  updateAppraisalField('clinicalPracticeBottomLine.applicabilityToPractice', e.target.value)
+                }
+                className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+                rows={2}
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            <p className="text-brand-950 font-serif leading-relaxed">
+              <strong>Key Takeaway for Clinicians:</strong> {clinicalPracticeBottomLine.keyTakeawayForClinicians}
+            </p>
+            <p className="text-brand-900 font-serif leading-relaxed">
+              <strong>Direct Applicability:</strong> {clinicalPracticeBottomLine.applicabilityToPractice}
+            </p>
+            <p className="text-brand-800 text-[11px] font-sans">
+              <strong>Future Research Needs:</strong> {clinicalPracticeBottomLine.recommendationsForFutureResearch}
+            </p>
+          </>
+        )}
       </div>
 
       {/* Numbered Vancouver References */}
@@ -152,18 +201,29 @@ export const ValidityAndClinicalCard: React.FC = () => {
           <BookOpen className="w-3.5 h-3.5 text-slate-400" /> Formatted Vancouver References
         </h4>
         <ol className="list-decimal pl-5 space-y-1 text-slate-700 font-serif">
-          {references.map((ref) => (
+          {references.map((ref, idx) => (
             <li key={ref.number} className="leading-relaxed">
-              {ref.vancouverCitation}
-              {ref.doiOrUrl && (
-                <a
-                  href={ref.doiOrUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-0.5 ml-1 text-brand-700 hover:underline font-sans text-[11px]"
-                >
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+              {isEditMode ? (
+                <textarea
+                  value={ref.vancouverCitation}
+                  onChange={(e) => updateAppraisalField(`references.${idx}.vancouverCitation`, e.target.value)}
+                  className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans not-italic"
+                  rows={2}
+                />
+              ) : (
+                <>
+                  {ref.vancouverCitation}
+                  {ref.doiOrUrl && (
+                    <a
+                      href={ref.doiOrUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-0.5 ml-1 text-brand-700 hover:underline font-sans text-[11px]"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </>
               )}
             </li>
           ))}

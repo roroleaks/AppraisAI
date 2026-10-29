@@ -111,7 +111,16 @@ export const PicoSummaryCard: React.FC = () => {
                   <Users className="w-4 h-4 text-brand-600" /> Population (P)
                 </td>
                 <td className="px-4 py-3 text-slate-800 leading-relaxed">
-                  {pico.population}
+                  {isEditMode ? (
+                    <textarea
+                      value={pico.population}
+                      onChange={(e) => updateAppraisalField('pico.population', e.target.value)}
+                      className="w-full p-2 border border-slate-300 rounded text-xs font-sans"
+                      rows={2}
+                    />
+                  ) : (
+                    pico.population
+                  )}
                 </td>
               </tr>
               <tr className="border-b border-slate-100">
@@ -119,7 +128,16 @@ export const PicoSummaryCard: React.FC = () => {
                   <Activity className="w-4 h-4 text-emerald-600" /> Intervention (I)
                 </td>
                 <td className="px-4 py-3 text-slate-800 leading-relaxed">
-                  {pico.interventionOrExposure}
+                  {isEditMode ? (
+                    <textarea
+                      value={pico.interventionOrExposure}
+                      onChange={(e) => updateAppraisalField('pico.interventionOrExposure', e.target.value)}
+                      className="w-full p-2 border border-slate-300 rounded text-xs font-sans"
+                      rows={2}
+                    />
+                  ) : (
+                    pico.interventionOrExposure
+                  )}
                 </td>
               </tr>
               <tr className="border-b border-slate-100 bg-slate-50/50">
@@ -127,7 +145,16 @@ export const PicoSummaryCard: React.FC = () => {
                   <Shield className="w-4 h-4 text-indigo-600" /> Comparator (C)
                 </td>
                 <td className="px-4 py-3 text-slate-800 leading-relaxed">
-                  {pico.comparator}
+                  {isEditMode ? (
+                    <textarea
+                      value={pico.comparator}
+                      onChange={(e) => updateAppraisalField('pico.comparator', e.target.value)}
+                      className="w-full p-2 border border-slate-300 rounded text-xs font-sans"
+                      rows={2}
+                    />
+                  ) : (
+                    pico.comparator
+                  )}
                 </td>
               </tr>
               <tr className="border-b border-slate-100">
@@ -135,11 +162,26 @@ export const PicoSummaryCard: React.FC = () => {
                   <Target className="w-4 h-4 text-crimson-600" /> Primary Outcomes (O)
                 </td>
                 <td className="px-4 py-3 text-slate-800 leading-relaxed">
-                  <ul className="list-disc pl-4 space-y-1">
-                    {pico.primaryOutcomes.map((o, idx) => (
-                      <li key={idx}>{o}</li>
-                    ))}
-                  </ul>
+                  {isEditMode ? (
+                    <textarea
+                      value={pico.primaryOutcomes.join('\n')}
+                      onChange={(e) =>
+                        updateAppraisalField(
+                          'pico.primaryOutcomes',
+                          e.target.value.split('\n').filter((s) => s.trim().length > 0)
+                        )
+                      }
+                      className="w-full p-2 border border-slate-300 rounded text-xs font-sans"
+                      rows={3}
+                      placeholder="One outcome per line"
+                    />
+                  ) : (
+                    <ul className="list-disc pl-4 space-y-1">
+                      {pico.primaryOutcomes.map((o, idx) => (
+                        <li key={idx}>{o}</li>
+                      ))}
+                    </ul>
+                  )}
                 </td>
               </tr>
               <tr className="border-b border-slate-100 bg-slate-50/50">
@@ -147,8 +189,29 @@ export const PicoSummaryCard: React.FC = () => {
                   <Clock className="w-4 h-4 text-amber-600" /> Timeframe & Setting
                 </td>
                 <td className="px-4 py-3 text-slate-800 leading-relaxed">
-                  <span className="font-semibold text-slate-700">Follow-up:</span> {pico.timeframe} |{' '}
-                  <span className="font-semibold text-slate-700">Setting:</span> {pico.setting}
+                  {isEditMode ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <input
+                        type="text"
+                        value={pico.timeframe}
+                        onChange={(e) => updateAppraisalField('pico.timeframe', e.target.value)}
+                        className="p-1.5 border border-slate-300 rounded text-xs font-sans"
+                        placeholder="Follow-up timeframe"
+                      />
+                      <input
+                        type="text"
+                        value={pico.setting}
+                        onChange={(e) => updateAppraisalField('pico.setting', e.target.value)}
+                        className="p-1.5 border border-slate-300 rounded text-xs font-sans"
+                        placeholder="Clinical setting"
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <span className="font-semibold text-slate-700">Follow-up:</span> {pico.timeframe} |{' '}
+                      <span className="font-semibold text-slate-700">Setting:</span> {pico.setting}
+                    </>
+                  )}
                 </td>
               </tr>
             </tbody>

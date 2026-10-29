@@ -114,9 +114,9 @@ async function runAllTests() {
       abstract: 'Objective: Review pathophysiology, pelvic floor assessment, and evidence-based management of vaginal laxity post delivery. Methods: Systematic review of trials and cohort studies. Conclusion: Multi-modal restoration with pelvic floor therapy and surgical repair demonstrates significant clinical improvement.',
       fullText: 'Full clinical review text discussing anatomy, pelvic floor disorders, clinical trials, and meta-analytic evidence...',
       sections: [
-        { title: 'Background', content: 'Pelvic floor relaxation is common post-partum.' },
-        { title: 'Pathophysiology', content: 'Damage to levator ani and endopelvic fascia.' },
-        { title: 'Management', content: 'Conservative and surgical interventions.' },
+        { heading: 'Background', content: 'Pelvic floor relaxation is common post-partum.' },
+        { heading: 'Pathophysiology', content: 'Damage to levator ani and endopelvic fascia.' },
+        { heading: 'Management', content: 'Conservative and surgical interventions.' },
       ],
       tablesRaw: [],
       pageCount: 12,
@@ -190,55 +190,67 @@ async function runAllTests() {
   // -----------------------------------------------------------------
   console.log('\n--- Step 6: Live HTTP API Pipeline Integration Tests ---');
   {
-    const BASE_URL = 'http://localhost:3000';
+    const BASE_URL = process.env.TEST_BASE_URL || 'http://localhost:3000';
+    let isServerUp = false;
+    try {
+      const probe = await fetch(`${BASE_URL}`, { signal: AbortSignal.timeout(2500) });
+      isServerUp = probe.status > 0;
+    } catch {
+      isServerUp = false;
+    }
 
-    // 6A. Ingest via identifier
-    console.log('Testing /api/ingest/identifier with PMCID PMC7118652...');
-    const ingestRes = await fetch(`${BASE_URL}/api/ingest/identifier`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ rawInput: 'PMC7118652' }),
-    });
-    assert(ingestRes.status === 200, `POST /api/ingest/identifier returned HTTP 200 (Got ${ingestRes.status})`);
-    const manuscript = await ingestRes.json();
-    assert(manuscript && manuscript.metadata && manuscript.metadata.title, 'Ingestion returned valid manuscript payload with title');
-    assert(manuscript.abstract && manuscript.abstract.length > 50, 'Ingested manuscript contains parsed abstract');
+    if (!isServerUp) {
+      console.log(`⚠️ Live server not reachable at ${BASE_URL}. Skipping live HTTP network calls.`);
+      console.log('   (Start dev server via "npm run dev" or set TEST_BASE_URL to execute Step 6 live HTTP assertions).');
+    } else {
+      // 6A. Ingest via identifier
+      console.log('Testing /api/ingest/identifier with PMCID PMC7118652...');
+      const ingestRes = await fetch(`${BASE_URL}/api/ingest/identifier`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rawInput: 'PMC7118652' }),
+      });
+      assert(ingestRes.status === 200, `POST /api/ingest/identifier returned HTTP 200 (Got ${ingestRes.status})`);
+      const manuscript = await ingestRes.json();
+      assert(manuscript && manuscript.metadata && manuscript.metadata.title, 'Ingestion returned valid manuscript payload with title');
+      assert(manuscript.abstract && manuscript.abstract.length > 50, 'Ingested manuscript contains parsed abstract');
 
-    // 6B. Appraise via API
-    console.log('Testing /api/appraise with ingested manuscript...');
-    const appraiseRes = await fetch(`${BASE_URL}/api/appraise`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ manuscript }),
-    });
-    assert(appraiseRes.status === 200, `POST /api/appraise returned HTTP 200 (Got ${appraiseRes.status})`);
-    const appraisalReport = await appraiseRes.json();
-    assert(appraisalReport.classification && appraisalReport.classification.studyDesign, 'Appraisal returned study design classification');
-    assert(appraisalReport.riskOfBias && appraisalReport.riskOfBias.domains.length >= 5, 'Appraisal returned complete RoB domain matrix');
-    assert(appraisalReport.validitySynthesis && appraisalReport.validitySynthesis.gradeCertainty, 'Appraisal returned GRADE certainty');
+      // 6B. Appraise via API
+      console.log('Testing /api/appraise with ingested manuscript...');
+      const appraiseRes = await fetch(`${BASE_URL}/api/appraise`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ manuscript }),
+      });
+      assert(appraiseRes.status === 200, `POST /api/appraise returned HTTP 200 (Got ${appraiseRes.status})`);
+      const appraisalReport = await appraiseRes.json();
+      assert(appraisalReport.classification && appraisalReport.classification.studyDesign, 'Appraisal returned study design classification');
+      assert(appraisalReport.riskOfBias && appraisalReport.riskOfBias.domains.length >= 5, 'Appraisal returned complete RoB domain matrix');
+      assert(appraisalReport.validitySynthesis && appraisalReport.validitySynthesis.gradeCertainty, 'Appraisal returned GRADE certainty');
 
-    // 6C. Export .docx via API
-    console.log('Testing /api/export/docx with appraisal report...');
-    const exportRes = await fetch(`${BASE_URL}/api/export/docx`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        report: appraisalReport,
-        appraiserMeta: {
-          name: 'Dr. Raouf Roshdy, MD',
-          affiliation: 'Department of Clinical Epidemiology & Evidence-Based Medicine',
-          orcid: '0000-0002-1825-0097',
-        },
-      }),
-    });
-    assert(exportRes.status === 200, `POST /api/export/docx returned HTTP 200 (Got ${exportRes.status})`);
-    const contentType = exportRes.headers.get('content-type') || '';
-    assert(
-      contentType.includes('wordprocessingml.document'),
-      `Content-Type header is wordprocessingml.document (Got ${contentType})`
-    );
-    const docxArrayBuffer = await exportRes.arrayBuffer();
-    assert(docxArrayBuffer.byteLength > 15000, `Exported .docx file size is valid (${docxArrayBuffer.byteLength} bytes)`);
+      // 6C. Export .docx via API
+      console.log('Testing /api/export/docx with appraisal report...');
+      const exportRes = await fetch(`${BASE_URL}/api/export/docx`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          report: appraisalReport,
+          appraiserMeta: {
+            name: 'Dr. Raouf Roshdy, MD',
+            affiliation: 'Department of Clinical Epidemiology & Evidence-Based Medicine',
+            orcid: '0000-0002-1825-0097',
+          },
+        }),
+      });
+      assert(exportRes.status === 200, `POST /api/export/docx returned HTTP 200 (Got ${exportRes.status})`);
+      const contentType = exportRes.headers.get('content-type') || '';
+      assert(
+        contentType.includes('wordprocessingml.document'),
+        `Content-Type header is wordprocessingml.document (Got ${contentType})`
+      );
+      const docxArrayBuffer = await exportRes.arrayBuffer();
+      assert(docxArrayBuffer.byteLength > 15000, `Exported .docx file size is valid (${docxArrayBuffer.byteLength} bytes)`);
+    }
   }
 
   console.log('\n========================================================');

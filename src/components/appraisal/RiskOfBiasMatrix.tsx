@@ -58,7 +58,20 @@ export const RiskOfBiasMatrix: React.FC = () => {
         </div>
         <div className="flex items-center gap-2">
           <span className="text-xs font-medium text-slate-600">Overall Risk of Bias:</span>
-          {renderJudgementBadge(riskOfBias.overallRisk)}
+          {isEditMode ? (
+            <select
+              value={riskOfBias.overallRisk}
+              onChange={(e) => updateAppraisalField('riskOfBias.overallRisk', e.target.value as BiasJudgement)}
+              className="p-1 border border-slate-300 rounded text-xs bg-white font-bold"
+            >
+              <option value="LOW_RISK">Low Risk</option>
+              <option value="SOME_CONCERNS">Some Concerns</option>
+              <option value="HIGH_RISK">High Risk</option>
+              <option value="UNCLEAR_NOT_REPORTED">Unclear / Not Reported</option>
+            </select>
+          ) : (
+            renderJudgementBadge(riskOfBias.overallRisk)
+          )}
         </div>
       </div>
 
@@ -94,7 +107,18 @@ export const RiskOfBiasMatrix: React.FC = () => {
                   )}
                 </td>
                 <td className="py-3 px-4 font-serif text-slate-600 italic leading-relaxed">
-                  &ldquo;{d.supportiveEvidence}&rdquo;
+                  {isEditMode ? (
+                    <textarea
+                      value={d.supportiveEvidence}
+                      onChange={(e) =>
+                        updateAppraisalField(`riskOfBias.domains.${idx}.supportiveEvidence`, e.target.value)
+                      }
+                      className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans not-italic"
+                      rows={2}
+                    />
+                  ) : (
+                    <>&ldquo;{d.supportiveEvidence}&rdquo;</>
+                  )}
                 </td>
                 <td className="py-3 px-4 text-slate-700 leading-relaxed">{d.criticalSignificance}</td>
               </tr>

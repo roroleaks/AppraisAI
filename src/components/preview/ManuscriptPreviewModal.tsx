@@ -62,6 +62,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
             </button>
             <button
               onClick={onClose}
+              aria-label="Close preview"
               className="p-1 text-slate-400 hover:text-white rounded-md transition"
             >
               <X className="w-5 h-5" />
