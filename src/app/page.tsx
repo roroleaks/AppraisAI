@@ -40,8 +40,14 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
           {/* Left: Brand & Badges */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/15 border border-white/30 rounded-xl flex items-center justify-center font-bold text-xl text-white font-serif shadow-inner">
-              A
+            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-white/40 shadow-md shrink-0 bg-slate-900">
+              <Image
+                src="/appraisai-icon.png"
+                alt="AppraisAI Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -102,7 +108,18 @@ export default function HomePage() {
 
         {/* Hero Section if no manuscript ingested yet */}
         {!currentManuscript && (
-          <div className="text-center space-y-3 max-w-2xl mx-auto pt-2">
+          <div className="text-center space-y-4 max-w-2xl mx-auto pt-2">
+            <div className="flex justify-center">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-900 hover:scale-105 transition-all duration-300">
+                <Image
+                  src="/appraisai-icon.png"
+                  alt="AppraisAI App Identity"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e3f2f2] text-[#0f6b6b] border border-[#99f6e4] text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
               Evidence-Based Methodological Synthesis & Publication-Grade Reports
@@ -215,9 +232,15 @@ export default function HomePage() {
       </main>
 
       {/* Signature Footer - Matching AIMed & Sysrevai */}
-      <footer className="bg-[#0a4a4a] text-white/80 py-5 px-4 text-center text-xs border-t border-[#0f6b6b]/40 mt-auto space-y-1">
+      <footer className="bg-[#0a4a4a] text-white/80 py-5 px-4 text-center text-xs border-t border-[#0f6b6b]/40 mt-auto space-y-1.5">
+        <div className="flex items-center justify-center gap-2">
+          <div className="relative w-5 h-5 rounded-md overflow-hidden bg-slate-900 border border-white/30 shrink-0">
+            <Image src="/appraisai-icon.png" alt="AppraisAI Logo" fill className="object-contain" />
+          </div>
+          <span className="font-semibold text-white tracking-wide">AppraisAI v1.0</span>
+        </div>
         <p className="font-medium text-white/95">
-          AppraisAI v1.0 — Automated Scientific Critical Appraisal & Publication-Ready DOCX Generator
+          Automated Scientific Critical Appraisal & Publication-Ready DOCX Generator
         </p>
         <p className="text-white/60 text-[11px]">
           EQUATOR Network (CONSORT, PRISMA, STROBE), CEBM Oxford Levels of Evidence, & GRADE Working Group Compliant
