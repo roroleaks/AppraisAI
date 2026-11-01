@@ -172,6 +172,7 @@ export const MasterAppraisalReportSchema = z.object({
     recommendationsForFutureResearch: z.string()
   }),
   references: z.array(ReportReferenceSchema),
+  engineUsed: z.enum(['llm', 'deterministic-fallback', 'deterministic']).optional(),
   completedAt: z.string().datetime(),
 });
 

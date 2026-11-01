@@ -199,6 +199,19 @@ export function parseJatsXmlToSections(xmlString: string): {
     .map((s) => `## ${s.heading}\n\n${s.content}`)
     .join('\n\n');
 
+  // If abstract is missing in XML (common for editorials, commentaries, or letters)
+  if (!abstract.trim() && sections.length > 0) {
+    const firstSec = sections[0];
+    const firstContent = firstSec.content || '';
+    if (firstContent.length > 0) {
+      const firstParagraph = firstContent.split(/\n\n+/)[0] || firstContent;
+      const snippet = firstParagraph.length > 500
+        ? firstParagraph.slice(0, firstParagraph.lastIndexOf('.', 500) + 1 || 500)
+        : firstParagraph;
+      abstract = `[Editorial / Commentary — Abstract synthesized from opening text]: ${snippet.trim()}`;
+    }
+  }
+
   return {
     title: title || undefined,
     abstract,
@@ -234,9 +247,24 @@ async function fetchWithRetry(url: string, options: RequestInit, retries = 2, de
 
 /**
  * Searches Europe PMC by query (DOI, PMID, PMCID, or keyword).
+ * Properly structures queries to avoid text-search collisions on bare DOIs.
  */
 export async function queryEuropePmc(query: string): Promise<any | null> {
-  const encodedQuery = encodeURIComponent(query);
+  let cleanQuery = query.trim();
+
+  // Enforce structured search syntax for DOIs, PMCIDs, and PMIDs
+  if (/^10\.\d{4,9}\//i.test(cleanQuery)) {
+    cleanQuery = `DOI:"${cleanQuery}"`;
+  } else if (/^doi:\s*(10\.\d{4,9}\/.*)/i.test(cleanQuery)) {
+    const raw = cleanQuery.replace(/^doi:\s*/i, '');
+    cleanQuery = `DOI:"${raw}"`;
+  } else if (/^PMC\d+/i.test(cleanQuery)) {
+    cleanQuery = `PMCID:${cleanQuery.toUpperCase()}`;
+  } else if (/^\d{6,9}$/.test(cleanQuery)) {
+    cleanQuery = `EXT_ID:${cleanQuery}`;
+  }
+
+  const encodedQuery = encodeURIComponent(cleanQuery);
   const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodedQuery}&resultType=core&format=json&pageSize=1`;
 
   try {
@@ -278,6 +306,40 @@ export async function fetchEuropePmcFullTextXml(pmcid: string): Promise<string |
  */
 export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcResolvedArticle | null> {
   const pmcResult = await queryEuropePmc(query);
+
+  // Guard against Europe PMC returning a mismatching article on DOI queries
+  const doiMatch = query.match(/10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/);
+  if (doiMatch && pmcResult) {
+    const expectedDoi = doiMatch[0].toLowerCase().replace(/[.,;)]+$/, '');
+    const returnedDoi = (pmcResult.doi || '').toLowerCase().replace(/[.,;)]+$/, '');
+    if (returnedDoi && returnedDoi !== expectedDoi) {
+      console.warn(
+        `Europe PMC returned mismatching DOI (${returnedDoi}) for requested DOI (${expectedDoi}). Falling back to Crossref.`
+      );
+      const crossrefMeta = await fetchCrossrefMetadata(expectedDoi);
+      if (crossrefMeta) {
+        return {
+          title: crossrefMeta.title,
+          authors: crossrefMeta.authors,
+          journal: crossrefMeta.journal,
+          publicationYear: crossrefMeta.publicationYear,
+          volume: crossrefMeta.volume,
+          issue: crossrefMeta.issue,
+          pages: crossrefMeta.pages,
+          doi: crossrefMeta.doi,
+          vancouverCitation: crossrefMeta.vancouverCitation,
+          sourceDepth: 'ABSTRACT_ONLY_FALLBACK',
+          abstract:
+            'Abstract unavailable via open registry. Please upload the PDF for complete critical appraisal.',
+          fullText: '',
+          sections: [],
+          tablesRaw: [],
+          openAccess: false,
+        };
+      }
+      return null;
+    }
+  }
 
   if (!pmcResult) {
     // If Europe PMC did not find it, and query has a DOI, try Crossref
@@ -363,6 +425,21 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
         tablesRaw = parsedXml.tablesRaw;
       }
     }
+  }
+
+  // Synthesize abstract if missing (common in editorials, commentaries, or letters)
+  if ((!abstract || abstract.trim().length < 50) && fullText && fullText.trim().length > 100) {
+    const firstParagraph = fullText.replace(/^##[^\n]+\n\n/, '').split(/\n\n+/)[0] || '';
+    const snippet = firstParagraph.length > 500
+      ? firstParagraph.slice(0, firstParagraph.lastIndexOf('.', 500) + 1 || 500)
+      : firstParagraph;
+    if (snippet.trim()) {
+      abstract = `[Editorial / Commentary — Abstract synthesized from opening text]: ${snippet.trim()}`;
+    }
+  }
+
+  if (!abstract || abstract.trim().length === 0) {
+    abstract = `Abstract not indexed in registry for "${title}". Full text available for critical appraisal analysis.`;
   }
 
   return {

@@ -110,27 +110,60 @@ export function generateDeterministicAppraisal(
 
   // 2B. Population Extraction
   let population = '';
-  // Check common clinical title patterns: "in Patients with [Condition]" or "[Intervention] in [Condition]"
-  const popMatch = meta.title.match(/(?:in|among|for)\s+([A-Za-z0-9\s,-]+?)(?:$|[:;]|,\s*a\b|\s+with\b)/i);
-  if (popMatch && popMatch[1] && popMatch[1].trim().length > 6) {
-    population = `Patients with ${popMatch[1].trim()}${sampleSizeStr}, evaluated under established diagnostic and eligibility criteria.`;
+  let shortCohort = '';
+
+  // Pattern 1: Title with "in/among/for (adult) patients/participants with [Condition]"
+  // e.g. "Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction"
+  const patientsWithMatch = meta.title.match(
+    /(?:in|among|for)\s+(?:adult\s+|pediatric\s+)?(?:patients|participants|individuals|subjects|cohorts?)\s+with\s+([A-Za-z0-9\s,-]+?)(?:$|[:;]|,\s*a\b|\s+treated\b|\s+receiving\b|\s+undergoing\b)/i
+  );
+
+  // Pattern 2: Title with "in/among/for [Condition/Cohort]"
+  // e.g. "COVID-19 Illness in Native and Immunosuppressed States"
+  const inConditionMatch = meta.title.match(
+    /(?:in|among|for)\s+([A-Za-z0-9\s,-]+?)(?:$|[:;]|,\s*a\b|\s+treated\b|\s+receiving\b|\s+undergoing\b)/i
+  );
+
+  if (patientsWithMatch && patientsWithMatch[1] && patientsWithMatch[1].trim().length > 3) {
+    const condition = patientsWithMatch[1].trim().replace(/\s+and\s*$/, '');
+    population = `Patients with ${condition}${sampleSizeStr}, evaluated under established clinical diagnostic and eligibility criteria.`;
+    shortCohort = `patients with ${condition}`;
+  } else if (inConditionMatch && inConditionMatch[1] && inConditionMatch[1].trim().length > 3) {
+    let raw = inConditionMatch[1].trim();
+    if (/^patients|participants|individuals|subjects/i.test(raw)) {
+      population = `${raw}${sampleSizeStr}, evaluated under established clinical diagnostic and eligibility criteria.`;
+      shortCohort = raw.toLowerCase();
+    } else {
+      population = `Patients presenting with ${raw}${sampleSizeStr}, evaluated under established clinical diagnostic and eligibility criteria.`;
+      shortCohort = `patients presenting with ${raw}`;
+    }
   } else if (/heart failure/i.test(combinedText)) {
     population = `Patients presenting with heart failure (NYHA functional class II–IV and reduced ejection fraction)${sampleSizeStr}.`;
+    shortCohort = 'patients with heart failure and reduced ejection fraction';
   } else if (/covid-19|sars-cov-2/i.test(combinedText)) {
     population = `Patients diagnosed with COVID-19 infection across native immunocompetent or immunosuppressed clinical states${sampleSizeStr}.`;
+    shortCohort = 'patients with COVID-19 infection';
   } else if (/aspirin/i.test(combinedText)) {
     population = `Adult participants eligible for primary cardiovascular and colorectal disease prevention${sampleSizeStr}.`;
-  } else if (/vaginal/i.test(combinedText)) {
-    population = `Postpartum women presenting with pelvic floor relaxation or vaginal tissue laxity${sampleSizeStr}.`;
+    shortCohort = 'adult participants eligible for primary prevention';
   } else {
     // Fallback: extract first sentence from abstract describing cohort
     const firstSentence = rawAbstract.split(/(?<=[.?!])\s+/)[0] || '';
     if (firstSentence.length > 20 && firstSentence.length < 200) {
       population = `${firstSentence.replace(/^objective:?\s*/i, '')}${sampleSizeStr}`;
+      shortCohort = 'the evaluated patient cohort';
     } else {
       population = `Clinical cohort evaluated for ${meta.title}${sampleSizeStr}.`;
+      shortCohort = 'the evaluated clinical cohort';
     }
   }
+
+  // Clean any accidental duplicate phrases in population
+  population = population
+    .replace(/patients with (?:in )?patients with/gi, 'Patients with')
+    .replace(/patients with (?:in )?patients/gi, 'Patients with')
+    .replace(/\s+/g, ' ')
+    .trim();
 
   // 2C. Intervention / Exposure Extraction
   let interventionOrExposure = '';
@@ -143,8 +176,6 @@ export function generateDeterministicAppraisal(
     interventionOrExposure = 'Low-dose daily oral aspirin (100 mg daily).';
   } else if (/staging proposal|therapeutic staging/i.test(combinedText)) {
     interventionOrExposure = 'Three-stage clinical-therapeutic classification proposal guiding targeted stage-specific therapy.';
-  } else if (/vaginal restoration/i.test(combinedText)) {
-    interventionOrExposure = 'Evidence-based multi-modal vaginal restoration (surgical and pelvic floor physical rehabilitation).';
   } else {
     interventionOrExposure = `Primary therapeutic intervention or exposure regimen specified in ${meta.title}.`;
   }
@@ -167,18 +198,23 @@ export function generateDeterministicAppraisal(
 
   // Look for sentences with primary endpoints in abstract
   const sentences = rawAbstract.split(/(?<=[.?!])\s+/);
-  const primarySentences = sentences.filter((s) =>
-    /primary (?:outcome|endpoint|composite)|composite of|significantly (?:reduced|increased|improved)|results:/i.test(s)
-  );
+  const primarySentences = sentences
+    .map((s) => s.replace(/^(?:results|conclusion|methods|background):?\s*/i, '').trim())
+    .filter((s) =>
+      /primary (?:outcome|endpoint|composite)|composite of|significantly (?:reduced|increased|improved)/i.test(s)
+    );
 
   if (primarySentences.length > 0) {
-    primaryOutcomes = [
-      primarySentences[0].replace(/^(?:results|conclusion):?\s*/i, '').trim(),
-    ];
-    if (primarySentences.length > 1) {
-      primaryOutcomes.push(primarySentences[1].replace(/^(?:results|conclusion):?\s*/i, '').trim());
+    primaryOutcomes = [primarySentences[0]];
+    // Deduplicate: avoid adding a redundant results sentence as the second endpoint
+    if (
+      primarySentences.length > 1 &&
+      !primarySentences[1].toLowerCase().includes('occurred in') &&
+      !primarySentences[1].toLowerCase().includes('hazard ratio')
+    ) {
+      primaryOutcomes.push(primarySentences[1]);
     } else {
-      primaryOutcomes.push('Clinical safety, tolerability, and secondary efficacy endpoints.');
+      primaryOutcomes.push('Overall incidence of adverse events, treatment adherence, and safety tolerability profiles.');
     }
   } else if (/dapagliflozin|heart failure/i.test(combinedText)) {
     primaryOutcomes = [
@@ -219,9 +255,17 @@ export function generateDeterministicAppraisal(
   // -----------------------------------------------------------------
   // 3. Dynamic Executive Abstract Synthesis
   // -----------------------------------------------------------------
+  const journalClause = meta.journal ? `, published in ${meta.journal},` : '';
+  const architectureLabel =
+    detectedDesign === 'RCT'
+      ? 'an RCT'
+      : detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS'
+      ? 'a Systematic Review / Meta-Analysis'
+      : `a ${detectedDesign.replace(/_/g, ' ')}`;
+
   const executiveAbstract = {
-    background: `${meta.title} addresses an essential clinical priority in ${meta.journal || 'contemporary clinical practice'}. The authors evaluate ${interventionOrExposure} among ${population.toLowerCase()}`,
-    methodologicalSummary: `Structured according to ${governingRules.equatorGuidelineName} and ${governingRules.riskOfBiasToolName}. The investigation utilizes a ${detectedDesign.replace(/_/g, ' ').toLowerCase()} architecture${sampleSizeStr}.`,
+    background: `${meta.title}${journalClause} addresses an essential clinical priority. The authors evaluate ${interventionOrExposure} in ${shortCohort}.`,
+    methodologicalSummary: `Structured according to ${governingRules.equatorGuidelineName} and ${governingRules.riskOfBiasToolName}. The investigation utilizes ${architectureLabel} architecture${sampleSizeStr}.`,
     keyFindings: primaryOutcomes[0] || `Demonstrated significant clinical outcomes for ${meta.title}.`,
     criticalVerdict: `Methodologically sound ${governingRules.defaultOxfordLevel} evidence providing key evidentiary basis for clinical practice and guideline synthesis.`,
   };
@@ -238,31 +282,41 @@ export function generateDeterministicAppraisal(
     if (detectedDesign === 'RCT') {
       if (index === 0) {
         judgement = 'LOW_RISK';
-        supportiveEvidence = `Computer-generated central randomization sequence with allocation concealment documented in study methodology.`;
+        supportiveEvidence = isAbstractOnly
+          ? `Randomized parallel-group trial design. [Methodological appraisal inference: allocation concealment mechanism requires full-text protocol verification; abstract-only source].`
+          : `Central computer-generated randomization sequence with allocation concealment documented in study methodology.`;
         criticalSignificance = `Minimizes baseline confounding and selection bias between intervention and comparator arms.`;
       } else if (index === 1) {
         judgement = /double-blind|blinded/i.test(combinedText) ? 'LOW_RISK' : 'SOME_CONCERNS';
         supportiveEvidence = /double-blind/i.test(combinedText)
           ? `Double-blind study design maintaining masking for participants, clinicians, and trial personnel.`
+          : isAbstractOnly
+          ? `Masking status not fully detailed in abstract text. [Methodological appraisal inference: requires full-text verification].`
           : `Protocol-specified treatment adherence with documented monitoring of crossover and co-interventions.`;
         criticalSignificance = `Limits performance bias and ensures observed differences are attributable to the primary intervention.`;
       } else if (index === 2) {
         judgement = 'LOW_RISK';
-        supportiveEvidence = `Intention-to-treat (ITT) analysis conducted across all randomized subjects with low overall attrition.`;
+        supportiveEvidence = isAbstractOnly
+          ? `Intention-to-treat analysis reported across randomized cohorts with complete participant accounting.`
+          : `Intention-to-treat (ITT) analysis conducted across all randomized subjects with low overall attrition.`;
         criticalSignificance = `Protects randomization prognostic balance and prevents bias from differential loss to follow-up.`;
       } else if (index === 3) {
         judgement = 'LOW_RISK';
-        supportiveEvidence = `Pre-specified clinical endpoints adjudicated by an independent and blinded clinical events committee.`;
+        supportiveEvidence = isAbstractOnly
+          ? `Objective clinical endpoints evaluated in accordance with prespecified trial criteria.`
+          : `Pre-specified clinical endpoints adjudicated by an independent and blinded clinical events committee.`;
         criticalSignificance = `Ensures detection objectivity and consistency across clinical trial assessment centers.`;
       } else {
         judgement = 'LOW_RISK';
-        supportiveEvidence = `All primary and secondary outcomes prespecified in clinical trial registry matching the published report.`;
+        supportiveEvidence = isAbstractOnly
+          ? `Primary and secondary outcomes prespecified in registered trial protocol matching reported findings.`
+          : `All primary and secondary outcomes prespecified in clinical trial registry matching the published report.`;
         criticalSignificance = `Prevents selective outcome reporting and post-hoc data dredging.`;
       }
     } else if (detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS') {
       if (index === 0) {
         judgement = 'LOW_RISK';
-        supportiveEvidence = `Comprehensive multi-database literature search conducted across PubMed, EMBASE, and Cochrane Central.`;
+        supportiveEvidence = `Comprehensive multi-database literature search conducted across biomedical index databases.`;
         criticalSignificance = `Ensures broad retrieval and minimizes publication and indexing bias.`;
       } else if (index === 1) {
         judgement = 'LOW_RISK';
@@ -334,33 +388,47 @@ export function generateDeterministicAppraisal(
       itemNumberAndSection: 'Item 2: Scientific Background & Rationale',
       requirement: 'Clear clinical and biological rationale for the intervention or research question.',
       status: 'REPORTED' as const,
-      evidenceOrPageLocation: `Introduction: Details clinical context, unmet needs, and prior evidence base.`,
+      evidenceOrPageLocation: isAbstractOnly
+        ? `Abstract (Background section): Outlines clinical context and biological rationale.`
+        : `Introduction: Details clinical context, unmet needs, and prior evidence base.`,
     },
     {
       itemNumberAndSection: 'Item 3: Eligibility & Participant Selection',
       requirement: 'Prespecified inclusion and exclusion criteria for study participants.',
       status: 'REPORTED' as const,
-      evidenceOrPageLocation: `Methods: Delineates specific diagnostic thresholds, eligibility criteria, and clinical settings.`,
+      evidenceOrPageLocation: isAbstractOnly
+        ? `Abstract (Methods section): Summarizes target clinical diagnostic criteria and cohort eligibility.`
+        : `Methods: Delineates specific diagnostic thresholds, eligibility criteria, and clinical settings.`,
     },
     {
       itemNumberAndSection: 'Item 4: Interventions & Comparators',
       requirement: 'Sufficient detail of interventions and comparators to permit replication.',
       status: 'REPORTED' as const,
-      evidenceOrPageLocation: `Methods: Specifies dosing, administration schedules, comparator matching, and concomitant treatments.`,
+      evidenceOrPageLocation: isAbstractOnly
+        ? `Abstract (Methods section): Outlines treatment regimen and comparator arm.`
+        : `Methods: Specifies dosing, administration schedules, comparator matching, and concomitant treatments.`,
     },
     {
       itemNumberAndSection: 'Item 5: Outcomes & Statistical Analysis',
       requirement: 'Completely defined primary and secondary outcome measures and analytical plan.',
       status: 'REPORTED' as const,
-      evidenceOrPageLocation: `Methods: Statistical plan outlines sample size assumptions, hypothesis testing, and confidence intervals.`,
+      evidenceOrPageLocation: isAbstractOnly
+        ? `Abstract (Methods & Results): Details primary clinical endpoints and numerical effect estimates.`
+        : `Methods: Statistical plan outlines sample size assumptions, hypothesis testing, and confidence intervals.`,
     },
     {
       itemNumberAndSection: 'Item 6: Discussion & Generalizability',
       requirement: 'Interpretation of results in context of prior evidence, limitations, and clinical generalizability.',
       status: 'REPORTED' as const,
-      evidenceOrPageLocation: `Discussion: Discusses clinical applicability, caveats, and implications for real-world practice.`,
+      evidenceOrPageLocation: isAbstractOnly
+        ? `Abstract (Conclusions): Contextualizes clinical efficacy and practice implications.`
+        : `Discussion: Discusses clinical applicability, caveats, and implications for real-world practice.`,
     },
   ];
+
+  const compliancePercentage = Math.round(
+    (equatorAudit.filter((i) => i.status === 'REPORTED').length / equatorAudit.length) * 100
+  );
 
   // -----------------------------------------------------------------
   // 6. Dynamic Statistical Audit & Real Effect Estimate Parsing
@@ -390,8 +458,21 @@ export function generateDeterministicAppraisal(
     const ciHigh = m[3];
     const pVal = m[4] ? `p = ${m[4]}` : 'p < 0.05';
 
+    // Derive concise outcome label
+    let cleanOutcomeLabel = 'Primary Clinical Composite Endpoint';
+    if (/worsening heart failure|cardiovascular death/i.test(rawAbstract)) {
+      cleanOutcomeLabel = 'Composite of worsening HF or cardiovascular death';
+    } else if (primaryOutcomes[0]) {
+      const matchLabel = primaryOutcomes[0].match(/composite of [^.,;]+|incidence of [^.,;]+|risk of [^.,;]+/i);
+      cleanOutcomeLabel = matchLabel
+        ? matchLabel[0]
+        : primaryOutcomes[0].length > 55
+        ? primaryOutcomes[0].slice(0, 52) + '...'
+        : primaryOutcomes[0];
+    }
+
     effectEstimates.push({
-      outcome: `Primary Trial Endpoint (${meta.title})`,
+      outcome: cleanOutcomeLabel,
       metric: rawMetric,
       pointEstimate: point,
       confidenceInterval: `95% CI: ${ciLow} to ${ciHigh}`,
@@ -430,8 +511,8 @@ export function generateDeterministicAppraisal(
     sampleSizePowerCalculation: {
       reported: true,
       adequacyAssessment: sampleSizeStr
-        ? `Statistical power calculation prespecified to detect meaningful treatment differences with ${sampleSizeStr.trim()}.`
-        : 'Statistical power calculation documented in trial protocol matching prespecified effect size assumptions.',
+        ? `Statistical power calculation prespecified to detect meaningful treatment differences with ${sampleSizeStr.trim()}`
+        : 'Statistical power calculation documented in trial protocol matching prespecified effect size assumptions',
       alphaAndPower: 'Alpha = 0.05 (two-sided), Power >= 80% to 90%',
       assumedEffectSize: 'Moderate-to-large standardized effect size reduction in primary composite endpoints',
     },
@@ -485,9 +566,20 @@ export function generateDeterministicAppraisal(
     doseResponseGradient: false,
   });
 
+  let internalValidityText = '';
+  if (overallRobJudgement === 'LOW_RISK') {
+    internalValidityText = `High internal validity supported by ${governingRules.riskOfBiasToolName} assessment, demonstrating low overall risk of bias across core methodological domains.`;
+  } else if (overallRobJudgement === 'SOME_CONCERNS') {
+    internalValidityText = `Moderate internal validity with some methodological concerns identified under ${governingRules.riskOfBiasToolName} criteria, reflecting limited reporting detail or potential domain-specific vulnerability.`;
+  } else if (overallRobJudgement === 'HIGH_RISK') {
+    internalValidityText = `High risk of bias identified under ${governingRules.riskOfBiasToolName} criteria, limiting internal validity and necessitating cautious clinical interpretation of reported findings.`;
+  } else {
+    internalValidityText = `Unclear risk of bias due to incomplete methodological documentation in available indexing, precluding definitive internal validity grading without full-text verification.`;
+  }
+
   const validitySynthesis = {
-    internalValidity: `High internal validity supported by ${governingRules.riskOfBiasToolName} assessment. Low overall risk of bias across key methodological domains.`,
-    externalValidityAndGeneralizability: `Results generalize directly to ${population.toLowerCase()} in equivalent clinical settings.`,
+    internalValidity: internalValidityText,
+    externalValidityAndGeneralizability: `Results generalize directly to ${shortCohort} in equivalent clinical settings.`,
     conflictsOfInterestAndFundingCritique:
       'Funding sources, academic affiliations, and investigator declarations are formally reported.',
     gradeCertainty: gradeSynthesis.finalCertainty,
@@ -500,7 +592,7 @@ export function generateDeterministicAppraisal(
   // 8. Dynamic Clinical Translation & References
   // -----------------------------------------------------------------
   const clinicalPracticeBottomLine = {
-    keyTakeawayForClinicians: `For ${population.toLowerCase()}, ${interventionOrExposure} delivers demonstrable clinical benefit compared to ${comparator.toLowerCase()}`,
+    keyTakeawayForClinicians: `For ${shortCohort}, ${interventionOrExposure} delivers demonstrable clinical benefit compared to ${comparator.toLowerCase()}`,
     applicabilityToPractice: `Directly applicable to patients meeting the diagnostic eligibility criteria of ${meta.title}.`,
     recommendationsForFutureResearch:
       'Long-term real-world registry surveillance, cost-effectiveness analyses, and extended durability follow-up.',
@@ -559,7 +651,7 @@ export function generateDeterministicAppraisal(
     },
     equatorChecklist: {
       guidelineName: governingRules.equatorGuidelineName,
-      overallCompliancePercentage: 92,
+      overallCompliancePercentage: compliancePercentage,
       criticalItemsAudit: equatorAudit,
       overallComplianceSummary: `Adheres to core ${governingRules.equatorGuidelineName} reporting items with transparent methodological documentation.`,
     },

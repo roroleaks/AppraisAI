@@ -809,12 +809,12 @@ export function buildAcademicDocxManuscript(
 
           createHeading2('Sample Size & Statistical Power'),
           createBodyParagraph(
-            `Adequacy Assessment: ${report.statisticalAudit.sampleSizePowerCalculation.adequacyAssessment}. ` +
+            `Adequacy Assessment: ${report.statisticalAudit.sampleSizePowerCalculation.adequacyAssessment.replace(/\.+$/, '')}. ` +
             (report.statisticalAudit.sampleSizePowerCalculation.alphaAndPower
-              ? `Alpha & Power: ${report.statisticalAudit.sampleSizePowerCalculation.alphaAndPower}. `
+              ? `Alpha & Power: ${report.statisticalAudit.sampleSizePowerCalculation.alphaAndPower.replace(/\.+$/, '')}. `
               : '') +
             (report.statisticalAudit.sampleSizePowerCalculation.assumedEffectSize
-              ? `Assumed Effect Size: ${report.statisticalAudit.sampleSizePowerCalculation.assumedEffectSize}.`
+              ? `Assumed Effect Size: ${report.statisticalAudit.sampleSizePowerCalculation.assumedEffectSize.replace(/\.+$/, '')}.`
               : '')
           ),
 

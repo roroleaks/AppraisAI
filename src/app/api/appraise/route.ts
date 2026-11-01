@@ -40,17 +40,20 @@ export async function POST(req: NextRequest) {
           : undefined;
 
         const report = await execute4PassAppraisalPipeline(manuscript, config);
+        report.engineUsed = 'llm';
         return NextResponse.json(report);
       } catch (llmErr: any) {
         console.warn('LLM evaluation encountered an issue, falling back to deterministic synthesis engine:', llmErr.message);
         // Seamless fallback to deterministic synthesis engine if API rate-limited or failed
         const fallbackReport = generateDeterministicAppraisal(manuscript);
+        fallbackReport.engineUsed = 'deterministic-fallback';
         return NextResponse.json(fallbackReport);
       }
     }
 
     // Zero-friction mode: No API key configured -> Use clinical deterministic appraisal engine!
     const report = generateDeterministicAppraisal(manuscript);
+    report.engineUsed = 'deterministic';
     return NextResponse.json(report);
   } catch (err: any) {
     console.error('Appraisal Pipeline failed:', err);

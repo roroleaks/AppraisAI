@@ -81,11 +81,11 @@ async function runParityTests() {
 
   // Assertion 2: Paper A PICO is specific to Heart Failure
   assert(
-    reportA.pico.population.toLowerCase().includes('heart failure') ||
-      reportA.pico.population.toLowerCase().includes('reduced ejection fraction') ||
-      reportA.pico.population.toLowerCase().includes('4,744') ||
-      reportA.pico.population.toLowerCase().includes('4744'),
-    `Paper A population mentions Heart Failure or sample size: "${reportA.pico.population}"`
+    reportA.pico.population.toLowerCase().includes('heart failure') &&
+      !reportA.pico.population.includes('with in') &&
+      !reportA.pico.population.includes('Patients with Patients') &&
+      !reportA.pico.population.includes('Patients with in'),
+    `Paper A population has clean clinical phrasing: "${reportA.pico.population}"`
   );
 
   // Assertion 3: Paper B PICO is specific to COVID-19 / immunocompromised
@@ -139,6 +139,21 @@ async function runParityTests() {
     reportB.references[0].vancouverCitation.includes('Siddiqi') ||
       reportB.references[0].vancouverCitation.includes('COVID-19'),
     'Report B Reference #1 is the analyzed COVID-19 paper'
+  );
+
+  // Assertion 9: Validity synthesis consistency with RoB judgement
+  if (reportA.riskOfBias.overallRisk === 'SOME_CONCERNS') {
+    assert(
+      reportA.validitySynthesis.internalValidity.includes('Moderate internal validity'),
+      'Report A validity narrative reflects SOME_CONCERNS without self-contradiction'
+    );
+  }
+
+  // Assertion 10: Dynamic EQUATOR compliance calculation
+  assert(
+    typeof reportA.equatorChecklist.overallCompliancePercentage === 'number' &&
+      reportA.equatorChecklist.overallCompliancePercentage > 0,
+    `Calculated EQUATOR compliance percentage: ${reportA.equatorChecklist.overallCompliancePercentage}%`
   );
 
   console.log('✅ All appraisal content parity tests PASSED without error!');
