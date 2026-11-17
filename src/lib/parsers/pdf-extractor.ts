@@ -45,7 +45,6 @@ const KNOWN_HEADINGS = [
  */
 function cleanArtifactLines(text: string): string {
   return text
-    .replace(/Biomed Sci Clin Res[^\n]*/gi, '')
     .replace(/Volume \d+\s*\|\s*Issue \d+[^\n]*/gi, '')
     .replace(/ISSN:\s*\d{4}-\d{4}/gi, '')
     .replace(/https?:\/\/[^\s]+/gi, '')
@@ -119,8 +118,11 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
     }
   }
 
-  // Detect DOI in the text
-  const doiMatch = cleanFullText.match(/(10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+)/);
+  // Detect DOI strictly in first-page / pre-abstract region (P1-12)
+  const abstractSearchIdx = cleanFullText.search(/(?:ABSTRACT|SUMMARY|INTRODUCTION|BACKGROUND:)/i);
+  const preAbstractLimit = abstractSearchIdx > 0 ? Math.min(abstractSearchIdx + 200, 3000) : 2500;
+  const firstPageRegion = cleanFullText.slice(0, preAbstractLimit);
+  const doiMatch = firstPageRegion.match(/(10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+)/);
   const detectedDoi = doiMatch ? doiMatch[1].replace(/[.,;)]+$/, '') : undefined;
 
   // 3. Extract Abstract / Introductory Overview cleanly

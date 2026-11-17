@@ -27,10 +27,11 @@ export function formatVancouverAuthors(
       let cleanAuth = trimmed
         .replace(/^(?:Dr\.?|Prof\.?|Assoc\.?\s*Prof\.?)\s+/i, '')
         .replace(/,\s*(?:MD|PhD|MBBS|MS|FRCS|FRCOG|FACS|FACP)[^,]*$/i, '')
+        .replace(/\.+$/, '')
         .trim();
 
-      // If already in standard Vancouver format: e.g. "Smith JA" or "Taha I"
-      if (/^[A-Za-z'-]+\s+[A-Z]{1,3}$/.test(cleanAuth)) {
+      // If already in standard Vancouver format: e.g. "Smith JA", "Jones KL", "van der Berg A", "O'Neil P"
+      if (/^[A-Za-z'-\s]+\s+[A-Z]{1,3}$/.test(cleanAuth)) {
         return cleanAuth;
       }
 

@@ -113,7 +113,7 @@ async function runParityTests() {
     `Paper A intervention correctly identifies Dapagliflozin: "${reportA.pico.interventionOrExposure}"`
   );
 
-  // Assertion 6: Dynamic Effect Estimate regex extraction in Paper A
+  // Assertion 6: Dynamic Effect Estimate regex extraction in Paper A (P1-2)
   const hrEstimate = reportA.statisticalAudit.effectEstimates.find(
     (e) => e.pointEstimate === '0.74' || e.confidenceInterval.includes('0.65 to 0.85')
   );
@@ -122,6 +122,14 @@ async function runParityTests() {
     `Paper A correctly parsed numerical Hazard Ratio (0.74 [95% CI, 0.65 to 0.85]): ${JSON.stringify(
       hrEstimate || reportA.statisticalAudit.effectEstimates
     )}`
+  );
+  assert(
+    !!hrEstimate?.sourceSentence && hrEstimate.sourceSentence.includes('0.74'),
+    `Paper A HR has valid sourceSentence: "${hrEstimate?.sourceSentence}"`
+  );
+  assert(
+    !!hrEstimate?.clinicalVsStatisticalSignificance?.includes('Statistically significant difference'),
+    `Paper A significance is dynamically computed: "${hrEstimate?.clinicalVsStatisticalSignificance}"`
   );
 
   // Assertion 7: Classification parity

@@ -81,7 +81,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
               </div>
               <div className="flex justify-between items-center text-[10px] text-slate-500 italic">
                 <span className="truncate max-w-md">{displayTitle}</span>
-                <span className="not-italic shrink-0">{report.metadata.journal || 'Biomed Sci Clin Res'}</span>
+                <span className="not-italic shrink-0">{report.metadata.journal || 'Journal Not Specified'}</span>
               </div>
             </div>
 
@@ -94,7 +94,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
                 Methodological and Statistical Critical Appraisal: {displayTitle}
               </h1>
               <p className="text-slate-600 text-[11px] font-sans">
-                Authors: {displayAuthors} | Appraisal Date: {new Date(report.completedAt).toLocaleDateString()} | EQUATOR & Cochrane RoB 2.0 Governed
+                Authors: {displayAuthors} | Appraisal Date: {new Date(report.completedAt).toISOString().split('T')[0]} | EQUATOR & Cochrane RoB 2.0 Governed
               </p>
             </div>
 

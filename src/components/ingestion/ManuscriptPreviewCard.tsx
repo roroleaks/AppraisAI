@@ -54,6 +54,7 @@ export const ManuscriptPreviewCard: React.FC = () => {
     try {
       const headers: Record<string, string> = {
         'Content-Type': 'application/json',
+        Accept: 'text/event-stream',
       };
 
       if (llmApiKey) {
@@ -62,36 +63,66 @@ export const ManuscriptPreviewCard: React.FC = () => {
         headers['x-llm-model'] = llmModel;
       }
 
-      // Step progress timers for live feedback while single-turn full pipeline executes
-      const step2Timer = setTimeout(() => {
-        setAppraisalStep(2, 'Pass 2: Enforcing EQUATOR checklist and Cochrane RoB 2.0 / AMSTAR-2 matrix...');
-      }, 3500);
-
-      const step3Timer = setTimeout(() => {
-        setAppraisalStep(3, 'Pass 3: Auditing statistical rigor, power, ITT vs PP, and abstract spin...');
-      }, 7500);
-
-      const step4Timer = setTimeout(() => {
-        setAppraisalStep(4, 'Pass 4: Synthesizing validity, GRADE certainty rating, and references...');
-      }, 11500);
-
       const res = await fetch('/api/appraise', {
         method: 'POST',
         headers,
         body: JSON.stringify({ manuscript: currentManuscript }),
       });
 
-      clearTimeout(step2Timer);
-      clearTimeout(step3Timer);
-      clearTimeout(step4Timer);
-
-      const data = await res.json();
-
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to complete critical appraisal');
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to complete critical appraisal');
       }
 
-      setAppraisal(data);
+      // Stream real progress events from server (P1-11)
+      if (res.headers.get('content-type')?.includes('text/event-stream') && res.body) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let finalReport: any = null;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+
+          const blocks = buffer.split('\n\n');
+          buffer = blocks.pop() || '';
+
+          for (const block of blocks) {
+            if (!block.trim()) continue;
+            let event = 'message';
+            let dataStr = '';
+            for (const line of block.split('\n')) {
+              if (line.startsWith('event: ')) {
+                event = line.replace('event: ', '').trim();
+              } else if (line.startsWith('data: ')) {
+                dataStr = line.replace('data: ', '').trim();
+              }
+            }
+
+            if (dataStr) {
+              const parsedData = JSON.parse(dataStr);
+              if (event === 'progress') {
+                setAppraisalStep(parsedData.stage, `${parsedData.stageName}: ${parsedData.detail}`);
+              } else if (event === 'result') {
+                finalReport = parsedData;
+              } else if (event === 'error') {
+                throw new Error(parsedData.error || 'Pipeline execution failed');
+              }
+            }
+          }
+        }
+
+        if (finalReport) {
+          setAppraisal(finalReport);
+        } else {
+          throw new Error('No appraisal report payload received from server');
+        }
+      } else {
+        const data = await res.json();
+        setAppraisal(data);
+      }
     } catch (err: any) {
       setAppraisalError(err.message || 'Critical appraisal encountered an error.');
     } finally {

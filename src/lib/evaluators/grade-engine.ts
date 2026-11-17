@@ -12,7 +12,9 @@ export interface GradeEvaluationResult {
  * Implements strict GRADE (Grading of Recommendations Assessment, Development and Evaluation) rules.
  * - RCTs start at HIGH certainty.
  * - Observational studies start at LOW certainty.
+ * - Systematic reviews start at HIGH if pooling RCTs, or LOW if pooling observational studies (P1-9).
  * - Evaluates 5 downgrading domains: Risk of Bias, Inconsistency, Indirectness, Imprecision, Publication Bias.
+ * - Unclear/no-information overall RoB downgrades 1 level (P1-9).
  * - Evaluates 3 upgrading domains: Large magnitude of effect, Dose-response gradient, Residual confounding opposing effect.
  */
 export function synthesizeGradeCertainty(params: {
@@ -24,22 +26,29 @@ export function synthesizeGradeCertainty(params: {
   publicationBiasSuspected: boolean;
   largeEffectSize: boolean;
   doseResponseGradient: boolean;
+  includedStudyDesigns?: 'RANDOMIZED' | 'OBSERVATIONAL' | 'MIXED';
 }): GradeEvaluationResult {
-  const isRctOrMeta =
-    params.studyDesign === 'RCT' ||
-    params.studyDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS';
+  // Determine baseline certainty (P1-9)
+  let isBaselineHigh = params.studyDesign === 'RCT';
+  if (params.studyDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS') {
+    isBaselineHigh = params.includedStudyDesigns !== 'OBSERVATIONAL';
+  }
 
-  let certaintyScore = isRctOrMeta ? 4 : 2; // 4 = HIGH, 3 = MODERATE, 2 = LOW, 1 = VERY_LOW
+  let certaintyScore = isBaselineHigh ? 4 : 2; // 4 = HIGH, 3 = MODERATE, 2 = LOW, 1 = VERY_LOW
+  const baselineCertainty: GradeCertainty = isBaselineHigh ? 'HIGH' : 'LOW';
   const downgradingFactors: string[] = [];
   const upgradingFactors: string[] = [];
 
-  // 1. Risk of Bias downgrading
+  // 1. Risk of Bias downgrading (P1-9: unclear RoB downgrades 1 level)
   if (params.overallRiskOfBias === 'HIGH_RISK') {
     certaintyScore -= 2;
     downgradingFactors.push('Risk of Bias (Serious flaws in study design or execution - downgraded 2 levels)');
   } else if (params.overallRiskOfBias === 'SOME_CONCERNS') {
     certaintyScore -= 1;
     downgradingFactors.push('Risk of Bias (Moderate concerns or incomplete reporting - downgraded 1 level)');
+  } else if (params.overallRiskOfBias === 'UNCLEAR_NOT_REPORTED') {
+    certaintyScore -= 1;
+    downgradingFactors.push('Risk of bias — insufficient information (Downgraded 1 level)');
   }
 
   // 2. Imprecision
@@ -66,8 +75,8 @@ export function synthesizeGradeCertainty(params: {
     downgradingFactors.push('Publication Bias (High likelihood of unpublished negative/null trials)');
   }
 
-  // Upgrading factors (only applied if not high already)
-  if (!isRctOrMeta) {
+  // Upgrading factors (only applied if not high baseline already)
+  if (!isBaselineHigh) {
     if (params.largeEffectSize) {
       certaintyScore += 1;
       upgradingFactors.push('Large Effect Size (RR > 2.0 or < 0.5 without apparent confounders)');
@@ -85,8 +94,6 @@ export function synthesizeGradeCertainty(params: {
   if (clamped === 4) finalCertainty = 'HIGH';
   else if (clamped === 3) finalCertainty = 'MODERATE';
   else if (clamped === 2) finalCertainty = 'LOW';
-
-  const baselineCertainty: GradeCertainty = isRctOrMeta ? 'HIGH' : 'LOW';
 
   const rationale = `Evidence body started at ${baselineCertainty} certainty for ${params.studyDesign}. ${
     downgradingFactors.length > 0

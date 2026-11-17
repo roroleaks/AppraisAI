@@ -43,68 +43,116 @@ export function generateDeterministicAppraisal(
   const lowerCombined = combinedText.toLowerCase();
   const isAbstractOnly = meta.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
 
+  // Extract Methods and Results sections from manuscript.sections if available (P1-1, P1-2)
+  let methodsText = '';
+  let resultsText = '';
+
+  if (manuscript.sections && manuscript.sections.length > 0) {
+    methodsText = manuscript.sections
+      .filter((s) => /method|material|protocol|study design|participants|patients and methods/i.test(s.heading))
+      .map((s) => s.content)
+      .join('\n\n');
+    resultsText = manuscript.sections
+      .filter((s) => /result|finding|efficacy|outcome|tables/i.test(s.heading))
+      .map((s) => s.content)
+      .join('\n\n');
+  }
+
   // -----------------------------------------------------------------
-  // 1. Dynamic Study Design & Methodological Framework Detection
+  // 1. Dynamic Study Design & Methodological Framework Detection (P1-1)
+  // Scored classifier strictly operates on title + abstract + methodsText
+  // Never scans Discussion or References; defaults unknown to 'OTHER'
   // -----------------------------------------------------------------
-  let detectedDesign: StudyDesign = 'RCT';
+  let detectedDesign: StudyDesign = 'OTHER';
   let designRationale = '';
 
-  if (
-    /systematic review|meta-analysis|meta-analytic|cochrane review|prisma 2020|amstar/i.test(
+  const classificationScope = `${meta.title}\n\n${rawAbstract}\n\n${methodsText}`;
+  const lowerScope = classificationScope.toLowerCase();
+
+  // Check if paper is explicitly a narrative review, commentary, or editorial (P1-1)
+  const isNarrativeOrCommentary =
+    /narrative review|clinical commentary|expert review|state-of-the-art review|critical commentary|editorial perspective|perspective review/i.test(
       meta.title + ' ' + rawAbstract
-    )
-  ) {
-    detectedDesign = 'SYSTEMATIC_REVIEW_META_ANALYSIS';
+    ) ||
+    (/\b(?:commentary|review|editorial|perspective)\b/i.test(meta.title) &&
+      !/systematic review|meta-analysis|meta-analytic|cochrane|prisma/i.test(meta.title + ' ' + rawAbstract));
+
+  if (isNarrativeOrCommentary) {
+    detectedDesign = 'OTHER';
     designRationale =
-      'Systematic review and/or meta-analytical investigation pooling evidence across published biomedical databases.';
-  } else if (
-    /randomized controlled trial|randomised trial|double-blind|placebo-controlled|\brct\b|randomly assigned/i.test(
-      meta.title + ' ' + rawAbstract
-    )
-  ) {
-    detectedDesign = 'RCT';
-    designRationale =
-      'Parallel-group randomized controlled clinical trial evaluating intervention efficacy against defined comparators.';
-  } else if (
-    /cohort study|prospective observational|retrospective cohort|longitudinal follow-up|prospective cohort/i.test(
-      meta.title + ' ' + rawAbstract
-    )
-  ) {
-    detectedDesign = 'COHORT_STUDY';
-    designRationale =
-      'Longitudinal prospective or retrospective observation of defined clinical cohorts evaluating incidence and prognostic outcomes.';
-  } else if (/case-control|matched controls/i.test(meta.title + ' ' + rawAbstract)) {
-    detectedDesign = 'CASE_CONTROL_STUDY';
-    designRationale =
-      'Observational case-control investigation matching subjects with outcomes of interest against comparable controls.';
-  } else if (
-    /cross-sectional|prevalence study|survey study/i.test(meta.title + ' ' + rawAbstract)
-  ) {
-    detectedDesign = 'CROSS_SECTIONAL';
-    designRationale =
-      'Cross-sectional observational study evaluating prevalence and clinical associations at a single cross-sectional timepoint.';
-  } else if (
-    /diagnostic accuracy|sensitivity and specificity|receiver operating|stard|quadas/i.test(
-      meta.title + ' ' + rawAbstract
-    )
-  ) {
-    detectedDesign = 'DIAGNOSTIC_ACCURACY';
-    designRationale =
-      'Diagnostic test accuracy investigation validating index screening performance against an established gold standard.';
-  } else if (/practice guideline|consensus statement|clinical guideline/i.test(meta.title + ' ' + rawAbstract)) {
-    detectedDesign = 'CLINICAL_PRACTICE_GUIDELINE';
-    designRationale =
-      'Evidence-based clinical practice guideline and expert consensus grading therapeutic recommendations.';
+      'Narrative review / clinical commentary — not appraisable with formal risk of bias tools.';
   } else {
-    // Default to Systematic Review or Clinical Investigation based on commentary/review phrasing
-    if (/review|commentary|conceptual|framework/i.test(meta.title + ' ' + rawAbstract)) {
-      detectedDesign = 'SYSTEMATIC_REVIEW_META_ANALYSIS';
-      designRationale =
-        'Comprehensive clinical review and evidence synthesis establishing a translational methodological framework.';
+    // Scored rule set across candidates
+    const scores: Record<StudyDesign, number> = {
+      RCT: 0,
+      SYSTEMATIC_REVIEW_META_ANALYSIS: 0,
+      COHORT_STUDY: 0,
+      CASE_CONTROL_STUDY: 0,
+      CROSS_SECTIONAL: 0,
+      DIAGNOSTIC_ACCURACY: 0,
+      CLINICAL_PRACTICE_GUIDELINE: 0,
+      OTHER: 0,
+    };
+
+    // SYSTEMATIC_REVIEW_META_ANALYSIS
+    if (/systematic review|meta-analysis|meta-analytic|cochrane review/i.test(meta.title)) scores.SYSTEMATIC_REVIEW_META_ANALYSIS += 15;
+    if (/systematic review|meta-analysis|meta-analytic|cochrane review|prisma 2020|amstar/i.test(rawAbstract)) scores.SYSTEMATIC_REVIEW_META_ANALYSIS += 10;
+    if (/prisma|search strategy|databases? (?:searched|queried)|pubmed.*embase|screened for eligibility|inclusion criteria/i.test(methodsText)) scores.SYSTEMATIC_REVIEW_META_ANALYSIS += 8;
+
+    // RCT
+    if (/randomized controlled trial|randomised controlled trial|randomised trial|randomized trial|double-blind|placebo-controlled|\brct\b/i.test(meta.title)) scores.RCT += 15;
+    if (/randomized controlled trial|randomised trial|randomly assigned|double-blind|placebo-controlled|\brct\b|parallel-group/i.test(rawAbstract)) scores.RCT += 10;
+    if (/randomly assigned|random allocation|randomization sequence|randomisation sequence|computer-generated random|allocation concealment|intention-to-treat/i.test(methodsText)) scores.RCT += 8;
+
+    // COHORT_STUDY
+    if (/cohort study|prospective cohort|retrospective cohort|longitudinal study/i.test(meta.title)) scores.COHORT_STUDY += 15;
+    if (/cohort study|prospective cohort|retrospective cohort|longitudinal follow-up|prospective observational/i.test(rawAbstract)) scores.COHORT_STUDY += 10;
+    if (/cohort was followed|loss to follow-up|incidence rate|hazard ratio|survival analysis|multivariable cox/i.test(methodsText)) scores.COHORT_STUDY += 8;
+
+    // CASE_CONTROL_STUDY (CRUCIAL P1-1: "odds ratio" alone is NOT a case-control signal)
+    if (/case-control|matched controls|nested case-control/i.test(meta.title)) scores.CASE_CONTROL_STUDY += 15;
+    if (/case-control study|cases and controls|matched controls|nested case-control/i.test(rawAbstract)) scores.CASE_CONTROL_STUDY += 10;
+    if (/cases were identified|controls were selected|matched for age and|cases and \d+ controls/i.test(methodsText)) scores.CASE_CONTROL_STUDY += 8;
+
+    // CROSS_SECTIONAL
+    if (/cross-sectional|prevalence study|survey study|cross sectional/i.test(meta.title)) scores.CROSS_SECTIONAL += 15;
+    if (/cross-sectional study|cross-sectional survey|prevalence of|survey questionnaire/i.test(rawAbstract)) scores.CROSS_SECTIONAL += 10;
+    if (/cross-sectional design|questionnaire was administered|survey respondents|point prevalence/i.test(methodsText)) scores.CROSS_SECTIONAL += 8;
+
+    // DIAGNOSTIC_ACCURACY
+    if (/diagnostic accuracy|sensitivity and specificity|receiver operating|stard|quadas/i.test(meta.title)) scores.DIAGNOSTIC_ACCURACY += 15;
+    if (/diagnostic accuracy|sensitivity and specificity|receiver operating characteristic|roc curve|area under the curve|\bauc\b/i.test(rawAbstract)) scores.DIAGNOSTIC_ACCURACY += 10;
+    if (/index test|reference standard|gold standard|diagnostic performance|true positive/i.test(methodsText)) scores.DIAGNOSTIC_ACCURACY += 8;
+
+    // CLINICAL_PRACTICE_GUIDELINE
+    if (/practice guideline|consensus statement|clinical guideline|recommendations of the/i.test(meta.title)) scores.CLINICAL_PRACTICE_GUIDELINE += 15;
+    if (/practice guideline|consensus statement|clinical guideline|formal consensus/i.test(rawAbstract)) scores.CLINICAL_PRACTICE_GUIDELINE += 10;
+
+    const candidateEntries = (Object.entries(scores) as [StudyDesign, number][]).filter(([d]) => d !== 'OTHER');
+    candidateEntries.sort((a, b) => b[1] - a[1]);
+    const [topDesign, topScore] = candidateEntries[0];
+
+    if (topScore >= 8) {
+      detectedDesign = topDesign;
+      if (detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS') {
+        designRationale = 'Systematic review and/or meta-analytical investigation pooling evidence across published biomedical databases.';
+      } else if (detectedDesign === 'RCT') {
+        designRationale = 'Parallel-group randomized controlled clinical trial evaluating intervention efficacy against defined comparators.';
+      } else if (detectedDesign === 'COHORT_STUDY') {
+        designRationale = 'Longitudinal prospective or retrospective observation of defined clinical cohorts evaluating incidence and prognostic outcomes.';
+      } else if (detectedDesign === 'CASE_CONTROL_STUDY') {
+        designRationale = 'Observational case-control investigation matching subjects with outcomes of interest against comparable controls.';
+      } else if (detectedDesign === 'CROSS_SECTIONAL') {
+        designRationale = 'Cross-sectional observational study evaluating prevalence and clinical associations at a single cross-sectional timepoint.';
+      } else if (detectedDesign === 'DIAGNOSTIC_ACCURACY') {
+        designRationale = 'Diagnostic test accuracy investigation validating index screening performance against an established gold standard.';
+      } else if (detectedDesign === 'CLINICAL_PRACTICE_GUIDELINE') {
+        designRationale = 'Evidence-based clinical practice guideline and expert consensus grading therapeutic recommendations.';
+      }
     } else {
-      detectedDesign = 'RCT';
+      detectedDesign = 'OTHER';
       designRationale =
-        'Clinical trial investigation evaluating therapeutic safety and efficacy outcomes.';
+        'Study design could not be definitively classified from available title, abstract, and methods text.';
     }
   }
 
@@ -114,11 +162,27 @@ export function generateDeterministicAppraisal(
   // 2. Dynamic Paper-Specific PICO/PECO Deconstruction
   // -----------------------------------------------------------------
 
-  // 2A. Extract Sample Size (N = ...)
+  // 2A. Extract Sample Size (N = ...) (P1-3: expanded nouns + n= notation)
   let sampleSizeStr = '';
-  const nMatch = rawAbstract.match(
-    /(?:enrolled|assigned|included|randomized|studied|cohort of|total of|analyzed)\s*([0-9,]{2,7})\s*(?:patients|participants|subjects|individuals|adults|cases|women|men|children|infants|neonates|pregnancies|couples|cycles|embryos)/i
-  ) || rawAbstract.match(/(?:(?:n|N)\s*=\s*([0-9,]{2,7}))/);
+  const nounsPattern = 'patients|participants|subjects|individuals|adults|cases|women|men|children|infants|neonates|pregnancies|couples|cycles|embryos';
+
+  const verbFirst = new RegExp(
+    `(?:enrolled|assigned|included|randomized|randomised|studied|recruited|analyzed|analysed|admitted|evaluated|cohort of|total of|sample of)\\s*(?:a total of\\s*)?([0-9,]{1,7})\\s*(?:${nounsPattern})`,
+    'i'
+  );
+
+  const numFirst = new RegExp(
+    `(?:a total of\\s*)?([0-9,]{1,7})\\s*(?:${nounsPattern})\\s*(?:were|was)?\\s*(?:randomly assigned|enrolled|included|randomized|randomised|studied|recruited|analyzed|analysed|evaluated)`,
+    'i'
+  );
+
+  const nNotation = /(?:(?:\b[nN]\s*=\s*)|(?:\b[nN]\s*:\s*))([0-9,]{1,7})/;
+
+  const nMatch =
+    rawAbstract.match(verbFirst) ||
+    rawAbstract.match(numFirst) ||
+    (methodsText ? methodsText.match(verbFirst) || methodsText.match(numFirst) : null) ||
+    rawAbstract.match(nNotation);
 
   if (nMatch && nMatch[1]) {
     sampleSizeStr = ` (N = ${nMatch[1]} participants)`;
@@ -583,7 +647,8 @@ export function generateDeterministicAppraisal(
   const compliancePercentage = totalAssessed > 0 ? Math.round((reportedCount / totalAssessed) * 100) : 0;
 
   // -----------------------------------------------------------------
-  // 6. Dynamic Statistical Audit & Real Effect Estimate Parsing
+  // 6. Dynamic Statistical Audit & Real Effect Estimate Parsing (P1-2)
+  // Scans Abstract and Results section with comprehensive metric & CI regex
   // -----------------------------------------------------------------
   const effectEstimates: Array<{
     outcome: string;
@@ -595,11 +660,18 @@ export function generateDeterministicAppraisal(
     sourceSentence?: string;
   }> = [];
 
-  // Robust effect-estimate regex (P1-2 & P0-1)
-  const statRegex =
-    /(?<metric>(?:[hH]azard\s+[rR]atio|[rR]elative\s+[rR]isk|[rR]ate\s+[rR]atio|[rR]isk\s+[rR]atio|[oO]dds\s+[rR]atio|[mM]ean\s+[dD]ifference|[sS]tandardized\s+[mM]ean\s+[dD]ifference|[rR]isk\s+[dD]ifference|[nN]umber\s+[nN]eeded\s+[tT]o\s+[tT]reat|\bHR\b|\bRR\b|\bOR\b|\bMD\b|\bSMD\b|\bRD\b|\bNNT\b))[:,\s=]+(?<point>-?[0-9.]+)[,;\s]*[\(\[]?\s*(?:95%\s*(?:confidence\s+interval|CI|ci)?(?:\s*\[\s*CI\s*\])?|CI)[\s,:;=\(\[]*(?<ciLow>-?[0-9.]+)\s*(?:to|-|–|—)\s*(?<ciHigh>-?[0-9.]+)[\)\]]?(?:[;, ]*(?:[pP])\s*(?<pOp>[<:=])\s*(?<pNum>[0-9.]+))?/g;
+  // Parse abstract and Results section (P1-2)
+  const statsSearchText = [rawAbstract, resultsText].filter(Boolean).join('\n\n') || combinedText;
 
-  const statMatches = [...combinedText.matchAll(statRegex)];
+  // Comprehensive effect-estimate regex (P1-2):
+  // Metrics: HR, RR, risk ratio, rate ratio, OR, MD, SMD, RD/ARR, NNT
+  // Acronyms are case-sensitive (\bHR\b, \bRR\b, \bOR\b, \bMD\b, \bSMD\b, \bRD\b, \bARR\b, \bNNT\b)
+  // CI: "95% CI", "95% confidence interval", "[CI]", brackets/parentheses, "to", hyphen, en-dash, unicode minus
+  const statRegex =
+    /(?<metric>\b(?:[hH]azard\s+[rR]atio|[rR]elative\s+[rR]isk|[rR]ate\s+[rR]atio|[rR]isk\s+[rR]atio|[oO]dds\s+[rR]atio|[mM]ean\s+[dD]ifference|[sS]tandardi[zs]ed\s+[mM]ean\s+[dD]ifference|[rR]isk\s+[dD]ifference|[aA]bsolute\s+[rR]isk\s+[rR]eduction|[nN]umber\s+[nN]eeded\s+[tT]o\s+[tT]reat|\bHR\b|\bRR\b|\bOR\b|\bMD\b|\bSMD\b|\bRD\b|\bARR\b|\bNNT\b))(?:\s+(?:for|of|was|were|is|estimated\s+at|[a-zA-Z\s]{1,30}?))?[:,\s=]+(?<point>[−-]?[0-9]+(?:\.[0-9]+)?)[,;\s]*[\(\[]?\s*(?:95%\s*(?:confidence\s+interval|CI|ci)?(?:\s*\[\s*CI\s*\])?|CI)[\s,:;=\(\[]*(?<ciLow>[−-]?[0-9]+(?:\.[0-9]+)?)\s*(?:to|-|–|—|\u2212)\s*(?<ciHigh>[−-]?[0-9]+(?:\.[0-9]+)?)[\)\]]?(?:[;, ]*(?:[pP])(?:\s*value)?\s*(?<pOp>[<:=]|>)\s*(?<pNum>[0-9.]+))?/g;
+
+  const statMatches = [...statsSearchText.matchAll(statRegex)];
+  const allSentences = statsSearchText.split(/(?<=[.?!])\s+/);
 
   for (const m of statMatches) {
     const rawMetric = m.groups?.metric || 'Effect Estimate';
@@ -614,19 +686,21 @@ export function generateDeterministicAppraisal(
       cleanMetric = 'Rate Ratio';
     } else if (lowerMetric.includes('risk ratio') || lowerMetric.includes('relative') || rawMetric === 'RR') {
       cleanMetric = 'Relative Risk (RR)';
-    } else if (lowerMetric.includes('standardized mean') || rawMetric === 'SMD') {
+    } else if (lowerMetric.includes('standardized mean') || lowerMetric.includes('standardised mean') || rawMetric === 'SMD') {
       cleanMetric = 'Standardized Mean Difference (SMD)';
     } else if (lowerMetric.includes('mean difference') || rawMetric === 'MD') {
       cleanMetric = 'Mean Difference (MD)';
     } else if (lowerMetric.includes('risk difference') || rawMetric === 'RD') {
       cleanMetric = 'Risk Difference (RD)';
+    } else if (lowerMetric.includes('absolute risk reduction') || rawMetric === 'ARR') {
+      cleanMetric = 'Absolute Risk Reduction (ARR)';
     } else if (lowerMetric.includes('needed to treat') || rawMetric === 'NNT') {
       cleanMetric = 'Number Needed to Treat (NNT)';
     }
 
-    const point = m.groups?.point || '';
-    const ciLow = m.groups?.ciLow || '';
-    const ciHigh = m.groups?.ciHigh || '';
+    const point = (m.groups?.point || '').replace(/\u2212/g, '-');
+    const ciLow = (m.groups?.ciLow || '').replace(/\u2212/g, '-');
+    const ciHigh = (m.groups?.ciHigh || '').replace(/\u2212/g, '-');
     const pVal = m.groups?.pNum ? `P ${m.groups.pOp || '='} ${m.groups.pNum}` : 'P not reported';
 
     // Derive clinical vs statistical significance strictly from whether CI crosses the null
@@ -651,10 +725,10 @@ export function generateDeterministicAppraisal(
       sigText = 'Significance could not be definitively determined from extracted numerical bounds.';
     }
 
-    // Find source sentence containing point estimate and CI
-    const sentenceCandidates = combinedText.split(/(?<=[.?!])\s+/);
+    // Find verbatim source sentence containing point estimate and CI (P1-2)
     const sourceSentence =
-      sentenceCandidates.find((s) => s.includes(point) && s.includes(ciLow))?.trim() || undefined;
+      allSentences.find((s) => s.includes(m[0]) || (s.includes(point) && s.includes(ciLow)))?.trim() ||
+      undefined;
 
     let cleanOutcomeLabel = primaryOutcomes[0] || 'Primary Efficacy Endpoint';
     if (effectEstimates.length === 1) {
@@ -758,6 +832,16 @@ export function generateDeterministicAppraisal(
     return !isNaN(num) && (num >= 2.0 || (num > 0 && num <= 0.5));
   });
 
+  // Detect if systematic review predominantly includes observational studies (P1-9)
+  const srIncludedObservational =
+    detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS' &&
+    /cohort|observational|case-control|cross-sectional|non-randomized|nonrandomised/i.test(
+      meta.title + ' ' + rawAbstract + ' ' + methodsText
+    ) &&
+    !/randomized controlled trial|randomised controlled trial|\brcts\b|randomized trials/i.test(
+      meta.title + ' ' + rawAbstract + ' ' + methodsText
+    );
+
   const gradeSynthesis = synthesizeGradeCertainty({
     studyDesign: detectedDesign,
     overallRiskOfBias: overallRobJudgement,
@@ -767,6 +851,7 @@ export function generateDeterministicAppraisal(
     publicationBiasSuspected: false,
     largeEffectSize,
     doseResponseGradient: false,
+    includedStudyDesigns: srIncludedObservational ? 'OBSERVATIONAL' : 'RANDOMIZED',
   });
 
   let internalValidityText = '';

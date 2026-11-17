@@ -80,7 +80,9 @@ export const RiskOfBiasMatrixSchema = z.object({
   governingTool: z.string().describe('e.g., Cochrane RoB 2.0, Newcastle-Ottawa Scale, AMSTAR-2, QUADAS-2'),
   overallRisk: BiasJudgementEnum,
   domains: z.array(BiasDomainItemSchema),
-  overallRationale: z.string()
+  overallRationale: z.string(),
+  manuallyOverridden: z.boolean().optional(),
+  overrideJustification: z.string().optional(),
 });
 
 export type RiskOfBiasMatrix = z.infer<typeof RiskOfBiasMatrixSchema>;
@@ -165,7 +167,9 @@ export const MasterAppraisalReportSchema = z.object({
     conflictsOfInterestAndFundingCritique: z.string(),
     gradeCertainty: GradeCertaintyEnum,
     gradeDowngradingFactors: z.array(z.string()).describe('Risk of bias, Imprecision, Inconsistency, Indirectness, Publication bias'),
-    gradeRationale: z.string()
+    gradeRationale: z.string(),
+    manuallyOverridden: z.boolean().optional(),
+    overrideJustification: z.string().optional(),
   }),
   clinicalPracticeBottomLine: z.object({
     applicabilityToPractice: z.string(),

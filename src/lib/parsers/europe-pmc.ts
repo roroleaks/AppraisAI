@@ -87,6 +87,69 @@ export function extractNodeText(node: any): string {
 }
 
 /**
+ * Parses JATS XML table-wrap into formatted pipe-delimited markdown table (P1-8).
+ */
+function parseJatsTable(tw: any): string {
+  const label = extractNodeText(tw.label || '');
+  const caption = extractNodeText(tw.caption?.p || tw.caption?.title || '');
+  const headerTitle = [label, caption].filter(Boolean).join(': ');
+
+  const tableObj = tw.table || tw['oasis:table'] || tw.alternatives?.table;
+  if (!tableObj) {
+    return headerTitle;
+  }
+
+  const rows: string[][] = [];
+
+  const extractRowCells = (tr: any): string[] => {
+    const ths = tr.th ? (Array.isArray(tr.th) ? tr.th : [tr.th]) : [];
+    const tds = tr.td ? (Array.isArray(tr.td) ? tr.td : [tr.td]) : [];
+    const allCells = [...ths, ...tds];
+    return allCells.map((c) => extractNodeText(c).replace(/[\r\n|]+/g, ' ').trim());
+  };
+
+  if (tableObj.thead?.tr) {
+    const trs = Array.isArray(tableObj.thead.tr) ? tableObj.thead.tr : [tableObj.thead.tr];
+    trs.forEach((tr: any) => {
+      const cells = extractRowCells(tr);
+      if (cells.length > 0) rows.push(cells);
+    });
+  }
+
+  if (tableObj.tbody?.tr) {
+    const trs = Array.isArray(tableObj.tbody.tr) ? tableObj.tbody.tr : [tableObj.tbody.tr];
+    trs.forEach((tr: any) => {
+      const cells = extractRowCells(tr);
+      if (cells.length > 0) rows.push(cells);
+    });
+  } else if (tableObj.tr) {
+    const trs = Array.isArray(tableObj.tr) ? tableObj.tr : [tableObj.tr];
+    trs.forEach((tr: any) => {
+      const cells = extractRowCells(tr);
+      if (cells.length > 0) rows.push(cells);
+    });
+  }
+
+  if (rows.length === 0) {
+    return headerTitle;
+  }
+
+  const maxCols = Math.max(...rows.map((r) => r.length));
+  if (maxCols === 0) return headerTitle;
+
+  const paddedRows = rows.map((r) => {
+    const row = [...r];
+    while (row.length < maxCols) row.push('');
+    return `| ${row.join(' | ')} |`;
+  });
+
+  const separator = `| ${Array(maxCols).fill('---').join(' | ')} |`;
+  const markdownTable = [paddedRows[0], separator, ...paddedRows.slice(1)].join('\n');
+
+  return headerTitle ? `### ${headerTitle}\n\n${markdownTable}` : markdownTable;
+}
+
+/**
  * Parses JATS XML into clean clinical sections (Abstract, Methods, Results, Discussion)
  * strictly targeting article title, structured abstract, and body sections.
  * Completely discards <journal-id>, <issn>, <permissions>, <kwd-group>, and metadata noise.
@@ -147,6 +210,15 @@ export function parseJatsXmlToSections(xmlString: string): {
   // Extract Body Sections & Table Wraps exclusively from <body>
   const body = parsed?.article?.body || parsed?.body;
   if (body) {
+    // Check table-wrap at body root level (P1-8)
+    if (body['table-wrap']) {
+      const bodyTables = Array.isArray(body['table-wrap']) ? body['table-wrap'] : [body['table-wrap']];
+      bodyTables.forEach((tw: any) => {
+        const tableMd = parseJatsTable(tw);
+        if (tableMd) tablesRaw.push(tableMd);
+      });
+    }
+
     // If body has direct paragraphs before or without sections
     if (body.p) {
       const directP = Array.isArray(body.p) ? body.p : [body.p];
@@ -167,16 +239,15 @@ export function parseJatsXmlToSections(xmlString: string): {
         content = paragraphs.map(extractNodeText).filter(Boolean).join('\n\n');
       }
 
-      // Check table-wrap inside section
+      // Check table-wrap inside section (P1-8: full pipe-delimited extraction)
       if (secObj['table-wrap']) {
         const tableWraps = Array.isArray(secObj['table-wrap'])
           ? secObj['table-wrap']
           : [secObj['table-wrap']];
         tableWraps.forEach((tw: any) => {
-          const label = extractNodeText(tw.label || '');
-          const caption = extractNodeText(tw.caption?.p || tw.caption?.title || '');
-          if (label || caption) {
-            tablesRaw.push(`${label} ${caption}`.trim());
+          const tableMd = parseJatsTable(tw);
+          if (tableMd) {
+            tablesRaw.push(tableMd);
           }
         });
       }
@@ -195,9 +266,14 @@ export function parseJatsXmlToSections(xmlString: string): {
     rawSections.forEach(processSec);
   }
 
-  const fullText = sections
+  let fullText = sections
     .map((s) => `## ${s.heading}\n\n${s.content}`)
     .join('\n\n');
+
+  // Append extracted JATS tables under ## Tables (P1-8)
+  if (tablesRaw.length > 0) {
+    fullText += '\n\n## Tables\n\n' + tablesRaw.join('\n\n');
+  }
 
   // If abstract is missing in XML (common for editorials, commentaries, or letters)
   if (!abstract.trim() && sections.length > 0) {
@@ -251,8 +327,10 @@ async function fetchWithRetry(url: string, options: RequestInit, retries = 2, de
  */
 export async function queryEuropePmc(query: string): Promise<any | null> {
   let cleanQuery = query.trim();
+  const isPmid = /^\d{6,9}$/.test(cleanQuery);
+  const pmidTarget = cleanQuery;
 
-  // Enforce structured search syntax for DOIs, PMCIDs, and PMIDs
+  // Enforce structured search syntax for DOIs, PMCIDs, and PMIDs (P1-7: EXT_ID and SRC:MED)
   if (/^10\.\d{4,9}\//i.test(cleanQuery)) {
     cleanQuery = `DOI:"${cleanQuery}"`;
   } else if (/^doi:\s*(10\.\d{4,9}\/.*)/i.test(cleanQuery)) {
@@ -260,8 +338,8 @@ export async function queryEuropePmc(query: string): Promise<any | null> {
     cleanQuery = `DOI:"${raw}"`;
   } else if (/^PMC\d+/i.test(cleanQuery)) {
     cleanQuery = `PMCID:${cleanQuery.toUpperCase()}`;
-  } else if (/^\d{6,9}$/.test(cleanQuery)) {
-    cleanQuery = `EXT_ID:${cleanQuery}`;
+  } else if (isPmid) {
+    cleanQuery = `EXT_ID:${cleanQuery} AND SRC:MED`;
   }
 
   const encodedQuery = encodeURIComponent(cleanQuery);
@@ -274,7 +352,12 @@ export async function queryEuropePmc(query: string): Promise<any | null> {
     });
     if (!res.ok) return null;
     const data = await res.json();
-    return data?.resultList?.result?.[0] || null;
+    const result = data?.resultList?.result?.[0] || null;
+    // Verify returned pmid matches requested identifier (P1-7)
+    if (isPmid && result && result.pmid && result.pmid !== pmidTarget) {
+      return null;
+    }
+    return result;
   } catch (err) {
     console.error('Europe PMC query failed:', err);
     return null;

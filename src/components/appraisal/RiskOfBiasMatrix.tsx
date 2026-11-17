@@ -7,12 +7,25 @@ import { isVerbatimInManuscript } from '@/lib/parsers/quote-verifier';
 import { ShieldAlert, CheckCircle, AlertTriangle, XCircle, HelpCircle } from 'lucide-react';
 
 export const RiskOfBiasMatrix: React.FC = () => {
-  const { currentAppraisal, currentManuscript, isEditMode, updateRoBDomainJudgement, updateAppraisalField } =
-    useAppraisalStore();
+  const {
+    currentAppraisal,
+    currentManuscript,
+    isEditMode,
+    updateRoBDomainJudgement,
+    overrideOverallRoB,
+    updateAppraisalField,
+  } = useAppraisalStore();
 
   if (!currentAppraisal) return null;
 
   const { riskOfBias, equatorChecklist } = currentAppraisal;
+
+  const handleOverallRiskChange = (newVal: BiasJudgement) => {
+    const reason = window.prompt('Please enter justification for overriding overall Risk of Bias:', 'Appraiser clinical judgement based on study protocol');
+    if (reason && reason.trim()) {
+      overrideOverallRoB(newVal, reason.trim());
+    }
+  };
 
   const renderJudgementBadge = (judgement: BiasJudgement) => {
     switch (judgement) {
@@ -60,18 +73,32 @@ export const RiskOfBiasMatrix: React.FC = () => {
         <div className="flex items-center gap-2">
           <span className="text-xs font-medium text-slate-600">Overall Risk of Bias:</span>
           {isEditMode ? (
-            <select
-              value={riskOfBias.overallRisk}
-              onChange={(e) => updateAppraisalField('riskOfBias.overallRisk', e.target.value as BiasJudgement)}
-              className="p-1 border border-slate-300 rounded text-xs bg-white font-bold"
-            >
-              <option value="LOW_RISK">Low Risk</option>
-              <option value="SOME_CONCERNS">Some Concerns</option>
-              <option value="HIGH_RISK">High Risk</option>
-              <option value="UNCLEAR_NOT_REPORTED">Unclear / Not Reported</option>
-            </select>
+            <div className="flex items-center gap-2">
+              <select
+                value={riskOfBias.overallRisk}
+                onChange={(e) => handleOverallRiskChange(e.target.value as BiasJudgement)}
+                className="p-1 border border-slate-300 rounded text-xs bg-white font-bold"
+              >
+                <option value="LOW_RISK">Low Risk</option>
+                <option value="SOME_CONCERNS">Some Concerns</option>
+                <option value="HIGH_RISK">High Risk</option>
+                <option value="UNCLEAR_NOT_REPORTED">Unclear / Not Reported</option>
+              </select>
+              {riskOfBias.manuallyOverridden && (
+                <span className="text-[10px] bg-amber-50 text-amber-800 border border-amber-300 rounded px-1.5 py-0.5">
+                  Overridden: {riskOfBias.overrideJustification}
+                </span>
+              )}
+            </div>
           ) : (
-            renderJudgementBadge(riskOfBias.overallRisk)
+            <div className="flex items-center gap-1.5">
+              {renderJudgementBadge(riskOfBias.overallRisk)}
+              {riskOfBias.manuallyOverridden && (
+                <span className="text-[10px] bg-amber-50 text-amber-800 border border-amber-200 rounded px-1.5 py-0.5" title={riskOfBias.overrideJustification}>
+                  (Overridden)
+                </span>
+              )}
+            </div>
           )}
         </div>
       </div>

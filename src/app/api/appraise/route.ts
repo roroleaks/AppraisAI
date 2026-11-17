@@ -28,7 +28,98 @@ export async function POST(req: NextRequest) {
       !!process.env.GROQ_API_KEY ||
       !!process.env.OPENAI_API_KEY;
 
-    // If an API key is present (either in headers or .env.local), run the multi-pass LLM pipeline
+    const wantsStream =
+      req.headers.get('accept') === 'text/event-stream' ||
+      req.nextUrl.searchParams.get('stream') === 'true';
+
+    // Real SSE streaming mode (P1-11)
+    if (wantsStream) {
+      const encoder = new TextEncoder();
+      const stream = new ReadableStream({
+        async start(controller) {
+          const sendEvent = (event: string, data: any) => {
+            controller.enqueue(encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`));
+          };
+
+          try {
+            if (hasCustomKey || hasEnvKey) {
+              try {
+                const config: LlmConfig | undefined = hasCustomKey
+                  ? {
+                      provider: customProvider || 'gemini',
+                      apiKey: customKey,
+                      model: customModel || undefined,
+                    }
+                  : undefined;
+
+                const onProgress = (stage: number, stageName: string, detail: string) => {
+                  sendEvent('progress', { stage, stageName, detail });
+                };
+
+                const report = await execute4PassAppraisalPipeline(manuscript, config, onProgress);
+                report.engineUsed = 'llm';
+                const activeProv =
+                  config?.provider ||
+                  (process.env.GEMINI_API_KEY ? 'gemini' : process.env.GROQ_API_KEY ? 'groq' : 'openai');
+                report.llmDetails = {
+                  provider: activeProv,
+                  model:
+                    config?.model ||
+                    (activeProv === 'openai'
+                      ? 'gpt-4o-mini'
+                      : activeProv === 'groq'
+                      ? 'llama-3.3-70b-versatile'
+                      : 'gemini-2.5-flash'),
+                };
+                sendEvent('result', report);
+                controller.close();
+                return;
+              } catch (llmErr: any) {
+                console.warn(
+                  'LLM evaluation encountered an issue, falling back to deterministic synthesis engine:',
+                  llmErr.message
+                );
+                sendEvent('progress', {
+                  stage: 2,
+                  stageName: 'Fallback',
+                  detail: 'Switching to heuristic screening draft...',
+                });
+                const fallbackReport = generateDeterministicAppraisal(manuscript);
+                fallbackReport.engineUsed = 'deterministic-fallback';
+                fallbackReport.fallbackReason = llmErr?.message || 'LLM call failed or timed out';
+                sendEvent('result', fallbackReport);
+                controller.close();
+                return;
+              }
+            }
+
+            // Zero-friction mode: Deterministic engine
+            sendEvent('progress', {
+              stage: 1,
+              stageName: 'Heuristic Extraction',
+              detail: 'Extracting evidence and study parameters...',
+            });
+            const report = generateDeterministicAppraisal(manuscript);
+            report.engineUsed = 'deterministic';
+            sendEvent('result', report);
+            controller.close();
+          } catch (streamErr: any) {
+            sendEvent('error', { error: streamErr?.message || 'Error during critical appraisal' });
+            controller.close();
+          }
+        },
+      });
+
+      return new Response(stream, {
+        headers: {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          Connection: 'keep-alive',
+        },
+      });
+    }
+
+    // Standard JSON mode (for CLI, test suites, or non-streaming clients)
     if (hasCustomKey || hasEnvKey) {
       try {
         const config: LlmConfig | undefined = hasCustomKey
@@ -49,7 +140,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(report);
       } catch (llmErr: any) {
         console.warn('LLM evaluation encountered an issue, falling back to deterministic synthesis engine:', llmErr.message);
-        // Seamless fallback to deterministic synthesis engine if API rate-limited or failed
         const fallbackReport = generateDeterministicAppraisal(manuscript);
         fallbackReport.engineUsed = 'deterministic-fallback';
         fallbackReport.fallbackReason = llmErr?.message || 'LLM call failed or timed out';
@@ -57,7 +147,6 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Zero-friction mode: No API key configured -> Use clinical deterministic appraisal engine!
     const report = generateDeterministicAppraisal(manuscript);
     report.engineUsed = 'deterministic';
     return NextResponse.json(report);

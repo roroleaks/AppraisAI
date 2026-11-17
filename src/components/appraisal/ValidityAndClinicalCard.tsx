@@ -14,12 +14,19 @@ import {
 } from 'lucide-react';
 
 export const ValidityAndClinicalCard: React.FC = () => {
-  const { currentAppraisal, isEditMode, updateGradeCertainty, updateAppraisalField } =
+  const { currentAppraisal, isEditMode, overrideGradeCertainty, updateAppraisalField } =
     useAppraisalStore();
 
   if (!currentAppraisal) return null;
 
   const { validitySynthesis, clinicalPracticeBottomLine, references } = currentAppraisal;
+
+  const handleGradeChange = (newVal: GradeCertainty) => {
+    const reason = window.prompt('Please enter justification for overriding GRADE certainty rating:', 'Appraiser clinical rationale based on external evidence');
+    if (reason && reason.trim()) {
+      overrideGradeCertainty(newVal, reason.trim());
+    }
+  };
 
   const renderGradeBadge = (grade: GradeCertainty) => {
     switch (grade) {
@@ -67,18 +74,32 @@ export const ValidityAndClinicalCard: React.FC = () => {
         <div className="flex items-center gap-2">
           <span className="text-xs font-semibold text-slate-600">GRADE Rating:</span>
           {isEditMode ? (
-            <select
-              value={validitySynthesis.gradeCertainty}
-              onChange={(e) => updateGradeCertainty(e.target.value as GradeCertainty)}
-              className="p-1 border border-slate-300 rounded text-xs bg-white font-bold"
-            >
-              <option value="HIGH">HIGH</option>
-              <option value="MODERATE">MODERATE</option>
-              <option value="LOW">LOW</option>
-              <option value="VERY_LOW">VERY LOW</option>
-            </select>
+            <div className="flex items-center gap-2">
+              <select
+                value={validitySynthesis.gradeCertainty}
+                onChange={(e) => handleGradeChange(e.target.value as GradeCertainty)}
+                className="p-1 border border-slate-300 rounded text-xs bg-white font-bold"
+              >
+                <option value="HIGH">HIGH</option>
+                <option value="MODERATE">MODERATE</option>
+                <option value="LOW">LOW</option>
+                <option value="VERY_LOW">VERY LOW</option>
+              </select>
+              {validitySynthesis.manuallyOverridden && (
+                <span className="text-[10px] bg-amber-50 text-amber-800 border border-amber-300 rounded px-1.5 py-0.5">
+                  Overridden: {validitySynthesis.overrideJustification}
+                </span>
+              )}
+            </div>
           ) : (
-            renderGradeBadge(validitySynthesis.gradeCertainty)
+            <div className="flex items-center gap-1.5">
+              {renderGradeBadge(validitySynthesis.gradeCertainty)}
+              {validitySynthesis.manuallyOverridden && (
+                <span className="text-[10px] bg-amber-50 text-amber-800 border border-amber-200 rounded px-1.5 py-0.5" title={validitySynthesis.overrideJustification}>
+                  (Overridden)
+                </span>
+              )}
+            </div>
           )}
         </div>
       </div>
