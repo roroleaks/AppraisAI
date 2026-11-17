@@ -12,6 +12,7 @@ import {
   Footer,
   PageNumber,
   ShadingType,
+  HeadingLevel,
 } from 'docx';
 import {
   MasterAppraisalReport,
@@ -20,6 +21,8 @@ import {
 import {
   DOCX_COLORS,
   PAGE_GEOMETRY,
+  PAGE_GEOMETRY_A4,
+  PAGE_GEOMETRY_LETTER,
   TYPOGRAPHY,
   CELL_PADDING,
   CELL_PADDING_COMPACT,
@@ -36,6 +39,17 @@ export interface AppraiserMetadata {
   orcid?: string;
   email?: string;
   verified?: boolean;
+  pageSize?: 'A4' | 'LETTER';
+}
+
+/**
+ * Truncates text at word boundary without slicing mid-word (P3-4).
+ */
+function truncateAtWord(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text;
+  const sub = text.slice(0, maxLen);
+  const lastSpace = sub.lastIndexOf(' ');
+  return lastSpace > 20 ? `${sub.slice(0, lastSpace)}...` : `${sub}...`;
 }
 
 /**
@@ -66,10 +80,11 @@ function createBodyParagraph(
 }
 
 /**
- * Creates an executive Heading 1 with bottom border accent.
+ * Creates an executive Heading 1 with Word outline heading level (P3-1).
  */
 function createHeading1(sectionNumber: string, title: string): Paragraph {
   return new Paragraph({
+    heading: HeadingLevel.HEADING_1,
     alignment: AlignmentType.LEFT,
     spacing: { before: 260, after: 120 },
     border: {
@@ -88,10 +103,11 @@ function createHeading1(sectionNumber: string, title: string): Paragraph {
 }
 
 /**
- * Creates a subsection Heading 2 in Accent Teal.
+ * Creates a subsection Heading 2 with Word outline heading level (P3-1).
  */
 function createHeading2(title: string): Paragraph {
   return new Paragraph({
+    heading: HeadingLevel.HEADING_2,
     alignment: AlignmentType.LEFT,
     spacing: { before: 180, after: 80 },
     children: [
@@ -132,27 +148,45 @@ function createTableHeaderCell(text: string, widthDxa: number): TableCell {
 }
 
 /**
- * Returns traffic-light formatting tokens for Risk of Bias and EQUATOR statuses.
+ * Returns accessible traffic-light tokens for Risk of Bias judgements (P3-10).
  */
-function getStatusTokens(
+function getRobStatusTokens(
   status: BiasJudgement | string
 ): { bg: string; text: string; label: string; symbol: string } {
   switch (status) {
     case 'LOW_RISK':
-    case 'REPORTED':
       return { bg: DOCX_COLORS.SUCCESS_BG, text: DOCX_COLORS.SUCCESS_TEXT, label: 'Low Risk', symbol: '(+) LOW RISK' };
     case 'SOME_CONCERNS':
-    case 'PARTIALLY_REPORTED':
       return { bg: DOCX_COLORS.WARNING_BG, text: DOCX_COLORS.WARNING_TEXT, label: 'Some Concerns', symbol: '(?) SOME CONCERNS' };
     case 'HIGH_RISK':
-    case 'NOT_REPORTED':
       return { bg: DOCX_COLORS.DANGER_BG, text: DOCX_COLORS.DANGER_TEXT, label: 'High Risk', symbol: '(-) HIGH RISK' };
     case 'UNCLEAR_NOT_REPORTED':
-    case 'NOT_APPLICABLE':
     default:
-      return { bg: DOCX_COLORS.NEUTRAL_BG, text: DOCX_COLORS.NEUTRAL_TEXT, label: 'Unclear', symbol: '[!] UNCLEAR' };
+      return { bg: DOCX_COLORS.NEUTRAL_BG, text: DOCX_COLORS.NEUTRAL_TEXT, label: 'Unclear', symbol: '[?] UNCLEAR' };
   }
 }
+
+/**
+ * Returns accessible traffic-light tokens for EQUATOR reporting items (P3-9, P3-10).
+ */
+function getEquatorStatusTokens(
+  status: string
+): { bg: string; text: string; label: string; symbol: string } {
+  switch (status) {
+    case 'REPORTED':
+      return { bg: DOCX_COLORS.SUCCESS_BG, text: DOCX_COLORS.SUCCESS_TEXT, label: 'Reported', symbol: '(+) REPORTED' };
+    case 'PARTIALLY_REPORTED':
+      return { bg: DOCX_COLORS.WARNING_BG, text: DOCX_COLORS.WARNING_TEXT, label: 'Partially Reported', symbol: '(?) PARTIALLY' };
+    case 'NOT_REPORTED':
+      return { bg: DOCX_COLORS.DANGER_BG, text: DOCX_COLORS.DANGER_TEXT, label: 'Not Reported', symbol: '(-) NOT REPORTED' };
+    case 'NOT_APPLICABLE':
+    default:
+      return { bg: DOCX_COLORS.NEUTRAL_BG, text: DOCX_COLORS.NEUTRAL_TEXT, label: 'Not Assessed', symbol: '[N/A] NOT ASSESSED' };
+  }
+}
+
+// Backward-compatible alias
+const getStatusTokens = getRobStatusTokens;
 
 /**
  * Compiles a publication-grade academic critical appraisal manuscript in Microsoft Word format.
@@ -164,7 +198,8 @@ export function buildAcademicDocxManuscript(
   const meta = report.metadata;
   const isAbstractOnly = meta.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
   const cleanTitle = cleanBiomedicalTitle(meta.title);
-  const truncatedHeaderTitle = cleanTitle.length > 55 ? `${cleanTitle.slice(0, 52)}...` : cleanTitle;
+  const idDescriptor = meta.doi ? `DOI: ${meta.doi}` : meta.pmid ? `PMID: ${meta.pmid}` : meta.journal || 'Journal Not Specified';
+  const truncatedHeaderTitle = truncateAtWord(cleanTitle, 52);
   const cleanAuthors = cleanBiomedicalAuthors(meta.authors);
   const authorsString = cleanAuthors.join(', ');
 
@@ -172,6 +207,10 @@ export function buildAcademicDocxManuscript(
   const activeAffiliation = appraiser?.affiliation || 'Evidence-Based Medicine & Methodological Review';
   const activeOrcid = appraiser?.orcid || '';
   const isVerified = !!appraiser?.verified;
+
+  // Page geometry selection: default A4, optional US Letter (P3-3)
+  const pageGeom = appraiser?.pageSize === 'LETTER' ? PAGE_GEOMETRY_LETTER : PAGE_GEOMETRY_A4;
+  const contentWidth = pageGeom.CONTENT_WIDTH;
 
   // Pseudo manuscript payload for quote verification in docx
   const pseudoManuscript = {
@@ -182,10 +221,14 @@ export function buildAcademicDocxManuscript(
     tablesRaw: [],
   } as any;
 
-  // Compute RoB strip column width summing to exact printable width 9360 dxa
+  // Compute RoB strip column width summing to exact printable width
   const domainCount = Math.max(1, report.riskOfBias.domains.length);
-  const baseStripWidth = Math.floor(PAGE_GEOMETRY.CONTENT_WIDTH / domainCount);
-  const lastStripWidth = PAGE_GEOMETRY.CONTENT_WIDTH - baseStripWidth * (domainCount - 1);
+  const baseStripWidth = Math.floor(contentWidth / domainCount);
+  const lastStripWidth = contentWidth - baseStripWidth * (domainCount - 1);
+
+  // 4 summary cards column widths summing to exact printable width
+  const cardWidth = Math.floor(contentWidth / 4);
+  const lastCardWidth = contentWidth - cardWidth * 3;
 
   return new Document({
     styles: {
@@ -204,14 +247,14 @@ export function buildAcademicDocxManuscript(
         properties: {
           page: {
             size: {
-              width: PAGE_GEOMETRY.PAGE_WIDTH,
-              height: PAGE_GEOMETRY.PAGE_HEIGHT,
+              width: pageGeom.PAGE_WIDTH,
+              height: pageGeom.PAGE_HEIGHT,
             },
             margin: {
-              top: PAGE_GEOMETRY.MARGIN_TOP,
-              bottom: PAGE_GEOMETRY.MARGIN_BOTTOM,
-              left: PAGE_GEOMETRY.MARGIN_LEFT,
-              right: PAGE_GEOMETRY.MARGIN_RIGHT,
+              top: pageGeom.MARGIN_TOP,
+              bottom: pageGeom.MARGIN_BOTTOM,
+              left: pageGeom.MARGIN_LEFT,
+              right: pageGeom.MARGIN_RIGHT,
             },
           },
         },
@@ -232,7 +275,7 @@ export function buildAcademicDocxManuscript(
                   }),
                 ],
               }),
-              // Line 2: Index Paper Title & Journal with Bottom Border Rule
+              // Line 2: Index Paper Title & Journal with Bottom Border Rule (P3-4)
               new Paragraph({
                 alignment: AlignmentType.RIGHT,
                 spacing: { before: 20, after: 120 },
@@ -241,7 +284,7 @@ export function buildAcademicDocxManuscript(
                 },
                 children: [
                   new TextRun({
-                    text: `${truncatedHeaderTitle}  •  ${meta.journal || 'Journal Not Specified'}`,
+                    text: `${truncatedHeaderTitle}  •  ${idDescriptor}`,
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_SMALL,
                     italics: true,
@@ -373,13 +416,14 @@ export function buildAcademicDocxManuscript(
           ...(report.engineUsed !== 'llm'
             ? [
                 new Table({
-                  width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                  width: { size: contentWidth, type: WidthType.DXA },
                   borders: CALLOUT_BORDERS_NAVY,
                   rows: [
                     new TableRow({
+                      cantSplit: true,
                       children: [
                         new TableCell({
-                          width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                          width: { size: contentWidth, type: WidthType.DXA },
                           shading: { type: ShadingType.CLEAR, fill: 'FFFBEB' },
                           margins: CELL_PADDING,
                           children: [
@@ -419,16 +463,17 @@ export function buildAcademicDocxManuscript(
             : []),
 
           // ---------------------------------------------------------
-          // TARGET ARTICLE BIBLIOGRAPHIC CALLOUT CARD (Ice Teal Fill)
+          // TARGET ARTICLE BIBLIOGRAPHIC CALLOUT & DATA PROVENANCE (P3-8)
           // ---------------------------------------------------------
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: CALLOUT_BORDERS_TEAL,
             rows: [
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
-                    width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                    width: { size: contentWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.TEAL_LIGHT },
                     margins: CELL_PADDING,
                     children: [
@@ -491,6 +536,21 @@ export function buildAcademicDocxManuscript(
                           }),
                         ],
                       }),
+                      new Paragraph({
+                        spacing: { before: 10, after: 10 },
+                        children: [
+                          new TextRun({
+                            text: `Evidence Grounding: ${
+                              report.riskOfBias.domains.filter((d) =>
+                                isVerbatimInManuscript(d.supportiveEvidence, pseudoManuscript)
+                              ).length
+                            } of ${report.riskOfBias.domains.length} risk of bias domains supported by verbatim text quotes directly grounded in manuscript.`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            color: DOCX_COLORS.SLATE_MUTED,
+                          }),
+                        ],
+                      }),
                     ],
                   }),
                 ],
@@ -504,14 +564,15 @@ export function buildAcademicDocxManuscript(
           // 4-COLUMN EVIDENCE CLASSIFICATION SUMMARY CARDS
           // ---------------------------------------------------------
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [2340, 2340, 2340, 2340],
+            columnWidths: [cardWidth, cardWidth, cardWidth, lastCardWidth],
             rows: [
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
-                    width: { size: 2340, type: WidthType.DXA },
+                    width: { size: cardWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
                     children: [
@@ -528,7 +589,7 @@ export function buildAcademicDocxManuscript(
                     ],
                   }),
                   new TableCell({
-                    width: { size: 2340, type: WidthType.DXA },
+                    width: { size: cardWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
                     children: [
@@ -545,7 +606,7 @@ export function buildAcademicDocxManuscript(
                     ],
                   }),
                   new TableCell({
-                    width: { size: 2340, type: WidthType.DXA },
+                    width: { size: cardWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
                     children: [
@@ -562,7 +623,7 @@ export function buildAcademicDocxManuscript(
                     ],
                   }),
                   new TableCell({
-                    width: { size: 2340, type: WidthType.DXA },
+                    width: { size: lastCardWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
                     children: [
@@ -589,13 +650,14 @@ export function buildAcademicDocxManuscript(
           createHeading1('1.', 'Structured Executive Commentary Abstract'),
 
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: CALLOUT_BORDERS_NAVY,
             rows: [
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
-                    width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                    width: { size: contentWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
                     margins: CELL_PADDING,
                     children: [
@@ -640,17 +702,20 @@ export function buildAcademicDocxManuscript(
           createHeading1('2.', 'PICO/PECO Deconstruction & Study Characteristics'),
 
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [2400, 6960],
+            columnWidths: [2400, contentWidth - 2400],
             rows: [
               new TableRow({
+                tableHeader: true,
+                cantSplit: true,
                 children: [
                   createTableHeaderCell('PICO DIMENSION', 2400),
-                  createTableHeaderCell('CLINICAL & METHODOLOGICAL SPECIFICATION', 6960),
+                  createTableHeaderCell('CLINICAL & METHODOLOGICAL SPECIFICATION', contentWidth - 2400),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2400, type: WidthType.DXA },
@@ -659,13 +724,14 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Population (P)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6960, type: WidthType.DXA },
+                    width: { size: contentWidth - 2400, type: WidthType.DXA },
                     margins: CELL_PADDING,
                     children: [new Paragraph({ children: [new TextRun({ text: report.pico.population, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2400, type: WidthType.DXA },
@@ -674,13 +740,14 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Intervention / Exposure (I)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6960, type: WidthType.DXA },
+                    width: { size: contentWidth - 2400, type: WidthType.DXA },
                     margins: CELL_PADDING,
                     children: [new Paragraph({ children: [new TextRun({ text: report.pico.interventionOrExposure, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2400, type: WidthType.DXA },
@@ -689,13 +756,14 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Comparator (C)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6960, type: WidthType.DXA },
+                    width: { size: contentWidth - 2400, type: WidthType.DXA },
                     margins: CELL_PADDING,
                     children: [new Paragraph({ children: [new TextRun({ text: report.pico.comparator, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2400, type: WidthType.DXA },
@@ -704,13 +772,50 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Primary Outcomes (O)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6960, type: WidthType.DXA },
+                    width: { size: contentWidth - 2400, type: WidthType.DXA },
                     margins: CELL_PADDING,
-                    children: [new Paragraph({ children: [new TextRun({ text: report.pico.primaryOutcomes.join('; '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
+                    children: report.pico.primaryOutcomes && report.pico.primaryOutcomes.length > 0
+                      ? report.pico.primaryOutcomes.map((po) =>
+                          new Paragraph({
+                            spacing: { before: 20, after: 20 },
+                            children: [
+                              new TextRun({ text: '•  ', bold: true, color: DOCX_COLORS.TEAL_ACCENT, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE }),
+                              new TextRun({ text: po.replace(/\.+$/, ''), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE }),
+                            ],
+                          })
+                        )
+                      : [new Paragraph({ children: [new TextRun({ text: 'Not clearly specified in manuscript text', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, italics: true })] })],
                   }),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
+                children: [
+                  new TableCell({
+                    width: { size: 2400, type: WidthType.DXA },
+                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
+                    margins: CELL_PADDING,
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Secondary Endpoints', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
+                  }),
+                  new TableCell({
+                    width: { size: contentWidth - 2400, type: WidthType.DXA },
+                    margins: CELL_PADDING,
+                    children: report.pico.secondaryOutcomes && report.pico.secondaryOutcomes.length > 0
+                      ? report.pico.secondaryOutcomes.map((so) =>
+                          new Paragraph({
+                            spacing: { before: 20, after: 20 },
+                            children: [
+                              new TextRun({ text: '•  ', bold: true, color: DOCX_COLORS.SLATE_MUTED, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE }),
+                              new TextRun({ text: so.replace(/\.+$/, ''), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE }),
+                            ],
+                          })
+                        )
+                      : [new Paragraph({ children: [new TextRun({ text: 'None reported or evaluated in available text', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, italics: true, color: DOCX_COLORS.SLATE_MUTED })] })],
+                  }),
+                ],
+              }),
+              new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2400, type: WidthType.DXA },
@@ -719,7 +824,7 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Timeframe & Setting', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6960, type: WidthType.DXA },
+                    width: { size: contentWidth - 2400, type: WidthType.DXA },
                     margins: CELL_PADDING,
                     children: [new Paragraph({ children: [new TextRun({ text: `Follow-up Window: ${report.pico.timeframe}  |  Clinical Setting: ${report.pico.setting}`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
@@ -753,12 +858,13 @@ export function buildAcademicDocxManuscript(
           }),
 
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
             rows: [
               new TableRow({
+                cantSplit: true,
                 children: report.riskOfBias.domains.map((d, idx) => {
-                  const s = getStatusTokens(d.judgement);
+                  const s = getRobStatusTokens(d.judgement);
                   const isLast = idx === report.riskOfBias.domains.length - 1;
                   const colWidth = isLast ? lastStripWidth : baseStripWidth;
                   return new TableCell({
@@ -788,24 +894,27 @@ export function buildAcademicDocxManuscript(
 
           new Paragraph({ spacing: { after: 120 }, children: [] }),
 
-          // Detailed RoB Table
+          // Detailed RoB Table (P3-2: cantSplit and tableHeader)
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [2200, 1800, 3160, 2200],
+            columnWidths: [2200, 1800, contentWidth - 6200, 2200],
             rows: [
               new TableRow({
+                tableHeader: true,
+                cantSplit: true,
                 children: [
                   createTableHeaderCell('DOMAIN', 2200),
                   createTableHeaderCell('JUDGEMENT', 1800),
-                  createTableHeaderCell('SUPPORTIVE TEXT EVIDENCE', 3160),
+                  createTableHeaderCell('SUPPORTIVE TEXT EVIDENCE', contentWidth - 6200),
                   createTableHeaderCell('CRITICAL SIGNIFICANCE', 2200),
                 ],
               }),
               ...report.riskOfBias.domains.map((d) => {
-                const s = getStatusTokens(d.judgement);
+                const s = getRobStatusTokens(d.judgement);
                 const isQuote = isVerbatimInManuscript(d.supportiveEvidence, pseudoManuscript);
                 return new TableRow({
+                  cantSplit: true,
                   children: [
                     new TableCell({
                       width: { size: 2200, type: WidthType.DXA },
@@ -819,7 +928,7 @@ export function buildAcademicDocxManuscript(
                       children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: s.symbol, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: s.text })] })],
                     }),
                     new TableCell({
-                      width: { size: 3160, type: WidthType.DXA },
+                      width: { size: contentWidth - 6200, type: WidthType.DXA },
                       margins: CELL_PADDING,
                       children: [
                         new Paragraph({
@@ -877,22 +986,25 @@ export function buildAcademicDocxManuscript(
           ),
 
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [1800, 2800, 1760, 3000],
+            columnWidths: [1800, 2800, 1760, contentWidth - 6360],
             rows: [
               new TableRow({
+                tableHeader: true,
+                cantSplit: true,
                 children: [
                   createTableHeaderCell('ITEM & SECTION', 1800),
                   createTableHeaderCell('REQUIREMENT', 2800),
                   createTableHeaderCell('STATUS', 1760),
-                  createTableHeaderCell('MANUSCRIPT EVIDENCE / LOCATION', 3000),
+                  createTableHeaderCell('MANUSCRIPT EVIDENCE / LOCATION', contentWidth - 6360),
                 ],
               }),
               ...report.equatorChecklist.criticalItemsAudit.map((item) => {
-                const s = getStatusTokens(item.status);
+                const s = getEquatorStatusTokens(item.status);
                 const isQuote = isVerbatimInManuscript(item.evidenceOrPageLocation, pseudoManuscript);
                 return new TableRow({
+                  cantSplit: true,
                   children: [
                     new TableCell({
                       width: { size: 1800, type: WidthType.DXA },
@@ -911,7 +1023,7 @@ export function buildAcademicDocxManuscript(
                       children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: s.symbol, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_SMALL, bold: true, color: s.text })] })],
                     }),
                     new TableCell({
-                      width: { size: 3000, type: WidthType.DXA },
+                      width: { size: contentWidth - 6360, type: WidthType.DXA },
                       margins: CELL_PADDING,
                       children: [
                         new Paragraph({
@@ -983,23 +1095,26 @@ export function buildAcademicDocxManuscript(
           // Effect Estimates Table
           createHeading2('Observed Primary & Secondary Effect Estimates'),
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [2200, 1100, 1300, 1400, 1160, 2200],
+            columnWidths: [2200, 1100, 1300, 1400, 1160, contentWidth - 7160],
             rows: [
               new TableRow({
+                tableHeader: true,
+                cantSplit: true,
                 children: [
                   createTableHeaderCell('OUTCOME', 2200),
                   createTableHeaderCell('METRIC', 1100),
                   createTableHeaderCell('ESTIMATE', 1300),
                   createTableHeaderCell('95% CI', 1400),
                   createTableHeaderCell('P-VALUE', 1160),
-                  createTableHeaderCell('CLINICAL SIGNIFICANCE', 2200),
+                  createTableHeaderCell('CLINICAL SIGNIFICANCE', contentWidth - 7160),
                 ],
               }),
               ...(report.statisticalAudit.effectEstimates.length > 0
                 ? report.statisticalAudit.effectEstimates.map((est) => {
                     return new TableRow({
+                      cantSplit: true,
                       children: [
                         new TableCell({
                           width: { size: 2200, type: WidthType.DXA },
@@ -1027,7 +1142,7 @@ export function buildAcademicDocxManuscript(
                           children: [new Paragraph({ children: [new TextRun({ text: est.pValue, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                         }),
                         new TableCell({
-                          width: { size: 2200, type: WidthType.DXA },
+                          width: { size: contentWidth - 7160, type: WidthType.DXA },
                           margins: CELL_PADDING,
                           children: [new Paragraph({ children: [new TextRun({ text: est.clinicalVsStatisticalSignificance, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                         }),
@@ -1036,10 +1151,11 @@ export function buildAcademicDocxManuscript(
                   })
                 : [
                     new TableRow({
+                      cantSplit: true,
                       children: [
                         new TableCell({
                           columnSpan: 6,
-                          width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                          width: { size: contentWidth, type: WidthType.DXA },
                           margins: CELL_PADDING,
                           children: [
                             new Paragraph({
@@ -1065,13 +1181,14 @@ export function buildAcademicDocxManuscript(
           // Spin & Overinterpretation Callout Box
           new Paragraph({ spacing: { before: 100, after: 60 }, children: [] }),
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: CALLOUT_BORDERS_NAVY,
             rows: [
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
-                    width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                    width: { size: contentWidth, type: WidthType.DXA },
                     shading: {
                       type: ShadingType.CLEAR,
                       fill: report.statisticalAudit.spinAndDiscrepancyAudit.spinDetected
@@ -1158,19 +1275,22 @@ export function buildAcademicDocxManuscript(
           createBodyParagraph(report.validitySynthesis.conflictsOfInterestAndFundingCritique),
 
           // GRADE Certainty Table
-          createHeading2('GRADE Certainty of Evidence Synthesis'),
+          createHeading2('GRADE-informed Certainty of Evidence (Single Study)'),
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: TABLE_BORDERS_CLEAN,
-            columnWidths: [2600, 6760],
+            columnWidths: [2600, contentWidth - 2600],
             rows: [
               new TableRow({
+                tableHeader: true,
+                cantSplit: true,
                 children: [
                   createTableHeaderCell('GRADE DIMENSION', 2600),
-                  createTableHeaderCell('EVALUATION & SYNTHESIS', 6760),
+                  createTableHeaderCell('EVALUATION & SYNTHESIS', contentWidth - 2600),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2600, type: WidthType.DXA },
@@ -1179,13 +1299,14 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Final GRADE Rating', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6760, type: WidthType.DXA },
+                    width: { size: contentWidth - 2600, type: WidthType.DXA },
                     margins: CELL_PADDING,
                     children: [new Paragraph({ children: [new TextRun({ text: `${report.validitySynthesis.gradeCertainty} CERTAINTY OF EVIDENCE`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.TEAL_ACCENT })] })],
                   }),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2600, type: WidthType.DXA },
@@ -1194,13 +1315,30 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Downgrading Factors', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6760, type: WidthType.DXA },
+                    width: { size: contentWidth - 2600, type: WidthType.DXA },
                     margins: CELL_PADDING,
                     children: [new Paragraph({ children: [new TextRun({ text: report.validitySynthesis.gradeDowngradingFactors.join('; ') || 'None', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
                 ],
               }),
               new TableRow({
+                cantSplit: true,
+                children: [
+                  new TableCell({
+                    width: { size: 2600, type: WidthType.DXA },
+                    shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.CALLOUT_BG },
+                    margins: CELL_PADDING,
+                    children: [new Paragraph({ children: [new TextRun({ text: 'Upgrading Factors', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
+                  }),
+                  new TableCell({
+                    width: { size: contentWidth - 2600, type: WidthType.DXA },
+                    margins: CELL_PADDING,
+                    children: [new Paragraph({ children: [new TextRun({ text: report.validitySynthesis.gradeUpgradingFactors && report.validitySynthesis.gradeUpgradingFactors.length > 0 ? report.validitySynthesis.gradeUpgradingFactors.join('; ') : 'None identified (single observational study or non-replicated trial)', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
+                  }),
+                ],
+              }),
+              new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
                     width: { size: 2600, type: WidthType.DXA },
@@ -1209,7 +1347,7 @@ export function buildAcademicDocxManuscript(
                     children: [new Paragraph({ children: [new TextRun({ text: 'Synthesis Rationale', font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
                   }),
                   new TableCell({
-                    width: { size: 6760, type: WidthType.DXA },
+                    width: { size: contentWidth - 2600, type: WidthType.DXA },
                     margins: CELL_PADDING,
                     children: [new Paragraph({ children: [new TextRun({ text: report.validitySynthesis.gradeRationale, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
                   }),
@@ -1238,13 +1376,14 @@ export function buildAcademicDocxManuscript(
           // METHODOLOGICAL & EDITORIAL GOVERNANCE DISCLAIMER
           new Paragraph({ spacing: { before: 140, after: 60 }, children: [] }),
           new Table({
-            width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+            width: { size: contentWidth, type: WidthType.DXA },
             borders: CALLOUT_BORDERS_TEAL,
             rows: [
               new TableRow({
+                cantSplit: true,
                 children: [
                   new TableCell({
-                    width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                    width: { size: contentWidth, type: WidthType.DXA },
                     shading: { type: ShadingType.CLEAR, fill: DOCX_COLORS.TEAL_LIGHT },
                     margins: CELL_PADDING,
                     children: [
@@ -1293,6 +1432,10 @@ export function buildAcademicDocxManuscript(
           createHeading1('8.', 'References'),
 
           ...report.references.map((ref) => {
+            const hasDoiInCitation = ref.vancouverCitation.toLowerCase().includes('doi:');
+            const citationWithDoi = ref.doiOrUrl && !hasDoiInCitation
+              ? `${ref.vancouverCitation} ${ref.doiOrUrl}`
+              : ref.vancouverCitation;
             return new Paragraph({
               alignment: AlignmentType.LEFT,
               spacing: { line: 240, before: 60, after: 60 },
@@ -1305,7 +1448,7 @@ export function buildAcademicDocxManuscript(
                   color: DOCX_COLORS.NAVY_PRIMARY,
                 }),
                 new TextRun({
-                  text: ref.vancouverCitation,
+                  text: citationWithDoi,
                   font: TYPOGRAPHY.FONT_PRIMARY,
                   size: TYPOGRAPHY.SIZE_TABLE,
                   color: DOCX_COLORS.SLATE_BODY,

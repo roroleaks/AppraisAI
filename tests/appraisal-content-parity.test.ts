@@ -132,11 +132,11 @@ async function runParityTests() {
     `Paper A significance is dynamically computed: "${hrEstimate?.clinicalVsStatisticalSignificance}"`
   );
 
-  // Assertion 7: Classification parity
+  // Assertion 7: Classification parity (P2-0: CONSORT 2025)
   assert(
     reportA.classification.studyDesign === 'RCT' &&
-      reportA.classification.equatorReportingGuideline === 'CONSORT 2010',
-    `Paper A classified as RCT under CONSORT 2010`
+      reportA.classification.equatorReportingGuideline === 'CONSORT 2025',
+    `Paper A classified as RCT under CONSORT 2025`
   );
 
   // Assertion 8: Vancouver References dynamically cite the analyzed paper

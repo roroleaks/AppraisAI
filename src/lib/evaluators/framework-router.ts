@@ -27,28 +27,29 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
     case 'RCT':
       return {
         studyDesign: 'RCT',
-        equatorGuidelineName: 'CONSORT 2010',
+        equatorGuidelineName: 'CONSORT 2025',
         equatorGuidelineCitation:
-          'Schulz KF, Altman DG, Moher D; CONSORT Group. CONSORT 2010 Statement: updated guidelines for reporting parallel group randomised trials. BMJ. 2010;340:c332.',
+          'Hopewell S, Clarke M, Moher D, et al. CONSORT 2025 statement: updated guideline for reporting randomised trials. BMJ. 2025;389:e081123. doi:10.1136/bmj-2024-081123',
         riskOfBiasToolName: 'Cochrane Risk of Bias 2.0 (RoB 2)',
         riskOfBiasToolCitation:
-          'Sterne JAC, Savovic J, Page MJ, et al. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 2019;366:l4898.',
+          'Sterne JAC, Savovic J, Page MJ, et al. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 2019;366:l4898. doi:10.1136/bmj.l4898',
         defaultOxfordLevel: 'Level 1b',
         robMandatoryDomains: [
-          { domainName: 'Domain 1: Randomisation process', description: 'Generation of random sequence and allocation concealment' },
-          { domainName: 'Domain 2: Deviations from intended interventions', description: 'Blinding of participants/personnel and protocol adherence' },
-          { domainName: 'Domain 3: Missing outcome data', description: 'Attrition, follow-up completeness, and intention-to-treat analysis' },
-          { domainName: 'Domain 4: Measurement of the outcome', description: 'Blinding of outcome assessors and validity of measurement instruments' },
-          { domainName: 'Domain 5: Selection of the reported result', description: 'Adherence to pre-specified analysis plan/trial registry' },
+          { domainName: 'Domain 1: Bias arising from the randomisation process', description: 'Generation of random sequence and allocation concealment' },
+          { domainName: 'Domain 2: Deviations from intended interventions (effect of assignment)', description: 'Deviations from intended interventions reflecting effect of assignment' },
+          { domainName: 'Domain 3: Bias due to missing outcome data', description: 'Completeness of follow-up and intention-to-treat analysis' },
+          { domainName: 'Domain 4: Bias in measurement of the outcome', description: 'Blinding of outcome assessors and validity of measurement instruments' },
+          { domainName: 'Domain 5: Bias in selection of the reported result', description: 'Adherence to pre-specified analysis plan or trial registry' },
         ],
         equatorMandatoryItems: [
-          { itemNumberAndSection: 'Item 1a: Title', requirement: 'Identification as a randomised trial in the title' },
-          { itemNumberAndSection: 'Item 2a/b: Introduction', requirement: 'Scientific background, rational, and specific objectives/hypotheses' },
-          { itemNumberAndSection: 'Item 8a/b: Randomisation - Allocation Concealment', requirement: 'Mechanism to implement random allocation and concealment' },
-          { itemNumberAndSection: 'Item 11a/b: Blinding', requirement: 'Who was blinded after assignment (participants, care providers, assessors)' },
-          { itemNumberAndSection: 'Item 13a/b: Participant Flow', requirement: 'Flow of participants through each stage (enrolment, allocation, follow-up, analysis)' },
-          { itemNumberAndSection: 'Item 17a: Outcomes and Estimation', requirement: 'For each primary/secondary outcome, results and precision (e.g. 95% CI)' },
-          { itemNumberAndSection: 'Item 20: Limitations', requirement: 'Trial limitations, addressing sources of potential bias and imprecision' },
+          { itemNumberAndSection: 'Item 1: Title', requirement: 'Identification as a randomised trial in the title' },
+          { itemNumberAndSection: 'Item 2: Structured Summary', requirement: 'Structured summary of trial design, methods, results, and conclusions' },
+          { itemNumberAndSection: 'Item 3: Background & Objectives', requirement: 'Scientific background, rational, and specific objectives/hypotheses' },
+          { itemNumberAndSection: 'Item 8: Randomisation & Concealment', requirement: 'Mechanism to implement random allocation and sequence concealment' },
+          { itemNumberAndSection: 'Item 11: Masking / Blinding', requirement: 'Blinding of participants, care providers, and outcome assessors' },
+          { itemNumberAndSection: 'Item 13: Participant Flow', requirement: 'Participant flow through enrolment, allocation, follow-up, and analysis' },
+          { itemNumberAndSection: 'Item 17: Outcomes & Estimation', requirement: 'Primary and secondary outcome estimates with precision (e.g. 95% CI)' },
+          { itemNumberAndSection: 'Item 20: Limitations', requirement: 'Trial limitations, addressing potential bias, imprecision, and multiplicity' },
         ],
       };
 
@@ -57,17 +58,19 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
         studyDesign: 'SYSTEMATIC_REVIEW_META_ANALYSIS',
         equatorGuidelineName: 'PRISMA 2020',
         equatorGuidelineCitation:
-          'Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 2021;372:n71.',
-        riskOfBiasToolName: 'AMSTAR-2 / ROBIS',
+          'Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 2021;372:n71. doi:10.1136/bmj.n71',
+        riskOfBiasToolName: 'AMSTAR 2',
         riskOfBiasToolCitation:
-          'Shea BJ, Reeves BC, Wells G, et al. AMSTAR 2: a critical appraisal tool for systematic reviews that include randomised or non-randomised studies of healthcare interventions. BMJ. 2017;358:j4008.',
+          'Shea BJ, Reeves BC, Wells G, et al. AMSTAR 2: a critical appraisal tool for systematic reviews that include randomised or non-randomised studies of healthcare interventions. BMJ. 2017;358:j4008. doi:10.1136/bmj.j4008',
         defaultOxfordLevel: 'Level 1a',
         robMandatoryDomains: [
-          { domainName: 'Domain 1: Protocol Registration & Search Strategy', description: 'A priori protocol registration (PROSPERO) and comprehensive database queries' },
-          { domainName: 'Domain 2: Study Selection & Data Extraction Dual-Screening', description: 'Duplicate independent eligibility screening and extraction' },
-          { domainName: 'Domain 3: Risk of Bias Assessment of Included Studies', description: 'Use of formal validated RoB instruments (e.g. RoB 2, ROBINS-I)' },
-          { domainName: 'Domain 4: Appropriateness of Meta-analytical Synthesis', description: 'Handling of clinical/statistical heterogeneity (I2) and pooling models' },
-          { domainName: 'Domain 5: Publication Bias & Small-Study Effects', description: 'Funnel plot analysis or Egger/Begg tests' },
+          { domainName: 'Critical Domain 2: Protocol Registration', description: 'A priori protocol established prior to review conduct (PROSPERO)' },
+          { domainName: 'Critical Domain 4: Comprehensive Search Strategy', description: 'Comprehensive search of >=2 databases, grey literature, and trial registries' },
+          { domainName: 'Critical Domain 7: Justification of Excluded Studies', description: 'List of excluded potentially eligible studies with explicit rationale' },
+          { domainName: 'Critical Domain 9: Risk of Bias Assessment', description: 'Use of formal validated RoB instruments (RoB 2, ROBINS-I)' },
+          { domainName: 'Critical Domain 11: Statistical Pooling Methods', description: 'Appropriate quantitative meta-analytical models and heterogeneity handling' },
+          { domainName: 'Critical Domain 13: RoB Consideration in Interpretation', description: 'Impact of primary study risk of bias on pooled conclusions' },
+          { domainName: 'Critical Domain 15: Publication Bias Assessment', description: 'Investigation and discussion of small-study effects and funnel plot asymmetry' },
         ],
         equatorMandatoryItems: [
           { itemNumberAndSection: 'Item 1: Title', requirement: 'Identify the report as a systematic review/meta-analysis' },
@@ -80,22 +83,23 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
       };
 
     case 'COHORT_STUDY':
-    case 'CASE_CONTROL_STUDY':
       return {
-        studyDesign: design,
-        equatorGuidelineName: 'STROBE (Observational)',
+        studyDesign: 'COHORT_STUDY',
+        equatorGuidelineName: 'STROBE (Cohort Studies)',
         equatorGuidelineCitation:
-          'von Elm E, Altman DG, Egger M, et al. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement. Lancet. 2007;370(9596):1453-1457.',
-        riskOfBiasToolName: 'Newcastle-Ottawa Scale (NOS) / ROBINS-I',
+          'von Elm E, Altman DG, Egger M, et al. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement. Lancet. 2007;370(9596):1453-1457. doi:10.1016/S0140-6736(07)61602-X',
+        riskOfBiasToolName: 'ROBINS-I / Newcastle-Ottawa Scale (NOS)',
         riskOfBiasToolCitation:
-          'Wells GA, Shea B, O’Connell D, et al. The Newcastle-Ottawa Scale (NOS) for assessing the quality of nonrandomised studies in meta-analyses. Ottawa Hospital Research Institute; 2021.',
+          'Sterne JA, Hernán MA, Reeves BC, et al. ROBINS-I: a tool for assessing risk of bias in non-randomised studies of interventions. BMJ. 2016;355:i4919. doi:10.1136/bmj.i4919',
         defaultOxfordLevel: 'Level 2b',
         robMandatoryDomains: [
-          { domainName: 'Domain 1: Selection & Representativeness of Cohort', description: 'Selection bias and ascertainment of exposure status' },
-          { domainName: 'Domain 2: Comparability & Confounding Adjustment', description: 'Adjustment for key prognostic factors via multivariable regression or propensity matching' },
-          { domainName: 'Domain 3: Exposure Ascertainment & Misclassification', description: 'Objective ascertainment of exposure and validation against medical records' },
-          { domainName: 'Domain 4: Outcome Assessment & Detection Bias', description: 'Blinded/objective outcome assessment independent of exposure status' },
-          { domainName: 'Domain 5: Attrition & Adequacy of Follow-Up', description: 'Completeness of follow-up (<20% attrition) and handling of dropouts' },
+          { domainName: 'Domain 1: Bias due to confounding', description: 'Adjustment for key prognostic factors via multivariable regression or propensity matching' },
+          { domainName: 'Domain 2: Selection of participants into the study', description: 'Selection bias and ascertainment of exposed vs unexposed cohorts' },
+          { domainName: 'Domain 3: Classification of interventions / exposures', description: 'Objective ascertainment of exposure status and validation against records' },
+          { domainName: 'Domain 4: Deviations from intended interventions', description: 'Protocol adherence and co-intervention balance during follow-up' },
+          { domainName: 'Domain 5: Missing data & attrition', description: 'Completeness of follow-up (<20% attrition) and handling of missing variables' },
+          { domainName: 'Domain 6: Measurement of outcomes', description: 'Objective or blinded outcome ascertainment independent of exposure' },
+          { domainName: 'Domain 7: Selection of the reported result', description: 'Pre-specified analytical plan and multiple outcome testing' },
         ],
         equatorMandatoryItems: [
           { itemNumberAndSection: 'Item 1: Title & Abstract', requirement: 'State study design with commonly used terms' },
@@ -106,21 +110,74 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
         ],
       };
 
+    case 'CASE_CONTROL_STUDY':
+      return {
+        studyDesign: 'CASE_CONTROL_STUDY',
+        equatorGuidelineName: 'STROBE (Case-Control Studies)',
+        equatorGuidelineCitation:
+          'von Elm E, Altman DG, Egger M, et al. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement. Lancet. 2007;370(9596):1453-1457. doi:10.1016/S0140-6736(07)61602-X',
+        riskOfBiasToolName: 'Newcastle-Ottawa Scale (NOS) for Case-Control Studies',
+        riskOfBiasToolCitation:
+          'Wells GA, Shea B, O’Connell D, et al. The Newcastle-Ottawa Scale (NOS) for assessing the quality of nonrandomised studies in meta-analyses. Ottawa: OHRI; 2021. URL: https://www.ohri.ca/programs/clinical_epidemiology/oxford.asp',
+        defaultOxfordLevel: 'Level 3b',
+        robMandatoryDomains: [
+          { domainName: 'Domain 1: Case Definition & Selection', description: 'Validation of disease state against independent diagnostic criteria' },
+          { domainName: 'Domain 2: Representativeness & Control Selection', description: 'Controls derived from same source population as cases' },
+          { domainName: 'Domain 3: Comparability of Cases and Controls', description: 'Design or analysis matching for core demographic/prognostic confounders' },
+          { domainName: 'Domain 4: Ascertainment of Exposure', description: 'Blinded structured interview or verified medical record extraction' },
+          { domainName: 'Domain 5: Non-Response Rate', description: 'Comparable non-response rates between case and control series' },
+        ],
+        equatorMandatoryItems: [
+          { itemNumberAndSection: 'Item 1: Title & Abstract', requirement: 'Identify as a case-control investigation in title or abstract' },
+          { itemNumberAndSection: 'Item 6: Selection Criteria', requirement: 'Eligibility criteria, sources, and matching ratios' },
+          { itemNumberAndSection: 'Item 12: Statistical Adjustment', requirement: 'Methods to adjust for confounding in odds ratio calculations' },
+          { itemNumberAndSection: 'Item 16: Odds Ratio Estimates', requirement: 'Point estimates and 95% confidence intervals for exposure associations' },
+        ],
+      };
+
+    case 'CROSS_SECTIONAL':
+      return {
+        studyDesign: 'CROSS_SECTIONAL',
+        equatorGuidelineName: 'STROBE (Cross-Sectional Studies)',
+        equatorGuidelineCitation:
+          'von Elm E, Altman DG, Egger M, et al. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement. Lancet. 2007;370(9596):1453-1457. doi:10.1016/S0140-6736(07)61602-X',
+        riskOfBiasToolName: 'JBI Critical Appraisal Checklist for Analytical Cross-Sectional Studies',
+        riskOfBiasToolCitation:
+          'Moola S, Munn Z, Tufanaru C, et al. Systematic reviews of etiology and risk. In: Aromataris E, Munn Z, eds. JBI Manual for Evidence Synthesis. JBI; 2020. doi:10.46658/JBIMES-20-01',
+        defaultOxfordLevel: 'Level 4',
+        robMandatoryDomains: [
+          { domainName: 'Domain 1: Inclusion Criteria Clarity', description: 'Clearly defined clinical inclusion and exclusion parameters' },
+          { domainName: 'Domain 2: Study Subject & Setting Detail', description: 'Adequate characterization of sample demographics and clinical setting' },
+          { domainName: 'Domain 3: Valid Exposure Measurement', description: 'Valid and reliable measurement of exposure/predictor variables' },
+          { domainName: 'Domain 4: Objective Outcome Criteria', description: 'Standardized and objective measurement of clinical condition' },
+          { domainName: 'Domain 5: Confounder Identification & Adjustment', description: 'Identification of confounding factors and multivariable statistical control' },
+        ],
+        equatorMandatoryItems: [
+          { itemNumberAndSection: 'Item 1: Title & Abstract', requirement: 'State study design with commonly used terms' },
+          { itemNumberAndSection: 'Item 6: Participants', requirement: 'Eligibility criteria and sources of participants' },
+          { itemNumberAndSection: 'Item 12: Statistical Methods', requirement: 'Describe statistical methods including handling of confounding' },
+          { itemNumberAndSection: 'Item 16: Prevalence Estimates', requirement: 'Main results with precision (e.g. 95% confidence intervals)' },
+        ],
+      };
+
     case 'DIAGNOSTIC_ACCURACY':
       return {
         studyDesign: 'DIAGNOSTIC_ACCURACY',
         equatorGuidelineName: 'STARD 2015',
         equatorGuidelineCitation:
-          'Bossuyt PM, Reitsma JB, Bruns DE, et al. STARD 2015: an updated list of essential items for reporting diagnostic accuracy studies. BMJ. 2015;351:h5527.',
+          'Bossuyt PM, Reitsma JB, Bruns DE, et al. STARD 2015: an updated list of essential items for reporting diagnostic accuracy studies. BMJ. 2015;351:h5527. doi:10.1136/bmj.h5527',
         riskOfBiasToolName: 'QUADAS-2',
         riskOfBiasToolCitation:
-          'Whiting PF, Rutjes AW, Westwood ME, et al. QUADAS-2: a revised tool for the quality assessment of diagnostic accuracy studies. Ann Intern Med. 2011;155(8):529-536.',
+          'Whiting PF, Rutjes AW, Westwood ME, et al. QUADAS-2: a revised tool for the quality assessment of diagnostic accuracy studies. Ann Intern Med. 2011;155(8):529-536. doi:10.7326/0003-4819-155-8-201110180-00009',
         defaultOxfordLevel: 'Level 1b',
         robMandatoryDomains: [
-          { domainName: 'Domain 1: Patient Selection', description: 'Consecutive or random sample; avoidance of inappropriate exclusions' },
-          { domainName: 'Domain 2: Index Test', description: 'Index test interpreted without knowledge of reference standard (blinding)' },
-          { domainName: 'Domain 3: Reference Standard', description: 'Gold standard verified independently without knowledge of index test' },
-          { domainName: 'Domain 4: Flow and Timing', description: 'Appropriate interval between tests and all patients received reference standard' },
+          { domainName: 'Domain 1: Patient Selection (Risk of Bias)', description: 'Consecutive or random sample; avoidance of inappropriate exclusions' },
+          { domainName: 'Domain 1: Patient Selection (Applicability)', description: 'Concerns that included patients do not match the review question' },
+          { domainName: 'Domain 2: Index Test (Risk of Bias)', description: 'Index test interpreted without knowledge of reference standard (blinding)' },
+          { domainName: 'Domain 2: Index Test (Applicability)', description: 'Concerns that index test execution does not match clinical practice' },
+          { domainName: 'Domain 3: Reference Standard (Risk of Bias)', description: 'Gold standard verified independently without knowledge of index test' },
+          { domainName: 'Domain 3: Reference Standard (Applicability)', description: 'Concerns that target condition defined by reference does not match review question' },
+          { domainName: 'Domain 4: Flow and Timing (Risk of Bias)', description: 'Appropriate interval between tests and all patients received reference standard' },
         ],
         equatorMandatoryItems: [
           { itemNumberAndSection: 'Item 1: Title', requirement: 'Identify as a study of diagnostic accuracy' },
@@ -130,21 +187,46 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
         ],
       };
 
+    case 'CLINICAL_PRACTICE_GUIDELINE':
+      return {
+        studyDesign: 'CLINICAL_PRACTICE_GUIDELINE',
+        equatorGuidelineName: 'RIGHT Statement (Practice Guidelines)',
+        equatorGuidelineCitation:
+          'Chen Y, Yang K, Marušic A, et al. A Reporting Tool for Practice Guidelines in Health Care: The RIGHT Statement. Ann Intern Med. 2017;166(2):128-132. doi:10.7326/M16-1561',
+        riskOfBiasToolName: 'AGREE II',
+        riskOfBiasToolCitation:
+          'Brouwers MC, Kho ME, Browman GP, et al. AGREE II: advancing guideline development, reporting and evaluation in healthcare. CMAJ. 2010;182(18):E839-E842. doi:10.1503/cmaj.090449',
+        defaultOxfordLevel: 'Level 1a',
+        robMandatoryDomains: [
+          { domainName: 'Domain 1: Scope and Purpose', description: 'Overall objective, health questions, and target population described' },
+          { domainName: 'Domain 2: Stakeholder Involvement', description: 'Multidisciplinary group, patient views sought, and target users defined' },
+          { domainName: 'Domain 3: Rigour of Development', description: 'Systematic search methods, evidence selection, and link between evidence and recommendations' },
+          { domainName: 'Domain 4: Clarity of Presentation', description: 'Specific, unambiguous, easily identifiable recommendations' },
+          { domainName: 'Domain 5: Applicability', description: 'Facilitators, barriers, resource implications, and monitoring criteria addressed' },
+          { domainName: 'Domain 6: Editorial Independence', description: 'Funding body influence minimized and competing interests recorded' },
+        ],
+        equatorMandatoryItems: [
+          { itemNumberAndSection: 'Item 1: Title & Subtitle', requirement: 'Identify report as clinical practice guideline' },
+          { itemNumberAndSection: 'Item 4: Evidence Synthesis', requirement: 'Systematic evidence retrieval and grading methodologies' },
+          { itemNumberAndSection: 'Item 7: Recommendations', requirement: 'Clear actionable recommendations with certainty ratings' },
+        ],
+      };
+
     default:
       return {
         studyDesign: design,
-        equatorGuidelineName: 'EQUATOR General Guidance / STROBE',
+        equatorGuidelineName: 'EQUATOR General Reporting Framework',
         equatorGuidelineCitation:
-          'Simera I, Moher D, Hirst A, et al. Transparent and accurate reporting increases reliability, utility, and impact of research. BMJ. 2010;340:c1370.',
-        riskOfBiasToolName: 'CASP Critical Appraisal Tool',
+          'Simera I, Moher D, Hirst A, et al. Transparent and accurate reporting increases reliability, utility, and impact of research. BMJ. 2010;340:c1370. doi:10.1136/bmj.c1370',
+        riskOfBiasToolName: 'Narrative Synthesis Appraisal / SANRA',
         riskOfBiasToolCitation:
-          'Critical Appraisal Skills Programme. CASP Checklists. Oxford: CASP; 2018.',
-        defaultOxfordLevel: 'Level 3a',
+          'Baethge C, Goldbeck-Wood S, Mertens S. SANRA—a scale for the quality assessment of narrative review articles. Res Integr Peer Rev. 2019;4:5. doi:10.1186/s41073-019-0064-8',
+        defaultOxfordLevel: 'Level 5',
         robMandatoryDomains: [
-          { domainName: 'Clear Clinical Question', description: 'Focused population, intervention/exposure, and outcomes' },
-          { domainName: 'Methodological Rigor', description: 'Adequacy of design and control for bias' },
-          { domainName: 'Validity of Results', description: 'Precision of effect estimates and confidence intervals' },
-          { domainName: 'Clinical Applicability', description: 'Generalizability to patient care' },
+          { domainName: 'Methodological Scope', description: 'Evaluation of scientific rationale and focused clinical inquiry' },
+          { domainName: 'Literature Search Transparency', description: 'Description of bibliographic sources and literature selection' },
+          { domainName: 'Evidence Grounding', description: 'Referencing of primary clinical evidence supporting claims' },
+          { domainName: 'Critical Synthesis', description: 'Balanced presentation of conflicting evidence and clinical caveats' },
         ],
         equatorMandatoryItems: [
           { itemNumberAndSection: 'Item 1: Rationale & Objectives', requirement: 'Explicit scientific background and question' },

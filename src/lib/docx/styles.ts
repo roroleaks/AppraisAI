@@ -30,7 +30,17 @@ export const DOCX_COLORS = {
   NEUTRAL_TEXT: '475569',
 };
 
-export const PAGE_GEOMETRY = {
+export const PAGE_GEOMETRY_A4 = {
+  PAGE_WIDTH: 11906,  // A4: 210mm = 11,906 dxa
+  PAGE_HEIGHT: 16838, // A4: 297mm = 16,838 dxa
+  MARGIN_TOP: 1440,   // 1 inch = 1440 dxa
+  MARGIN_BOTTOM: 1440,
+  MARGIN_LEFT: 1440,
+  MARGIN_RIGHT: 1440,
+  CONTENT_WIDTH: 9026, // 11906 - 2880 = 9026 dxa printable width
+};
+
+export const PAGE_GEOMETRY_LETTER = {
   PAGE_WIDTH: 12240,  // US Letter (8.5 inches = 12,240 dxa)
   PAGE_HEIGHT: 15840, // 11 inches = 15,840 dxa
   MARGIN_TOP: 1440,   // 1 inch = 1440 dxa
@@ -39,6 +49,9 @@ export const PAGE_GEOMETRY = {
   MARGIN_RIGHT: 1440,
   CONTENT_WIDTH: 9360, // 12240 - 2880 = 9360 dxa printable width
 };
+
+// Default to publication standard A4 (P3-3)
+export const PAGE_GEOMETRY = PAGE_GEOMETRY_A4;
 
 export const TYPOGRAPHY = {
   FONT_PRIMARY: 'Arial',

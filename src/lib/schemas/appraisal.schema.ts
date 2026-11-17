@@ -167,6 +167,7 @@ export const MasterAppraisalReportSchema = z.object({
     conflictsOfInterestAndFundingCritique: z.string(),
     gradeCertainty: GradeCertaintyEnum,
     gradeDowngradingFactors: z.array(z.string()).describe('Risk of bias, Imprecision, Inconsistency, Indirectness, Publication bias'),
+    gradeUpgradingFactors: z.array(z.string()).optional(),
     gradeRationale: z.string(),
     manuallyOverridden: z.boolean().optional(),
     overrideJustification: z.string().optional(),

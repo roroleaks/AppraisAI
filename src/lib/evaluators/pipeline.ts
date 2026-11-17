@@ -244,18 +244,29 @@ Formulate practical bottom-line recommendations for practicing clinicians and fu
     {
       number: 2,
       vancouverCitation: governingRules.equatorGuidelineCitation,
-      doiOrUrl: undefined,
+      doiOrUrl: governingRules.equatorGuidelineCitation.match(/doi:\s*([^\s,;]+)/i)?.[1]
+        ? `https://doi.org/${governingRules.equatorGuidelineCitation.match(/doi:\s*([^\s,;]+)/i)![1]}`
+        : undefined,
     },
     {
       number: 3,
       vancouverCitation: governingRules.riskOfBiasToolCitation,
-      doiOrUrl: undefined,
+      doiOrUrl: governingRules.riskOfBiasToolCitation.match(/doi:\s*([^\s,;]+)/i)?.[1]
+        ? `https://doi.org/${governingRules.riskOfBiasToolCitation.match(/doi:\s*([^\s,;]+)/i)![1]}`
+        : governingRules.riskOfBiasToolCitation.match(/URL:\s*([^\s,;]+)/i)?.[1] || undefined,
     },
     {
       number: 4,
       vancouverCitation:
         'Guyatt GH, Oxman AD, Vist GE, et al. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 2008;336(7650):924-926.',
       doiOrUrl: 'https://doi.org/10.1136/bmj.39489.470347.AD',
+    },
+    {
+      number: 5,
+      vancouverCitation:
+        'Oxford Centre for Evidence-Based Medicine: Levels of Evidence (March 2009). Oxford: OCEBM; 2009.',
+      doiOrUrl:
+        'https://www.cebm.ox.ac.uk/resources/levels-of-evidence/oxford-centre-for-evidence-based-medicine-levels-of-evidence-march-2009',
     },
   ];
 
@@ -279,6 +290,7 @@ Formulate practical bottom-line recommendations for practicing clinicians and fu
       conflictsOfInterestAndFundingCritique: pass4Result.conflictsOfInterestAndFundingCritique,
       gradeCertainty: gradeEngineOutput.finalCertainty,
       gradeDowngradingFactors: gradeEngineOutput.downgradingFactors,
+      gradeUpgradingFactors: gradeEngineOutput.upgradingFactors,
       gradeRationale: gradeEngineOutput.rationale,
     },
     clinicalPracticeBottomLine: pass4Result.clinicalPracticeBottomLine,

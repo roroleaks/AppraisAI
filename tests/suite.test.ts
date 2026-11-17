@@ -81,13 +81,13 @@ async function runAllTests() {
   console.log('\n--- Step 3: Framework Router Rules Tests ---');
   {
     const rctRules = getGoverningFrameworkRules('RCT');
-    assert(rctRules.equatorGuidelineName === 'CONSORT 2010', 'RCT routes to CONSORT 2010');
+    assert(rctRules.equatorGuidelineName === 'CONSORT 2025', 'RCT routes to CONSORT 2025');
     assert(rctRules.riskOfBiasToolName.includes('Cochrane'), 'RCT routes to Cochrane RoB 2.0');
     assert(rctRules.defaultOxfordLevel === 'Level 1b', 'RCT routes to Oxford Level 1b');
 
     const srRules = getGoverningFrameworkRules('SYSTEMATIC_REVIEW_META_ANALYSIS');
     assert(srRules.equatorGuidelineName === 'PRISMA 2020', 'Meta-analysis routes to PRISMA 2020');
-    assert(srRules.riskOfBiasToolName.includes('AMSTAR-2'), 'Meta-analysis routes to AMSTAR-2 / ROBIS');
+    assert(srRules.riskOfBiasToolName.includes('AMSTAR 2'), 'Meta-analysis routes to AMSTAR 2');
     assert(srRules.defaultOxfordLevel === 'Level 1a', 'Meta-analysis routes to Oxford Level 1a');
 
     const cohortRules = getGoverningFrameworkRules('COHORT_STUDY');
