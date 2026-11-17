@@ -8,6 +8,19 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
 
+/**
+ * Strips API keys, prompt leakage, and internal secrets from error messages (P5-4).
+ */
+function sanitizeErrorMessage(msg: string | undefined): string {
+  if (!msg) return 'An unexpected error occurred during critical appraisal';
+  return msg
+    .replace(/(?:AIza[0-9A-Za-z-_]{35}|gsk_[0-9A-Za-z]{40,}|sk-[0-9A-Za-z-_]{20,})/gi, '[REDACTED_API_KEY]')
+    .replace(/bearer\s+[A-Za-z0-9-_.]+/gi, 'Bearer [REDACTED]')
+    .replace(/(?:key|token|password)=[^&\s]+/gi, 'secret=[REDACTED]')
+    .replace(/at\s+(?:(?!\bat\b).)*:\d+:\d+/g, '') // strip stack trace frames
+    .trim();
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -86,7 +99,7 @@ export async function POST(req: NextRequest) {
                 });
                 const fallbackReport = generateDeterministicAppraisal(manuscript);
                 fallbackReport.engineUsed = 'deterministic-fallback';
-                fallbackReport.fallbackReason = llmErr?.message || 'LLM call failed or timed out';
+                fallbackReport.fallbackReason = sanitizeErrorMessage(llmErr?.message);
                 sendEvent('result', fallbackReport);
                 controller.close();
                 return;
@@ -104,7 +117,7 @@ export async function POST(req: NextRequest) {
             sendEvent('result', report);
             controller.close();
           } catch (streamErr: any) {
-            sendEvent('error', { error: streamErr?.message || 'Error during critical appraisal' });
+            sendEvent('error', { error: sanitizeErrorMessage(streamErr?.message) });
             controller.close();
           }
         },
@@ -142,7 +155,7 @@ export async function POST(req: NextRequest) {
         console.warn('LLM evaluation encountered an issue, falling back to deterministic synthesis engine:', llmErr.message);
         const fallbackReport = generateDeterministicAppraisal(manuscript);
         fallbackReport.engineUsed = 'deterministic-fallback';
-        fallbackReport.fallbackReason = llmErr?.message || 'LLM call failed or timed out';
+        fallbackReport.fallbackReason = sanitizeErrorMessage(llmErr?.message);
         return NextResponse.json(fallbackReport);
       }
     }
@@ -153,7 +166,7 @@ export async function POST(req: NextRequest) {
   } catch (err: any) {
     console.error('Appraisal Pipeline failed:', err);
     return NextResponse.json(
-      { error: err?.message || 'Error occurred during critical appraisal' },
+      { error: sanitizeErrorMessage(err?.message) },
       { status: 500 }
     );
   }

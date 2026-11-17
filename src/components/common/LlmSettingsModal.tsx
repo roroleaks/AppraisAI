@@ -33,33 +33,54 @@ export const LlmSettingsModal: React.FC = () => {
   const [provider, setProvider] = useState<LlmProvider>(llmProvider);
   const [apiKey, setApiKey] = useState(llmApiKey);
   const [model, setModel] = useState(llmModel);
+  const [rememberOnDevice, setRememberOnDevice] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
-    // Load from localStorage if present
-    const savedProvider = localStorage.getItem('appraisai_llm_provider') as LlmProvider | null;
-    const savedKey = localStorage.getItem('appraisai_llm_key');
-    const savedModel = localStorage.getItem('appraisai_llm_model');
+    // Check localStorage first, then sessionStorage (P5-3)
+    const localKey = localStorage.getItem('appraisai_llm_key');
+    const sessionKey = sessionStorage.getItem('appraisai_llm_key');
+    const isPersistent = !!localKey;
+    setRememberOnDevice(isPersistent);
+
+    const savedProvider = (isPersistent
+      ? localStorage.getItem('appraisai_llm_provider')
+      : sessionStorage.getItem('appraisai_llm_provider')) as LlmProvider | null;
+    const activeKey = localKey || sessionKey || '';
+    const savedModel = isPersistent
+      ? localStorage.getItem('appraisai_llm_model')
+      : sessionStorage.getItem('appraisai_llm_model');
 
     if (savedProvider) setProvider(savedProvider);
-    if (savedKey) setApiKey(savedKey);
+    if (activeKey) setApiKey(activeKey);
     if (savedModel) setModel(savedModel);
 
-    if (savedProvider || savedKey) {
+    if (savedProvider || activeKey) {
       setLlmConfig(
         savedProvider || 'gemini',
-        savedKey || '',
+        activeKey,
         savedModel || (savedProvider === 'groq' ? 'llama-3.3-70b-versatile' : 'gemini-2.5-flash')
       );
     }
   }, [setLlmConfig]);
 
   const handleSave = () => {
-    localStorage.setItem('appraisai_llm_provider', provider);
-    localStorage.setItem('appraisai_llm_key', apiKey.trim());
-    localStorage.setItem('appraisai_llm_model', model.trim());
+    const cleanKey = apiKey.trim();
+    const cleanModel = model.trim();
 
-    setLlmConfig(provider, apiKey.trim(), model.trim());
+    if (rememberOnDevice) {
+      localStorage.setItem('appraisai_llm_provider', provider);
+      localStorage.setItem('appraisai_llm_key', cleanKey);
+      localStorage.setItem('appraisai_llm_model', cleanModel);
+      sessionStorage.removeItem('appraisai_llm_key');
+    } else {
+      sessionStorage.setItem('appraisai_llm_provider', provider);
+      sessionStorage.setItem('appraisai_llm_key', cleanKey);
+      sessionStorage.setItem('appraisai_llm_model', cleanModel);
+      localStorage.removeItem('appraisai_llm_key'); // Strip key from persistent storage
+    }
+
+    setLlmConfig(provider, cleanKey, cleanModel);
     setIsSaved(true);
     setTimeout(() => {
       setIsSaved(false);
@@ -154,9 +175,22 @@ export const LlmSettingsModal: React.FC = () => {
                   placeholder={`Paste ${provider.toUpperCase()} API key...`}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600 text-xs font-mono"
                 />
-                <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                  <Shield className="w-3 h-3 text-slate-400" />
-                  Stored only in your browser local storage. Never sent to any third-party server.
+                <label className="flex items-center gap-2 text-xs text-slate-700 cursor-pointer pt-2 select-none">
+                  <input
+                    type="checkbox"
+                    checked={rememberOnDevice}
+                    onChange={(e) => setRememberOnDevice(e.target.checked)}
+                    className="rounded border-slate-300 text-teal-700 focus:ring-teal-600"
+                  />
+                  <span>Remember on this device across browser sessions</span>
+                </label>
+                <p className="text-[11px] text-slate-500 mt-1 flex items-start gap-1">
+                  <Shield className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                  <span>
+                    {rememberOnDevice
+                      ? 'Saved in persistent localStorage on this browser only. Never sent to any third-party telemetry.'
+                      : 'Default: Kept in temporary sessionStorage for this tab only, and automatically discarded when closed.'}
+                  </span>
                 </p>
               </div>
 

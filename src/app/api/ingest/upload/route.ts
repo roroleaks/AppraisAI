@@ -7,6 +7,8 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
 
+const MAX_UPLOAD_BYTES = 25 * 1024 * 1024; // 25 MB max upload (P5-2)
+
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
@@ -16,6 +18,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
     }
 
+    if (file.size > MAX_UPLOAD_BYTES) {
+      return NextResponse.json(
+        { error: `File size (${(file.size / (1024 * 1024)).toFixed(1)}MB) exceeds maximum limit of 25MB.` },
+        { status: 413 }
+      );
+    }
+
     if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
       return NextResponse.json({ error: 'Only PDF files are supported' }, { status: 400 });
     }
@@ -23,6 +32,21 @@ export async function POST(req: NextRequest) {
     // Convert file to Uint8Array
     const arrayBuffer = await file.arrayBuffer();
     const uint8Array = new Uint8Array(arrayBuffer);
+
+    // Verify %PDF- magic bytes (0x25, 0x50, 0x44, 0x46, 0x2D) (P5-2)
+    if (
+      uint8Array.length < 5 ||
+      uint8Array[0] !== 0x25 ||
+      uint8Array[1] !== 0x50 ||
+      uint8Array[2] !== 0x44 ||
+      uint8Array[3] !== 0x46 ||
+      uint8Array[4] !== 0x2d
+    ) {
+      return NextResponse.json(
+        { error: 'Invalid file format: uploaded file does not contain valid PDF magic bytes (%PDF-).' },
+        { status: 422 }
+      );
+    }
 
     // Layout-aware PDF extraction
     const extracted = await extractBiomedicalPdf(uint8Array);

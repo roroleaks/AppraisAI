@@ -258,6 +258,24 @@ export default function HomePage() {
               </div>
             )}
 
+            {/* P5-5: Abstract-Only Source Warning Banner */}
+            {currentAppraisal.metadata.sourceDepth === 'ABSTRACT_ONLY_FALLBACK' && (
+              <div
+                role="alert"
+                className="w-full p-4 bg-amber-50 border border-amber-300 rounded-xl flex items-start gap-3 shadow-xs text-amber-900"
+              >
+                <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-bold text-xs uppercase tracking-wide text-amber-800">
+                    Abstract-Only Appraisal Warning
+                  </p>
+                  <p className="text-xs leading-relaxed text-amber-900">
+                    This appraisal was performed on the abstract alone because the full-text manuscript was behind a publisher paywall or unavailable. Detailed surgical/procedural methods, full table data, and undisclosed protocol deviations cannot be verified from abstract text alone. All risk of bias judgements reflect preliminary screening indicators.
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* Sticky Export Toolbar with Appraiser Stamp, Print-Preview & Word Download */}
             <ExportToolbar />
 

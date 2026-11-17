@@ -6,6 +6,7 @@ import { extractBiomedicalPdf } from '@/lib/parsers/pdf-extractor';
 import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '@/lib/parsers/title-sanitizer';
 import { buildVancouverCitation } from '@/lib/parsers/vancouver-formatter';
 import { ParsedManuscriptPayload } from '@/lib/schemas/ingestion.schema';
+import { safeFetchUrl, SsrfError } from '@/lib/security/ssrf-guard';
 import crypto from 'crypto';
 
 export const runtime = 'nodejs';
@@ -50,37 +51,81 @@ export async function POST(req: NextRequest) {
       const targetUrl = normalized.normalizedValue;
 
       try {
-        const fetchRes = await fetch(targetUrl, {
-          method: 'GET',
+        const fetchRes = await safeFetchUrl(targetUrl, {
           headers: BROWSER_HEADERS,
-          redirect: 'follow',
+          maxRedirects: 3,
+          timeoutMs: 15000,
+          maxSizeBytes: 25 * 1024 * 1024,
         });
 
-        if (fetchRes.ok) {
-          const contentType = fetchRes.headers.get('content-type') || '';
-          const isPdfUrl =
-            targetUrl.toLowerCase().includes('.pdf') ||
-            contentType.toLowerCase().includes('application/pdf') ||
-            contentType.toLowerCase().includes('application/octet-stream');
+        const contentType = fetchRes.contentType || '';
+        const isPdfMagic =
+          fetchRes.buffer.length >= 5 && fetchRes.buffer.subarray(0, 5).toString('ascii') === '%PDF-';
+        const isPdfUrl =
+          targetUrl.toLowerCase().includes('.pdf') ||
+          contentType.toLowerCase().includes('application/pdf') ||
+          contentType.toLowerCase().includes('application/octet-stream') ||
+          isPdfMagic;
 
-          // 1A. Direct PDF Binary Ingestion
-          if (isPdfUrl) {
-            const arrayBuffer = await fetchRes.arrayBuffer();
-            const uint8Array = new Uint8Array(arrayBuffer);
-            const extracted = await extractBiomedicalPdf(uint8Array);
+        // 1A. Direct PDF Binary Ingestion
+        if (isPdfUrl) {
+          const uint8Array = new Uint8Array(fetchRes.buffer);
+          const extracted = await extractBiomedicalPdf(uint8Array);
 
+          const payload: ParsedManuscriptPayload = {
+            id: crypto.randomUUID(),
+            metadata: {
+              title: extracted.metadata.title,
+              authors: extracted.metadata.authors,
+              journal: extracted.metadata.journal || 'Journal Not Specified',
+              publicationYear: extracted.metadata.year || new Date().getFullYear(),
+              doi: extracted.metadata.doi,
+              vancouverCitation: extracted.metadata.vancouverCitation,
+              sourceDepth: 'FULL_TEXT_PDF',
+              openAccess: true,
+              resolvedUrl: fetchRes.finalUrl,
+            },
+            abstract: extracted.abstract,
+            fullText: extracted.text,
+            sections: extracted.sections,
+            tablesRaw: [],
+            pageCount: extracted.pageCount,
+            contentAvailable: true,
+            extractedAt: new Date().toISOString(),
+          };
+
+          return NextResponse.json(payload);
+        }
+
+        // 1B. HTML Open-Access Article Ingestion
+        const html = fetchRes.buffer.toString('utf-8');
+
+        // Check if the HTML links to a full-text PDF via Highwire / Dublin Core meta tags
+        const pdfMetaMatch = html.match(
+          /<meta\s+name=["'](?:citation_pdf_url|dc\.relation\.isformatof)["']\s+content=["']([^"']+)["']/i
+        );
+        if (pdfMetaMatch && pdfMetaMatch[1]) {
+          try {
+            const fullPdfUrl = new URL(pdfMetaMatch[1], fetchRes.finalUrl).toString();
+            const pdfRes = await safeFetchUrl(fullPdfUrl, {
+              headers: BROWSER_HEADERS,
+              maxRedirects: 3,
+              timeoutMs: 15000,
+              maxSizeBytes: 25 * 1024 * 1024,
+            });
+            const extracted = await extractBiomedicalPdf(new Uint8Array(pdfRes.buffer));
             const payload: ParsedManuscriptPayload = {
               id: crypto.randomUUID(),
               metadata: {
                 title: extracted.metadata.title,
                 authors: extracted.metadata.authors,
-                journal: extracted.metadata.journal || 'Journal Not Specified',
+                journal: extracted.metadata.journal || 'Biomedical Journal',
                 publicationYear: extracted.metadata.year || new Date().getFullYear(),
                 doi: extracted.metadata.doi,
                 vancouverCitation: extracted.metadata.vancouverCitation,
                 sourceDepth: 'FULL_TEXT_PDF',
                 openAccess: true,
-                resolvedUrl: targetUrl,
+                resolvedUrl: pdfRes.finalUrl,
               },
               abstract: extracted.abstract,
               fullText: extracted.text,
@@ -90,54 +135,14 @@ export async function POST(req: NextRequest) {
               contentAvailable: true,
               extractedAt: new Date().toISOString(),
             };
-
             return NextResponse.json(payload);
-          }
-
-          // 1B. HTML Open-Access Article Ingestion
-          const html = await fetchRes.text();
-
-          // Check if the HTML links to a full-text PDF via Highwire / Dublin Core meta tags
-          const pdfMetaMatch = html.match(
-            /<meta\s+name=["'](?:citation_pdf_url|dc\.relation\.isformatof)["']\s+content=["']([^"']+)["']/i
-          );
-          if (pdfMetaMatch && pdfMetaMatch[1]) {
-            try {
-              const fullPdfUrl = new URL(pdfMetaMatch[1], targetUrl).toString();
-              const pdfRes = await fetch(fullPdfUrl, {
-                headers: BROWSER_HEADERS,
-                redirect: 'follow',
-              });
-              if (pdfRes.ok) {
-                const pdfBuf = await pdfRes.arrayBuffer();
-                const extracted = await extractBiomedicalPdf(new Uint8Array(pdfBuf));
-                const payload: ParsedManuscriptPayload = {
-                  id: crypto.randomUUID(),
-                  metadata: {
-                    title: extracted.metadata.title,
-                    authors: extracted.metadata.authors,
-                    journal: extracted.metadata.journal || 'Biomedical Journal',
-                    publicationYear: extracted.metadata.year || new Date().getFullYear(),
-                    doi: extracted.metadata.doi,
-                    vancouverCitation: extracted.metadata.vancouverCitation,
-                    sourceDepth: 'FULL_TEXT_PDF',
-                    openAccess: true,
-                    resolvedUrl: fullPdfUrl,
-                  },
-                  abstract: extracted.abstract,
-                  fullText: extracted.text,
-                  sections: extracted.sections,
-                  tablesRaw: [],
-                  pageCount: extracted.pageCount,
-                  contentAvailable: true,
-                  extractedAt: new Date().toISOString(),
-                };
-                return NextResponse.json(payload);
-              }
-            } catch (pdfFollowErr) {
-              console.warn('Could not follow citation_pdf_url, falling back to HTML parsing:', pdfFollowErr);
+          } catch (pdfFollowErr: any) {
+            if (pdfFollowErr instanceof SsrfError) {
+              return NextResponse.json({ error: pdfFollowErr.message }, { status: 403 });
             }
+            console.warn('Could not follow citation_pdf_url, falling back to HTML parsing:', pdfFollowErr);
           }
+        }
 
           // Parse Article Metadata from HTML Meta Tags
           const titleMatch = html.match(/<meta\s+name=["'](?:citation_title|dc\.title|title)["']\s+content=["']([^"']+)["']/i);
@@ -206,8 +211,10 @@ export async function POST(req: NextRequest) {
           };
 
           return NextResponse.json(payload);
-        }
       } catch (urlFetchError: any) {
+        if (urlFetchError instanceof SsrfError) {
+          return NextResponse.json({ error: urlFetchError.message }, { status: 403 });
+        }
         console.warn(`Direct URL fetch failed for ${targetUrl}:`, urlFetchError?.message);
         // Fall through to Europe PMC / Crossref lookup if applicable
       }
@@ -294,6 +301,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(payload);
   } catch (err: any) {
+    if (err instanceof SsrfError) {
+      return NextResponse.json({ error: err.message }, { status: 403 });
+    }
     console.error('Error in identifier resolution route:', err);
     return NextResponse.json(
       { error: err?.message || 'Failed to resolve article identifier' },
