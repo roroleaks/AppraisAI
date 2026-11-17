@@ -126,6 +126,13 @@ async function fetchWithTimeoutAndRetry(
 }
 
 /**
+ * Parses raw Gemini response JSON payload extracting candidate parts text (P0-2, Regression #7).
+ */
+export function parseGeminiCandidateText(data: any): string {
+  return data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join('') || '';
+}
+
+/**
  * Raw provider invocation helper.
  */
 async function callLlmProvider(
@@ -170,8 +177,7 @@ async function callLlmProvider(
     }
 
     const data = await res.json();
-    // P0-2: Fix Gemini response path: content.parts[].text
-    return data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join('') || '';
+    return parseGeminiCandidateText(data);
   } else if (provider === 'groq') {
     const endpoint = 'https://api.groq.com/openai/v1/chat/completions';
 

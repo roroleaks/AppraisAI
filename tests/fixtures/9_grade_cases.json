@@ -1,0 +1,22 @@
+{
+  "rctWithUnclearRoB": {
+    "studyDesign": "RCT",
+    "overallRiskOfBias": "UNCLEAR_NOT_REPORTED",
+    "imprecisionIdentified": false,
+    "inconsistencyOrHeterogeneity": false,
+    "indirectnessIdentified": false,
+    "publicationBiasSuspected": false,
+    "largeEffectSize": false,
+    "doseResponseGradient": false
+  },
+  "srOfObservationalStudies": {
+    "studyDesign": "COHORT_STUDY",
+    "overallRiskOfBias": "LOW_RISK",
+    "imprecisionIdentified": false,
+    "inconsistencyOrHeterogeneity": false,
+    "indirectnessIdentified": false,
+    "publicationBiasSuspected": false,
+    "largeEffectSize": false,
+    "doseResponseGradient": false
+  }
+}

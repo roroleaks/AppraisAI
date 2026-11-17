@@ -24,50 +24,18 @@ function findSentenceWithKeywords(text: string, pattern: RegExp): string | null 
 }
 
 /**
- * Heuristic screening draft engine.
- * Employs evidence-gated parsing to extract study design, PICO parameters,
- * and numerical effect estimates directly from manuscript text.
- * When data are absent or cannot be verified, explicitly reports 'Not reported'
- * or 'Not assessed by heuristic engine' — NEVER fabricates estimates or judgements.
+ * Scored rule set for study design classification operating strictly on
+ * title + abstract + methodsText (P1-1).
  */
-export function generateDeterministicAppraisal(
-  manuscript: ParsedManuscriptPayload
-): MasterAppraisalReport {
-  const meta = { ...manuscript.metadata };
-  meta.title = cleanBiomedicalTitle(meta.title);
-  meta.authors = cleanBiomedicalAuthors(meta.authors);
-
-  const rawAbstract = manuscript.abstract || '';
-  const rawFullText = manuscript.fullText || '';
-  const combinedText = `${meta.title} ${rawAbstract} ${rawFullText}`;
-  const lowerCombined = combinedText.toLowerCase();
-  const isAbstractOnly = meta.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
-
-  // Extract Methods and Results sections from manuscript.sections if available (P1-1, P1-2)
-  let methodsText = '';
-  let resultsText = '';
-
-  if (manuscript.sections && manuscript.sections.length > 0) {
-    methodsText = manuscript.sections
-      .filter((s) => /method|material|protocol|study design|participants|patients and methods/i.test(s.heading))
-      .map((s) => s.content)
-      .join('\n\n');
-    resultsText = manuscript.sections
-      .filter((s) => /result|finding|efficacy|outcome|tables/i.test(s.heading))
-      .map((s) => s.content)
-      .join('\n\n');
-  }
-
-  // -----------------------------------------------------------------
-  // 1. Dynamic Study Design & Methodological Framework Detection (P1-1)
-  // Scored classifier strictly operates on title + abstract + methodsText
-  // Never scans Discussion or References; defaults unknown to 'OTHER'
-  // -----------------------------------------------------------------
+export function classifyStudyDesign(
+  meta: { title: string },
+  rawAbstract: string,
+  methodsText: string = ''
+): { design: StudyDesign; rationale: string } {
   let detectedDesign: StudyDesign = 'OTHER';
   let designRationale = '';
 
   const classificationScope = `${meta.title}\n\n${rawAbstract}\n\n${methodsText}`;
-  const lowerScope = classificationScope.toLowerCase();
 
   // Check if paper is explicitly a narrative review, commentary, or editorial (P1-1)
   const isNarrativeOrCommentary =
@@ -155,6 +123,51 @@ export function generateDeterministicAppraisal(
         'Study design could not be definitively classified from available title, abstract, and methods text.';
     }
   }
+
+  return { design: detectedDesign, rationale: designRationale };
+}
+
+/**
+ * Heuristic screening draft engine.
+ * Employs evidence-gated parsing to extract study design, PICO parameters,
+ * and numerical effect estimates directly from manuscript text.
+ * When data are absent or cannot be verified, explicitly reports 'Not reported'
+ * or 'Not assessed by heuristic engine' — NEVER fabricates estimates or judgements.
+ */
+export function generateDeterministicAppraisal(
+  manuscript: ParsedManuscriptPayload
+): MasterAppraisalReport {
+  const meta = { ...manuscript.metadata };
+  meta.title = cleanBiomedicalTitle(meta.title);
+  meta.authors = cleanBiomedicalAuthors(meta.authors);
+
+  const rawAbstract = manuscript.abstract || '';
+  const rawFullText = manuscript.fullText || '';
+  const combinedText = `${meta.title} ${rawAbstract} ${rawFullText}`;
+  const lowerCombined = combinedText.toLowerCase();
+  const isAbstractOnly = meta.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
+
+  // Extract Methods and Results sections from manuscript.sections if available (P1-1, P1-2)
+  let methodsText = '';
+  let resultsText = '';
+
+  if (manuscript.sections && manuscript.sections.length > 0) {
+    methodsText = manuscript.sections
+      .filter((s) => /method|material|protocol|study design|participants|patients and methods/i.test(s.heading))
+      .map((s) => s.content)
+      .join('\n\n');
+    resultsText = manuscript.sections
+      .filter((s) => /result|finding|efficacy|outcome|tables/i.test(s.heading))
+      .map((s) => s.content)
+      .join('\n\n');
+  }
+
+  // 1. Dynamic Study Design & Methodological Framework Detection (P1-1)
+  const { design: detectedDesign, rationale: designRationale } = classifyStudyDesign(
+    meta,
+    rawAbstract,
+    methodsText
+  );
 
   const governingRules = getGoverningFrameworkRules(detectedDesign);
 

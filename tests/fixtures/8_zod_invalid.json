@@ -1,0 +1,5 @@
+{
+  "studyDesign": "NOT_A_VALID_DESIGN",
+  "oxfordEvidenceLevel": 999,
+  "domains": "this-should-be-an-array-not-a-string"
+}

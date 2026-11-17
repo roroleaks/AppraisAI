@@ -1,0 +1,9 @@
+{
+  "guidelineName": "CONSORT 2025",
+  "criticalItemsAudit": [
+    { "itemNumberAndSection": "Item 1: Title", "requirement: ": "Identify as randomised trial", "status": "NOT_REPORTED", "evidenceOrPageLocation": "Not reported in available text" },
+    { "itemNumberAndSection": "Item 2: Summary", "requirement: ": "Structured summary", "status": "NOT_REPORTED", "evidenceOrPageLocation": "Not reported in available text" },
+    { "itemNumberAndSection": "Item 3: Background", "requirement: ": "Scientific rationale", "status": "NOT_REPORTED", "evidenceOrPageLocation": "Not reported in available text" },
+    { "itemNumberAndSection": "Item 8: Randomisation", "requirement: ": "Sequence generation", "status": "NOT_REPORTED", "evidenceOrPageLocation": "Not reported in available text" }
+  ]
+}

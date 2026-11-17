@@ -1,0 +1,16 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"studyDesign\": \"RCT\",\n  \"oxfordEvidenceLevel\": \"Level 1b\",\n  \"studyDesignRationale\": \"Double-blind parallel-group randomized clinical trial.\"\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ]
+}

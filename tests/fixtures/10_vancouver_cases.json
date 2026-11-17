@@ -1,0 +1,7 @@
+[
+  { "input": "Jones KL.", "expected": "Jones KL" },
+  { "input": "van der Berg A.", "expected": "van der Berg A" },
+  { "input": "O'Neil P.", "expected": "O'Neil P" },
+  { "input": "Smith-Jones KL.", "expected": "Smith-Jones KL" },
+  { "input": "McMurray JJV.", "expected": "McMurray JJV" }
+]
