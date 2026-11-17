@@ -28,10 +28,8 @@ export function cleanBiomedicalTitle(rawTitle?: string): string {
     t = title;
   }
 
-  // Strip leading journal stamps & volume noise
+  // Strip leading volume/issue noise and standard document stamps
   t = t
-    .replace(/^.*?Biomed Sci Clin Res[^\n\d]*\d*\s*/i, '')
-    .replace(/^Biomedical Science and Clinical Research\b\s*/i, '')
     .replace(/Volume\s*\d+\s*\|\s*Issue\s*\d+\s*(?:\|\s*\d+)?\s*/gi, '')
     .replace(/ISSN:\s*\d{4}-\d{4}\s*/gi, '')
     .replace(/^\[?PDF\]?\s*\[?EF\.?\s*/i, '')
@@ -41,8 +39,8 @@ export function cleanBiomedicalTitle(rawTitle?: string): string {
   // Strip boundary markers where text leaks into abstract or dates
   t = t.split(/(?:Abstract|Background:|Submitted:|Citation:|Accepted:|\* Corresponding Author)/i)[0].trim();
 
-  // Strip author bylines attached at the end
-  t = t.replace(/(?:Dr\s+[A-Z][a-z]+|Author\(s\)|Affiliation|Department of|Al-Azhar University|Mayaseen Foundation|Egypt Health Foundation)[\s\S]*$/i, '').trim();
+  // Strip author bylines and institutional affiliations attached at the end
+  t = t.replace(/(?:Dr\s+[A-Z][a-z]+|Author\(s\)|Affiliation|Department of|Faculty of|School of|University|Hospital|Institute)[\s\S]*$/i, '').trim();
 
   // Strip leading/trailing punctuation
   t = t.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9)]+$/g, '').trim();
@@ -123,7 +121,7 @@ export function cleanBiomedicalAuthors(authors?: string[] | string): string[] {
 export function getCleanDownloadFilename(authors?: string[] | string, year?: number | string): string {
   const cleanAuthors = cleanBiomedicalAuthors(authors);
   const first = cleanAuthors[0] && !cleanAuthors[0].startsWith('[') ? cleanAuthors[0] : 'Manuscript';
-  // Extract last name: e.g. 'Dr. Inas Taha, MD' -> 'Taha' or 'McMurray JJV' -> 'McMurray'
+  // Extract last name: e.g. 'Smith AB' -> 'Smith' or 'McMurray JJV' -> 'McMurray'
   const lastNameMatch = first.match(/(?:Dr\.?\s+)?(?:[A-Z][a-z]+\s+)?([A-Z][a-zA-Z-]+)/);
   const lastName = lastNameMatch ? lastNameMatch[1] : 'Manuscript';
   const pubYear = year || new Date().getFullYear();

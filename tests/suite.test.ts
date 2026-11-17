@@ -120,6 +120,7 @@ async function runAllTests() {
       ],
       tablesRaw: [],
       pageCount: 12,
+      contentAvailable: true,
       extractedAt: new Date().toISOString(),
     };
 
@@ -168,6 +169,7 @@ async function runAllTests() {
       sections: [],
       tablesRaw: [],
       pageCount: 5,
+      contentAvailable: true,
       extractedAt: new Date().toISOString(),
     };
 
@@ -175,7 +177,7 @@ async function runAllTests() {
     const doc = buildAcademicDocxManuscript(appraisal, {
       name: 'Dr. Raouf Roshdy, MD',
       affiliation: 'Department of Clinical Epidemiology & Evidence-Based Medicine',
-      orcid: '0000-0002-1825-0097',
+      orcid: '0009-0001-4841-1656',
     });
 
     const buffer = await Packer.toBuffer(doc);

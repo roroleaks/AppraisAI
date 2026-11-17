@@ -127,18 +127,36 @@ export const ManuscriptPreviewCard: React.FC = () => {
       </div>
 
       <div className="p-6 space-y-6">
-        {/* Paywall Warning Banner */}
-        {isAbstractOnly && (
+        {/* P0-4: Block Appraisal if Content Unavailable */}
+        {currentManuscript.contentAvailable === false && (
+          <div className="p-4 bg-red-50 border border-red-300 rounded-xl flex items-start gap-3 shadow-xs">
+            <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+            <div className="text-xs text-red-900 space-y-1">
+              <p className="font-bold text-sm text-red-950">
+                Bibliographic Metadata Only — Appraisal Blocked
+              </p>
+              <p>
+                Only bibliographic metadata was found in open registries for this article.
+                Neither abstract nor full-text manuscript content is available. 
+                In accordance with scientific integrity standards, critical appraisal cannot be performed on metadata alone.
+                Please upload the PDF manuscript above to appraise this paper.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Paywall Warning Banner (P5-5) */}
+        {isAbstractOnly && currentManuscript.contentAvailable !== false && (
           <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
             <div className="text-xs text-amber-900 space-y-1">
               <p className="font-semibold text-sm text-amber-950">
-                Notice: Publisher Paywall Detected — Abstract-Only Ingestion
+                Notice: Abstract-Only Source — Methodological Limitations
               </p>
               <p>
-                This paper was resolved from an external metadata index, but the complete manuscript body is behind a paywall.
-                For full methodological depth (e.g. detailed CONSORT/RoB-2 table evaluations and statistical precision checks), 
-                we recommend uploading the complete PDF manuscript above.
+                Abstract-only — RoB, EQUATOR and statistical audit are largely not assessable without full-text protocol and tables.
+                For complete methodological evaluation (e.g. detailed CONSORT/RoB-2 table evaluations and statistical precision checks), 
+                please upload the complete PDF manuscript above.
               </p>
             </div>
           </div>
@@ -266,13 +284,22 @@ export const ManuscriptPreviewCard: React.FC = () => {
 
           <button
             onClick={handleLaunchAppraisal}
-            disabled={isAppraising}
-            className="w-full sm:w-auto px-6 py-3 bg-[#0f6b6b] hover:bg-[#0b5555] disabled:bg-slate-300 text-white text-xs font-bold rounded-lg shadow-sm transition flex items-center justify-center gap-2"
+            disabled={isAppraising || currentManuscript.contentAvailable === false}
+            className={`w-full sm:w-auto px-6 py-3 text-xs font-bold rounded-lg shadow-sm transition flex items-center justify-center gap-2 ${
+              currentManuscript.contentAvailable === false
+                ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                : 'bg-[#0f6b6b] hover:bg-[#0b5555] disabled:bg-slate-300 text-white'
+            }`}
           >
             {isAppraising ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
                 Executing 4-Pass Methodological Engine...
+              </>
+            ) : currentManuscript.contentAvailable === false ? (
+              <>
+                <AlertTriangle className="w-4 h-4 text-slate-500" />
+                Only bibliographic metadata was found — upload the PDF
               </>
             ) : (
               <>

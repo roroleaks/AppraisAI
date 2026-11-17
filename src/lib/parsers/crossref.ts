@@ -10,6 +10,7 @@ export interface CrossrefMetadataResult {
   pages?: string;
   doi: string;
   vancouverCitation: string;
+  abstract?: string;
   rawJson?: any;
 }
 
@@ -62,6 +63,17 @@ export async function fetchCrossrefMetadata(doi: string): Promise<CrossrefMetada
     const issue = item.issue ? String(item.issue) : undefined;
     const pages = item.page ? String(item.page) : undefined;
 
+    // Crossref abstract extraction (strip JATS tags, P0-4)
+    let abstract: string | undefined = undefined;
+    if (item.abstract && typeof item.abstract === 'string') {
+      abstract = item.abstract
+        .replace(/<jats:[^>]+>/gi, ' ')
+        .replace(/<\/jats:[^>]+>/gi, ' ')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
     const vancouverCitation = buildVancouverCitation({
       authors: rawAuthors.length > 0 ? rawAuthors : authors,
       title,
@@ -83,6 +95,7 @@ export async function fetchCrossrefMetadata(doi: string): Promise<CrossrefMetada
       pages,
       doi: item.DOI || doi,
       vancouverCitation,
+      abstract: abstract && abstract.length > 20 ? abstract : undefined,
       rawJson: item,
     };
   } catch (error) {

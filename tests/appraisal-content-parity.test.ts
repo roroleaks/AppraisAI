@@ -39,6 +39,7 @@ async function runParityTests() {
     fullText: '',
     sections: [],
     tablesRaw: [],
+    contentAvailable: true,
     pageCount: 1,
     extractedAt: new Date().toISOString(),
   };
@@ -66,6 +67,7 @@ async function runParityTests() {
     fullText: '',
     sections: [],
     tablesRaw: [],
+    contentAvailable: true,
     pageCount: 1,
     extractedAt: new Date().toISOString(),
   };

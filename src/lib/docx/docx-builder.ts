@@ -28,12 +28,14 @@ import {
   CALLOUT_BORDERS_NAVY,
 } from './styles';
 import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '../parsers/title-sanitizer';
+import { isVerbatimInManuscript } from '../parsers/quote-verifier';
 
 export interface AppraiserMetadata {
   name: string;
   affiliation?: string;
   orcid?: string;
   email?: string;
+  verified?: boolean;
 }
 
 /**
@@ -166,9 +168,19 @@ export function buildAcademicDocxManuscript(
   const cleanAuthors = cleanBiomedicalAuthors(meta.authors);
   const authorsString = cleanAuthors.join(', ');
 
-  const activeAppraiserName = appraiser?.name || 'Dr. Raouf Roshdy, MD';
-  const activeAffiliation = appraiser?.affiliation || 'Department of Clinical Epidemiology & Evidence-Based Medicine';
-  const activeOrcid = appraiser?.orcid || '0000-0002-1825-0097';
+  const activeAppraiserName = appraiser?.name || 'Clinical Methodologist (AppraisAI)';
+  const activeAffiliation = appraiser?.affiliation || 'Evidence-Based Medicine & Methodological Review';
+  const activeOrcid = appraiser?.orcid || '';
+  const isVerified = !!appraiser?.verified;
+
+  // Pseudo manuscript payload for quote verification in docx
+  const pseudoManuscript = {
+    metadata: meta,
+    abstract: report.manuscriptAbstract || '',
+    fullText: report.manuscriptFullText || '',
+    sections: [],
+    tablesRaw: [],
+  } as any;
 
   // Compute RoB strip column width summing to exact printable width 9360 dxa
   const domainCount = Math.max(1, report.riskOfBias.domains.length);
@@ -229,7 +241,7 @@ export function buildAcademicDocxManuscript(
                 },
                 children: [
                   new TextRun({
-                    text: `${truncatedHeaderTitle}  •  ${meta.journal || 'Biomedical Science and Clinical Research'}`,
+                    text: `${truncatedHeaderTitle}  •  ${meta.journal || 'Journal Not Specified'}`,
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_SMALL,
                     italics: true,
@@ -251,7 +263,7 @@ export function buildAcademicDocxManuscript(
                 },
                 children: [
                   new TextRun({
-                    text: 'Generated via AppraisAI  •  EQUATOR, CEBM & GRADE Governed  •  Page ',
+                    text: `Generated via AppraisAI (${report.engineUsed === 'llm' ? 'Neural LLM' : 'Heuristic Screening Engine'})  •  EQUATOR, CEBM & GRADE Governed  •  Page `,
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_SMALL,
                     color: DOCX_COLORS.SLATE_MUTED,
@@ -323,7 +335,7 @@ export function buildAcademicDocxManuscript(
           // Appraiser Attribution
           new Paragraph({
             alignment: AlignmentType.LEFT,
-            spacing: { before: 40, after: 180 },
+            spacing: { before: 40, after: 120 },
             children: [
               new TextRun({
                 text: `Lead Clinical Appraiser: ${activeAppraiserName}`,
@@ -338,20 +350,73 @@ export function buildAcademicDocxManuscript(
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_BODY,
               }),
+              ...(activeOrcid
+                ? [
+                    new TextRun({
+                      text: `   •   ORCID: ${activeOrcid}`,
+                      font: TYPOGRAPHY.FONT_PRIMARY,
+                      size: TYPOGRAPHY.SIZE_SMALL,
+                      color: DOCX_COLORS.SLATE_MUTED,
+                    }),
+                  ]
+                : []),
               new TextRun({
-                text: `   •   ORCID: ${activeOrcid}`,
-                font: TYPOGRAPHY.FONT_PRIMARY,
-                size: TYPOGRAPHY.SIZE_SMALL,
-                color: DOCX_COLORS.SLATE_MUTED,
-              }),
-              new TextRun({
-                text: `   •   Appraisal Date: ${new Date(report.completedAt).toLocaleDateString()}`,
+                text: `   •   Appraisal Date: ${new Date(report.completedAt).toISOString().split('T')[0]}`,
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_MUTED,
               }),
             ],
           }),
+
+          // P0-3: Visible Watermark Banner on Page 1 for Heuristic Mode
+          ...(report.engineUsed !== 'llm'
+            ? [
+                new Table({
+                  width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                  borders: CALLOUT_BORDERS_NAVY,
+                  rows: [
+                    new TableRow({
+                      children: [
+                        new TableCell({
+                          width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                          shading: { type: ShadingType.CLEAR, fill: 'FFFBEB' },
+                          margins: CELL_PADDING,
+                          children: [
+                            new Paragraph({
+                              spacing: { before: 20, after: 30 },
+                              children: [
+                                new TextRun({
+                                  text: 'HEURISTIC SCREENING DRAFT — NOT A CRITICAL APPRAISAL',
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_SMALL,
+                                  bold: true,
+                                  color: 'B45309',
+                                }),
+                              ],
+                            }),
+                            new Paragraph({
+                              spacing: { before: 20, after: 20 },
+                              children: [
+                                new TextRun({
+                                  text: `This document was produced via deterministic heuristic screening without neural LLM evaluation${
+                                    report.fallbackReason ? ` (Fallback trigger: ${report.fallbackReason})` : ''
+                                  }. All domain assessments and effect sizes are preliminary screening indicators and must be independently verified against the primary trial protocol and publication.`,
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_SMALL,
+                                  color: '78350F',
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+                new Paragraph({ spacing: { after: 100 }, children: [] }),
+              ]
+            : []),
 
           // ---------------------------------------------------------
           // TARGET ARTICLE BIBLIOGRAPHIC CALLOUT CARD (Ice Teal Fill)
@@ -383,7 +448,7 @@ export function buildAcademicDocxManuscript(
                         spacing: { before: 20, after: 40 },
                         children: [
                           new TextRun({
-                            text: `${authorsString}. ${cleanTitle}. ${meta.journal || 'Biomed Sci Clin Res'}. ${meta.publicationYear || 2026}${meta.volume ? ';' + meta.volume : ''}${meta.issue ? '(' + meta.issue + ')' : ''}${meta.pages ? ':' + meta.pages : ''}.${meta.doi ? ' doi:' + meta.doi : ''}`,
+                            text: meta.vancouverCitation,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_BODY,
                             bold: true,
@@ -404,6 +469,25 @@ export function buildAcademicDocxManuscript(
                             size: TYPOGRAPHY.SIZE_SMALL,
                             bold: true,
                             color: isAbstractOnly ? DOCX_COLORS.DANGER_TEXT : DOCX_COLORS.SUCCESS_TEXT,
+                          }),
+                        ],
+                      }),
+                      new Paragraph({
+                        spacing: { before: 10, after: 10 },
+                        children: [
+                          new TextRun({
+                            text: `Data Provenance: Appraisal Engine: ${
+                              report.engineUsed === 'llm'
+                                ? `Neural LLM (${report.llmDetails?.provider || 'standard'} / ${report.llmDetails?.model || 'standard'})`
+                                : report.engineUsed === 'deterministic-fallback'
+                                ? `Deterministic Heuristic Engine (Fallback: ${report.fallbackReason || 'provider timeout'})`
+                                : 'Deterministic Heuristic Screening Engine'
+                            }  •  Appraisal Mode: ${
+                              report.engineUsed === 'llm' ? 'Full Critical Appraisal' : 'Heuristic Screening Draft'
+                            }`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            color: DOCX_COLORS.SLATE_BODY,
                           }),
                         ],
                       }),
@@ -720,6 +804,7 @@ export function buildAcademicDocxManuscript(
               }),
               ...report.riskOfBias.domains.map((d) => {
                 const s = getStatusTokens(d.judgement);
+                const isQuote = isVerbatimInManuscript(d.supportiveEvidence, pseudoManuscript);
                 return new TableRow({
                   children: [
                     new TableCell({
@@ -736,7 +821,40 @@ export function buildAcademicDocxManuscript(
                     new TableCell({
                       width: { size: 3160, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: `"${d.supportiveEvidence}"`, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, italics: true })] })],
+                      children: [
+                        new Paragraph({
+                          children: isQuote
+                            ? [
+                                new TextRun({
+                                  text: '[Quote] ',
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                  bold: true,
+                                  color: DOCX_COLORS.TEAL_ACCENT,
+                                }),
+                                new TextRun({
+                                  text: `"${d.supportiveEvidence}"`,
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                  italics: true,
+                                }),
+                              ]
+                            : [
+                                new TextRun({
+                                  text: '[Appraiser note (AI-generated)] ',
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                  bold: true,
+                                  color: DOCX_COLORS.SLATE_MUTED,
+                                }),
+                                new TextRun({
+                                  text: d.supportiveEvidence,
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                }),
+                              ],
+                        }),
+                      ],
                     }),
                     new TableCell({
                       width: { size: 2200, type: WidthType.DXA },
@@ -773,6 +891,7 @@ export function buildAcademicDocxManuscript(
               }),
               ...report.equatorChecklist.criticalItemsAudit.map((item) => {
                 const s = getStatusTokens(item.status);
+                const isQuote = isVerbatimInManuscript(item.evidenceOrPageLocation, pseudoManuscript);
                 return new TableRow({
                   children: [
                     new TableCell({
@@ -794,7 +913,40 @@ export function buildAcademicDocxManuscript(
                     new TableCell({
                       width: { size: 3000, type: WidthType.DXA },
                       margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: item.evidenceOrPageLocation, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, italics: true })] })],
+                      children: [
+                        new Paragraph({
+                          children: isQuote
+                            ? [
+                                new TextRun({
+                                  text: '[Quote] ',
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                  bold: true,
+                                  color: DOCX_COLORS.TEAL_ACCENT,
+                                }),
+                                new TextRun({
+                                  text: `"${item.evidenceOrPageLocation}"`,
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                  italics: true,
+                                }),
+                              ]
+                            : [
+                                new TextRun({
+                                  text: '[Appraiser note] ',
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                  bold: true,
+                                  color: DOCX_COLORS.SLATE_MUTED,
+                                }),
+                                new TextRun({
+                                  text: item.evidenceOrPageLocation,
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                }),
+                              ],
+                        }),
+                      ],
                     }),
                   ],
                 });
@@ -845,42 +997,68 @@ export function buildAcademicDocxManuscript(
                   createTableHeaderCell('CLINICAL SIGNIFICANCE', 2200),
                 ],
               }),
-              ...report.statisticalAudit.effectEstimates.map((est) => {
-                return new TableRow({
-                  children: [
-                    new TableCell({
-                      width: { size: 2200, type: WidthType.DXA },
-                      margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.outcome, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
+              ...(report.statisticalAudit.effectEstimates.length > 0
+                ? report.statisticalAudit.effectEstimates.map((est) => {
+                    return new TableRow({
+                      children: [
+                        new TableCell({
+                          width: { size: 2200, type: WidthType.DXA },
+                          margins: CELL_PADDING,
+                          children: [new Paragraph({ children: [new TextRun({ text: est.outcome, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY })] })],
+                        }),
+                        new TableCell({
+                          width: { size: 1100, type: WidthType.DXA },
+                          margins: CELL_PADDING,
+                          children: [new Paragraph({ children: [new TextRun({ text: est.metric, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
+                        }),
+                        new TableCell({
+                          width: { size: 1300, type: WidthType.DXA },
+                          margins: CELL_PADDING,
+                          children: [new Paragraph({ children: [new TextRun({ text: est.pointEstimate, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true })] })],
+                        }),
+                        new TableCell({
+                          width: { size: 1400, type: WidthType.DXA },
+                          margins: CELL_PADDING,
+                          children: [new Paragraph({ children: [new TextRun({ text: est.confidenceInterval, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
+                        }),
+                        new TableCell({
+                          width: { size: 1160, type: WidthType.DXA },
+                          margins: CELL_PADDING,
+                          children: [new Paragraph({ children: [new TextRun({ text: est.pValue, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
+                        }),
+                        new TableCell({
+                          width: { size: 2200, type: WidthType.DXA },
+                          margins: CELL_PADDING,
+                          children: [new Paragraph({ children: [new TextRun({ text: est.clinicalVsStatisticalSignificance, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
+                        }),
+                      ],
+                    });
+                  })
+                : [
+                    new TableRow({
+                      children: [
+                        new TableCell({
+                          columnSpan: 6,
+                          width: { size: PAGE_GEOMETRY.CONTENT_WIDTH, type: WidthType.DXA },
+                          margins: CELL_PADDING,
+                          children: [
+                            new Paragraph({
+                              alignment: AlignmentType.CENTER,
+                              children: [
+                                new TextRun({
+                                  text: 'No quantitative effect estimates could be automatically extracted from available manuscript text.',
+                                  font: TYPOGRAPHY.FONT_PRIMARY,
+                                  size: TYPOGRAPHY.SIZE_TABLE,
+                                  italics: true,
+                                  color: DOCX_COLORS.SLATE_MUTED,
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                      ],
                     }),
-                    new TableCell({
-                      width: { size: 1100, type: WidthType.DXA },
-                      margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.metric, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
-                    }),
-                    new TableCell({
-                      width: { size: 1300, type: WidthType.DXA },
-                      margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.pointEstimate, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true })] })],
-                    }),
-                    new TableCell({
-                      width: { size: 1400, type: WidthType.DXA },
-                      margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.confidenceInterval, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
-                    }),
-                    new TableCell({
-                      width: { size: 1160, type: WidthType.DXA },
-                      margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.pValue, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
-                    }),
-                    new TableCell({
-                      width: { size: 2200, type: WidthType.DXA },
-                      margins: CELL_PADDING,
-                      children: [new Paragraph({ children: [new TextRun({ text: est.clinicalVsStatisticalSignificance, font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE })] })],
-                    }),
-                  ],
-                });
-              }),
+                  ]),
             ],
           }),
 
@@ -1086,7 +1264,15 @@ export function buildAcademicDocxManuscript(
                         spacing: { before: 20, after: 20 },
                         children: [
                           new TextRun({
-                            text: `This critical appraisal was authored and structured via AppraisAI in strict adherence to the EQUATOR Network reporting frameworks (${report.classification.equatorReportingGuideline}), the Oxford Centre for Evidence-Based Medicine (CEBM) Levels of Evidence, and the GRADE Working Group certainty criteria. The evaluation has been conducted and approved by the undersigned clinical appraiser (${activeAppraiserName}, ORCID: ${activeOrcid}). This document is prepared for academic peer commentary, journal club presentation, and clinical governance purposes.`,
+                            text: `This report was drafted with AI assistance (engine: ${
+                              report.engineUsed === 'llm'
+                                ? `LLM — ${report.llmDetails?.provider || 'neural'} / ${report.llmDetails?.model || 'standard'}`
+                                : report.engineUsed === 'deterministic-fallback'
+                                ? `Heuristic Screening Engine (LLM fallback: ${report.fallbackReason || 'provider timeout'})`
+                                : 'Heuristic Screening Engine'
+                            }). It has ${
+                              isVerified ? 'been reviewed and verified' : 'not been independently verified'
+                            } by the named clinical appraiser (${activeAppraiserName}${activeOrcid ? ', ORCID: ' + activeOrcid : ''}). Structured under EQUATOR Network guidelines (${report.classification.equatorReportingGuideline}), OCEBM Evidence Levels, and GRADE certainty criteria. Prepared for academic peer review and clinical governance.`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_SMALL,
                             color: DOCX_COLORS.SLATE_BODY,

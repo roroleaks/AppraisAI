@@ -72,8 +72,8 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
 
   let detectedTitle = '';
   let detectedAuthors: string[] = [];
-  let detectedJournal = 'Biomedical Science and Clinical Research';
-  let detectedYear = new Date().getFullYear();
+  let detectedJournal: string | undefined = undefined;
+  let detectedYear: number | undefined = undefined;
 
   // 1. Look for explicit "Citation:" in the header block
   const citeRegex = /Citation:\s*([\s\S]*?)\s*\((\d{4})\)\.\s*([\s\S]*?)\.\s*([^,;]+?)(?:,\s*(\d+)\s*\(([^)]+)\)\s*,\s*([\d-]+))?\./i;
@@ -81,14 +81,14 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
 
   if (citationMatch) {
     const rawAuthors = citationMatch[1].trim();
-    detectedYear = parseInt(citationMatch[2], 10) || detectedYear;
+    detectedYear = parseInt(citationMatch[2], 10) || undefined;
     let titleCand = citationMatch[3].trim();
     let journalCand = citationMatch[4].trim();
 
     if (journalCand.includes('.')) {
       const parts = journalCand.split('.');
       const subTitle = parts.slice(0, -1).join('.').trim();
-      if (subTitle.length > 5 && !subTitle.toLowerCase().includes('biomed')) {
+      if (subTitle.length > 5) {
         titleCand = `${titleCand}: ${subTitle}`;
       }
       journalCand = parts[parts.length - 1].trim();
@@ -107,7 +107,7 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
     detectedTitle = cleanBiomedicalTitle(detectedTitle);
   }
 
-  // Author byline detection fallback
+  // Author byline detection fallback (P0-6: empty array if not detected)
   if (detectedAuthors.length === 0) {
     const authorBylineMatch = cleanFullText.match(
       /(?:(?:Dr\.?\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?\s*(?:\d+|\*)*\s*(?:and|&|,)\s*)+(?:Dr\.?\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?/i
@@ -115,7 +115,7 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
     if (authorBylineMatch) {
       detectedAuthors = cleanBiomedicalAuthors(authorBylineMatch[0]);
     } else {
-      detectedAuthors = ['Dr. Inas Taha, MD', 'Dr. Raouf Roshdy, MD'];
+      detectedAuthors = [];
     }
   }
 
@@ -174,10 +174,10 @@ export async function extractBiomedicalPdf(pdfBuffer: Uint8Array): Promise<Extra
   }
 
   const vancouverCitation = buildVancouverCitation({
-    authors: detectedAuthors,
-    title: detectedTitle,
-    journal: detectedJournal,
-    year: detectedYear,
+    authors: detectedAuthors.length > 0 ? detectedAuthors : ['[Authors not detected — please edit]'],
+    title: detectedTitle || '[Title not detected]',
+    journal: detectedJournal || 'Journal Not Detected',
+    year: detectedYear || new Date().getFullYear(),
     doi: detectedDoi,
   });
 

@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
               metadata: {
                 title: extracted.metadata.title,
                 authors: extracted.metadata.authors,
-                journal: extracted.metadata.journal || 'Biomedical Science and Clinical Research',
+                journal: extracted.metadata.journal || 'Journal Not Specified',
                 publicationYear: extracted.metadata.year || new Date().getFullYear(),
                 doi: extracted.metadata.doi,
                 vancouverCitation: extracted.metadata.vancouverCitation,
@@ -87,6 +87,7 @@ export async function POST(req: NextRequest) {
               sections: extracted.sections,
               tablesRaw: [],
               pageCount: extracted.pageCount,
+              contentAvailable: true,
               extractedAt: new Date().toISOString(),
             };
 
@@ -128,6 +129,7 @@ export async function POST(req: NextRequest) {
                   sections: extracted.sections,
                   tablesRaw: [],
                   pageCount: extracted.pageCount,
+                  contentAvailable: true,
                   extractedAt: new Date().toISOString(),
                 };
                 return NextResponse.json(payload);
@@ -199,6 +201,7 @@ export async function POST(req: NextRequest) {
             fullText: bodyText.slice(0, 40000),
             sections: [{ heading: 'Abstract', content: abstractText || cleanTitle }],
             tablesRaw: [],
+            contentAvailable: !!((abstractText && abstractText.trim().length > 30) || (bodyText && bodyText.trim().length > 100)),
             extractedAt: new Date().toISOString(),
           };
 
@@ -221,6 +224,7 @@ export async function POST(req: NextRequest) {
     if (!pmcResolved && normalized.type === 'DOI') {
       const crossrefMeta = await fetchCrossrefMetadata(normalized.normalizedValue);
       if (crossrefMeta) {
+        const hasContent = !!(crossrefMeta.abstract && crossrefMeta.abstract.trim().length > 30);
         const payload: ParsedManuscriptPayload = {
           id: crypto.randomUUID(),
           metadata: {
@@ -236,10 +240,11 @@ export async function POST(req: NextRequest) {
             sourceDepth: 'ABSTRACT_ONLY_FALLBACK',
             openAccess: false,
           },
-          abstract: 'Abstract unavailable via open registry. Please upload PDF directly for full-text critical appraisal.',
+          abstract: hasContent ? crossrefMeta.abstract! : '',
           fullText: '',
-          sections: [],
+          sections: hasContent ? [{ heading: 'Abstract', content: crossrefMeta.abstract! }] : [],
           tablesRaw: [],
+          contentAvailable: hasContent,
           extractedAt: new Date().toISOString(),
         };
         return NextResponse.json(payload);
@@ -254,6 +259,13 @@ export async function POST(req: NextRequest) {
         { status: 404 }
       );
     }
+
+    const pmcHasContent = !!(
+      (pmcResolved.abstract &&
+        pmcResolved.abstract.trim().length > 30 &&
+        !pmcResolved.abstract.includes('Abstract unavailable')) ||
+      (pmcResolved.fullText && pmcResolved.fullText.trim().length > 100)
+    );
 
     const payload: ParsedManuscriptPayload = {
       id: crypto.randomUUID(),
@@ -276,6 +288,7 @@ export async function POST(req: NextRequest) {
       fullText: pmcResolved.fullText,
       sections: pmcResolved.sections,
       tablesRaw: pmcResolved.tablesRaw,
+      contentAvailable: pmcHasContent,
       extractedAt: new Date().toISOString(),
     };
 

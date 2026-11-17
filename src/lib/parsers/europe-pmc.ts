@@ -329,10 +329,9 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
           doi: crossrefMeta.doi,
           vancouverCitation: crossrefMeta.vancouverCitation,
           sourceDepth: 'ABSTRACT_ONLY_FALLBACK',
-          abstract:
-            'Abstract unavailable via open registry. Please upload the PDF for complete critical appraisal.',
+          abstract: crossrefMeta.abstract || '',
           fullText: '',
-          sections: [],
+          sections: crossrefMeta.abstract ? [{ heading: 'Abstract', content: crossrefMeta.abstract }] : [],
           tablesRaw: [],
           openAccess: false,
         };
@@ -344,7 +343,7 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
   if (!pmcResult) {
     // If Europe PMC did not find it, and query has a DOI, try Crossref
     if (query.includes('10.')) {
-      const doi = query.match(/10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/)?.[1] || query;
+      const doi = query.match(/10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/)?.[0] || query;
       const crossrefMeta = await fetchCrossrefMetadata(doi);
       if (crossrefMeta) {
         return {
@@ -358,9 +357,9 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
           doi: crossrefMeta.doi,
           vancouverCitation: crossrefMeta.vancouverCitation,
           sourceDepth: 'ABSTRACT_ONLY_FALLBACK',
-          abstract: 'Abstract unavailable via Crossref direct lookup. Please upload the PDF for complete critical appraisal.',
+          abstract: crossrefMeta.abstract || '',
           fullText: '',
-          sections: [],
+          sections: crossrefMeta.abstract ? [{ heading: 'Abstract', content: crossrefMeta.abstract }] : [],
           tablesRaw: [],
           openAccess: false,
         };

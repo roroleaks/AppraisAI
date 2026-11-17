@@ -44,6 +44,7 @@ export const ParsedManuscriptPayloadSchema = z.object({
   tablesRaw: z.array(z.string()).default([]),
   detectedStudyTypeHint: z.string().optional(),
   pageCount: z.number().optional(),
+  contentAvailable: z.boolean().optional().default(true),
   extractedAt: z.string().datetime(),
 });
 

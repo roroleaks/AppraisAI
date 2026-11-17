@@ -3,10 +3,11 @@
 import React from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { BiasJudgement } from '@/lib/schemas/appraisal.schema';
+import { isVerbatimInManuscript } from '@/lib/parsers/quote-verifier';
 import { ShieldAlert, CheckCircle, AlertTriangle, XCircle, HelpCircle } from 'lucide-react';
 
 export const RiskOfBiasMatrix: React.FC = () => {
-  const { currentAppraisal, isEditMode, updateRoBDomainJudgement, updateAppraisalField } =
+  const { currentAppraisal, currentManuscript, isEditMode, updateRoBDomainJudgement, updateAppraisalField } =
     useAppraisalStore();
 
   if (!currentAppraisal) return null;
@@ -106,7 +107,7 @@ export const RiskOfBiasMatrix: React.FC = () => {
                     renderJudgementBadge(d.judgement)
                   )}
                 </td>
-                <td className="py-3 px-4 font-serif text-slate-600 italic leading-relaxed">
+                <td className="py-3 px-4 leading-relaxed">
                   {isEditMode ? (
                     <textarea
                       value={d.supportiveEvidence}
@@ -116,8 +117,20 @@ export const RiskOfBiasMatrix: React.FC = () => {
                       className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans not-italic"
                       rows={2}
                     />
+                  ) : isVerbatimInManuscript(d.supportiveEvidence, currentManuscript) ? (
+                    <span className="font-serif italic text-slate-800">
+                      <span className="not-italic text-[10px] font-sans font-bold uppercase text-[#0f6b6b] bg-[#e3f2f2] border border-[#0f6b6b]/30 rounded px-1.5 py-0.5 mr-1.5 inline-block">
+                        Quote
+                      </span>
+                      &ldquo;{d.supportiveEvidence}&rdquo;
+                    </span>
                   ) : (
-                    <>&ldquo;{d.supportiveEvidence}&rdquo;</>
+                    <span className="font-sans text-slate-600 not-italic text-xs">
+                      <span className="text-[10px] font-sans font-bold uppercase text-slate-600 bg-slate-100 border border-slate-300 rounded px-1.5 py-0.5 mr-1.5 inline-block">
+                        Appraiser note (AI-generated)
+                      </span>
+                      {d.supportiveEvidence}
+                    </span>
                   )}
                 </td>
                 <td className="py-3 px-4 text-slate-700 leading-relaxed">{d.criticalSignificance}</td>
@@ -182,8 +195,22 @@ export const RiskOfBiasMatrix: React.FC = () => {
                         {item.status.replace(/_/g, ' ')}
                       </span>
                     </td>
-                    <td className="py-2 px-3 text-slate-700 font-serif text-[11px]">
-                      {item.evidenceOrPageLocation}
+                    <td className="py-2 px-3 text-slate-700 text-[11px] leading-relaxed">
+                      {isVerbatimInManuscript(item.evidenceOrPageLocation, currentManuscript) ? (
+                        <span className="font-serif italic text-slate-800">
+                          <span className="not-italic text-[10px] font-sans font-bold uppercase text-[#0f6b6b] bg-[#e3f2f2] border border-[#0f6b6b]/30 rounded px-1.5 py-0.5 mr-1.5 inline-block">
+                            Quote
+                          </span>
+                          &ldquo;{item.evidenceOrPageLocation}&rdquo;
+                        </span>
+                      ) : (
+                        <span className="font-sans text-slate-600 not-italic">
+                          <span className="text-[10px] font-sans font-bold uppercase text-slate-600 bg-slate-100 border border-slate-300 rounded px-1.5 py-0.5 mr-1.5 inline-block">
+                            Appraiser note
+                          </span>
+                          {item.evidenceOrPageLocation}
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))}

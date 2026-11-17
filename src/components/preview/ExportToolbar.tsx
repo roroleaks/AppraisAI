@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { ManuscriptPreviewModal } from './ManuscriptPreviewModal';
 import { getCleanDownloadFilename } from '@/lib/parsers/title-sanitizer';
+import { isValidOrcid } from '@/lib/parsers/orcid-validator';
 import {
   Download,
   Eye,
@@ -14,12 +15,14 @@ import {
   Loader2,
   Sparkles,
   Edit3,
+  AlertCircle,
+  ShieldCheck,
 } from 'lucide-react';
 
-const DEFAULT_PROFILE = {
+const PRESET_PROFILE = {
   name: 'Dr. Raouf Roshdy, MD',
   affiliation: 'Department of Clinical Epidemiology & Evidence-Based Medicine',
-  orcid: '0000-0002-1825-0097',
+  orcid: '0009-0001-4841-1656',
 };
 
 export const ExportToolbar: React.FC = () => {
@@ -28,10 +31,11 @@ export const ExportToolbar: React.FC = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [isCopiedCitation, setIsCopiedCitation] = useState(false);
 
-  // Appraiser attribution persisted locally
+  // Appraiser attribution persisted locally (P0-6: empty by default)
   const [appraiserName, setAppraiserName] = useState('');
   const [appraiserAffiliation, setAppraiserAffiliation] = useState('');
   const [appraiserOrcid, setAppraiserOrcid] = useState('');
+  const [isVerified, setIsVerified] = useState(false);
   const [showAttributionPopover, setShowAttributionPopover] = useState(false);
 
   useEffect(() => {
@@ -42,14 +46,6 @@ export const ExportToolbar: React.FC = () => {
       setAppraiserName(savedName);
       setAppraiserAffiliation(savedAffil || '');
       setAppraiserOrcid(savedOrcid || '');
-    } else {
-      // Initialize with default preset
-      setAppraiserName(DEFAULT_PROFILE.name);
-      setAppraiserAffiliation(DEFAULT_PROFILE.affiliation);
-      setAppraiserOrcid(DEFAULT_PROFILE.orcid);
-      localStorage.setItem('appraisai_author_name', DEFAULT_PROFILE.name);
-      localStorage.setItem('appraisai_author_affiliation', DEFAULT_PROFILE.affiliation);
-      localStorage.setItem('appraisai_author_orcid', DEFAULT_PROFILE.orcid);
     }
   }, []);
 
@@ -60,17 +56,32 @@ export const ExportToolbar: React.FC = () => {
     setShowAttributionPopover(false);
   };
 
-  const handleLoadDefaultPreset = () => {
-    setAppraiserName(DEFAULT_PROFILE.name);
-    setAppraiserAffiliation(DEFAULT_PROFILE.affiliation);
-    setAppraiserOrcid(DEFAULT_PROFILE.orcid);
-    localStorage.setItem('appraisai_author_name', DEFAULT_PROFILE.name);
-    localStorage.setItem('appraisai_author_affiliation', DEFAULT_PROFILE.affiliation);
-    localStorage.setItem('appraisai_author_orcid', DEFAULT_PROFILE.orcid);
+  const handleLoadPreset = () => {
+    setAppraiserName(PRESET_PROFILE.name);
+    setAppraiserAffiliation(PRESET_PROFILE.affiliation);
+    setAppraiserOrcid(PRESET_PROFILE.orcid);
+    localStorage.setItem('appraisai_author_name', PRESET_PROFILE.name);
+    localStorage.setItem('appraisai_author_affiliation', PRESET_PROFILE.affiliation);
+    localStorage.setItem('appraisai_author_orcid', PRESET_PROFILE.orcid);
   };
+
+  const isOrcidValid = !appraiserOrcid.trim() || isValidOrcid(appraiserOrcid.trim());
 
   const handleDownloadDocx = async () => {
     if (!currentAppraisal || isDownloading) return;
+
+    if (!appraiserName.trim()) {
+      setShowAttributionPopover(true);
+      alert('Appraiser name is required before exporting the publication manuscript. Please enter your name.');
+      return;
+    }
+
+    if (!isOrcidValid) {
+      setShowAttributionPopover(true);
+      alert('The entered ORCID iD is invalid. Please correct the checksum or leave it blank.');
+      return;
+    }
+
     setIsDownloading(true);
 
     try {
@@ -79,13 +90,12 @@ export const ExportToolbar: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           report: currentAppraisal,
-          appraiserMeta: appraiserName.trim()
-            ? {
-                name: appraiserName.trim(),
-                affiliation: appraiserAffiliation.trim() || undefined,
-                orcid: appraiserOrcid.trim() || undefined,
-              }
-            : undefined,
+          appraiserMeta: {
+            name: appraiserName.trim(),
+            affiliation: appraiserAffiliation.trim() || undefined,
+            orcid: appraiserOrcid.trim() || undefined,
+            verified: isVerified,
+          },
         }),
       });
 
@@ -138,80 +148,119 @@ export const ExportToolbar: React.FC = () => {
   return (
     <>
       <div className="sticky top-16 z-20 bg-white/95 backdrop-blur-xs border border-[#d8dee6] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
-        {/* Left: Attribution Stamp */}
-        <div className="relative">
-          <button
-            onClick={() => setShowAttributionPopover(!showAttributionPopover)}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-[#e3f2f2] text-slate-700 transition"
-          >
-            <UserCheck className="w-3.5 h-3.5 text-[#0f6b6b]" />
-            <span>Author: {appraiserName.trim() || 'Stamp Appraiser Details'}</span>
-          </button>
-
-          {showAttributionPopover && (
-            <div className="absolute left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-slate-200 p-4 space-y-3 z-30 animate-in fade-in duration-150">
-              <div className="flex items-center justify-between">
-                <h4 className="font-bold text-xs text-slate-800">Appraiser Attribution (DOCX Cover)</h4>
-                <button
-                  type="button"
-                  onClick={handleLoadDefaultPreset}
-                  className="text-[10px] text-[#0f6b6b] hover:text-[#0a4a4a] font-semibold flex items-center gap-1"
-                >
-                  <Sparkles className="w-3 h-3" /> Load Dr. Raouf Preset
-                </button>
-              </div>
-              <div className="space-y-2 text-xs">
-                <div>
-                  <label className="text-[11px] font-medium text-slate-500">Your Full Name & Degree</label>
-                  <input
-                    type="text"
-                    value={appraiserName}
-                    onChange={(e) => setAppraiserName(e.target.value)}
-                    placeholder="e.g. Dr. Raouf Roshdy, MD"
-                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#0f6b6b]"
-                  />
-                </div>
-                <div>
-                  <label className="text-[11px] font-medium text-slate-500">Institution / Department</label>
-                  <input
-                    type="text"
-                    value={appraiserAffiliation}
-                    onChange={(e) => setAppraiserAffiliation(e.target.value)}
-                    placeholder="e.g. Department of Clinical Epidemiology"
-                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#0f6b6b]"
-                  />
-                </div>
-                <div>
-                  <label className="text-[11px] font-medium text-slate-500">ORCID iD (Optional)</label>
-                  <input
-                    type="text"
-                    value={appraiserOrcid}
-                    onChange={(e) => setAppraiserOrcid(e.target.value)}
-                    placeholder="0000-0002-1825-0097"
-                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs font-mono"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end gap-2 pt-1">
-                <button
-                  onClick={() => setShowAttributionPopover(false)}
-                  className="px-2.5 py-1 text-xs text-slate-500 hover:bg-slate-100 rounded"
-                >
-                  Close
-                </button>
-                <button
-                  onClick={handleSaveAttribution}
-                  className="px-3 py-1 bg-[#0f6b6b] hover:bg-[#0a4a4a] text-white text-xs font-semibold rounded"
-                >
-                  Save Profile
-                </button>
-              </div>
-            </div>
+        {/* Left: Engine Provenance Badge & Attribution Stamp */}
+        <div className="flex flex-wrap items-center gap-2">
+          {/* P0-3: Persistent Engine Badge */}
+          {currentAppraisal.engineUsed === 'llm' ? (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+              <span>LLM Appraisal — {currentAppraisal.llmDetails?.provider || 'neural'} ({currentAppraisal.llmDetails?.model || 'standard'})</span>
+            </span>
+          ) : currentAppraisal.engineUsed === 'deterministic-fallback' ? (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-amber-50 text-amber-800 border border-amber-300">
+              <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
+              <span>Heuristic Screening Draft (LLM Fallback)</span>
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-800 border border-slate-300">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-600" />
+              <span>Heuristic screening draft — not a critical appraisal</span>
+            </span>
           )}
+
+          {/* Attribution Popover Trigger */}
+          <div className="relative">
+            <button
+              onClick={() => setShowAttributionPopover(!showAttributionPopover)}
+              className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-[#e3f2f2] text-slate-700 transition"
+            >
+              <UserCheck className="w-3.5 h-3.5 text-[#0f6b6b]" />
+              <span>Appraiser: {appraiserName.trim() || 'Set Appraiser Name'}</span>
+            </button>
+
+            {showAttributionPopover && (
+              <div className="absolute left-0 mt-2 w-84 bg-white rounded-xl shadow-xl border border-slate-200 p-4 space-y-3 z-30 animate-in fade-in duration-150">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-bold text-xs text-slate-800">Appraiser Attribution (DOCX Cover)</h4>
+                  <button
+                    type="button"
+                    onClick={handleLoadPreset}
+                    className="text-[10px] text-[#0f6b6b] hover:text-[#0a4a4a] font-semibold flex items-center gap-1"
+                  >
+                    <Sparkles className="w-3 h-3" /> Load Preset
+                  </button>
+                </div>
+                <div className="space-y-2 text-xs">
+                  <div>
+                    <label className="text-[11px] font-medium text-slate-500">Your Full Name & Degree *</label>
+                    <input
+                      type="text"
+                      value={appraiserName}
+                      onChange={(e) => setAppraiserName(e.target.value)}
+                      placeholder="e.g. Dr. Raouf Roshdy, MD"
+                      className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#0f6b6b]"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-medium text-slate-500">Institution / Department</label>
+                    <input
+                      type="text"
+                      value={appraiserAffiliation}
+                      onChange={(e) => setAppraiserAffiliation(e.target.value)}
+                      placeholder="e.g. Department of Clinical Epidemiology"
+                      className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#0f6b6b]"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-medium text-slate-500">ORCID iD (ISO 7064 MOD 11-2)</label>
+                    <input
+                      type="text"
+                      value={appraiserOrcid}
+                      onChange={(e) => setAppraiserOrcid(e.target.value)}
+                      placeholder="0009-0001-4841-1656"
+                      className={`w-full px-2.5 py-1.5 border rounded text-xs font-mono ${
+                        isOrcidValid ? 'border-slate-300' : 'border-red-400 bg-red-50 text-red-900'
+                      }`}
+                    />
+                    {!isOrcidValid && (
+                      <p className="text-[10px] text-red-600 mt-1">
+                        Invalid ORCID format or check digit. Expected format: 0000-0000-0000-0000.
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="flex justify-end gap-2 pt-1">
+                  <button
+                    onClick={() => setShowAttributionPopover(false)}
+                    className="px-2.5 py-1 text-xs text-slate-500 hover:bg-slate-100 rounded"
+                  >
+                    Close
+                  </button>
+                  <button
+                    onClick={handleSaveAttribution}
+                    className="px-3 py-1 bg-[#0f6b6b] hover:bg-[#0a4a4a] text-white text-xs font-semibold rounded"
+                  >
+                    Save Profile
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Right Action Buttons */}
+        {/* Right Action Buttons & Verification Checkbox */}
         <div className="flex flex-wrap items-center gap-2">
+          {/* P0-6: Verification Checkbox */}
+          <label className="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-700 cursor-pointer bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+            <input
+              type="checkbox"
+              checked={isVerified}
+              onChange={(e) => setIsVerified(e.target.checked)}
+              className="rounded border-slate-300 text-[#0f6b6b] focus:ring-[#0f6b6b]"
+            />
+            <span className="font-medium text-[11px]">I have reviewed & verified this appraisal</span>
+          </label>
+
           {/* Edit Mode Toggle */}
           <button
             onClick={() => setEditMode(!isEditMode)}

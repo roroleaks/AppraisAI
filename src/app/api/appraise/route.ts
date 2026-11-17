@@ -41,12 +41,18 @@ export async function POST(req: NextRequest) {
 
         const report = await execute4PassAppraisalPipeline(manuscript, config);
         report.engineUsed = 'llm';
+        const activeProv = config?.provider || (process.env.GEMINI_API_KEY ? 'gemini' : process.env.GROQ_API_KEY ? 'groq' : 'openai');
+        report.llmDetails = {
+          provider: activeProv,
+          model: config?.model || (activeProv === 'openai' ? 'gpt-4o-mini' : activeProv === 'groq' ? 'llama-3.3-70b-versatile' : 'gemini-2.5-flash'),
+        };
         return NextResponse.json(report);
       } catch (llmErr: any) {
         console.warn('LLM evaluation encountered an issue, falling back to deterministic synthesis engine:', llmErr.message);
         // Seamless fallback to deterministic synthesis engine if API rate-limited or failed
         const fallbackReport = generateDeterministicAppraisal(manuscript);
         fallbackReport.engineUsed = 'deterministic-fallback';
+        fallbackReport.fallbackReason = llmErr?.message || 'LLM call failed or timed out';
         return NextResponse.json(fallbackReport);
       }
     }

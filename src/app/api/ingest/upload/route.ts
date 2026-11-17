@@ -44,6 +44,7 @@ export async function POST(req: NextRequest) {
       sections: extracted.sections,
       tablesRaw: [],
       pageCount: extracted.pageCount,
+      contentAvailable: true,
       extractedAt: new Date().toISOString(),
     };
 

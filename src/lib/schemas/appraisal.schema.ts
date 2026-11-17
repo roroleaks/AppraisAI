@@ -92,7 +92,8 @@ export const EffectEstimateItemSchema = z.object({
   pointEstimate: z.string(),
   confidenceInterval: z.string(),
   pValue: z.string(),
-  clinicalVsStatisticalSignificance: z.string()
+  clinicalVsStatisticalSignificance: z.string(),
+  sourceSentence: z.string().optional(),
 });
 
 export const StrengthsAndLimitationsSchema = z.object({
@@ -172,7 +173,11 @@ export const MasterAppraisalReportSchema = z.object({
     recommendationsForFutureResearch: z.string()
   }),
   references: z.array(ReportReferenceSchema),
+  manuscriptAbstract: z.string().optional(),
+  manuscriptFullText: z.string().optional(),
   engineUsed: z.enum(['llm', 'deterministic-fallback', 'deterministic']).optional(),
+  fallbackReason: z.string().optional(),
+  llmDetails: z.object({ provider: z.string(), model: z.string() }).optional(),
   completedAt: z.string().datetime(),
 });
 

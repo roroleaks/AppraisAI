@@ -61,7 +61,8 @@ const Pass4Schema = z.object({
 });
 
 /**
- * Truncates full manuscript text to safe context limits if unusually long.
+ * Prepares manuscript context prioritizing Abstract + Methods + Results sections,
+ * followed by Discussion, while discarding references (P0-2).
  */
 function prepareManuscriptContext(manuscript: ParsedManuscriptPayload): string {
   const meta = manuscript.metadata;
@@ -72,12 +73,37 @@ SOURCE DEPTH: ${meta.sourceDepth}
 DOI: ${meta.doi || 'N/A'}
 PMID: ${meta.pmid || 'N/A'}`;
 
-  const body = manuscript.fullText.length > 35000
-    ? manuscript.fullText.slice(0, 35000) + '\n\n[... Manuscript body truncated for context efficiency ...]'
-    : manuscript.fullText;
+  let body = '';
+  if (manuscript.sections && manuscript.sections.length > 0) {
+    const isMethods = (h: string) => /method|material|protocol|study design|participants/i.test(h);
+    const isResults = (h: string) => /result|finding|efficacy|outcome|tables/i.test(h);
+    const isDiscussion = (h: string) => /discussion|interpretation|comment/i.test(h);
+    const isRef = (h: string) => /reference|bibliography|literature cited/i.test(h);
 
-  return `${header}\n\nABSTRACT:\n${manuscript.abstract}\n\nMANUSCRIPT CONTENT:\n${body}`;
+    const methodsSecs = manuscript.sections.filter((s) => isMethods(s.heading));
+    const resultsSecs = manuscript.sections.filter((s) => isResults(s.heading));
+    const discussionSecs = manuscript.sections.filter((s) => isDiscussion(s.heading));
+    const otherSecs = manuscript.sections.filter(
+      (s) => !isMethods(s.heading) && !isResults(s.heading) && !isDiscussion(s.heading) && !isRef(s.heading)
+    );
+
+    const ordered = [...methodsSecs, ...resultsSecs, ...discussionSecs, ...otherSecs];
+    body = ordered.map((s) => `### ${s.heading}\n${s.content}`).join('\n\n');
+  } else {
+    body = manuscript.fullText;
+  }
+
+  const maxBodyLength = 35000;
+  const truncatedBody =
+    body.length > maxBodyLength
+      ? body.slice(0, maxBodyLength) + '\n\n[... Manuscript body truncated for context efficiency ...]'
+      : body;
+
+  return `${header}\n\nABSTRACT:\n${manuscript.abstract}\n\nMANUSCRIPT CONTENT:\n${truncatedBody}`;
 }
+
+const INTEGRITY_RULE =
+  "\n\nCRITICAL INTEGRITY INSTRUCTION: Use ONLY the provided manuscript text. NEVER invent numbers, estimates, or claims. If information is absent, write 'Not reported'. Every supportiveEvidence or evidenceOrPageLocation MUST contain a verbatim quote of <=40 words from the manuscript, or the string 'Not reported'.";
 
 /**
  * Orchestrates the 4-Pass Critical Appraisal Pipeline.
@@ -98,7 +124,7 @@ export async function execute4PassAppraisalPipeline(
   const pass1System = `You are a Principal Epidemiologist and Methodologist.
 Analyze the scientific paper text provided. Accurately detect the primary study design (RCT, SYSTEMATIC_REVIEW_META_ANALYSIS, COHORT_STUDY, CASE_CONTROL_STUDY, CROSS_SECTIONAL, DIAGNOSTIC_ACCURACY, CLINICAL_PRACTICE_GUIDELINE, OTHER).
 Deconstruct the PICO/PECO components thoroughly and write a four-part Executive Structured Commentary Abstract (Background, Methodological Summary, Key Findings, Critical Verdict).
-If the source depth is ABSTRACT_ONLY_FALLBACK, explicitly note this in the methodological summary.`;
+If the source depth is ABSTRACT_ONLY_FALLBACK, explicitly note this in the methodological summary.${INTEGRITY_RULE}`;
 
   const pass1User = `Manuscript:\n${manuscriptContext}\n\nPerform Pass 1 appraisal. Return JSON strictly matching the schema.`;
 
@@ -124,7 +150,7 @@ Mandatory EQUATOR items to audit:
 ${governingRules.equatorMandatoryItems.map((i) => `- ${i.itemNumberAndSection}: ${i.requirement}`).join('\n')}
 
 CRITICAL GUARDRAIL:
-${isAbstractOnly ? 'NOTE: The manuscript text provided is ABSTRACT ONLY due to a publisher paywall. For any domain or item that cannot be reliably assessed from the abstract alone (such as allocation concealment mechanics, exact sequence generation, or protocol deviations), you MUST grade it as UNCLEAR_NOT_REPORTED with an explicit note that full text was behind a paywall.' : 'Quote exact text evidence from the manuscript for each judgment.'}`;
+${isAbstractOnly ? 'NOTE: The manuscript text provided is ABSTRACT ONLY due to a publisher paywall. For any domain or item that cannot be reliably assessed from the abstract alone (such as allocation concealment mechanics, exact sequence generation, or protocol deviations), you MUST grade it as UNCLEAR_NOT_REPORTED with an explicit note that full text was behind a paywall.' : 'Quote exact text evidence from the manuscript for each judgment.'}${INTEGRITY_RULE}`;
 
   const pass2User = `Manuscript Text:\n${manuscriptContext}\n\nPerform Pass 2 Risk of Bias (${governingRules.riskOfBiasToolName}) and EQUATOR (${governingRules.equatorGuidelineName}) compliance audit. Return JSON strictly matching the schema.`;
 
@@ -149,7 +175,7 @@ Audit the statistical rigor of the paper:
 5. Multiplicity and subgroup audit (pre-specified vs post-hoc, interaction tests).
 6. Main effect estimates (RR, HR, OR, MD, 95% CI, p-values, clinical vs statistical significance).
 7. Spin and Discrepancy detection: Carefully compare the primary outcome results in the body/tables against the claims made in the Abstract/Conclusion. Detect any spin or unjustified overinterpretation.
-8. Categorize major methodological strengths, fatal flaws, and minor limitations.`;
+8. Categorize major methodological strengths, fatal flaws, and minor limitations.${INTEGRITY_RULE}`;
 
   const pass3User = `Manuscript Text:\n${manuscriptContext}\n\nPerform Pass 3 Statistical & Rigor Audit. Return JSON strictly matching the schema.`;
 
@@ -168,9 +194,26 @@ Audit the statistical rigor of the paper:
   const pass4System = `You are the Lead Clinical Methodologist.
 Synthesize the internal validity (bias, confounding, chance), external validity (generalizability to real-world patient cohorts), and funding/conflict of interest implications.
 Evaluate the 5 GRADE downgrading factors (Risk of Bias, Imprecision, Inconsistency, Indirectness, Publication bias) and potential upgrading factors.
-Formulate practical bottom-line recommendations for practicing clinicians and future research.`;
+Formulate practical bottom-line recommendations for practicing clinicians and future research.${INTEGRITY_RULE}`;
 
-  const pass4User = `Manuscript Text:\n${manuscriptContext}\n\nPass 1 Design: ${pass1Result.studyDesign}\nPass 2 Overall RoB: ${pass2Result.riskOfBias.overallRisk}\nPass 3 Spin Detected: ${pass3Result.statisticalAudit.spinAndDiscrepancyAudit.spinDetected}\n\nPerform Pass 4 Validity Synthesis. Return JSON matching schema.`;
+  // P0-2: Pass Pass 2 domain judgements and Pass 3 effect estimates into Pass 4 prompt
+  const pass4User = `Manuscript Text:\n${manuscriptContext}\n\nPass 1 Design: ${pass1Result.studyDesign}\nPass 2 Risk of Bias Domains:\n${JSON.stringify(
+    pass2Result.riskOfBias.domains.map((d) => ({
+      domain: d.domainName,
+      judgement: d.judgement,
+      evidence: d.supportiveEvidence,
+    })),
+    null,
+    2
+  )}\nPass 2 Overall RoB: ${pass2Result.riskOfBias.overallRisk}\nPass 3 Effect Estimates:\n${JSON.stringify(
+    pass3Result.statisticalAudit.effectEstimates,
+    null,
+    2
+  )}\nPass 3 Spin Audit: ${JSON.stringify(
+    pass3Result.statisticalAudit.spinAndDiscrepancyAudit,
+    null,
+    2
+  )}\n\nPerform Pass 4 Validity Synthesis. Return JSON matching schema.`;
 
   const pass4Result = await executeStructuredLlmCall({
     systemPrompt: pass4System,
@@ -240,6 +283,9 @@ Formulate practical bottom-line recommendations for practicing clinicians and fu
     },
     clinicalPracticeBottomLine: pass4Result.clinicalPracticeBottomLine,
     references,
+    manuscriptAbstract: manuscript.abstract,
+    manuscriptFullText: manuscript.fullText,
+    engineUsed: 'llm',
     completedAt: new Date().toISOString(),
   };
 

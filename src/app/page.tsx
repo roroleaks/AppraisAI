@@ -222,8 +222,8 @@ export default function HomePage() {
         {/* Active Appraisal Workspace */}
         {currentAppraisal && (
           <div className="space-y-6">
-            {/* Deterministic Heuristic Analysis Alert Banner */}
-            {!llmApiKey && (
+            {/* P0-3: Disclose Engine & Fallback Reason */}
+            {currentAppraisal.engineUsed === 'deterministic-fallback' && (
               <div
                 role="alert"
                 className="w-full p-4 bg-amber-50 border border-amber-300 rounded-xl flex items-start gap-3 shadow-xs text-amber-900"
@@ -231,10 +231,28 @@ export default function HomePage() {
                 <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <p className="font-bold text-xs uppercase tracking-wide text-amber-800">
-                    Deterministic Heuristic Analysis Active
+                    LLM Pipeline Fallback — Heuristic Screening Draft Active
                   </p>
                   <p className="text-xs leading-relaxed text-amber-900">
-                    DETERMINISTIC HEURISTIC ANALYSIS ACTIVE — Content is generated via rule-based clinical heuristic extraction without external neural reasoning. Configure an LLM provider (Gemini / Groq / OpenAI) in the header for deep multi-pass neural analysis.
+                    The multi-pass neural LLM appraisal encountered an issue: <strong>{currentAppraisal.fallbackReason || 'LLM provider call failed'}</strong>. 
+                    The report has fallen back to the deterministic heuristic screening draft. This is a preliminary screening draft — not a validated critical appraisal.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {currentAppraisal.engineUsed === 'deterministic' && (
+              <div
+                role="alert"
+                className="w-full p-4 bg-slate-100 border border-slate-300 rounded-xl flex items-start gap-3 shadow-xs text-slate-800"
+              >
+                <AlertCircle className="w-5 h-5 text-slate-600 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-bold text-xs uppercase tracking-wide text-slate-700">
+                    Heuristic Screening Draft — Not a Critical Appraisal
+                  </p>
+                  <p className="text-xs leading-relaxed text-slate-600">
+                    Generated via rule-based clinical heuristic extraction without neural LLM reasoning. Configure an LLM provider (Gemini / Groq / OpenAI) in the header for deep multi-pass critical appraisal.
                   </p>
                 </div>
               </div>
