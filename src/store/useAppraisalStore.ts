@@ -35,6 +35,7 @@ interface AppraisalState {
   setIngestionError: (error: string | null) => void;
 
   setAppraisal: (appraisal: MasterAppraisalReport) => void;
+  clearAppraisal: () => void;
   setAppraising: (isAppraising: boolean) => void;
   setAppraisalStep: (step: number, message?: string) => void;
   setAppraisalError: (error: string | null) => void;
@@ -76,6 +77,8 @@ export const useAppraisalStore = create<AppraisalState>()(
 
       setAppraisal: (appraisal) =>
         set({ currentAppraisal: appraisal, isAppraising: false, appraisalError: null, appraisalProgressStep: 4 }),
+      clearAppraisal: () =>
+        set({ currentAppraisal: null, appraisalProgressStep: 0, appraisalError: null, isAppraising: false, isEditMode: false }),
       setAppraising: (isAppraising) => set({ isAppraising }),
       setAppraisalStep: (step, message = '') => set({ appraisalProgressStep: step, currentStepMessage: message }),
       setAppraisalError: (appraisalError) => set({ appraisalError, isAppraising: false }),

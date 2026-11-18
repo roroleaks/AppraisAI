@@ -17,6 +17,8 @@ import {
   Edit3,
   AlertCircle,
   ShieldCheck,
+  ArrowLeft,
+  RotateCcw,
 } from 'lucide-react';
 
 const PRESET_PROFILE = {
@@ -26,7 +28,8 @@ const PRESET_PROFILE = {
 };
 
 export const ExportToolbar: React.FC = () => {
-  const { currentAppraisal, isEditMode, setEditMode } = useAppraisalStore();
+  const { currentAppraisal, isEditMode, setEditMode, clearAppraisal, resetAll } =
+    useAppraisalStore();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isCopiedCitation, setIsCopiedCitation] = useState(false);
@@ -148,8 +151,36 @@ export const ExportToolbar: React.FC = () => {
   return (
     <>
       <div className="sticky top-16 z-20 bg-white/95 backdrop-blur-xs border border-[#d8dee6] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
-        {/* Left: Engine Provenance Badge & Attribution Stamp */}
+        {/* Left: Navigation, Engine Provenance Badge & Attribution Stamp */}
         <div className="flex flex-wrap items-center gap-2">
+          {/* Back to Manuscript Button */}
+          <button
+            onClick={() => {
+              clearAppraisal();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-[#e3f2f2] text-slate-700 hover:text-[#0f6b6b] border border-slate-300 hover:border-[#0f6b6b] transition shadow-xs"
+            title="Return to manuscript abstract and metadata overview"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to Manuscript</span>
+          </button>
+
+          {/* New Appraisal Reset Button */}
+          <button
+            onClick={() => {
+              if (window.confirm('Start a new appraisal? Current report will be cleared.')) {
+                resetAll();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-700 border border-slate-200 hover:border-rose-300 transition shadow-xs"
+            title="Clear and start new appraisal"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>New Paper</span>
+          </button>
+
           {/* P0-3: Persistent Engine Badge */}
           {currentAppraisal.engineUsed === 'llm' ? (
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">

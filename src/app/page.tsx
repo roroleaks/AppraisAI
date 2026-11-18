@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DropzoneUpload } from '@/components/ingestion/DropzoneUpload';
 import { IdentifierInput } from '@/components/ingestion/IdentifierInput';
 import { ManuscriptPreviewCard } from '@/components/ingestion/ManuscriptPreviewCard';
@@ -22,6 +22,10 @@ import {
   Sparkles,
   BookOpenCheck,
   AlertCircle,
+  ArrowLeft,
+  RotateCcw,
+  ArrowUp,
+  CheckCircle2,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -31,8 +35,48 @@ export default function HomePage() {
     currentAppraisal,
     isAppraising,
     appraisalError,
-    llmApiKey,
+    clearAppraisal,
+    resetAll,
   } = useAppraisalStore();
+
+  // Browser History & PopState Support for Seamless Back Navigation
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (currentAppraisal) {
+      if (window.location.hash !== '#appraisal') {
+        window.history.pushState({ stage: 'appraisal' }, '', '#appraisal');
+      }
+    } else if (currentManuscript) {
+      if (window.location.hash !== '#preview') {
+        window.history.pushState({ stage: 'preview' }, '', '#preview');
+      }
+    } else {
+      if (window.location.hash && window.location.hash !== '') {
+        window.history.pushState({ stage: 'ingest' }, '', window.location.pathname);
+      }
+    }
+  }, [currentManuscript, currentAppraisal]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handlePopState = () => {
+      const hash = window.location.hash;
+      if (!hash || hash === '' || hash === '#ingest') {
+        if (useAppraisalStore.getState().currentAppraisal || useAppraisalStore.getState().currentManuscript) {
+          useAppraisalStore.getState().resetAll();
+        }
+      } else if (hash === '#preview') {
+        if (useAppraisalStore.getState().currentAppraisal) {
+          useAppraisalStore.getState().clearAppraisal();
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#f6f8fa] text-[#1a2332] flex flex-col font-sans">
@@ -47,9 +91,20 @@ export default function HomePage() {
       {/* Top Header - Exact AIMed & Sysrevai Signature Gradient & Avatar */}
       <header className="bg-gradient-to-r from-[#0f6b6b] to-[#0a4a4a] text-white py-4 px-4 sm:px-8 shadow-md sticky top-0 z-30">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
-          {/* Left: Brand & Badges */}
-          <div className="flex items-center gap-3">
-            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-white/40 shadow-md shrink-0 bg-slate-900">
+          {/* Left: Brand & Badges with Clickable Home Reset */}
+          <div
+            onClick={() => {
+              if (currentManuscript || currentAppraisal) {
+                if (window.confirm('Return to home? Current appraisal session will be reset.')) {
+                  resetAll();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }
+            }}
+            className="flex items-center gap-3 cursor-pointer group select-none"
+            title="AppraisAI Home / Reset"
+          >
+            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-white/40 shadow-md shrink-0 bg-slate-900 group-hover:scale-105 transition-transform">
               <Image
                 src="/appraisai-icon.png"
                 alt="AppraisAI Logo"
@@ -73,8 +128,26 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right: Author Profile & LLM Settings */}
-          <div className="flex items-center gap-4">
+          {/* Right: Actions, Author Profile & LLM Settings */}
+          <div className="flex items-center gap-3">
+            {/* Header New Appraisal Reset Button */}
+            {(currentManuscript || currentAppraisal) && (
+              <button
+                type="button"
+                onClick={() => {
+                  if (window.confirm('Start a new appraisal? Current report will be reset.')) {
+                    resetAll();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-xs font-semibold text-white transition shadow-xs"
+                title="Start New Appraisal"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">New Appraisal</span>
+              </button>
+            )}
+
             <LlmSettingsModal />
 
             {/* Dr. Raouf Roshdy Signature Avatar Block */}
@@ -293,6 +366,59 @@ export default function HomePage() {
 
             {/* Pass 4: Validity Synthesis, GRADE & References */}
             <ValidityAndClinicalCard />
+
+            {/* End-of-Report Navigation & Completion Card */}
+            <div className="bg-white border border-[#d8dee6] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="space-y-1 text-center sm:text-left">
+                <h4 className="text-sm font-bold text-slate-900 flex items-center justify-center sm:justify-start gap-2">
+                  <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600" />
+                  Critical Appraisal Complete
+                </h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  All 4 evaluation passes verified. Return to the manuscript overview, appraise another paper, or scroll back up to export controls.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2.5 w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => {
+                    clearAppraisal();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-[#e3f2f2] text-slate-700 hover:text-[#0f6b6b] hover:border-[#0f6b6b] transition shadow-xs"
+                  title="Return to manuscript overview"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Back to Manuscript</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (window.confirm('Start a new appraisal? Current report will be cleared.')) {
+                      resetAll();
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition shadow-xs"
+                  title="Start a fresh appraisal"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Appraise Another Paper</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[#0f6b6b] hover:bg-[#0a4a4a] text-white transition shadow-xs"
+                  title="Scroll back to top of report"
+                >
+                  <ArrowUp className="w-3.5 h-3.5" />
+                  <span>Back to Top</span>
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </main>

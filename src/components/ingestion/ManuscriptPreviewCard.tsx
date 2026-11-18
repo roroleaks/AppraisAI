@@ -313,33 +313,45 @@ export const ManuscriptPreviewCard: React.FC = () => {
             )}
           </div>
 
-          <button
-            onClick={handleLaunchAppraisal}
-            disabled={isAppraising || currentManuscript.contentAvailable === false}
-            className={`w-full sm:w-auto px-6 py-3 text-xs font-bold rounded-lg shadow-sm transition flex items-center justify-center gap-2 ${
-              currentManuscript.contentAvailable === false
-                ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
-                : 'bg-[#0f6b6b] hover:bg-[#0b5555] disabled:bg-slate-300 text-white'
-            }`}
-          >
-            {isAppraising ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Executing 4-Pass Methodological Engine...
-              </>
-            ) : currentManuscript.contentAvailable === false ? (
-              <>
-                <AlertTriangle className="w-4 h-4 text-slate-500" />
-                Only bibliographic metadata was found — upload the PDF
-              </>
-            ) : (
-              <>
-                <Sparkles className="w-4 h-4" />
-                Launch 4-Pass Governing Critical Appraisal
-                <ArrowRight className="w-4 h-4" />
-              </>
-            )}
-          </button>
+          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto justify-end">
+            <button
+              type="button"
+              onClick={clearManuscript}
+              disabled={isAppraising}
+              className="px-4 py-2.5 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition flex items-center justify-center gap-1.5"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Change Paper</span>
+            </button>
+
+            <button
+              onClick={handleLaunchAppraisal}
+              disabled={isAppraising || currentManuscript.contentAvailable === false}
+              className={`w-full sm:w-auto px-6 py-2.5 text-xs font-bold rounded-lg shadow-sm transition flex items-center justify-center gap-2 ${
+                currentManuscript.contentAvailable === false
+                  ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                  : 'bg-[#0f6b6b] hover:bg-[#0b5555] disabled:bg-slate-300 text-white'
+              }`}
+            >
+              {isAppraising ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Executing 4-Pass Methodological Engine...
+                </>
+              ) : currentManuscript.contentAvailable === false ? (
+                <>
+                  <AlertTriangle className="w-4 h-4 text-slate-500" />
+                  Only bibliographic metadata was found — upload the PDF
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4" />
+                  Launch 4-Pass Governing Critical Appraisal
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

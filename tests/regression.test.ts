@@ -46,6 +46,7 @@ async function runRegressionSuite() {
         authors: ['Smith J', 'Adams B'],
         journal: 'Surgical Medicine',
         publicationYear: 2024,
+        vancouverCitation: 'Smith J, Adams B. Rate ratio in surgery. Surg Med. 2024.',
         sourceDepth: 'FULL_TEXT_PDF',
         openAccess: true,
       },
@@ -63,9 +64,9 @@ async function runRegressionSuite() {
     const rateRatio = estimates.find((e) => e.metric.toLowerCase().includes('rate ratio'));
     assert(!!rateRatio, 'Found Rate Ratio estimate');
     assert(rateRatio?.pointEstimate === '0.82', `Point estimate is 0.82 (got ${rateRatio?.pointEstimate})`);
-    assert(rateRatio?.confidenceInterval.includes('0.71 to 0.95'), `CI contains 0.71 to 0.95 (got ${rateRatio?.confidenceInterval})`);
-    assert(rateRatio?.pValue.includes('0.008'), `P-value contains 0.008 (got ${rateRatio?.pValue})`);
-    assert(rateRatio?.clinicalVsStatisticalSignificance.includes('Statistically significant'), 'Significance correctly deduced from CI');
+    assert(Boolean(rateRatio?.confidenceInterval?.includes('0.71 to 0.95')), `CI contains 0.71 to 0.95 (got ${rateRatio?.confidenceInterval})`);
+    assert(Boolean(rateRatio?.pValue?.includes('0.008')), `P-value contains 0.008 (got ${rateRatio?.pValue})`);
+    assert(Boolean(rateRatio?.clinicalVsStatisticalSignificance?.includes('Statistically significant')), 'Significance correctly deduced from CI');
   }
 
   // -----------------------------------------------------------------
@@ -111,6 +112,7 @@ async function runRegressionSuite() {
         authors: ['Taylor R', 'Evans K'],
         journal: 'Journal of Palliative Medicine',
         publicationYear: 2024,
+        vancouverCitation: 'Taylor R, Evans K. Palliative care review. J Palliat Med. 2024.',
         sourceDepth: 'FULL_TEXT_PDF',
         openAccess: true,
       },
@@ -140,6 +142,7 @@ async function runRegressionSuite() {
         journal: fixture.journal,
         publicationYear: 2023,
         doi: fixture.doi,
+        vancouverCitation: 'Miller A. Crossref stub. Lancet. 2023.',
         sourceDepth: 'ABSTRACT_ONLY_FALLBACK',
         openAccess: false,
       },
@@ -257,6 +260,7 @@ async function runRegressionSuite() {
         authors: ['Kovacs G', 'Nagy T'],
         journal: 'European Journal of Cardiology',
         publicationYear: 2024,
+        vancouverCitation: 'Kovacs G, Nagy T. Grounded study. Eur J Cardiol. 2024.',
         sourceDepth: 'FULL_TEXT_PDF',
         openAccess: true,
       },
