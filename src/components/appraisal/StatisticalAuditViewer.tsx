@@ -23,13 +23,13 @@ export const StatisticalAuditViewer: React.FC = () => {
   return (
     <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
       {/* Header */}
-      <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
+      <div className="border-b border-slate-100 pb-3 flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <BarChart2 className="w-4 h-4 text-indigo-600" />
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <BarChart2 className="w-5 h-5 text-[#0f6b6b]" />
             Statistical & Methodological Rigor Audit
           </h3>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
             Audit of power calculation, analysis populations, effect sizes, and abstract spin.
           </p>
         </div>
@@ -38,8 +38,58 @@ export const StatisticalAuditViewer: React.FC = () => {
         </span>
       </div>
 
-      {/* Spin Alert Banner if Detected */}
-      {spinAndDiscrepancyAudit.spinDetected ? (
+      {/* Trial Specifics Banner (Non-inferiority, Adherence, Stopping) */}
+      {(statisticalAudit.trialSpecifics?.framework === 'non-inferiority' ||
+        statisticalAudit.trialSpecifics?.adherence ||
+        statisticalAudit.trialSpecifics?.stoppedEarly) && (
+        <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs sm:text-sm text-slate-700">
+          <div className="font-semibold text-slate-900 flex items-center gap-1.5">
+            <Scale className="w-4 h-4 text-[#0f6b6b]" />
+            <span>Trial Specific Parameters & Governance:</span>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {statisticalAudit.trialSpecifics.framework === 'non-inferiority' && (
+              <div className="bg-white border border-slate-200 rounded-md p-2 flex-1 min-w-[240px]">
+                <p className="font-bold text-xs text-slate-800">Non-Inferiority Framework</p>
+                <p className="text-xs text-slate-600 mt-0.5">
+                  Margin: <strong>{statisticalAudit.trialSpecifics.nonInferiorityMargin || 'Not identified'}</strong>
+                </p>
+                {statisticalAudit.trialSpecifics.nonInferiorityConclusion && (
+                  <p className="text-xs text-amber-800 font-medium mt-1">
+                    {statisticalAudit.trialSpecifics.nonInferiorityConclusion}
+                  </p>
+                )}
+              </div>
+            )}
+            {statisticalAudit.trialSpecifics.adherence && (
+              <div className="bg-white border border-slate-200 rounded-md p-2 flex-1 min-w-[200px]">
+                <p className="font-bold text-xs text-slate-800">Protocol Adherence</p>
+                <p className="text-xs text-slate-600 mt-0.5">
+                  Reported adherence: <strong>{statisticalAudit.trialSpecifics.adherence}</strong>
+                </p>
+              </div>
+            )}
+            {statisticalAudit.trialSpecifics.stoppedEarly && (
+              <div className="bg-amber-50 border border-amber-200 rounded-md p-2 flex-1 min-w-[200px]">
+                <p className="font-bold text-xs text-amber-900">Premature Trial Termination</p>
+                <p className="text-xs text-amber-800 mt-0.5">
+                  Trial stopped early / planned sample size not achieved.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Spin Alert Banner if Detected (Task A5: Tri-state) */}
+      {spinAndDiscrepancyAudit.spinStatus === 'not-assessed' ? (
+        <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center gap-2 text-xs text-slate-700">
+          <HelpCircle className="w-4 h-4 text-slate-500 shrink-0" />
+          <span>
+            <strong>Spin & Discrepancy Audit:</strong> Not assessed by heuristic screening engine (requires full text peer review or neural LLM pass).
+          </span>
+        </div>
+      ) : spinAndDiscrepancyAudit.spinDetected ? (
         <div className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
           <AlertOctagon className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
           <div className="text-xs text-red-900 space-y-1">
@@ -58,7 +108,7 @@ export const StatisticalAuditViewer: React.FC = () => {
         <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center gap-2 text-xs text-emerald-800">
           <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>
-            <strong>No Spin Detected:</strong> Abstract and conclusion claims appear justified by the primary outcome data.
+            <strong>No Spin Identified:</strong> Abstract claims independently audited against primary outcome data.
           </span>
         </div>
       )}
@@ -132,14 +182,14 @@ export const StatisticalAuditViewer: React.FC = () => {
       {/* Effect Estimates Table */}
       {statisticalAudit.effectEstimates.length > 0 && (
         <div className="space-y-2">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+          <h4 className="text-sm sm:text-base font-bold text-slate-800">
             Primary & Secondary Effect Estimates
           </h4>
-          <div className="border border-slate-200 rounded-lg overflow-hidden text-xs">
-            <table className="w-full text-left border-collapse">
+          <div className="border border-slate-200 rounded-lg overflow-x-auto text-xs sm:text-sm">
+            <table className="w-full text-left border-collapse min-w-[720px]">
               <thead>
                 <tr className="bg-slate-100/70 border-b border-slate-200 text-slate-700 font-semibold">
-                  <th className="py-2.5 px-3">Outcome</th>
+                  <th className="py-2.5 px-3">Outcome & Type</th>
                   <th className="py-2.5 px-3">Metric</th>
                   <th className="py-2.5 px-3 font-mono">Point Estimate</th>
                   <th className="py-2.5 px-3 font-mono">95% CI</th>
@@ -161,10 +211,32 @@ export const StatisticalAuditViewer: React.FC = () => {
                           className="w-full p-1 border border-slate-300 rounded text-xs"
                         />
                       ) : (
-                        est.outcome
+                        <div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="font-semibold text-slate-900">{est.outcome}</span>
+                            {est.isPrimary && (
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#0f6b6b] text-white">
+                                PRIMARY
+                              </span>
+                            )}
+                          </div>
+                          <span
+                            className={`inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-semibold ${
+                              est.outcomeType === 'benefit'
+                                ? 'bg-[#DCFCE7] text-[#166534]'
+                                : est.outcomeType === 'harm'
+                                ? 'bg-[#FEE2E2] text-[#991B1B]'
+                                : est.outcomeType === 'process'
+                                ? 'bg-[#E0F2FE] text-[#0369A1]'
+                                : 'bg-[#F1F5F9] text-[#475569]'
+                            }`}
+                          >
+                            {est.outcomeType || 'unlabelled'}
+                          </span>
+                        </div>
                       )}
                     </td>
-                    <td className="py-2.5 px-3 font-bold text-indigo-700">
+                    <td className="py-2.5 px-3 font-bold text-[#0f6b6b]">
                       {isEditMode ? (
                         <input
                           type="text"
@@ -266,12 +338,14 @@ export const StatisticalAuditViewer: React.FC = () => {
             <XCircle className="w-4 h-4 text-red-600" /> Fatal Flaws / Critical Biases
           </span>
           <ul className="list-disc pl-4 space-y-1 text-red-950">
-            {strengthsAndLimitations.fatalMethodologicalFlaws.length > 0 ? (
+            {strengthsAndLimitations.flawsStatus === 'not-assessed' ? (
+              <li className="italic text-slate-500">Not assessed by heuristic screening engine (requires full manuscript audit).</li>
+            ) : strengthsAndLimitations.fatalMethodologicalFlaws.length > 0 ? (
               strengthsAndLimitations.fatalMethodologicalFlaws.map((f, idx) => (
                 <li key={idx}>{f}</li>
               ))
             ) : (
-              <li className="italic text-slate-500">No fatal methodological flaws identified.</li>
+              <li className="italic text-slate-500">No fatal methodological flaws identified upon formal audit.</li>
             )}
           </ul>
         </div>

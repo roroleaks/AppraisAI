@@ -51,6 +51,25 @@ async function runVancouverTests() {
   ]);
   assert(author7.includes('et al.'), `More than 6 authors uses et al.: "${author7}"`);
 
+  // Test 8: Full citation prevents "et al.." duplicate period (Task C7)
+  const citation = buildVancouverCitation({
+    authors: [
+      'Author One A',
+      'Author Two B',
+      'Author Three C',
+      'Author Four D',
+      'Author Five E',
+      'Author Six F',
+      'Author Seven G',
+    ],
+    title: 'Trial of Medical Therapy',
+    journal: 'nat med',
+    year: 2024,
+  });
+  assert(!citation.includes('et al..'), `Citation must never contain "et al..": got "${citation}"`);
+  assert(citation.includes('et al. Trial of Medical Therapy'), `Citation properly separates et al. from title: "${citation}"`);
+  assert(citation.includes('Nat Med'), `Journal properly capitalized: expected "Nat Med" in "${citation}"`);
+
   console.log('✅ All Vancouver formatter tests PASSED successfully!');
 }
 

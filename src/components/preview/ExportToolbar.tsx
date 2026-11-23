@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { ManuscriptPreviewModal } from './ManuscriptPreviewModal';
+import { ConfirmationModal } from '@/components/common/ConfirmationModal';
 import { getCleanDownloadFilename } from '@/lib/parsers/title-sanitizer';
 import { isValidOrcid } from '@/lib/parsers/orcid-validator';
 import {
@@ -33,6 +34,8 @@ export const ExportToolbar: React.FC = () => {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isCopiedCitation, setIsCopiedCitation] = useState(false);
+  const [showResetConfirmModal, setShowResetConfirmModal] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
 
   // Appraiser attribution persisted locally (P0-6: empty by default)
   const [appraiserName, setAppraiserName] = useState('');
@@ -40,6 +43,8 @@ export const ExportToolbar: React.FC = () => {
   const [appraiserOrcid, setAppraiserOrcid] = useState('');
   const [isVerified, setIsVerified] = useState(false);
   const [showAttributionPopover, setShowAttributionPopover] = useState(false);
+  const [attributionError, setAttributionError] = useState<string | null>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const savedName = localStorage.getItem('appraisai_author_name');
@@ -72,16 +77,19 @@ export const ExportToolbar: React.FC = () => {
 
   const handleDownloadDocx = async () => {
     if (!currentAppraisal || isDownloading) return;
+    setExportError(null);
+    setAttributionError(null);
 
     if (!appraiserName.trim()) {
       setShowAttributionPopover(true);
-      alert('Appraiser name is required before exporting the publication manuscript. Please enter your name.');
+      setAttributionError('Appraiser name is required before exporting the publication manuscript.');
+      setTimeout(() => nameInputRef.current?.focus(), 50);
       return;
     }
 
     if (!isOrcidValid) {
       setShowAttributionPopover(true);
-      alert('The entered ORCID iD is invalid. Please correct the checksum or leave it blank.');
+      setAttributionError('The entered ORCID iD is invalid. Please correct the checksum or leave it blank.');
       return;
     }
 
@@ -119,7 +127,7 @@ export const ExportToolbar: React.FC = () => {
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
     } catch (err: any) {
-      alert(`Export error: ${err.message}`);
+      setExportError(`Export error: ${err.message}`);
     } finally {
       setIsDownloading(false);
     }
@@ -150,7 +158,8 @@ export const ExportToolbar: React.FC = () => {
 
   return (
     <>
-      <div className="sticky top-16 z-20 bg-white/95 backdrop-blur-xs border border-[#d8dee6] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
+      {/* Task C2: Toolbar is inline on mobile/tablet and sticky only on desktop (lg:) */}
+      <div className="lg:sticky lg:top-[56px] z-20 bg-white/95 backdrop-blur-xs border border-[#d8dee6] rounded-xl p-3 sm:p-3.5 shadow-sm flex flex-wrap items-center justify-between gap-2.5">
         {/* Left: Navigation, Engine Provenance Badge & Attribution Stamp */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Back to Manuscript Button */}
@@ -168,12 +177,7 @@ export const ExportToolbar: React.FC = () => {
 
           {/* New Appraisal Reset Button */}
           <button
-            onClick={() => {
-              if (window.confirm('Start a new appraisal? Current report will be cleared.')) {
-                resetAll();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}
+            onClick={() => setShowResetConfirmModal(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-700 border border-slate-200 hover:border-rose-300 transition shadow-xs"
             title="Clear and start new appraisal"
           >
@@ -221,13 +225,23 @@ export const ExportToolbar: React.FC = () => {
                     <Sparkles className="w-3 h-3" /> Load Preset
                   </button>
                 </div>
+                {attributionError && (
+                  <div className="p-2 bg-red-50 border border-red-200 text-red-700 text-[11px] rounded flex items-center gap-1.5 animate-in fade-in duration-150">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0 text-red-500" />
+                    <span>{attributionError}</span>
+                  </div>
+                )}
                 <div className="space-y-2 text-xs">
                   <div>
                     <label className="text-[11px] font-medium text-slate-500">Your Full Name & Degree *</label>
                     <input
+                      ref={nameInputRef}
                       type="text"
                       value={appraiserName}
-                      onChange={(e) => setAppraiserName(e.target.value)}
+                      onChange={(e) => {
+                        setAppraiserName(e.target.value);
+                        if (attributionError) setAttributionError(null);
+                      }}
                       placeholder="e.g. Dr. Raouf Roshdy, MD"
                       className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#0f6b6b]"
                     />
@@ -363,6 +377,38 @@ export const ExportToolbar: React.FC = () => {
         report={currentAppraisal}
         onDownloadDocx={handleDownloadDocx}
       />
+
+      {/* Confirmation Modal for Resetting Session (Task B4) */}
+      <ConfirmationModal
+        isOpen={showResetConfirmModal}
+        title="Start a new appraisal?"
+        message="Your current critical appraisal session will be reset. Any unsaved edits will be cleared."
+        confirmLabel="Reset & Start New"
+        cancelLabel="Cancel"
+        variant="warning"
+        onConfirm={() => {
+          resetAll();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onCancel={() => setShowResetConfirmModal(false)}
+      />
+
+      {/* Export Error Alert (Task B4) */}
+      {exportError && (
+        <div
+          role="alert"
+          className="fixed bottom-4 right-4 z-50 p-4 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl shadow-lg flex items-center gap-3 animate-in fade-in duration-200"
+        >
+          <AlertCircle className="w-5 h-5 text-red-500 shrink-0" />
+          <span>{exportError}</span>
+          <button
+            onClick={() => setExportError(null)}
+            className="text-red-400 hover:text-red-600 font-bold ml-2"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </>
   );
 };

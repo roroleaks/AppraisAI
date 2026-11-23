@@ -267,11 +267,15 @@ export function buildAcademicDocxManuscript(
                 spacing: { before: 0, after: 20 },
                 children: [
                   new TextRun({
-                    text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT',
+                    text: (report as any).retraction?.isRetracted
+                      ? 'RETRACTED ARTICLE — APPRAISAL FOR TEACHING & HISTORICAL RECORD ONLY'
+                      : isVerified
+                      ? 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT'
+                      : 'UNVERIFIED HEURISTIC DRAFT  |  CRITICAL APPRAISAL REPORT (PRELIMINARY)',
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_SMALL,
                     bold: true,
-                    color: DOCX_COLORS.NAVY_PRIMARY,
+                    color: (report as any).retraction?.isRetracted ? 'C53030' : isVerified ? DOCX_COLORS.NAVY_PRIMARY : 'C53030',
                   }),
                 ],
               }),

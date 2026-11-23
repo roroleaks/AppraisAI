@@ -11,6 +11,7 @@ import { StatisticalAuditViewer } from '@/components/appraisal/StatisticalAuditV
 import { ValidityAndClinicalCard } from '@/components/appraisal/ValidityAndClinicalCard';
 import { ExportToolbar } from '@/components/preview/ExportToolbar';
 import { LlmSettingsModal } from '@/components/common/LlmSettingsModal';
+import { ConfirmationModal } from '@/components/common/ConfirmationModal';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import Image from 'next/image';
 import {
@@ -30,6 +31,7 @@ import {
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<'identifier' | 'upload'>('identifier');
+  const [showResetConfirmModal, setShowResetConfirmModal] = useState(false);
   const {
     currentManuscript,
     currentAppraisal,
@@ -88,17 +90,14 @@ export default function HomePage() {
         Skip to main content
       </a>
 
-      {/* Top Header - Exact AIMed & Sysrevai Signature Gradient & Avatar */}
-      <header className="bg-gradient-to-r from-[#0f6b6b] to-[#0a4a4a] text-white py-4 px-4 sm:px-8 shadow-md sticky top-0 z-30">
+      {/* Top Header - Exact AIMed & Sysrevai Signature Gradient & Avatar (Task C2: not sticky on mobile) */}
+      <header className="bg-gradient-to-r from-[#0f6b6b] to-[#0a4a4a] text-white py-2.5 sm:py-3 px-4 sm:px-8 shadow-md sm:sticky sm:top-0 z-30">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
           {/* Left: Brand & Badges with Clickable Home Reset */}
           <div
             onClick={() => {
               if (currentManuscript || currentAppraisal) {
-                if (window.confirm('Return to home? Current appraisal session will be reset.')) {
-                  resetAll();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
+                setShowResetConfirmModal(true);
               }
             }}
             className="flex items-center gap-3 cursor-pointer group select-none"
@@ -134,12 +133,7 @@ export default function HomePage() {
             {(currentManuscript || currentAppraisal) && (
               <button
                 type="button"
-                onClick={() => {
-                  if (window.confirm('Start a new appraisal? Current report will be reset.')) {
-                    resetAll();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => setShowResetConfirmModal(true)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-xs font-semibold text-white transition shadow-xs"
                 title="Start New Appraisal"
               >
@@ -395,12 +389,7 @@ export default function HomePage() {
 
                 <button
                   type="button"
-                  onClick={() => {
-                    if (window.confirm('Start a new appraisal? Current report will be cleared.')) {
-                      resetAll();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => setShowResetConfirmModal(true)}
                   className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition shadow-xs"
                   title="Start a fresh appraisal"
                 >
@@ -441,6 +430,21 @@ export default function HomePage() {
           Designed & Developed by Dr. Raouf Roshdy © 2024–2026 • All Rights Reserved
         </p>
       </footer>
+
+      {/* In-app Confirmation Modal (Task B4) */}
+      <ConfirmationModal
+        isOpen={showResetConfirmModal}
+        title="Start a new appraisal?"
+        message="Return to home? Your current manuscript appraisal session will be reset."
+        confirmLabel="Reset & Start New"
+        cancelLabel="Cancel"
+        variant="warning"
+        onConfirm={() => {
+          resetAll();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onCancel={() => setShowResetConfirmModal(false)}
+      />
     </div>
   );
 }

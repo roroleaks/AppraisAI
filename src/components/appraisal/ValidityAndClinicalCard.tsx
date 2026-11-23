@@ -29,7 +29,21 @@ export const ValidityAndClinicalCard: React.FC = () => {
   };
 
   const renderGradeBadge = (grade: GradeCertainty) => {
+    if ((validitySynthesis as any).suppressedDueToRetraction) {
+      return (
+        <span className="px-3 py-1 bg-red-100 text-red-900 border border-red-300 font-bold rounded-md text-xs">
+          Suppressed (Retracted Paper)
+        </span>
+      );
+    }
+
     switch (grade) {
+      case 'NOT_GRADED_HEURISTIC':
+        return (
+          <span className="px-3 py-1 bg-slate-100 text-slate-700 border border-slate-300 font-semibold rounded-md text-xs">
+            Not graded (heuristic mode)
+          </span>
+        );
       case 'HIGH':
         return (
           <span className="px-3 py-1 bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold rounded-md text-xs">
@@ -63,11 +77,11 @@ export const ValidityAndClinicalCard: React.FC = () => {
       {/* Header & GRADE Certainty */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
         <div>
-          <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <Award className="w-4 h-4 text-amber-600" />
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <Award className="w-5 h-5 text-amber-600" />
             GRADE Certainty of Evidence & Validity Synthesis
           </h3>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
             Synthesis across internal validity, generalizability, and GRADE Working Group criteria.
           </p>
         </div>
@@ -172,43 +186,57 @@ export const ValidityAndClinicalCard: React.FC = () => {
       </div>
 
       {/* Clinical Practice Translation / Bottom Line */}
-      <div className="p-4 bg-brand-50 border border-brand-200 rounded-lg space-y-2 text-xs">
-        <span className="font-bold text-brand-900 flex items-center gap-1.5">
-          <Stethoscope className="w-4 h-4 text-brand-700" /> Clinical Practice Bottom Line & Recommendations
-        </span>
-        {isEditMode ? (
-          <div className="space-y-2">
-            <div>
-              <label className="font-bold text-brand-950 block text-[11px]">Key Takeaway for Clinicians:</label>
-              <textarea
-                value={clinicalPracticeBottomLine.keyTakeawayForClinicians}
-                onChange={(e) =>
-                  updateAppraisalField('clinicalPracticeBottomLine.keyTakeawayForClinicians', e.target.value)
-                }
-                className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
-                rows={2}
-              />
+      {(clinicalPracticeBottomLine as any).suppressedDueToRetraction ? (
+        <div className="p-4 bg-red-50 border border-red-300 rounded-lg space-y-1 text-xs sm:text-sm text-red-900">
+          <span className="font-bold text-red-950 flex items-center gap-1.5">
+            <Stethoscope className="w-4 h-4 text-red-700" /> Clinical Translation Suppressed (Retracted Paper)
+          </span>
+          <p className="font-serif leading-relaxed">
+            This manuscript has been officially retracted. Therapeutic recommendations and clinical conclusions are suppressed and must not be implemented in clinical practice.
+          </p>
+        </div>
+      ) : (
+        <div className="p-4 bg-[#e3f2f2] border border-[#0f6b6b]/30 rounded-lg space-y-2 text-xs sm:text-sm">
+          <span className="font-bold text-[#0f6b6b] flex items-center gap-1.5">
+            <Stethoscope className="w-4 h-4 text-[#0f6b6b]" /> Clinical Practice Bottom Line & Recommendations
+          </span>
+          {isEditMode ? (
+            <div className="space-y-2">
+              <div>
+                <label className="font-bold text-slate-900 block text-xs">Key Takeaway for Clinicians:</label>
+                <textarea
+                  value={clinicalPracticeBottomLine.keyTakeawayForClinicians}
+                  onChange={(e) =>
+                    updateAppraisalField('clinicalPracticeBottomLine.keyTakeawayForClinicians', e.target.value)
+                  }
+                  className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+                  rows={2}
+                />
+              </div>
+              <div>
+                <label className="font-bold text-slate-900 block text-xs">Direct Applicability:</label>
+                <textarea
+                  value={clinicalPracticeBottomLine.applicabilityToPractice}
+                  onChange={(e) =>
+                    updateAppraisalField('clinicalPracticeBottomLine.applicabilityToPractice', e.target.value)
+                  }
+                  className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+                  rows={2}
+                />
+              </div>
             </div>
-            <div>
-              <label className="font-bold text-brand-950 block text-[11px]">Direct Applicability:</label>
-              <textarea
-                value={clinicalPracticeBottomLine.applicabilityToPractice}
-                onChange={(e) =>
-                  updateAppraisalField('clinicalPracticeBottomLine.applicabilityToPractice', e.target.value)
-                }
-                className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
-                rows={2}
-              />
-            </div>
-          </div>
-        ) : (
-          <>
-            <p className="text-brand-950 font-serif leading-relaxed">
-              <strong>Key Takeaway for Clinicians:</strong> {clinicalPracticeBottomLine.keyTakeawayForClinicians}
-            </p>
-            <p className="text-brand-900 font-serif leading-relaxed">
-              <strong>Direct Applicability:</strong> {clinicalPracticeBottomLine.applicabilityToPractice}
-            </p>
+          ) : (
+            <>
+              <p className="text-slate-900 font-serif leading-relaxed">
+                <strong>Key Takeaway for Clinicians:</strong> {clinicalPracticeBottomLine.keyTakeawayForClinicians}
+              </p>
+              <p className="text-slate-800 font-serif leading-relaxed">
+                <strong>Direct Applicability:</strong> {clinicalPracticeBottomLine.applicabilityToPractice}
+              </p>
+            </>
+          )}
+        </div>
+      )}
             <p className="text-brand-800 text-[11px] font-sans">
               <strong>Future Research Needs:</strong> {clinicalPracticeBottomLine.recommendationsForFutureResearch}
             </p>

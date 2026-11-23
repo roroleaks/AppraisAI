@@ -35,6 +35,29 @@ export const LlmSettingsModal: React.FC = () => {
   const [model, setModel] = useState(llmModel);
   const [rememberOnDevice, setRememberOnDevice] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [clearDataSuccess, setClearDataSuccess] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  const handleClearAllData = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    setApiKey('');
+    setRememberOnDevice(false);
+    setClearDataSuccess(true);
+    setTimeout(() => {
+      setClearDataSuccess(false);
+      setIsOpen(false);
+      window.location.reload();
+    }, 1000);
+  };
 
   useEffect(() => {
     // Check localStorage first, then sessionStorage (P5-3)
@@ -208,25 +231,35 @@ export const LlmSettingsModal: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-2 flex items-center justify-end gap-2">
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
               <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs rounded-lg transition"
+                type="button"
+                onClick={handleClearAllData}
+                className="px-3 py-1.5 text-xs text-rose-700 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg transition"
+                title="Wipe all local and session cached data"
               >
-                Cancel
+                {clearDataSuccess ? 'All Data Cleared!' : 'Clear cached data'}
               </button>
-              <button
-                onClick={handleSave}
-                className="px-5 py-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold rounded-lg shadow-sm transition flex items-center gap-1.5"
-              >
-                {isSaved ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-300" /> Saved!
-                  </>
-                ) : (
-                  'Apply Settings'
-                )}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="px-4 py-2 border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs rounded-lg transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSave}
+                  className="px-5 py-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold rounded-lg shadow-sm transition flex items-center gap-1.5"
+                >
+                  {isSaved ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-300" /> Saved!
+                    </>
+                  ) : (
+                    'Apply Settings'
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>

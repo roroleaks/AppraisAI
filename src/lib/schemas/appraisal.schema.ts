@@ -74,6 +74,7 @@ export const EquatorComplianceMatrixSchema = z.object({
   overallCompliancePercentage: z.number().min(0).max(100),
   criticalItemsAudit: z.array(EquatorChecklistItemSchema),
   overallComplianceSummary: z.string(),
+  subsetLabel: z.string().optional(),
 });
 
 export type EquatorComplianceMatrix = z.infer<typeof EquatorComplianceMatrixSchema>;

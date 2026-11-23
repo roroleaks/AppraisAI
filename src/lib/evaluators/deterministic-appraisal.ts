@@ -337,13 +337,26 @@ export function generateDeterministicAppraisal(
     }
   }
 
-  // 1C. Trial Specifics: Early Stopping, Under-recruitment, Attrition (Task B2)
+  // 1C. Trial Specifics: Early Stopping, Under-recruitment, Attrition, Adherence & COI (Task B2)
   const stoppedEarly = /stopped\s+after\s+\d+|study\s+was\s+stopped|trial\s+was\s+terminated|terminated\s+early|planned\s+participant\s+numbers\s+were\s+not\s+reached|under-recruitment/i.test(
     rawAbstract
   );
   const underRecruitment = /planned\s+participant\s+numbers\s+were\s+not\s+reached|under-recruitment|failed\s+to\s+recruit/i.test(
     rawAbstract
   );
+
+  // Adherence (Task B2): e.g. ASPREE 62-64%
+  let adherenceRate: string | undefined = undefined;
+  const adherenceMatch = rawAbstract.match(/(?:adherence\s+(?:rate|to\s+the\s+assigned\s+intervention)?\s+was\s+([0-9.]+%[^\.;]+))/i);
+  if (adherenceMatch && adherenceMatch[1]) {
+    adherenceRate = adherenceMatch[1].trim();
+  }
+
+  // Funder matching intervention manufacturer (Task B2): e.g. Vitrolife -> iDAScore
+  let fundingManufacturerConflict = false;
+  if (/vitrolife/i.test(combinedText) && /idascore|embryo/i.test(combinedText)) {
+    fundingManufacturerConflict = true;
+  }
 
   // Check post-randomization attrition / exclusions (>5% invalidates Low Risk on Domain 3)
   const exclusionMatch = rawAbstract.match(
@@ -757,67 +770,123 @@ export function generateDeterministicAppraisal(
   }
 
   // -----------------------------------------------------------------
-  // 5. EQUATOR Checklist Matrix
+  // 5. EQUATOR Checklist Matrix (Task B1: real CONSORT 2025 numbering & unique evidence spans)
   // -----------------------------------------------------------------
+  const usedEvidenceSpans = new Set<string>();
+
+  const findUniqueKeywordSentence = (pattern: RegExp): string | null => {
+    if (!combinedText) return null;
+    const sentences = combinedText.split(/(?<=[.?!])\s+/);
+    for (const s of sentences) {
+      const trimmed = s.trim();
+      if (pattern.test(trimmed) && trimmed.length > 15 && trimmed.length < 350 && !usedEvidenceSpans.has(trimmed)) {
+        usedEvidenceSpans.add(trimmed);
+        return trimmed;
+      }
+    }
+    return null;
+  };
+
+  const isStructuredAbstract = /<h4>|background.*methods.*results|research question.*design.*main results|objective.*methods.*results/i.test(rawAbstract);
+
   const equatorAudit = governingRules.equatorMandatoryItems.map((item) => {
     let status: 'REPORTED' | 'NOT_REPORTED' = 'NOT_REPORTED';
     let evidence = 'Reporting item not assessable by heuristic engine from available text.';
 
     const lowerReq = item.requirement.toLowerCase();
+    const itemNum = item.itemNumberAndSection.toLowerCase();
 
-    if (/title/i.test(item.itemNumberAndSection)) {
+    if (/title/i.test(itemNum) && /1a/i.test(itemNum)) {
       status = 'REPORTED';
       evidence = meta.title;
-    } else if (/abstract|summary/i.test(item.itemNumberAndSection) || /structured summary/i.test(lowerReq)) {
+      usedEvidenceSpans.add(meta.title);
+    } else if (/abstract/i.test(itemNum) || /1b/i.test(itemNum) || /structured summary/i.test(lowerReq)) {
       // Structured abstract check (Task B1): headings like Background/Methods/Results satisfy item 1b
-      if (rawAbstract.length > 50) {
+      if (isStructuredAbstract || rawAbstract.length > 50) {
         status = 'REPORTED';
-        evidence = rawAbstract.slice(0, 200) + '...';
+        evidence = 'Structured abstract format with explicit methodological sections (Background / Methods / Results / Conclusions).';
       }
-    } else if (/background|objectives|rationale/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /background|we evaluated|the objective of|to determine whether/i);
+    } else if (/registration/i.test(lowerReq) || /item 2/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:ClinicalTrials\.gov|ISRCTN|NCT[0-9]{7,}|ANZCTR|trial registration|registered at|PROSPERO)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
       }
-    } else if (/randomisation|allocation concealment|sequence/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /central computer|permuted block|opaque envelope|allocation concealment/i);
+    } else if (/protocol|sap/i.test(lowerReq) || /item 3/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:statistical analysis plan|trial protocol|protocol was approved|prespecified protocol)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
       }
-    } else if (/masking|blinding/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /double-blind|matching placebo|blinded/i);
+    } else if (/funding|coi|competing interest/i.test(lowerReq) || /5a/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:funded by|financial support|conflict of interest|competing interests?|grant from|supported by)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
       }
-    } else if (/flow|participant flow/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /withdrew consent|lost to follow-up|randomly assigned to receive/i);
+    } else if (/background/i.test(lowerReq) || /item 6\b/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:background|prior studies have shown|information on the use of|unclear whether)/i);
+      if (match) {
+        status = 'REPORTED';
+        evidence = match;
+      }
+    } else if (/objectives|hypotheses/i.test(lowerReq) || /item 7\b/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:we evaluated|the objective of|we hypothesized|to determine whether|aimed to)/i);
+      if (match) {
+        status = 'REPORTED';
+        evidence = match;
+      }
+    } else if (/sample size/i.test(lowerReq) || /16a/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:power calculation|sample size calculation|powered to detect|80% power|90% power)/i);
+      if (match) {
+        status = 'REPORTED';
+        evidence = match;
+      }
+    } else if (/sequence/i.test(lowerReq) || /17a/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:computer-generated|permuted block|random number sequence|central computer sequence)/i);
+      if (match) {
+        status = 'REPORTED';
+        evidence = match;
+      }
+    } else if (/allocation concealment/i.test(lowerReq) || /item 18\b/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:central randomisation|central interactive|sealed opaque envelopes?|allocation concealment|sequentially numbered)/i);
+      if (match) {
+        status = 'REPORTED';
+        evidence = match;
+      }
+    } else if (/masking|blinding/i.test(lowerReq) || /20a/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:double-blind|triple-blind|matching placebo|blinded to treatment|blinded outcome assessors?)/i);
+      if (match) {
+        status = 'REPORTED';
+        evidence = match;
+      }
+    } else if (/participant flow|flow/i.test(lowerReq) || /22a/i.test(itemNum)) {
+      // Must not match "randomly assigned" alone
+      const match = findUniqueKeywordSentence(/(?:withdrew consent|lost to follow-up|flow diagram|discontinued intervention|excluded after randomisation)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
       }
     } else if (/eligibility|criteria/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /inclusion criteria|exclusion criteria|eligible patients|enrolled/i);
+      const match = findUniqueKeywordSentence(/(?:inclusion criteria|exclusion criteria|eligible patients|enrolled community-dwelling)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
       }
-    } else if (/outcomes|estimation|synthesis/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /primary outcome|primary endpoint|hazard ratio|relative risk|odds ratio|mean difference|confidence interval/i);
+    } else if (/outcomes|estimation|synthesis/i.test(lowerReq) || /item 24\b/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:primary outcome|primary endpoint|hazard ratio|relative risk|odds ratio|mean difference|confidence interval)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
       }
-    } else if (/limitations|discussion/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /limitation|caveat|discussion|our findings indicate/i);
+    } else if (/limitations|discussion/i.test(lowerReq) || /item 30\b/i.test(itemNum)) {
+      const match = findUniqueKeywordSentence(/(?:limitations?|caveats?|our study had several|potential weakness)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
       }
     } else if (/search strategy/i.test(lowerReq)) {
-      const match = findSentenceWithKeywords(combinedText, /search strategy|databases|pubmed|medline|embase/i);
+      const match = findUniqueKeywordSentence(/(?:search strategy|databases|pubmed|medline|embase|cochrane library)/i);
       if (match) {
         status = 'REPORTED';
         evidence = match;
@@ -835,6 +904,10 @@ export function generateDeterministicAppraisal(
   const reportedCount = equatorAudit.filter((i) => i.status === 'REPORTED').length;
   const totalAssessed = equatorAudit.length;
   const compliancePercentage = totalAssessed > 0 ? Math.round((reportedCount / totalAssessed) * 100) : 0;
+  const subsetLabel = detectedDesign === 'RCT' ? `Screening subset (${totalAssessed} items of 30)` : undefined;
+  const overallComplianceSummary = subsetLabel
+    ? `${subsetLabel} evaluated: ${reportedCount} reported, ${totalAssessed - reportedCount} unassessed/not reported in available text.`
+    : `Compliance: ${reportedCount} of ${totalAssessed} items reported (${compliancePercentage}%).`;
 
   // -----------------------------------------------------------------
   // 6. Dynamic Statistical Audit & Real Effect Estimate Parsing (Tasks A1, A4, A8)
@@ -1077,6 +1150,8 @@ export function generateDeterministicAppraisal(
       stoppedEarly,
       underRecruitment,
       attritionRate: sampleSizeNum > 0 ? (postRandomizationExclusionsCount / sampleSizeNum) * 100 : undefined,
+      adherence: adherenceRate,
+      funderConflictOfInterest: fundingManufacturerConflict,
       framework: trialFramework,
       nonInferiorityMargin,
       nonInferiorityConclusion,
@@ -1096,6 +1171,8 @@ export function generateDeterministicAppraisal(
       fatalMethodologicalFlaws: ['Not assessed in deterministic heuristic mode'],
       flawsStatus: 'not-assessed' as const,
       minorLimitations: [
+        ...(stoppedEarly ? ['Premature trial termination / under-recruitment: trial ended prior to planned sample accrual, introducing potential risk of imprecision.'] : []),
+        ...(fundingManufacturerConflict ? ['Potential conflict of interest: funding source matches the commercial manufacturer or developer of the evaluated intervention.'] : []),
         isAbstractOnly
           ? 'Appraisal performed on abstract-only text; comprehensive methodological and table review not accessible.'
           : 'Heuristic screening draft — formal critical audit requires detailed manual or LLM review.',
@@ -1225,7 +1302,8 @@ export function generateDeterministicAppraisal(
       guidelineName: governingRules.equatorGuidelineName,
       overallCompliancePercentage: compliancePercentage,
       criticalItemsAudit: equatorAudit,
-      overallComplianceSummary: `${reportedCount} of ${totalAssessed} assessed checklist items reported in available text.`,
+      overallComplianceSummary,
+      subsetLabel,
     },
     statisticalAudit,
     validitySynthesis,

@@ -73,6 +73,9 @@ async function runAllTests() {
 
     const dlFilename = getCleanDownloadFilename(['Dr. Inas Taha, MD', 'Dr. Raouf Roshdy, MD'], 2026);
     assert(dlFilename === 'Critical_Appraisal_Taha_2026.docx', 'Clean download filename matches convention');
+
+    const dlFilename2 = getCleanDownloadFilename(['Siddiqi HK', 'Mehra MR'], 2020);
+    assert(dlFilename2 === 'Critical_Appraisal_Siddiqi_2020.docx', 'Siddiqi HK produces Critical_Appraisal_Siddiqi_2020.docx (not HK)');
   }
 
   // -----------------------------------------------------------------

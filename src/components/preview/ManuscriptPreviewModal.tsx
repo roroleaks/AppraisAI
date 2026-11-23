@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MasterAppraisalReport } from '@/lib/schemas/appraisal.schema';
 import { X, Printer, Download, BookOpen, ShieldCheck } from 'lucide-react';
 import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '@/lib/parsers/title-sanitizer';
@@ -18,6 +18,15 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
   report,
   onDownloadDocx,
 }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const displayTitle = cleanBiomedicalTitle(report.metadata.title);
