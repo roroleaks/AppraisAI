@@ -256,5 +256,4 @@ export const RiskOfBiasMatrix: React.FC = () => {
       )}
     </div>
   );
-  );
 };

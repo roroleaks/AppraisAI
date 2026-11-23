@@ -233,16 +233,15 @@ export const ValidityAndClinicalCard: React.FC = () => {
               <p className="text-slate-800 font-serif leading-relaxed">
                 <strong>Direct Applicability:</strong> {clinicalPracticeBottomLine.applicabilityToPractice}
               </p>
+              {clinicalPracticeBottomLine.recommendationsForFutureResearch && (
+                <p className="text-slate-700 text-xs font-sans">
+                  <strong>Future Research Needs:</strong> {clinicalPracticeBottomLine.recommendationsForFutureResearch}
+                </p>
+              )}
             </>
           )}
         </div>
       )}
-            <p className="text-brand-800 text-[11px] font-sans">
-              <strong>Future Research Needs:</strong> {clinicalPracticeBottomLine.recommendationsForFutureResearch}
-            </p>
-          </>
-        )}
-      </div>
 
       {/* Numbered Vancouver References */}
       <div className="pt-2 border-t border-slate-100 space-y-2 text-xs">

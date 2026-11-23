@@ -242,10 +242,10 @@ async function callLlmProvider(
  * and parses/validates against a provided Zod schema with JSON schema prompt inclusion
  * and one repair retry cycle.
  */
-export async function executeStructuredLlmCall<T>(params: {
+export async function executeStructuredLlmCall<T = any>(params: {
   systemPrompt: string;
   userPrompt: string;
-  schema: z.ZodSchema<T>;
+  schema: z.ZodType<T, any, any>;
   config?: LlmConfig;
   temperature?: number;
 }): Promise<T> {
