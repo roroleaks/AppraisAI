@@ -13,7 +13,7 @@ function loadFixture(filename: string): any {
 function cleanXml(text: string): string {
   if (!text) return '';
   return text
-    .replace(/<[^>]+>/g, ' ')
+    .replace(/<\/?[a-zA-Z][^>]*>/g, ' ')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&amp;/g, '&')
@@ -90,7 +90,7 @@ async function runBenchmark() {
 
     const estimates = appraisalB1.statisticalAudit.effectEstimates;
     const harmEstimate = estimates.find((e) =>
-      e.outcomeType === 'harm' || /haemorrhage|hemorrhage|bleeding/i.test(e.outcome || e.outcomeLabel || '')
+      /haemorrhage|hemorrhage|bleeding/i.test(e.outcome || e.outcomeLabel || '')
     );
     assert(harmEstimate, 'Must find major haemorrhage/hemorrhage estimate');
     assert.strictEqual(harmEstimate.pointEstimate, '1.38', 'Major haemorrhage HR must be 1.38');

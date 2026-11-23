@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { IngestionSourceDepthEnum, BibliographicMetadataSchema } from './ingestion.schema';
+import { IngestionSourceDepthEnum, BibliographicMetadataSchema, RetractionInfoSchema } from './ingestion.schema';
 
 // --- Study Classification & Oxford Levels ---
 export const StudyDesignEnum = z.enum([
@@ -25,11 +25,20 @@ export const OxfordEvidenceLevelEnum = z.enum([
 
 export type OxfordEvidenceLevel = z.infer<typeof OxfordEvidenceLevelEnum>;
 
-export const GradeCertaintyEnum = z.enum(['HIGH', 'MODERATE', 'LOW', 'VERY_LOW']);
+export const GradeCertaintyEnum = z.enum(['HIGH', 'MODERATE', 'LOW', 'VERY_LOW', 'NOT_GRADED_HEURISTIC']);
 export type GradeCertainty = z.infer<typeof GradeCertaintyEnum>;
 
 export const BiasJudgementEnum = z.enum(['LOW_RISK', 'SOME_CONCERNS', 'HIGH_RISK', 'UNCLEAR_NOT_REPORTED']);
 export type BiasJudgement = z.infer<typeof BiasJudgementEnum>;
+
+export const ProvenanceEnum = z.enum(['quoted', 'inferred', 'not-extracted']);
+export type Provenance = z.infer<typeof ProvenanceEnum>;
+
+export const PicoItemDetailSchema = z.object({
+  text: z.string(),
+  sourceQuote: z.string().nullable().optional(),
+  provenance: ProvenanceEnum.default('inferred'),
+});
 
 // --- Pass 1: PICO / PECO Deconstruction ---
 export const PicoSchema = z.object({
@@ -39,7 +48,8 @@ export const PicoSchema = z.object({
   primaryOutcomes: z.array(z.string()).describe('Primary clinical endpoints with pre-specified timeline'),
   secondaryOutcomes: z.array(z.string()).describe('Secondary endpoints, safety metrics, or biomarkers'),
   timeframe: z.string().describe('Duration of follow-up or observation period'),
-  setting: z.string().describe('Multi-center, single-center, inpatient, primary care, geography')
+  setting: z.string().describe('Multi-center, single-center, inpatient, primary care, geography'),
+  provenanceMap: z.record(z.string(), PicoItemDetailSchema).optional(),
 });
 
 export type Pico = z.infer<typeof PicoSchema>;
@@ -88,6 +98,9 @@ export const RiskOfBiasMatrixSchema = z.object({
 export type RiskOfBiasMatrix = z.infer<typeof RiskOfBiasMatrixSchema>;
 
 // --- Pass 3: Statistical & Methodological Rigor Audit ---
+export const OutcomeTypeEnum = z.enum(['benefit', 'harm', 'process', 'unlabelled']);
+export type OutcomeType = z.infer<typeof OutcomeTypeEnum>;
+
 export const EffectEstimateItemSchema = z.object({
   outcome: z.string(),
   metric: z.string().describe('e.g., RR, HR, OR, MD, SMD, ARR, NNT'),
@@ -96,13 +109,34 @@ export const EffectEstimateItemSchema = z.object({
   pValue: z.string(),
   clinicalVsStatisticalSignificance: z.string(),
   sourceSentence: z.string().optional(),
+  outcomeType: OutcomeTypeEnum.optional().default('unlabelled'),
+  outcomeLabel: z.string().optional(),
+  sourceQuote: z.string().optional(),
+  confidence: z.enum(['high', 'moderate', 'low']).optional(),
+  isPrimary: z.boolean().optional(),
 });
+
+export type EffectEstimateItem = z.infer<typeof EffectEstimateItemSchema>;
 
 export const StrengthsAndLimitationsSchema = z.object({
   majorStrengths: z.array(z.string()).describe('List of methodological strengths (e.g. rigorous blinding, low attrition)'),
   fatalMethodologicalFlaws: z.array(z.string()).describe('Fatal flaws (e.g. high differential loss, unadjusted critical confounders)'),
   minorLimitations: z.array(z.string()).describe('Minor limitations (e.g. short follow-up, surrogate endpoint)'),
+  flawsStatus: z.enum(['assessed-positive', 'assessed-negative', 'not-assessed']).optional(),
 });
+
+export const TrialSpecificsSchema = z.object({
+  stoppedEarly: z.boolean().optional(),
+  underRecruitment: z.boolean().optional(),
+  attritionRate: z.number().optional(),
+  adherence: z.string().optional(),
+  funderConflictOfInterest: z.boolean().optional(),
+  framework: z.enum(['superiority', 'non-inferiority', 'equivalence']).optional(),
+  nonInferiorityMargin: z.string().optional(),
+  nonInferiorityConclusion: z.string().optional(),
+});
+
+export type TrialSpecifics = z.infer<typeof TrialSpecificsSchema>;
 
 export const StatisticalAuditSchema = z.object({
   sampleSizePowerCalculation: z.object({
@@ -116,6 +150,8 @@ export const StatisticalAuditSchema = z.object({
   confoundingAndCovariateAdjustment: z.string().describe('Evaluation of multivariable adjustment, propensity scores, or stratification'),
   multiplicityAndSubgroupAudit: z.string().describe('Evaluation of alpha-spending, hierarchical testing, pre-specified vs post-hoc subgroups, interaction tests'),
   effectEstimates: z.array(EffectEstimateItemSchema),
+  primaryEstimate: EffectEstimateItemSchema.nullable().optional(),
+  trialSpecifics: TrialSpecificsSchema.optional(),
   heterogeneityAnalysis: z.object({
     i2Statistic: z.string().nullable(),
     pForHeterogeneity: z.string().nullable(),
@@ -125,7 +161,8 @@ export const StatisticalAuditSchema = z.object({
   spinAndDiscrepancyAudit: z.object({
     spinDetected: z.boolean(),
     discrepancyDetails: z.string().describe('Contrasts between primary outcome results and abstract/conclusion claims'),
-    recommendationForInterpretation: z.string()
+    recommendationForInterpretation: z.string(),
+    spinStatus: z.enum(['assessed-positive', 'assessed-negative', 'not-assessed']).optional(),
   }),
   strengthsAndLimitations: StrengthsAndLimitationsSchema,
 });
@@ -145,11 +182,15 @@ export type ReportReference = z.infer<typeof ReportReferenceSchema>;
 export const MasterAppraisalReportSchema = z.object({
   id: z.string().uuid().or(z.string()),
   metadata: BibliographicMetadataSchema,
+  retraction: RetractionInfoSchema.optional(),
   classification: z.object({
     studyDesign: StudyDesignEnum,
     oxfordEvidenceLevel: OxfordEvidenceLevelEnum,
     equatorReportingGuideline: z.string().describe('e.g., CONSORT 2010, PRISMA 2020, STROBE'),
-    studyDesignRationale: z.string()
+    studyDesignRationale: z.string(),
+    framework: z.enum(['superiority', 'non-inferiority', 'equivalence']).optional(),
+    nonInferiorityMargin: z.string().optional(),
+    nonInferiorityConclusion: z.string().optional(),
   }),
   executiveAbstract: z.object({
     background: z.string(),
@@ -171,11 +212,14 @@ export const MasterAppraisalReportSchema = z.object({
     gradeRationale: z.string(),
     manuallyOverridden: z.boolean().optional(),
     overrideJustification: z.string().optional(),
+    suppressedDueToRetraction: z.boolean().optional(),
+    isHeuristicMode: z.boolean().optional(),
   }),
   clinicalPracticeBottomLine: z.object({
     applicabilityToPractice: z.string(),
     keyTakeawayForClinicians: z.string(),
-    recommendationsForFutureResearch: z.string()
+    recommendationsForFutureResearch: z.string(),
+    suppressedDueToRetraction: z.boolean().optional(),
   }),
   references: z.array(ReportReferenceSchema),
   manuscriptAbstract: z.string().optional(),

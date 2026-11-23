@@ -1,5 +1,5 @@
 import { XMLParser } from 'fast-xml-parser';
-import { IngestionSourceDepth } from '../schemas/ingestion.schema';
+import { IngestionSourceDepth, RetractionInfo } from '../schemas/ingestion.schema';
 import { buildVancouverCitation } from './vancouver-formatter';
 import { fetchCrossrefMetadata } from './crossref';
 
@@ -22,6 +22,9 @@ export interface EuropePmcResolvedArticle {
   tablesRaw: string[];
   openAccess: boolean;
   pdfUrl?: string;
+  retraction?: RetractionInfo;
+  publicationTypes?: string[];
+  meshHeadings?: string[];
 }
 
 /**
@@ -30,7 +33,7 @@ export interface EuropePmcResolvedArticle {
 function cleanXmlText(text: string): string {
   if (!text) return '';
   return text
-    .replace(/<[^>]+>/g, ' ')
+    .replace(/<\/?[a-zA-Z][^>]*>/g, ' ')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&amp;/g, '&')
@@ -524,6 +527,39 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
     abstract = `Abstract not indexed in registry for "${title}". Full text available for critical appraisal analysis.`;
   }
 
+  // Parse retractions and corrections (Task A2)
+  const rawPubTypes = pmcResult.pubTypeList?.pubType || [];
+  const pubTypes: string[] = Array.isArray(rawPubTypes) ? rawPubTypes : [rawPubTypes];
+  const rawCorrections = pmcResult.commentCorrectionList?.commentCorrection || [];
+  const corrections: any[] = Array.isArray(rawCorrections) ? rawCorrections : [rawCorrections];
+
+  const isRetracted =
+    pubTypes.some((pt: string) => typeof pt === 'string' && /retracted publication/i.test(pt)) ||
+    corrections.some((c: any) => /retraction in/i.test(c.type || ''));
+  const retractionItem = corrections.find((c: any) => /retraction in/i.test(c.type || ''));
+  const retractionCitation = retractionItem?.reference;
+  const retractionDateMatch = retractionCitation?.match(/\b(20\d{2}(?:\s+[a-zA-Z]{3,9}(?:\s+\d{1,2})?)?)\b/);
+  const exprConcern = corrections.find((c: any) => /expression of concern/i.test(c.type || ''));
+  const erratum = corrections.find((c: any) => /erratum/i.test(c.type || ''));
+
+  const retraction: RetractionInfo | undefined =
+    isRetracted || exprConcern || erratum
+      ? {
+          isRetracted,
+          retractionCitation: retractionCitation || (isRetracted ? 'Article has been retracted by publisher' : undefined),
+          retractionDate: retractionDateMatch ? retractionDateMatch[1] : undefined,
+          hasExpressionOfConcern: !!exprConcern,
+          expressionOfConcernCitation: exprConcern?.reference,
+          hasErratum: !!erratum,
+          erratumCitation: erratum?.reference,
+        }
+      : undefined;
+
+  const rawMesh = pmcResult.meshHeadingList?.meshHeading || [];
+  const meshHeadings: string[] = (Array.isArray(rawMesh) ? rawMesh : [rawMesh])
+    .map((m: any) => m.descriptorName)
+    .filter(Boolean);
+
   return {
     title,
     authors,
@@ -542,5 +578,8 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
     sections,
     tablesRaw,
     openAccess: isOpenAccess,
+    retraction,
+    publicationTypes: pubTypes,
+    meshHeadings,
   };
 }

@@ -2,6 +2,7 @@ export interface ParsedIdentifier {
   type: 'DOI' | 'PMID' | 'PMCID' | 'URL' | 'UNKNOWN';
   normalizedValue: string;
   originalInput: string;
+  doi?: string;
 }
 
 /**
@@ -29,6 +30,19 @@ export function normalizeIdentifier(input: string): ParsedIdentifier {
       type: 'DOI',
       normalizedValue: cleanDoi,
       originalInput: trimmed,
+      doi: cleanDoi,
+    };
+  }
+
+  // 2b. Check for Nature publisher URL with embedded article ID (DOI: 10.1038/<id>)
+  const natureMatch = trimmed.match(/nature\.com\/articles\/(s\d{5}-\d{3}-\d{5}-\w|[a-zA-Z0-9_-]+)/i);
+  if (natureMatch) {
+    const cleanDoi = `10.1038/${natureMatch[1].replace(/[.,;)]+$/, '')}`;
+    return {
+      type: 'DOI',
+      normalizedValue: cleanDoi,
+      originalInput: trimmed,
+      doi: cleanDoi,
     };
   }
 

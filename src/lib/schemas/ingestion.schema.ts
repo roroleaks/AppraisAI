@@ -9,6 +9,18 @@ export const IngestionSourceDepthEnum = z.enum([
 
 export type IngestionSourceDepth = z.infer<typeof IngestionSourceDepthEnum>;
 
+export const RetractionInfoSchema = z.object({
+  isRetracted: z.boolean(),
+  retractionDate: z.string().optional(),
+  retractionCitation: z.string().optional(),
+  hasExpressionOfConcern: z.boolean().optional(),
+  expressionOfConcernCitation: z.string().optional(),
+  hasErratum: z.boolean().optional(),
+  erratumCitation: z.string().optional(),
+});
+
+export type RetractionInfo = z.infer<typeof RetractionInfoSchema>;
+
 export const BibliographicMetadataSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   authors: z.array(z.string()).default([]),
@@ -24,6 +36,8 @@ export const BibliographicMetadataSchema = z.object({
   sourceDepth: IngestionSourceDepthEnum,
   openAccess: z.boolean().default(false),
   resolvedUrl: z.string().optional(),
+  publicationTypes: z.array(z.string()).optional(),
+  meshHeadings: z.array(z.string()).optional(),
 });
 
 export type BibliographicMetadata = z.infer<typeof BibliographicMetadataSchema>;
@@ -38,6 +52,7 @@ export type ManuscriptSection = z.infer<typeof ManuscriptSectionSchema>;
 export const ParsedManuscriptPayloadSchema = z.object({
   id: z.string().uuid().or(z.string()),
   metadata: BibliographicMetadataSchema,
+  retraction: RetractionInfoSchema.optional(),
   abstract: z.string(),
   fullText: z.string(),
   sections: z.array(ManuscriptSectionSchema).default([]),

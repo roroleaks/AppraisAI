@@ -29,10 +29,10 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
         studyDesign: 'RCT',
         equatorGuidelineName: 'CONSORT 2025',
         equatorGuidelineCitation:
-          'Hopewell S, Clarke M, Moher D, et al. CONSORT 2025 statement: updated guideline for reporting randomised trials. BMJ. 2025;389:e081123. doi:10.1136/bmj-2024-081123',
+          'Hopewell S, Chan AW, Collins GS, et al. CONSORT 2025 statement: updated guideline for reporting randomised trials. BMJ. 2025;389:e081123. doi:10.1136/bmj-2024-081123',
         riskOfBiasToolName: 'Cochrane Risk of Bias 2.0 (RoB 2)',
         riskOfBiasToolCitation:
-          'Sterne JAC, Savovic J, Page MJ, et al. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 2019;366:l4898. doi:10.1136/bmj.l4898',
+          'Sterne JAC, Savović J, Page MJ, et al. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 2019;366:l4898. doi:10.1136/bmj.l4898',
         defaultOxfordLevel: 'Level 1b',
         robMandatoryDomains: [
           { domainName: 'Domain 1: Bias arising from the randomisation process', description: 'Generation of random sequence and allocation concealment' },
@@ -223,15 +223,20 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
           'Baethge C, Goldbeck-Wood S, Mertens S. SANRA—a scale for the quality assessment of narrative review articles. Res Integr Peer Rev. 2019;4:5. doi:10.1186/s41073-019-0064-8',
         defaultOxfordLevel: 'Level 5',
         robMandatoryDomains: [
-          { domainName: 'Methodological Scope', description: 'Evaluation of scientific rationale and focused clinical inquiry' },
-          { domainName: 'Literature Search Transparency', description: 'Description of bibliographic sources and literature selection' },
-          { domainName: 'Evidence Grounding', description: 'Referencing of primary clinical evidence supporting claims' },
-          { domainName: 'Critical Synthesis', description: 'Balanced presentation of conflicting evidence and clinical caveats' },
+          { domainName: 'Item 1: Justification of article importance', description: 'Evaluation of scientific rationale and clinical significance for the readership' },
+          { domainName: 'Item 2: Statement of concrete aims / questions', description: 'Explicit formulation of key review inquiry or clinical questions' },
+          { domainName: 'Item 3: Description of literature search', description: 'Transparency regarding bibliographic databases, search terms, and inclusion limits' },
+          { domainName: 'Item 4: Referencing of primary evidence', description: 'Direct grounding of clinical claims in cited primary studies' },
+          { domainName: 'Item 5: Scientific reasoning and critical balance', description: 'Balanced presentation of conflicting evidence and clinical caveats' },
+          { domainName: 'Item 6: Appropriate presentation of data', description: 'Clear presentation of outcome data and synthesis findings' },
         ],
         equatorMandatoryItems: [
-          { itemNumberAndSection: 'Item 1: Rationale & Objectives', requirement: 'Explicit scientific background and question' },
-          { itemNumberAndSection: 'Item 2: Methodological Design', requirement: 'Clear description of sample, variables, and measurements' },
-          { itemNumberAndSection: 'Item 3: Findings & Limitations', requirement: 'Accurate reporting of primary findings and limitations' },
+          { itemNumberAndSection: 'Item 1: Importance & Rationale', requirement: 'Explicit scientific background and readership importance' },
+          { itemNumberAndSection: 'Item 2: Concrete Aims', requirement: 'Formulation of concrete review aims and focus' },
+          { itemNumberAndSection: 'Item 3: Search Strategy', requirement: 'Description of bibliographic search and databases' },
+          { itemNumberAndSection: 'Item 4: Evidence Referencing', requirement: 'Comprehensive citation of primary studies' },
+          { itemNumberAndSection: 'Item 5: Critical Reasoning', requirement: 'Unbiased scientific synthesis and balanced caveats' },
+          { itemNumberAndSection: 'Item 6: Synthesis & Presentation', requirement: 'Transparent presentation of clinical conclusions' },
         ],
       };
   }
