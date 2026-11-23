@@ -1,0 +1,530 @@
+{
+  "id": "28657417",
+  "source": "MED",
+  "pmid": "28657417",
+  "doi": "10.1056/nejmoa1704559",
+  "title": "Aspirin versus Placebo in Pregnancies at High Risk for Preterm Preeclampsia.",
+  "authorString": "Rolnik DL, Wright D, Poon LC, O'Gorman N, Syngelaki A, de Paco Matallana C, Akolekar R, Cicero S, Janga D, Singh M, Molina FS, Persico N, Jani JC, Plasencia W, Papaioannou G, Tenenbaum-Gavish K, Meiri H, Gizurarson S, Maclagan K, Nicolaides KH.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Rolnik DL",
+        "lastName": "Rolnik",
+        "firstName": "Daniel L",
+        "initials": "DL",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Wright D",
+        "lastName": "Wright",
+        "firstName": "David",
+        "initials": "D",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Poon LC",
+        "lastName": "Poon",
+        "firstName": "Liona C",
+        "initials": "LC",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-3944-4130"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "O'Gorman N",
+        "lastName": "O'Gorman",
+        "firstName": "Neil",
+        "initials": "N",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Syngelaki A",
+        "lastName": "Syngelaki",
+        "firstName": "Argyro",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "de Paco Matallana C",
+        "lastName": "de Paco Matallana",
+        "firstName": "Catalina",
+        "initials": "C",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-0117-6388"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Akolekar R",
+        "lastName": "Akolekar",
+        "firstName": "Ranjit",
+        "initials": "R",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Cicero S",
+        "lastName": "Cicero",
+        "firstName": "Simona",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Janga D",
+        "lastName": "Janga",
+        "firstName": "Deepa",
+        "initials": "D",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Singh M",
+        "lastName": "Singh",
+        "firstName": "Mandeep",
+        "initials": "M",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Molina FS",
+        "lastName": "Molina",
+        "firstName": "Francisca S",
+        "initials": "FS",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0001-9190-5654"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Persico N",
+        "lastName": "Persico",
+        "firstName": "Nicola",
+        "initials": "N",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Jani JC",
+        "lastName": "Jani",
+        "firstName": "Jacques C",
+        "initials": "JC",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Plasencia W",
+        "lastName": "Plasencia",
+        "firstName": "Walter",
+        "initials": "W",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Papaioannou G",
+        "lastName": "Papaioannou",
+        "firstName": "George",
+        "initials": "G",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Tenenbaum-Gavish K",
+        "lastName": "Tenenbaum-Gavish",
+        "firstName": "Kinneret",
+        "initials": "K",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Meiri H",
+        "lastName": "Meiri",
+        "firstName": "Hamutal",
+        "initials": "H",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Gizurarson S",
+        "lastName": "Gizurarson",
+        "firstName": "Sveinbjorn",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Maclagan K",
+        "lastName": "Maclagan",
+        "firstName": "Kate",
+        "initials": "K",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0003-0686-3053"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Nicolaides KH",
+        "lastName": "Nicolaides",
+        "firstName": "Kypros H",
+        "initials": "KH",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0003-1266-0711"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.)."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0000-0001-9190-5654"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-0117-6388"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-3944-4130"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0003-0686-3053"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0003-1266-0711"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "recommended_reviews",
+      "supporting_data"
+    ]
+  },
+  "journalInfo": {
+    "issue": "7",
+    "volume": "377",
+    "journalIssueId": 2587858,
+    "dateOfPublication": "2017 Aug",
+    "monthOfPublication": 8,
+    "yearOfPublication": 2017,
+    "journal": {
+      "medlineAbbreviation": "N Engl J Med",
+      "title": "The New England journal of medicine",
+      "essn": "1533-4406",
+      "issn": "0028-4793",
+      "nlmid": "0255562",
+      "isoabbreviation": "N Engl J Med"
+    },
+    "printPublicationDate": "2017-08-01"
+  },
+  "pubYear": "2017",
+  "pageInfo": "613-622",
+  "abstractText": "<h4>Background</h4>Preterm preeclampsia is an important cause of maternal and perinatal death and complications. It is uncertain whether the intake of low-dose aspirin during pregnancy reduces the risk of preterm preeclampsia.<h4>Methods</h4>In this multicenter, double-blind, placebo-controlled trial, we randomly assigned 1776 women with singleton pregnancies who were at high risk for preterm preeclampsia to receive aspirin, at a dose of 150 mg per day, or placebo from 11 to 14 weeks of gestation until 36 weeks of gestation. The primary outcome was delivery with preeclampsia before 37 weeks of gestation. The analysis was performed according to the intention-to-treat principle.<h4>Results</h4>A total of 152 women withdrew consent during the trial, and 4 were lost to follow up, which left 798 participants in the aspirin group and 822 in the placebo group. Preterm preeclampsia occurred in 13 participants (1.6%) in the aspirin group, as compared with 35 (4.3%) in the placebo group (odds ratio in the aspirin group, 0.38; 95% confidence interval, 0.20 to 0.74; P=0.004). Results were materially unchanged in a sensitivity analysis that took into account participants who had withdrawn or were lost to follow-up. Adherence was good, with a reported intake of 85% or more of the required number of tablets in 79.9% of the participants. There were no significant between-group differences in the incidence of neonatal adverse outcomes or other adverse events.<h4>Conclusions</h4>Treatment with low-dose aspirin in women at high risk for preterm preeclampsia resulted in a lower incidence of this diagnosis than placebo. (Funded by the European Union Seventh Framework Program and the Fetal Medicine Foundation; EudraCT number, 2013-003778-29 ; Current Controlled Trials number, ISRCTN13633058 .).",
+  "affiliation": "From King's College Hospital (D.L.R., L.C.P., N.O., A.S., R.A., K.H.N.), Homerton University Hospital (S.C.), North Middlesex University Hospital (D.J.), and University College London Comprehensive Clinical Trials Unit (K.M.), London, University of Exeter, Exeter (D.W.), Medway Maritime Hospital, Gillingham (R.A.), and Southend University Hospital, Westcliff-on-Sea (M.S.) - all in the United Kingdom; Chinese University of Hong Kong, Hong Kong (L.C.P.); Hospital Clínico Universitario Virgen de la Arrixaca, Murcia (C.P.M.), Hospital Universitario San Cecilio, Granada (F.S.M.), and Hospiten Group, Tenerife (W.P.) - all in Spain; Ospedale Maggiore Policlinico, Milan (N.P.); University Hospital Brugmann, Université Libre de Bruxelles, Brussels (J.C.J.); Attikon University Hospital, Athens (G.P.); Rabin Medical Center, Petach Tikva (K.T.-G.), and HyLabs Diagnostics, Rehovot (H.M.) - both in Israel; and University of Iceland, Reykjavik (S.G.).",
+  "publicationStatus": "ppublish",
+  "language": "eng",
+  "pubModel": "Print-Electronic",
+  "pubTypeList": {
+    "pubType": [
+      "Comparative Study",
+      "Research Support, Non-U.S. Gov't",
+      "Multicenter Study",
+      "Randomized Controlled Trial",
+      "Journal Article"
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy Complications"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pre-Eclampsia",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "PC",
+              "qualifierName": "prevention & control"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Aspirin",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy Outcome"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Incidence"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Risk"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Double-Blind Method"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Adult"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Infant, Newborn"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Intention to Treat Analysis"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Kaplan-Meier Estimate"
+      }
+    ]
+  },
+  "chemicalList": {
+    "chemical": [
+      {
+        "name": "Aspirin",
+        "registryNumber": "R16CO5Y76E"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Open access",
+        "availabilityCode": "OA",
+        "documentStyle": "pdf",
+        "site": "Unpaywall",
+        "url": "https://repository.canterbury.ac.uk/item/8v972/aspirin-versus-placebo-in-pregnancies-at-high-risk-for-preterm-preeclampsia"
+      },
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1056/NEJMoa1704559"
+      }
+    ]
+  },
+  "commentCorrectionList": {
+    "commentCorrection": [
+      {
+        "source": "MED",
+        "id": "28813213",
+        "reference": "N Engl J Med. 2017 Aug 17;377(7):690-691. doi: 10.1056/NEJMe1708920",
+        "type": "Comment in",
+        "orderIn": 1
+      },
+      {
+        "source": "MED",
+        "id": "29239588",
+        "reference": "N Engl J Med. 2017 Dec 14;377(24):2399-400. doi: 10.1056/NEJMc1713798",
+        "type": "Comment in",
+        "orderIn": 2
+      },
+      {
+        "source": "MED",
+        "id": "30348920",
+        "reference": "Natl Med J India. 2018 Jan-Feb;31(1):26-27. doi: 10.4103/0970-258X.243410",
+        "type": "Comment in",
+        "orderIn": 3
+      }
+    ]
+  },
+  "isOpenAccess": "N",
+  "inEPMC": "N",
+  "inPMC": "N",
+  "citedByCount": 1579,
+  "hasReferences": "Y",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "N",
+  "hasBook": "N",
+  "hasSuppl": "N",
+  "hasLabsLinks": "Y",
+  "hasData": "Y",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "Y",
+  "tmAccessionTypeList": {
+    "accessionType": [
+      "eudract"
+    ]
+  },
+  "dateOfCompletion": "2017-08-23",
+  "dateOfCreation": "2017-06-29",
+  "dateOfRevision": "2022-12-08",
+  "electronicPublicationDate": "2017-06-28",
+  "firstPublicationDate": "2017-06-28",
+  "firstIndexDate": "2017-06-28",
+  "hasEvaluations": "N"
+}
