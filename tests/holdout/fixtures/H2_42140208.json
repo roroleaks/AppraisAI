@@ -1,0 +1,411 @@
+{
+  "id": "42140208",
+  "source": "MED",
+  "pmid": "42140208",
+  "doi": "10.1055/a-2840-3508",
+  "title": "Low-dose rectal indomethacin to prevent post-ERCP pancreatitis: results of a large Chinese multicenter randomized noninferiority trial.",
+  "authorString": "Qi ZP, Wan R, Wan XJ, Chen ZH, Cai MY, He DL, Cai SL, Li B, Li QL, Lin SL, Zhou PH, Zhong YS, Study Group*.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Qi ZP",
+        "lastName": "Qi",
+        "firstName": "Zhi-Peng",
+        "initials": "ZP",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            },
+            {
+              "affiliation": "Fudan University, Endoscopy Research Institute, China, Shanghai."
+            },
+            {
+              "affiliation": "Shanghai Collaborative Innovation Center of Endoscopy, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Wan R",
+        "lastName": "Wan",
+        "firstName": "Rong",
+        "initials": "R",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Shanghai General Hospital, Shanghai Jiao Tong University School of Medicine, Department of Gastroenterology, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Wan XJ",
+        "lastName": "Wan",
+        "firstName": "Xin-Jian",
+        "initials": "XJ",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Shanghai Sixth People's Hospital, Shanghai Jiao Tong University School of Medicine, Department of Gastroenterology, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Chen ZH",
+        "lastName": "Chen",
+        "firstName": "Zhang-Han",
+        "initials": "ZH",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Cai MY",
+        "lastName": "Cai",
+        "firstName": "Ming-Yan",
+        "initials": "MY",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-8155-3154"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "He DL",
+        "lastName": "He",
+        "firstName": "Dong-Li",
+        "initials": "DL",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Xuhui Hospital, Zhongshan Hospital of Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Cai SL",
+        "lastName": "Cai",
+        "firstName": "Shi-Lun",
+        "initials": "SL",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Li B",
+        "lastName": "Li",
+        "firstName": "Bing",
+        "initials": "B",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Li QL",
+        "lastName": "Li",
+        "firstName": "Quan-Lin",
+        "initials": "QL",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Lin SL",
+        "lastName": "Lin",
+        "firstName": "Sheng-Li",
+        "initials": "SL",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Zhou PH",
+        "lastName": "Zhou",
+        "firstName": "Ping-Hong",
+        "initials": "PH",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-5434-0540"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Zhong YS",
+        "lastName": "Zhong",
+        "firstName": "Yun-Shi",
+        "initials": "YS",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai."
+            },
+            {
+              "affiliation": "Xuhui Hospital, Zhongshan Hospital of Fudan University, Endoscopy Center, China, Shanghai."
+            }
+          ]
+        }
+      },
+      {
+        "collectiveName": "Study Group*"
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0000-0002-5434-0540"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-8155-3154"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "altmetrics"
+    ]
+  },
+  "journalInfo": {
+    "issue": "7",
+    "volume": "58",
+    "journalIssueId": 4219384,
+    "dateOfPublication": "2026 Jul",
+    "monthOfPublication": 7,
+    "yearOfPublication": 2026,
+    "journal": {
+      "medlineAbbreviation": "Endoscopy",
+      "title": "Endoscopy",
+      "essn": "1438-8812",
+      "issn": "0013-726X",
+      "isoabbreviation": "Endoscopy",
+      "nlmid": "0215166"
+    },
+    "printPublicationDate": "2026-07-01"
+  },
+  "pubYear": "2026",
+  "pageInfo": "689-698",
+  "abstractText": "<h4>Background</h4>Routine rectal administration of indomethacin before endoscopic retrograde cholangiopancreatography (ERCP) is recommended for prevention of post-ERCP pancreatitis (PEP). Preliminary evidence suggests that the use of 100 mg of indomethacin can reduce the PEP rate; however, the efficacy of a lower dose for PEP prevention remains uncertain.<h4>Methods</h4>In this randomized, single-blind, noninferiority trial conducted at four centers in China, patients (aged ≥18 years) who were scheduled to undergo ERCP and had a serum amylase level within the normal range were randomly assigned (1:1) to receive 50 mg or 100 mg rectal indomethacin before ERCP. The primary outcome was the PEP rate.<h4>Results</h4>Between September 11 2021 and July 1 2024, 2770 patients were enrolled, with 2562 included for intention-to-treat analysis. PEP occurred in 100 (7.7%) of the 1293 patients in the regular-dose group and 103 (8.1%) of the 1269 patients in the low-dose group (risk difference 0.38%; 95%CI -1.71 to 2.47; <i>P</i> = 0.72 for noninferiority).<h4>Conclusions</h4>For prevention of PEP, 50 mg of indomethacin was noninferior to 100 mg. The prophylactic use of 50 mg of indomethacin can therefore be considered for PEP prevention in the Chinese population. In addition, for people who have a history of pancreatitis, 100 mg of rectal indomethacin may be preferable for prevention of PEP.",
+  "affiliation": "Zhongshan Hospital Fudan University, Endoscopy Center, China, Shanghai.",
+  "publicationStatus": "ppublish",
+  "language": "eng",
+  "pubModel": "Print-Electronic",
+  "pubTypeList": {
+    "pubType": [
+      "Equivalence Trial",
+      "Multicenter Study",
+      "Randomized Controlled Trial",
+      "Journal Article"
+    ]
+  },
+  "grantsList": {
+    "grant": [
+      {
+        "agency": "The Shanghai Municipal Commission of Science and Technology",
+        "grantId": "22JC1403003, 22XD1402200, 22S31903800",
+        "orderIn": 0
+      },
+      {
+        "agency": "The National Natural Science Foundation of China",
+        "grantId": "82273025, 82203460, 82403010",
+        "orderIn": 0
+      }
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Pancreatitis",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "ET",
+              "qualifierName": "etiology"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PC",
+              "qualifierName": "prevention & control"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Indomethacin",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AD",
+              "qualifierName": "administration & dosage"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Anti-Inflammatory Agents, Non-Steroidal",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AD",
+              "qualifierName": "administration & dosage"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Cholangiopancreatography, Endoscopic Retrograde",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Administration, Rectal"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Single-Blind Method"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Adult"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Aged"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Middle Aged"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "China"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Male"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "East Asian People"
+      }
+    ]
+  },
+  "chemicalList": {
+    "chemical": [
+      {
+        "name": "Anti-Inflammatory Agents, Non-Steroidal",
+        "registryNumber": "0"
+      },
+      {
+        "name": "Indomethacin",
+        "registryNumber": "XXE1CET956"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1055/a-2840-3508"
+      }
+    ]
+  },
+  "isOpenAccess": "N",
+  "inEPMC": "N",
+  "inPMC": "N",
+  "citedByCount": 0,
+  "hasReferences": "N",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "N",
+  "hasBook": "N",
+  "hasSuppl": "N",
+  "hasLabsLinks": "Y",
+  "hasData": "N",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "N",
+  "dateOfCompletion": "2026-06-23",
+  "dateOfCreation": "2026-05-15",
+  "dateOfRevision": "2026-06-23",
+  "electronicPublicationDate": "2026-05-15",
+  "firstPublicationDate": "2026-05-15",
+  "firstIndexDate": "2026-05-17",
+  "hasEvaluations": "N"
+}

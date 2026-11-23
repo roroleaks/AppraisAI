@@ -345,7 +345,7 @@ export const StatisticalAuditViewer: React.FC = () => {
                 <li key={idx}>{f}</li>
               ))
             ) : (
-              <li className="italic text-slate-500">No fatal methodological flaws identified upon formal audit.</li>
+              <li className="italic text-slate-500">None identified upon formal audit.</li>
             )}
           </ul>
         </div>

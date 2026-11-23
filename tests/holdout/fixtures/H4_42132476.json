@@ -1,0 +1,563 @@
+{
+  "id": "42132476",
+  "source": "MED",
+  "pmid": "42132476",
+  "pmcid": "PMC13445580",
+  "fullTextIdList": {
+    "fullTextId": [
+      "PMC13445580"
+    ]
+  },
+  "doi": "10.1158/1055-9965.epi-25-1836",
+  "title": "Association between Depression and Risk of Colorectal Cancer and Polyps: A Prospective Cohort Study from the Nurses' Health Study II.",
+  "authorString": "Tangpradubkiat P, Roberts AL, Cardona B, Kim H, Ogino S, Giovannucci EL, Song M, Chan AT.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Tangpradubkiat P",
+        "lastName": "Tangpradubkiat",
+        "firstName": "Peenaprapa",
+        "initials": "P",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0009-0009-5971-8686"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Clinical and Translational Epidemiology Unit, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Roberts AL",
+        "lastName": "Roberts",
+        "firstName": "Andrea L",
+        "initials": "AL",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0001-5023-4399"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Cardona B",
+        "lastName": "Cardona",
+        "firstName": "Bethsaida",
+        "initials": "B",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0001-5206-1305"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Clinical and Translational Epidemiology Unit, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Division of Gastroenterology, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Kim H",
+        "lastName": "Kim",
+        "firstName": "Hanseul",
+        "initials": "H",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-5102-6118"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Clinical and Translational Epidemiology Unit, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Division of Gastroenterology, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Ogino S",
+        "lastName": "Ogino",
+        "firstName": "Shuji",
+        "initials": "S",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-3909-2323"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Epidemiology, Harvard T.H. Chan School of Public Health, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Program in MPE Molecular Pathological Epidemiology, Department of Pathology, Brigham and Women's Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Broad Institute of MIT and Harvard, Cambridge, Massachusetts."
+            },
+            {
+              "affiliation": "Institute of Science Tokyo, Tokyo, Japan."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Giovannucci EL",
+        "lastName": "Giovannucci",
+        "firstName": "Edward L",
+        "initials": "EL",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-6123-0219"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Epidemiology, Harvard T.H. Chan School of Public Health, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Department of Nutrition, Harvard T.H. Chan School of Public Health, Boston, Massachusetts."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Song M",
+        "lastName": "Song",
+        "firstName": "Mingyang",
+        "initials": "M",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-1324-0316"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Clinical and Translational Epidemiology Unit, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Division of Gastroenterology, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Department of Epidemiology, Harvard T.H. Chan School of Public Health, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Department of Nutrition, Harvard T.H. Chan School of Public Health, Boston, Massachusetts."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Chan AT",
+        "lastName": "Chan",
+        "firstName": "Andrew T",
+        "initials": "AT",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0001-7284-6767"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Clinical and Translational Epidemiology Unit, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Division of Gastroenterology, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Channing Division of Network Medicine, Department of Medicine, Brigham and Women's Hospital, Harvard Medical School, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Department of Immunology and Infectious Diseases, Harvard T.H. Chan School of Public Health, Boston, Massachusetts."
+            },
+            {
+              "affiliation": "Cancer Center, Massachusetts General Hospital, Boston, Massachusetts."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0000-0001-5023-4399"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0001-5206-1305"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0001-7284-6767"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-1324-0316"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-3909-2323"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-5102-6118"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-6123-0219"
+      },
+      {
+        "type": "ORCID",
+        "value": "0009-0009-5971-8686"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "altmetrics",
+      "supporting_data"
+    ]
+  },
+  "journalInfo": {
+    "issue": "8",
+    "volume": "35",
+    "journalIssueId": 4236906,
+    "dateOfPublication": "2026 Aug",
+    "monthOfPublication": 8,
+    "yearOfPublication": 2026,
+    "journal": {
+      "medlineAbbreviation": "Cancer Epidemiol Biomarkers Prev",
+      "title": "Cancer epidemiology, biomarkers & prevention : a publication of the American Association for Cancer Research, cosponsored by the American Society of Preventive Oncology",
+      "essn": "1538-7755",
+      "issn": "1055-9965",
+      "isoabbreviation": "Cancer Epidemiol Biomarkers Prev",
+      "nlmid": "9200608"
+    },
+    "printPublicationDate": "2026-08-01"
+  },
+  "pubYear": "2026",
+  "pageInfo": "1298-1308",
+  "abstractText": "<h4>Background</h4>Depression is a leading global health burden and has been linked to chronic diseases, including cancer. Chronic stress may promote colorectal carcinogenesis via hormonal, immune, and metabolic abnormalities. Evidence for the association between depression and colorectal cancer is inconsistent, and data on colorectal polyps are limited.<h4>Methods</h4>We prospectively followed 91,383 women from the Nurses' Health Study II (1993-2019) for colorectal cancer analyses, and 62,237 women (1993-2017) for adenoma and serrated polyp analyses. Depression was defined as a Mental Health Index-5 score ≤52, antidepressant use, or physician-diagnosed depression. Multivariable Cox proportional hazards models estimated hazard ratios (HR) for colorectal cancer, whereas logistic regression estimated odds ratios (OR) for adenomas and serrated polyps.<h4>Results</h4>Over 2.36 million person-years of follow-up, 474 colorectal cancer cases were documented. Depression was modestly associated with lower risk of colorectal cancer [HR = 0.76; 95% confidence interval (CI), 0.59-0.97] and colon cancer but not rectal cancer. Among 62,237 women undergoing lower endoscopy over 24 years, 4,104 conventional adenomas and 4,563 serrated polyps were documented. Depression was modestly inversely associated with overall and large conventional adenomas (OR = 0.76; 95% CI, 0.63-0.92). No consistent association was observed with serrated polyps in primary models, although some sensitivity analyses suggested possible positive associations.<h4>Conclusions</h4>Depression was inversely associated with colorectal cancer and large conventional adenomas. Associations with serrated polyps were not evident in primary models but varied across sensitivity analyses, requiring further study.<h4>Impact</h4>These findings suggest potential differences across colorectal neoplastic pathways, indicating that the relationship between depression and colorectal carcinogenesis may be more complex than previously appreciated.",
+  "affiliation": "Clinical and Translational Epidemiology Unit, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts.",
+  "publicationStatus": "ppublish",
+  "language": "eng",
+  "pubModel": "Print",
+  "pubTypeList": {
+    "pubType": [
+      "research-article",
+      "Journal Article"
+    ]
+  },
+  "grantsList": {
+    "grant": [
+      {
+        "agency": "NCI NIH HHS",
+        "acronym": "CA",
+        "grantId": "R01 CA263776",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Institute of Environmental Health Sciences",
+        "grantId": "R01 ES028033",
+        "orderIn": 0
+      },
+      {
+        "agency": "NCI NIH HHS",
+        "acronym": "CA",
+        "grantId": "R35 CA253185",
+        "orderIn": 0
+      },
+      {
+        "agency": "NCI NIH HHS",
+        "acronym": "CA",
+        "grantId": "R01 CA285851",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Institute of Environmental Health Sciences",
+        "grantId": "R01 ES017017",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute",
+        "grantId": "R01 CA263776",
+        "orderIn": 0
+      },
+      {
+        "agency": "NIEHS NIH HHS",
+        "acronym": "ES",
+        "grantId": "R01 ES028033",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute",
+        "grantId": "U01 CA176726",
+        "orderIn": 0
+      },
+      {
+        "agency": "Cancer Research UK",
+        "acronym": "CRUK_",
+        "grantId": "CGCATF-2023/100036",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute",
+        "grantId": "U01 CA261961",
+        "orderIn": 0
+      },
+      {
+        "agency": "American Cancer Society (ACS)",
+        "grantId": "CRP-24-1185864-01-PROF",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute",
+        "grantId": "OT2CA297680",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute (NCI)",
+        "grantId": "OT2CA297680",
+        "orderIn": 0
+      },
+      {
+        "agency": "NCI NIH HHS",
+        "acronym": "CA",
+        "grantId": "R35 CA197735",
+        "orderIn": 0
+      },
+      {
+        "agency": "American Cancer Society",
+        "grantId": "CRP-24-1185864-01-PROF",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute",
+        "grantId": "R01 CA285851",
+        "orderIn": 0
+      },
+      {
+        "agency": "NIEHS NIH HHS",
+        "acronym": "ES",
+        "grantId": "R01 ES017017",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute",
+        "grantId": "R35 CA197735",
+        "orderIn": 0
+      },
+      {
+        "agency": "National Cancer Institute",
+        "grantId": "R35 CA253185",
+        "orderIn": 0
+      },
+      {
+        "agency": "NCI NIH HHS",
+        "acronym": "CA",
+        "grantId": "OT2 CA297680",
+        "orderIn": 0
+      },
+      {
+        "agency": "American Cancer Society",
+        "grantId": "S.O. CRP-22-078-01-CSCT",
+        "orderIn": 0
+      },
+      {
+        "agency": "American Cancer Society (ACS)",
+        "grantId": "S.O. CRP-22-078-01-CSCT",
+        "orderIn": 0
+      },
+      {
+        "agency": "NCI NIH HHS",
+        "acronym": "CA",
+        "grantId": "U01 CA176726",
+        "orderIn": 0
+      },
+      {
+        "agency": "NCI NIH HHS",
+        "acronym": "CA",
+        "grantId": "U01 CA261961",
+        "orderIn": 0
+      }
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Colorectal Neoplasms",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PX",
+              "qualifierName": "psychology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Colonic Polyps",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PX",
+              "qualifierName": "psychology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Risk Factors"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Prospective Studies"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Depression",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "CO",
+              "qualifierName": "complications"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Adult"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Middle Aged"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Nurses",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "SN",
+              "qualifierName": "statistics & numerical data"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1158/1055-9965.EPI-25-1836"
+      },
+      {
+        "availability": "Free",
+        "availabilityCode": "F",
+        "documentStyle": "html",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC13445580"
+      },
+      {
+        "availability": "Free",
+        "availabilityCode": "F",
+        "documentStyle": "pdf",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC13445580?pdf=render"
+      },
+      {
+        "availability": "Free",
+        "availabilityCode": "F",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1158/1055-9965.epi-25-1836"
+      }
+    ]
+  },
+  "isOpenAccess": "N",
+  "inEPMC": "Y",
+  "inPMC": "Y",
+  "citedByCount": 0,
+  "hasReferences": "Y",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "Y",
+  "hasBook": "N",
+  "hasSuppl": "Y",
+  "hasLabsLinks": "Y",
+  "hasData": "Y",
+  "authMan": "Y",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "Y",
+  "manuscriptId": "NIHMS2179315",
+  "hasTMAccessionNumbers": "Y",
+  "tmAccessionTypeList": {
+    "accessionType": [
+      "doi"
+    ]
+  },
+  "dateOfCompletion": "2026-08-03",
+  "dateOfCreation": "2026-05-14",
+  "dateOfRevision": "2026-08-26",
+  "firstPublicationDate": "2026-08-01",
+  "firstIndexDate": "2026-05-15",
+  "fullTextReceivedDate": "2026-09-04",
+  "hasEvaluations": "N"
+}

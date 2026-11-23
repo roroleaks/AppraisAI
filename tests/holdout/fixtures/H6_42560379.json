@@ -1,0 +1,291 @@
+{
+  "id": "42560379",
+  "source": "MED",
+  "pmid": "42560379",
+  "doi": "10.1093/ndt/gfag177",
+  "title": "Dapagliflozin preserves kidney function and reduces albuminuria in children with chronic kidney disease.",
+  "authorString": "Assadi F, Bidabadi E, Mazaheri M, Ghane-Sharbaf F, Faghihi T, Naghshizadian R, Eskandarifar A, Azarfar A, Sadeghi-Bojd S, Abbasi A, Bazargani B, Safaei-Asl A, Hooman N, Badeli H.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Assadi F",
+        "lastName": "Assadi",
+        "firstName": "Farahnak",
+        "initials": "F",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Pediatrics, Division of Nephrology, Rush University Medical Center, Chicago, USA."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Bidabadi E",
+        "lastName": "Bidabadi",
+        "firstName": "Elham",
+        "initials": "E",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Pediatric Diseases Research Center, Guilan University of Medical Sciences, Rasht, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Mazaheri M",
+        "lastName": "Mazaheri",
+        "firstName": "Mojgan",
+        "initials": "M",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Nephrology, Health Systems Engineering Research Center, Milad Hospital, Tehran, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Ghane-Sharbaf F",
+        "lastName": "Ghane-Sharbaf",
+        "firstName": "Fatemeh",
+        "initials": "F",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Pediatrics, Faculty of Medicine. Mashhad University of Medical Sciences. Mashhad, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Faghihi T",
+        "lastName": "Faghihi",
+        "firstName": "Toktam",
+        "initials": "T",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Clinical Pharmacy, School of Pharmacy, Tehran University of Medical Sciences, Tehran, Iran, Pediatric Center of Excellence, Children's Medical Center, Tehran University of Medical Sciences, Tehran, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Naghshizadian R",
+        "lastName": "Naghshizadian",
+        "firstName": "Rama",
+        "initials": "R",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Pediatrics, Besat Hospital. Faculty of Medicine, Kurdistan University of Medical Sciences. Sanandaj, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Eskandarifar A",
+        "lastName": "Eskandarifar",
+        "firstName": "Alireza",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Pediatrics, Besat Hospital. Faculty of Medicine, Kurdistan University of Medical Sciences. Sanandaj, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Azarfar A",
+        "lastName": "Azarfar",
+        "firstName": "Anoush",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Pediatrics, Faculty of Medicine. Mashhad University of Medical Sciences. Mashhad, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Sadeghi-Bojd S",
+        "lastName": "Sadeghi-Bojd",
+        "firstName": "Simin",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Children and Adolescents Health Research Center. Research Institute of Cellular and Molecular Sciences in Infectious Zahedan University of Medical Sciences Zahedan, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Abbasi A",
+        "lastName": "Abbasi",
+        "firstName": "Arash",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Pediatric Chronic Kidney Disease Research Center, Pediatric Center of Excellence, Children's Medical Center, Tehran University of Medical Sciences, Tehran, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Bazargani B",
+        "lastName": "Bazargani",
+        "firstName": "Behnaz",
+        "initials": "B",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Pediatric Chronic Kidney Disease Research Center, Pediatric Center of Excellence, Children's Medical Center, Tehran University of Medical Sciences, Tehran, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Safaei-Asl A",
+        "lastName": "Safaei-Asl",
+        "firstName": "Afshin",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Pediatric Diseases Research Center, Guilan University of Medical Sciences, Rasht, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Hooman N",
+        "lastName": "Hooman",
+        "firstName": "Nakysa",
+        "initials": "N",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Pediatrics, School of Medicine, Aliasghar Clinical Research Development Center, Iran University of Medical Sciences, Tehran, Iran."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Badeli H",
+        "lastName": "Badeli",
+        "firstName": "Hamidreza",
+        "initials": "H",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Pediatric Diseases Research Center, Guilan University of Medical Sciences, Rasht, Iran."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "journalInfo": {
+    "journalIssueId": 4237500,
+    "dateOfPublication": "2026 Aug",
+    "monthOfPublication": 8,
+    "yearOfPublication": 2026,
+    "journal": {
+      "medlineAbbreviation": "Nephrol Dial Transplant",
+      "title": "Nephrology, dialysis, transplantation : official publication of the European Dialysis and Transplant Association - European Renal Association",
+      "essn": "1460-2385",
+      "issn": "0931-0509",
+      "isoabbreviation": "Nephrol Dial Transplant",
+      "nlmid": "8706402"
+    },
+    "printPublicationDate": "2026-08-01"
+  },
+  "pubYear": "2026",
+  "pageInfo": "gfag177",
+  "abstractText": "<h4>Background</h4>Sodium-glucose co-transporter 2 (SGLT2) inhibitors reduce CKD progression in adults; but pediatric evidence remains limited. We evaluated dapagliflozin in children with non-diabetic CKD.<h4>Methods</h4>In this multicenter, randomized, open-label, endpoint-blinded controlled trial, 114 children with CKD stages 1-4 were assigned to dapagliflozin plus standard care (n=58) or standard care alone (n=56) for 4 months. Primary outcomes were changes in estimated glomerular filtration rate (eGFR) and urine albumin-to-creatinine ratio (UACR), analyzed using ANCOVA adjusted for baseline values.<h4>Results</h4>Baseline characteristics were comparable between groups. At 4 months, eGFR increased in the dapagliflozin group (+2.1 mL/min/1.73 m²) and declined in controls (-4.2 mL/min/1.73 m²), yielding a between-group difference of 6.3 mL/min/1.73 m² (95% CI 2.1-10.5; p=0.004). UACR decreased significantly with dapagliflozin versus control (between-group difference -19.8 mg/g (95% CI: -21.9 to -18.6; p=0.002). Early CKD stages showed a shift toward lower albuminuria categories. No serious adverse events occurred.<h4>Conclusion</h4>Dapagliflozin was associated with short-term improvement in kidney function trajectory and reduction in albuminuria in children with CKD, with an acceptable safety profile.",
+  "affiliation": "Department of Pediatrics, Division of Nephrology, Rush University Medical Center, Chicago, USA.",
+  "publicationStatus": "aheadofprint",
+  "language": "eng",
+  "pubModel": "Print-Electronic",
+  "pubTypeList": {
+    "pubType": [
+      "Retracted Publication",
+      "Journal Article"
+    ]
+  },
+  "keywordList": {
+    "keyword": [
+      "Proteinuria",
+      "Pediatrics",
+      "Chronic Kidney Disease",
+      "Estimated Glomerular Filtration Rate",
+      "Dapagliflozin",
+      "Sodium–glucose Co-transporter 2 Inhibitors"
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1093/ndt/gfag177"
+      }
+    ]
+  },
+  "commentCorrectionList": {
+    "commentCorrection": [
+      {
+        "source": "MED",
+        "id": "42657455",
+        "reference": "Nephrol Dial Transplant. 2026 Aug 27:gfag189. doi: 10.1093/ndt/gfag189.",
+        "type": "Expression of concern in",
+        "orderIn": 1
+      },
+      {
+        "source": "MED",
+        "id": "43004972",
+        "reference": "Nephrol Dial Transplant. 2026 Nov 10:gfag234. doi: 10.1093/ndt/gfag234.",
+        "type": "Retraction in",
+        "orderIn": 2
+      }
+    ]
+  },
+  "isOpenAccess": "N",
+  "inEPMC": "N",
+  "inPMC": "N",
+  "citedByCount": 0,
+  "hasReferences": "N",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "N",
+  "hasBook": "N",
+  "hasSuppl": "N",
+  "hasLabsLinks": "N",
+  "hasData": "N",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "N",
+  "dateOfCreation": "2026-08-06",
+  "dateOfRevision": "2026-11-10",
+  "electronicPublicationDate": "2026-08-06",
+  "firstPublicationDate": "2026-08-06",
+  "firstIndexDate": "2026-08-07",
+  "hasEvaluations": "N"
+}

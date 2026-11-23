@@ -355,7 +355,7 @@ export function buildAcademicDocxManuscript(
             spacing: { before: 120, after: 60 },
             children: [
               new TextRun({
-                text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  EXECUTIVE CRITICAL APPRAISAL MONOGRAPH',
+                text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT',
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 bold: true,
@@ -1262,7 +1262,7 @@ export function buildAcademicDocxManuscript(
             ? report.statisticalAudit.strengthsAndLimitations.fatalMethodologicalFlaws.map(
                 (f) => createBodyParagraph(`•  ${f}`)
               )
-            : [createBodyParagraph('•  No fatal methodological flaws identified.')]),
+            : [createBodyParagraph('•  None identified.')]),
 
           createHeading2('Minor Methodological Limitations'),
           ...report.statisticalAudit.strengthsAndLimitations.minorLimitations.map(

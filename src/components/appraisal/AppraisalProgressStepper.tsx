@@ -25,7 +25,7 @@ export const AppraisalProgressStepper: React.FC = () => {
             {isAppraising
               ? currentStepMessage || 'Analyzing manuscript methodology...'
               : appraisalProgressStep === 4
-              ? 'Appraisal Completed — All 4 Passes Verified'
+              ? 'Appraisal Completed'
               : 'Ready to Appraise'}
           </p>
         </div>
