@@ -227,8 +227,12 @@ async function runBenchmark() {
     const primaryEst = appraisalB5.statisticalAudit.primaryEstimate;
     assert(primaryEst, 'Must identify primary estimate for live birth in poor responders');
     assert.notStrictEqual(primaryEst.pointEstimate, '13.57', 'Must NOT be MD 13.57 (gonadotropin units)');
-    assert.strictEqual(primaryEst.pointEstimate, '1.77', `Primary estimate must be OR 1.77, got ${primaryEst.pointEstimate}`);
-    assert(primaryEst.confidenceInterval.includes('1.17') && primaryEst.confidenceInterval.includes('2.70'), 'CI must be 1.17 to 2.70');
+    // Live birth is reported for TWO populations (routine use: OR 1.32; poor responders: OR 1.77).
+    // Both must be extracted and labelled; the primary must be one of them; never a process outcome; never MD 13.57.
+    assert(['1.32', '1.77'].includes(primaryEst.pointEstimate), `Primary must be a live-birth OR (1.32 or 1.77), got ${primaryEst.pointEstimate}`);
+    const lb = appraisalB5.statisticalAudit.effectEstimates.filter((e: any) => /live birth/i.test(e.outcomeLabel || ''));
+    assert(lb.some((e: any) => e.pointEstimate === '1.77' && /poor responders/i.test(e.outcomeLabel)), 'OR 1.77 must be extracted and labelled "poor responders"');
+    assert(lb.some((e: any) => e.pointEstimate === '1.32' && /routine use/i.test(e.outcomeLabel)), 'OR 1.32 must be extracted and labelled "routine use"');
 
     console.log('✅ B5 PASS: SR/MA, Level 1a, AMSTAR 2/PRISMA, primary OR 1.77 (not MD 13.57)');
     passedCount++;

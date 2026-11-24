@@ -99,7 +99,7 @@ export const RiskOfBiasMatrixSchema = z.object({
 export type RiskOfBiasMatrix = z.infer<typeof RiskOfBiasMatrixSchema>;
 
 // --- Pass 3: Statistical & Methodological Rigor Audit ---
-export const OutcomeTypeEnum = z.enum(['benefit', 'harm', 'neutral', 'process', 'unlabelled']);
+export const OutcomeTypeEnum = z.enum(['benefit', 'harm', 'no-clear-difference', 'process', 'unlabelled']);
 export type OutcomeType = z.infer<typeof OutcomeTypeEnum>;
 
 export const EffectEstimateItemSchema = z.object({

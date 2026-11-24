@@ -198,7 +198,7 @@ async function runHoldoutValidation() {
         field: 'Outcome Type',
         expected: 'non-inferiority demonstrated (or neutral/benefit)',
         observed: pepEst?.outcomeType || 'undefined',
-        passed: pepEst?.outcomeType === 'benefit' || pepEst?.outcomeType === 'neutral',
+        passed: pepEst?.outcomeType === 'benefit' || pepEst?.outcomeType === 'no-clear-difference',
       },
       {
         field: 'Retraction Flag',
@@ -389,7 +389,7 @@ async function runHoldoutValidation() {
         field: 'Primary Outcome Type',
         expected: 'neutral (statistically non-significant, 95% CI crosses 1.0)',
         observed: primEst?.outcomeType || 'undefined',
-        passed: primEst?.outcomeType === 'neutral',
+        passed: primEst?.outcomeType === 'no-clear-difference',
       },
       {
         field: 'Retraction Flag',

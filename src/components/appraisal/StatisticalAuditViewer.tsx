@@ -220,19 +220,18 @@ export const StatisticalAuditViewer: React.FC = () => {
                               </span>
                             )}
                           </div>
-                          <span
-                            className={`inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-semibold ${
-                              est.outcomeType === 'benefit'
-                                ? 'bg-[#DCFCE7] text-[#166534]'
-                                : est.outcomeType === 'harm'
-                                ? 'bg-[#FEE2E2] text-[#991B1B]'
-                                : est.outcomeType === 'process'
-                                ? 'bg-[#E0F2FE] text-[#0369A1]'
-                                : 'bg-[#F1F5F9] text-[#475569]'
-                            }`}
-                          >
-                            {est.outcomeType || 'unlabelled'}
-                          </span>
+                          {(() => {
+                            const t = est.outcomeType || 'unlabelled';
+                            const map: Record<string, [string, string]> = {
+                              benefit: ['Favours intervention', 'bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]'],
+                              harm: ['Favours comparator', 'bg-[#FEF2F2] text-[#B91C1C] border border-[#FECACA]'],
+                              'no-clear-difference': ['No clear difference', 'bg-[#F1F5F9] text-[#475569] border border-[#CBD5E1]'],
+                              process: ['Process measure', 'bg-[#E0F2FE] text-[#0369A1] border border-[#BAE6FD]'],
+                              unlabelled: ['Direction not interpretable', 'bg-[#F1F5F9] text-[#475569] border border-[#CBD5E1]'],
+                            };
+                            const [label, cls] = map[t] ?? map.unlabelled;
+                            return <span className={`inline-block mt-1 px-2 py-0.5 rounded text-xs font-semibold ${cls}`}>{label}</span>;
+                          })()}
                         </div>
                       )}
                     </td>

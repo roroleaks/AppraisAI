@@ -7,6 +7,14 @@ import {
 import { ParsedManuscriptPayload } from '../schemas/ingestion.schema';
 import { getGoverningFrameworkRules } from './framework-router';
 import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '../parsers/title-sanitizer';
+import { extractEffectEstimates, crossesNull } from './effect-parser';
+import {
+  selectPrimaryEstimate,
+  primaryOutcomeDefinition as readPrimaryDefinition,
+  outcomeNature,
+  effectDirection,
+  nonInferiorityVerdict,
+} from './outcome-logic';
 import crypto from 'crypto';
 
 /**
@@ -21,83 +29,6 @@ function findSentenceWithKeywords(text: string, pattern: RegExp): string | null 
     }
   }
   return null;
-}
-
-/**
- * Lexicon for classifying outcome types: benefit vs harm vs process vs unlabelled (Task A4)
- */
-export function classifyOutcomeType(
-  outcomeText: string,
-  contextSentence: string = ''
-): 'benefit' | 'harm' | 'process' | 'unlabelled' {
-  const combined = `${outcomeText} ${contextSentence}`.toLowerCase();
-
-  // Harm lexicon (Task A4): haemorrhage/hemorrhage, bleeding, adverse, toxicity, mortality, complication, etc.
-  if (
-    /haemorrhage|hemorrhage|bleeding|adverse|toxicity|mortality|death|complication|side effect|ohss|miscarriage|failure|stroke|infarction|bleeding events|hospitalization|urgent visit|infection|drop-out|withdrawal/i.test(
-      combined
-    )
-  ) {
-    return 'harm';
-  }
-
-  // Process lexicon: oocytes retrieved, gonadotropin dose, embryo transfer, etc.
-  if (
-    /oocyte|oocytes retrieved|gonadotropin|embryo transfer|dose|intake|adherence|protocol|eggs|blastocyst|number of embryos/i.test(
-      combined
-    )
-  ) {
-    return 'process';
-  }
-
-  // Benefit lexicon: live birth, clinical pregnancy, survival, cure, remission, disability-free
-  if (
-    /live birth|pregnancy|survival|remission|cure|recovery|disability-free|success|cure rate|clinical pregnancy|resolution|preeclampsia/i.test(
-      combined
-    )
-  ) {
-    return 'benefit';
-  }
-
-  return 'unlabelled';
-}
-
-/**
- * Accurately parses P-values and preserves comparators (<, <=, =, >, >=) (Task A8).
- */
-export function parsePValue(sentence: string): string {
-  if (!sentence) return 'P not reported';
-
-  // Specific lookups for common formatted values first
-  if (/\b[pP]\s*<\s*0?\.001\b/i.test(sentence) || /\b[pP]\s*&lt;\s*0?\.001\b/i.test(sentence)) {
-    return 'P < 0.001';
-  }
-  if (/\b[pP]\s*=\s*0?\.004\b/i.test(sentence)) {
-    return 'P = 0.004';
-  }
-  if (/\b[pP]\s*(?:=|\u2009=\u2009)\s*0?\.62\b/i.test(sentence)) {
-    return 'P = 0.62';
-  }
-  if (/\b[pP]\s*=\s*0?\.79\b/i.test(sentence)) {
-    return 'P = 0.79';
-  }
-
-  // General regex capturing operator and number
-  const pMatch = sentence.match(/\b[pP](?:-?value)?\s*(?<op><|>|=|<=|>=|≤|≥|&lt;|&gt;)?\s*(?<num>\.?[0-9]+(?:\.[0-9]+)?)/);
-  if (pMatch && pMatch.groups?.num) {
-    let op = pMatch.groups.op || '=';
-    if (op === '&lt;') op = '<';
-    if (op === '&gt;') op = '>';
-    let num = pMatch.groups.num;
-    if (num.startsWith('.')) num = `0${num}`;
-
-    if (op === '<' && (num === '0.001' || num === '0.0001')) {
-      return 'P < 0.001';
-    }
-    return `P ${op} ${num}`;
-  }
-
-  return 'P not reported';
 }
 
 /**
@@ -176,8 +107,8 @@ export function classifyStudyDesign(
 
   // Abstract signals for Cochrane reviews or RCTs
   if (
-    /cochrane (?:gynaecology|database|review)|we searched the following databases|primary review outcome/i.test(rawAbstract) &&
-    /systematic review|included \d+ rcts/i.test(rawAbstract)
+    /cochrane|primary review outcome/i.test(rawAbstract) &&
+    /systematic review|included (?:[0-9]+|\w+)\s+(?:rcts|trials|studies)/i.test(rawAbstract)
   ) {
     return {
       design: 'SYSTEMATIC_REVIEW_META_ANALYSIS',
@@ -201,8 +132,8 @@ export function classifyStudyDesign(
   if (/systematic review|meta-analysis|meta-analytic|cochrane review|prisma 2020|amstar/i.test(rawAbstract)) scores.SYSTEMATIC_REVIEW_META_ANALYSIS += 10;
   if (/prisma|search strategy|databases? (?:searched|queried)|pubmed.*embase|screened for eligibility|inclusion criteria/i.test(methodsText)) scores.SYSTEMATIC_REVIEW_META_ANALYSIS += 8;
 
-  if (/randomized controlled trial|randomised controlled trial|randomised trial|randomized trial|double-blind|placebo-controlled|\brct\b/i.test(meta.title)) scores.RCT += 15;
-  if (/randomized controlled trial|randomised trial|randomly assigned|double-blind|placebo-controlled|\brct\b|parallel-group/i.test(rawAbstract)) scores.RCT += 10;
+  if (/randomi[sz]ed (?:controlled )?trial|randomi[sz]ed clinical trial|double-blind|placebo-controlled|\brct\b/i.test(meta.title)) scores.RCT += 15;
+  if (/randomi[sz]ed[^.]{0,60}?(?:controlled trial|clinical trial)|randomi[sz]ed (?:controlled )?trial|randomly (?:assigned|allocated)|double[- ]blind|placebo[- ]controlled|\brct\b|parallel[- ]group/i.test(rawAbstract)) scores.RCT += 10;
   if (/randomly assigned|random allocation|randomization sequence|randomisation sequence|computer-generated random|allocation concealment|intention-to-treat/i.test(methodsText)) scores.RCT += 8;
 
   if (/cohort study|prospective cohort|retrospective cohort|longitudinal study/i.test(meta.title)) scores.COHORT_STUDY += 15;
@@ -255,24 +186,9 @@ export function classifyStudyDesign(
 /**
  * Extracts a concise noun phrase representing the primary outcome definition.
  */
-function extractPrimaryOutcomeDefinition(abstract: string): string {
-  // 1. Direct definition in abstract
-  const defMatch = abstract.match(
-    /(?:the\s+)?primary\s+(?:review\s+|efficacy\s+)?(?:outcome|end\s*point)\s+(?:was|were|included|is|defined as)\s+(?:a\s+)?([^.;]+)/i
-  );
-  if (defMatch && defMatch[1]) {
-    return defMatch[1].trim().replace(/\s+with\s+a\s+non-?inferiority.*$/i, '');
-  }
-
-  // 2. "primary endpoint was a composite of ..."
-  const compositeMatch = abstract.match(
-    /(?:the\s+)?primary\s+(?:outcome|end\s*point)\s+was\s+a\s+composite\s+of\s+([^.;]+)/i
-  );
-  if (compositeMatch && compositeMatch[1]) {
-    return `composite of ${compositeMatch[1].trim()}`;
-  }
-
-  return '';
+function extractPrimaryOutcomeDefinition(abstract: string, _title?: string): string {
+  // Text only. NEVER derive an outcome from the title.
+  return readPrimaryDefinition(abstract) ?? '';
 }
 
 /**
@@ -916,184 +832,48 @@ export function generateDeterministicAppraisal(
   // 6. Dynamic Statistical Audit & Real Effect Estimate Parsing (Tasks A1, A4, A8)
   // -----------------------------------------------------------------
   const effectEstimates: EffectEstimateItem[] = [];
-
-  // Parse abstract and Results section
-  const statsSearchText = [rawAbstract, resultsText].filter(Boolean).join('\n\n') || combinedText;
-
-  // Comprehensive effect estimate regex supporting HR, RR, Rate Ratio, Risk Ratio, OR, MD, SMD, RD, ARR, NNT
-  // Also supports optional bracketed/parenthesized abbreviation e.g. "odds ratio [OR] 1.07"
-  const statRegex =
-    /(?<metric>\b(?:[hH]azard\s+[rR]atio|[rR]elative\s+[rR]isk|[rR]ate\s+[rR]atio|[rR]isk\s+[rR]atio|[oO]dds\s+[rR]atio|[mM]ean\s+[dD]ifference|[sS]tandardi[zs]ed\s+[mM]ean\s+[dD]ifference|[rR]isk\s+[dD]ifference|[aA]bsolute\s+[rR]isk\s+[rR]eduction|[nN]umber\s+[nN]eeded\s+[tT]o\s+[tT]reat|\bHR\b|\bRR\b|\bOR\b|\bMD\b|\bSMD\b|\bRD\b|\bARR\b|\bNNT\b))(?:\s*[\(\[]\s*[a-zA-Z]+\s*[\)\]])?(?:\s+(?:for|of|was|were|is|estimated\s+at|[a-zA-Z\s]{1,30}?))?[:,\s=]+(?<point>[−-]?[0-9]+(?:\.[0-9]+)?)[,;\s%]*[\(\[]?\s*(?:95%\s*(?:confidence\s+interval|CI|ci)?(?:\s*\[\s*CI\s*\])?|CI)?[\s,:;=\(\[]*(?<ciLow>[−-]?[0-9]+(?:\.[0-9]+)?)\s*(?:to|-|–|—|\u2212|,)\s*(?<ciHigh>[−-]?[0-9]+(?:\.[0-9]+)?)[\)\]%]?/g;
-
-  // Protect abbreviations (vs., et al., e.g., i.e.) before sentence splitting
-  const protectedStatsText = statsSearchText
-    .replace(/\bvs\./gi, 'vs')
-    .replace(/\bet al\./gi, 'et al')
-    .replace(/\be\.g\./gi, 'eg')
-    .replace(/\bi\.e\./gi, 'ie')
-    .replace(/\bfig\./gi, 'Fig')
-    .replace(/\bno\./gi, 'No');
-
-  const allSentences = protectedStatsText.split(/(?<=[.?!])\s+/);
-
-  // If narrative review / commentary, NEVER extract primary effect from cited studies (Task A1, B8)
-  if (detectedDesign !== 'OTHER') {
-    for (const sentence of allSentences) {
-      const matches = [...sentence.matchAll(statRegex)];
-      for (const m of matches) {
-        const rawMetric = m.groups?.metric || 'Effect Estimate';
-        let cleanMetric = rawMetric;
-        const lowerMetric = rawMetric.toLowerCase();
-
-        if (lowerMetric.includes('hazard') || rawMetric === 'HR') cleanMetric = 'Hazard Ratio (HR)';
-        else if (lowerMetric.includes('odds') || rawMetric === 'OR') cleanMetric = 'Odds Ratio (OR)';
-        else if (lowerMetric.includes('rate ratio')) cleanMetric = 'Rate Ratio';
-        else if (lowerMetric.includes('risk ratio') || lowerMetric.includes('relative') || rawMetric === 'RR') cleanMetric = 'Relative Risk (RR)';
-        else if (lowerMetric.includes('standardized mean') || lowerMetric.includes('standardised mean') || rawMetric === 'SMD') cleanMetric = 'Standardized Mean Difference (SMD)';
-        else if (lowerMetric.includes('mean difference') || rawMetric === 'MD') cleanMetric = 'Mean Difference (MD)';
-        else if (lowerMetric.includes('risk difference') || rawMetric === 'RD') cleanMetric = 'Risk Difference (RD)';
-        else if (lowerMetric.includes('absolute risk reduction') || rawMetric === 'ARR') cleanMetric = 'Absolute Risk Reduction (ARR)';
-        else if (lowerMetric.includes('needed to treat') || rawMetric === 'NNT') cleanMetric = 'Number Needed to Treat (NNT)';
-
-        const point = (m.groups?.point || '').replace(/\u2212/g, '-').replace(/−/g, '-');
-        const ciLow = (m.groups?.ciLow || '').replace(/\u2212/g, '-').replace(/−/g, '-');
-        const ciHigh = (m.groups?.ciHigh || '').replace(/\u2212/g, '-').replace(/−/g, '-');
-
-        // Extract P-value preserving comparator (Task A8)
-        const pVal = parsePValue(sentence);
-
-        // Derive clinical vs statistical significance strictly from whether CI crosses the null
-        const lowNum = parseFloat(ciLow);
-        const highNum = parseFloat(ciHigh);
-        const isRatio = /ratio|\bHR\b|\bRR\b|\bOR\b/i.test(cleanMetric);
-        let sigText = '';
-
-        if (!isNaN(lowNum) && !isNaN(highNum)) {
-          if (isRatio) {
-            const nullCrossed = lowNum <= 1.0 && highNum >= 1.0;
-            sigText = nullCrossed
-              ? 'No statistically significant difference demonstrated (95% CI crosses null value of 1.0).'
-              : 'Statistically significant difference (95% CI does not cross null value of 1.0).';
-          } else {
-            const nullCrossed = lowNum <= 0.0 && highNum >= 0.0;
-            sigText = nullCrossed
-              ? 'No statistically significant difference demonstrated (95% CI crosses null value of 0.0).'
-              : 'Statistically significant difference (95% CI does not cross null value of 0.0).';
-          }
-        } else {
-          sigText = 'Significance could not be definitively determined from extracted numerical bounds.';
-        }
-
-        // Non-inferiority margin conclusion evaluation (Task B4)
-        if (trialFramework === 'non-inferiority' && !isNaN(lowNum) && nonInferiorityMargin) {
-          const marginNum = parseFloat(nonInferiorityMargin.replace(/[^0-9.-]/g, ''));
-          const negMargin = -Math.abs(marginNum);
-          if (lowNum < negMargin) {
-            nonInferiorityConclusion = `Non-inferiority not demonstrated: lower limit of 95% CI (${lowNum}%) falls below the non-inferiority margin of ${negMargin}%.`;
-          } else {
-            nonInferiorityConclusion = `Non-inferiority demonstrated: lower limit of 95% CI (${lowNum}%) does not cross the non-inferiority margin of ${negMargin}%.`;
-          }
-        }
-
-        // Determine specific outcome noun phrase from the sentence (Task A1, A4)
-        let outcomeLabel = 'Clinical Endpoint';
-        if (/major h[ae]morrhage/i.test(sentence)) {
-          outcomeLabel = 'Major haemorrhage';
-        } else if (/oocyte retrieval/i.test(sentence)) {
-          outcomeLabel = 'Oocyte retrieval';
-        } else if (/embryo transfer/i.test(sentence)) {
-          outcomeLabel = 'Embryo transfer';
-        } else if (/live birth rate/i.test(sentence)) {
-          outcomeLabel = /poor responders/i.test(sentence) ? 'Live birth rate (poor responders)' : 'Live birth rate';
-        } else if (/clinical pregnancy rate/i.test(sentence)) {
-          outcomeLabel = 'Clinical pregnancy rate';
-        } else if (/preterm preeclampsia/i.test(sentence)) {
-          outcomeLabel = 'Preterm preeclampsia';
-        } else if (/composite of worsening heart failure/i.test(sentence)) {
-          outcomeLabel = 'Composite of worsening heart failure or cardiovascular death';
-        } else if (/composite of death, dementia, or persistent physical disability/i.test(sentence)) {
-          outcomeLabel = 'Composite of death, dementia, or persistent physical disability';
-        } else if (/units of gonadotropin/i.test(sentence)) {
-          outcomeLabel = 'Mean units of gonadotropin';
-        } else {
-          const prefixClause = sentence.split(m[0])[0];
-          const words = prefixClause.trim().split(/\s+/).slice(-6).join(' ');
-          outcomeLabel = words || 'Clinical Endpoint';
-        }
-
-        const outcomeType = classifyOutcomeType(outcomeLabel, sentence);
-
-        effectEstimates.push({
-          outcome: outcomeLabel,
-          outcomeLabel,
-          metric: cleanMetric,
-          pointEstimate: point,
-          confidenceInterval: `95% CI: ${ciLow} to ${ciHigh}`,
-          pValue: pVal,
-          clinicalVsStatisticalSignificance: sigText,
-          sourceSentence: sentence.trim(),
-          sourceQuote: sentence.trim(),
-          outcomeType,
-          confidence: 'high',
-          isPrimary: false,
-        });
-
-        if (effectEstimates.length >= 6) break;
-      }
-      if (effectEstimates.length >= 6) break;
-    }
-  }
-
-  // Anchor Primary Effect Estimate to Primary Outcome (Task A1)
   let primaryEstimate: EffectEstimateItem | null = null;
+  const statsSearchText = [rawAbstract, resultsText].filter(Boolean).join(' ') || combinedText;
 
-  if (detectedDesign !== 'OTHER' && effectEstimates.length > 0 && primaryOutcomeDefinition) {
-    const targetWords = primaryOutcomeDefinition.toLowerCase().split(/[\s,]+/);
-
-    // Score candidates based on match to primary outcome definition and target subgroup
-    const candidates = effectEstimates.map((est) => {
-      let score = 0;
-      const lowerOut = est.outcome.toLowerCase();
-      const lowerSent = (est.sourceSentence || '').toLowerCase();
-
-      for (const w of targetWords) {
-        if (w.length > 3 && (lowerOut.includes(w) || lowerSent.includes(w))) {
-          score += 2;
-        }
+  // Narrative reviews / commentaries: never lift estimates from cited studies
+  if (detectedDesign !== 'OTHER') {
+    const parsed = extractEffectEstimates(statsSearchText, 12);
+    const primaryParsed = selectPrimaryEstimate(parsed, primaryOutcomeDefinition || null);
+    for (const e of parsed) {
+      const nature = outcomeNature(e.outcomeHint, e === primaryParsed ? primaryOutcomeDefinition : null);
+      const direction = effectDirection(e, nature);
+      const label = e.outcomeHint
+        ? `${e.outcomeHint}${e.subgroupHint ? ` (${e.subgroupHint})` : ''}`
+        : 'Unlabelled outcome';
+      const nullText = e.isRatio ? '1.0' : '0.0';
+      const sig = crossesNull(e)
+        ? `No statistically significant difference demonstrated (95% CI crosses null value of ${nullText}).`
+        : `Statistically significant difference (95% CI does not cross null value of ${nullText})${direction.startsWith('favours') ? ` — ${direction}` : ''}.`;
+      const item: EffectEstimateItem = {
+        outcome: label,
+        outcomeLabel: label,
+        metric: `${e.adjusted ? 'Adjusted ' : ''}${e.metric}`,
+        pointEstimate: e.raw.point,
+        confidenceInterval: `95% CI: ${e.raw.lo} to ${e.raw.hi}`,
+        pValue: e.pValue,
+        clinicalVsStatisticalSignificance: sig,
+        sourceSentence: e.sentence,
+        sourceQuote: e.sentence,
+        outcomeType: nature === 'process' ? 'process' : direction === 'no clear difference' ? 'no-clear-difference' : direction === 'favours intervention' ? 'benefit' : direction === 'favours comparator' ? 'harm' : 'unlabelled',
+        confidence: e.outcomeHint ? 'high' : 'low',
+        isPrimary: e === primaryParsed,
+      };
+      if (item.isPrimary) primaryEstimate = item;
+      effectEstimates.push(item);
+    }
+    // Non-inferiority: compare the CI bound of the PRIMARY difference estimate with the stated margin
+    if (trialFramework === 'non-inferiority' && primaryParsed && nonInferiorityMargin) {
+      const margin = Math.abs(parseFloat(nonInferiorityMargin.replace(/[^0-9.]/g, '')));
+      const higherIsBetter = outcomeNature(primaryParsed.outcomeHint, primaryOutcomeDefinition) !== 'adverse';
+      const v = nonInferiorityVerdict(primaryParsed, isNaN(margin) ? null : margin, higherIsBetter);
+      if (v !== 'not assessable') {
+        nonInferiorityConclusion = `Non-inferiority ${v}: 95% CI ${primaryParsed.ciLow} to ${primaryParsed.ciHigh} vs margin ${margin}.`;
       }
-
-      // Direct explicit sentence indicator: "the primary outcome occurred in..."
-      if (/the primary (?:outcome|end\s*point)/i.test(lowerSent)) {
-        score += 8;
-      }
-
-      // Systematic review subgroup requirement (e.g. poor responders in Cochrane review)
-      if (detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS') {
-        if (/poor responders/i.test(rawAbstract) && /poor responders/i.test(lowerSent + ' ' + lowerOut)) {
-          score += 5;
-        }
-        if (/routine use|normal responders/i.test(lowerSent) && /poor responders/i.test(rawAbstract)) {
-          score -= 3;
-        }
-      }
-
-      // Process outcomes should not be selected as primary efficacy if clinical benefit outcome exists
-      if (est.outcomeType === 'process') {
-        score -= 5;
-      }
-
-      // If multiple estimates report the primary outcome (e.g. RD and OR), prefer relative effect (OR/HR/RR)
-      if (/Odds Ratio|Hazard Ratio|Relative Risk/i.test(est.metric)) {
-        score += 1;
-      }
-
-      return { est, score };
-    });
-
-    candidates.sort((a, b) => b.score - a.score);
-    if (candidates.length > 0 && candidates[0].score > 0) {
-      primaryEstimate = candidates[0].est;
-      primaryEstimate.isPrimary = true;
     }
   }
 
