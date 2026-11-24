@@ -9,7 +9,7 @@ export interface ParsedIdentifier {
  * Normalizes user input string and extracts pure DOI, PMID, PMCID, or URL.
  */
 export function normalizeIdentifier(input: string): ParsedIdentifier {
-  const trimmed = input.trim();
+  const trimmed = input.trim().replace(/^[\s"'“”]+|[\s"'“”;,.]+$/g, '');
 
   // 1. Check for PMCID (e.g., PMC1234567 or https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1234567/)
   const pmcidMatch = trimmed.match(/(PMC\d+)/i);

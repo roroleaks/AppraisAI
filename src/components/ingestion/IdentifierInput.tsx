@@ -5,7 +5,7 @@ import { Search, Loader2, Sparkles, AlertCircle, X, StopCircle } from 'lucide-re
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 
 export function isValidIdentifierInput(input: string): boolean {
-  const val = input.trim();
+  const val = input.trim().replace(/^[\s"'“”]+|[\s"'“”;,.]+$/g, '');
   if (!val) return false;
   // 1. DOI pattern (optional doi: or https://doi.org/ prefix)
   if (/^(?:https?:\/\/doi\.org\/|doi:\s*)?10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+$/i.test(val)) return true;
@@ -23,6 +23,7 @@ export const IdentifierInput: React.FC = () => {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [streamStage, setStreamStage] = useState('Resolving identifier...');
   const abortControllerRef = useRef<AbortController | null>(null);
+  const inFlight = useRef(false);
 
   const { setManuscript, isIngesting, setIngesting, ingestionError, setIngestionError } =
     useAppraisalStore();
@@ -64,7 +65,9 @@ export const IdentifierInput: React.FC = () => {
 
   const handleResolve = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (inFlight.current) return;
     if (!isInputValid || isIngesting) return;
+    inFlight.current = true;
 
     setIngesting(true);
     setIngestionError(null);
@@ -94,6 +97,7 @@ export const IdentifierInput: React.FC = () => {
         setIngestionError(err.message || 'Error resolving manuscript identifier.');
       }
     } finally {
+      inFlight.current = false;
       setIngesting(false);
       abortControllerRef.current = null;
     }

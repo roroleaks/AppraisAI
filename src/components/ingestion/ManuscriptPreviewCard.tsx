@@ -37,6 +37,11 @@ export const ManuscriptPreviewCard: React.FC = () => {
 
   const { metadata, abstract, sections, pageCount } = currentManuscript;
   const isAbstractOnly = metadata.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
+  const sourceText = isAbstractOnly
+    ? metadata.pmcid
+      ? 'Full text not machine-retrievable (PMCID present, no open XML)'
+      : 'Abstract only — full text not available'
+    : `Full text parsed (${sections.length} sections)`;
 
   // Format and segment abstract into clean paragraphs
   const abstractParagraphs = abstract
@@ -242,7 +247,7 @@ export const ManuscriptPreviewCard: React.FC = () => {
               Structured Manuscript Abstract
             </h4>
             <span className="text-[11px] text-slate-500">
-              Full text parsed and indexed for analytical pipeline
+              {sourceText}
             </span>
           </div>
 

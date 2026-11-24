@@ -151,10 +151,10 @@ export function extractFirstAuthorSurname(authorStr: string): string {
 /**
  * Derives a clean filename prefix for downloads: e.g. "Critical_Appraisal_Siddiqi_2020.docx"
  */
-export function getCleanDownloadFilename(authors?: string[] | string, year?: number | string): string {
+export function getCleanDownloadFilename(authors?: string[] | string, year?: number | string, isDraft?: boolean): string {
   const cleanAuthors = cleanBiomedicalAuthors(authors);
   const first = cleanAuthors[0] && !cleanAuthors[0].startsWith('[') ? cleanAuthors[0] : 'Manuscript';
   const lastName = extractFirstAuthorSurname(first);
   const pubYear = year || new Date().getFullYear();
-  return `Critical_Appraisal_${lastName}_${pubYear}.docx`;
+  return `Critical_Appraisal_${lastName}_${pubYear}${isDraft ? '_DRAFT' : ''}.docx`;
 }

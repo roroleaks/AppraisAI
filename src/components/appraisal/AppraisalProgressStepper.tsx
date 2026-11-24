@@ -12,7 +12,8 @@ const STAGES = [
 ];
 
 export const AppraisalProgressStepper: React.FC = () => {
-  const { appraisalProgressStep, isAppraising, currentStepMessage } = useAppraisalStore();
+  const { appraisalProgressStep, isAppraising, currentStepMessage, currentAppraisal } = useAppraisalStore();
+  const completed = appraisalProgressStep === 4 || !!currentAppraisal; // survives reload
 
   return (
     <div className="w-full bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
@@ -24,8 +25,8 @@ export const AppraisalProgressStepper: React.FC = () => {
           <p className="text-sm font-bold text-slate-800 mt-0.5">
             {isAppraising
               ? currentStepMessage || 'Analyzing manuscript methodology...'
-              : appraisalProgressStep === 4
-              ? 'Appraisal Completed'
+              : completed
+              ? '4 passes generated'
               : 'Ready to Appraise'}
           </p>
         </div>
@@ -39,7 +40,7 @@ export const AppraisalProgressStepper: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
         {STAGES.map((s) => {
-          const isDone = appraisalProgressStep > s.step || (appraisalProgressStep === 4 && !isAppraising);
+          const isDone = !isAppraising && (completed || appraisalProgressStep > s.step);
           const isCurrent = isAppraising && appraisalProgressStep === s.step;
 
           return (

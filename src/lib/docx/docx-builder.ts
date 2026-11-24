@@ -32,6 +32,7 @@ import {
 } from './styles';
 import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '../parsers/title-sanitizer';
 import { isVerbatimInManuscript } from '../parsers/quote-verifier';
+import { reportStatus } from '../status';
 
 export interface AppraiserMetadata {
   name: string;
@@ -207,6 +208,10 @@ export function buildAcademicDocxManuscript(
   const activeAffiliation = appraiser?.affiliation || 'Evidence-Based Medicine & Methodological Review';
   const activeOrcid = appraiser?.orcid || '';
   const isVerified = !!appraiser?.verified;
+  const status = reportStatus(report, {
+    humanVerified: isVerified,
+    appraiserName: appraiser?.name,
+  });
 
   // Page geometry selection: default A4, optional US Letter (P3-3)
   const pageGeom = appraiser?.pageSize === 'LETTER' ? PAGE_GEOMETRY_LETTER : PAGE_GEOMETRY_A4;
@@ -267,15 +272,11 @@ export function buildAcademicDocxManuscript(
                 spacing: { before: 0, after: 20 },
                 children: [
                   new TextRun({
-                    text: (report as any).retraction?.isRetracted
-                      ? 'RETRACTED ARTICLE — APPRAISAL FOR TEACHING & HISTORICAL RECORD ONLY'
-                      : isVerified
-                      ? 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT'
-                      : 'UNVERIFIED HEURISTIC DRAFT  |  CRITICAL APPRAISAL REPORT (PRELIMINARY)',
+                    text: status.headline,
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_SMALL,
                     bold: true,
-                    color: (report as any).retraction?.isRetracted ? 'C53030' : isVerified ? DOCX_COLORS.NAVY_PRIMARY : 'C53030',
+                    color: (report as any).retraction?.isRetracted || status.isDraft ? 'C53030' : DOCX_COLORS.NAVY_PRIMARY,
                   }),
                 ],
               }),
@@ -355,11 +356,11 @@ export function buildAcademicDocxManuscript(
             spacing: { before: 120, after: 60 },
             children: [
               new TextRun({
-                text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT',
+                text: status.isDraft ? status.headline : 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT',
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 bold: true,
-                color: DOCX_COLORS.TEAL_ACCENT,
+                color: status.isDraft ? 'C53030' : DOCX_COLORS.TEAL_ACCENT,
               }),
             ],
           }),
@@ -412,6 +413,73 @@ export function buildAcademicDocxManuscript(
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_MUTED,
+              }),
+            ],
+          }),
+
+          // Three Status Badges: Source, Engine, Review
+          new Table({
+            width: { size: contentWidth, type: WidthType.DXA },
+            borders: TABLE_BORDERS_CLEAN,
+            rows: [
+              new TableRow({
+                cantSplit: true,
+                children: [
+                  new TableCell({
+                    width: { size: Math.floor(contentWidth / 3), type: WidthType.DXA },
+                    shading: { fill: 'F1F5F9', type: ShadingType.CLEAR, color: 'auto' },
+                    margins: CELL_PADDING_COMPACT,
+                    children: [
+                      new Paragraph({
+                        children: [
+                          new TextRun({
+                            text: `Source: ${status.source}`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            bold: true,
+                            color: DOCX_COLORS.SLATE_BODY,
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                  new TableCell({
+                    width: { size: Math.floor(contentWidth / 3), type: WidthType.DXA },
+                    shading: { fill: 'E3F2F2', type: ShadingType.CLEAR, color: 'auto' },
+                    margins: CELL_PADDING_COMPACT,
+                    children: [
+                      new Paragraph({
+                        children: [
+                          new TextRun({
+                            text: `Engine: ${status.engine}`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            bold: true,
+                            color: DOCX_COLORS.NAVY_PRIMARY,
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                  new TableCell({
+                    width: { size: contentWidth - Math.floor(contentWidth / 3) * 2, type: WidthType.DXA },
+                    shading: { fill: status.review === 'Unverified' ? 'FEF9C3' : 'DCFCE7', type: ShadingType.CLEAR, color: 'auto' },
+                    margins: CELL_PADDING_COMPACT,
+                    children: [
+                      new Paragraph({
+                        children: [
+                          new TextRun({
+                            text: `Review: ${status.review}`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            bold: true,
+                            color: status.review === 'Unverified' ? '854D0E' : '166534',
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                ],
               }),
             ],
           }),

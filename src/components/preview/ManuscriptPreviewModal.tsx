@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MasterAppraisalReport } from '@/lib/schemas/appraisal.schema';
 import { X, Printer, Download, BookOpen, ShieldCheck } from 'lucide-react';
 import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '@/lib/parsers/title-sanitizer';
+import { reportStatus } from '@/lib/status';
+import { useAppraisalStore } from '@/store/useAppraisalStore';
 
 interface ManuscriptPreviewModalProps {
   isOpen: boolean;
@@ -18,13 +20,56 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
   report,
   onDownloadDocx,
 }) => {
+  const { humanVerified, appraiserName, llmProvider, llmModel } = useAppraisalStore();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const modalPanelRef = useRef<HTMLDivElement>(null);
+  const previousActiveElementRef = useRef<HTMLElement | null>(null);
+
+  const status = reportStatus(report, {
+    humanVerified,
+    appraiserName,
+    provider: report.llmDetails?.provider ?? llmProvider,
+    model: report.llmDetails?.model ?? llmModel,
+  });
+
   useEffect(() => {
     if (!isOpen) return;
+    previousActiveElementRef.current = document.activeElement as HTMLElement;
+    setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 10);
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        onClose();
+        return;
+      }
+      if (e.key === 'Tab' && modalPanelRef.current) {
+        const focusables = modalPanelRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      previousActiveElementRef.current?.focus();
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -47,12 +92,18 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 sm:p-6 overflow-y-auto">
-      <div className="bg-white rounded-xl shadow-2xl border border-slate-300 max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in duration-200">
+      <div
+        ref={modalPanelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="preview-title"
+        className="bg-white rounded-xl shadow-2xl border border-slate-300 max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in duration-200"
+      >
         {/* Header Toolbar */}
         <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-brand-300" />
-            <h3 className="font-serif font-bold text-sm tracking-wide">
+            <h3 id="preview-title" className="font-serif font-bold text-sm tracking-wide">
               Publication Manuscript Print-Preview (US Letter / Academic Layout)
             </h3>
           </div>
@@ -70,6 +121,7 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
               <Download className="w-3.5 h-3.5" /> Download .docx
             </button>
             <button
+              ref={closeButtonRef}
               onClick={onClose}
               aria-label="Close preview"
               className="p-1 text-slate-400 hover:text-white rounded-md transition"
@@ -80,13 +132,26 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
         </div>
 
         {/* Paper Simulation Body */}
-        <div className="flex-1 overflow-y-auto p-8 sm:p-12 bg-slate-100 font-serif text-slate-900 leading-relaxed text-xs space-y-6">
+        <div className="flex-1 overflow-y-auto p-8 sm:p-12 bg-slate-100 font-serif text-slate-900 leading-relaxed text-xs space-y-6 relative">
+          {/* Printable Watermark for Draft */}
+          {status.isDraft && (
+            <div className="hidden print:block fixed inset-0 pointer-events-none z-50 overflow-hidden select-none">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-6xl font-bold text-red-500/15 uppercase tracking-widest -rotate-45 font-sans border-4 border-red-500/15 px-12 py-6 rounded-2xl">
+                  UNVERIFIED DRAFT
+                </span>
+              </div>
+            </div>
+          )}
+
           <div className="max-w-[760px] mx-auto bg-white p-8 sm:p-12 shadow-sm border border-slate-200 space-y-6">
             {/* 2-Line Running Header */}
             <div className="border-b border-slate-300 pb-2.5 font-sans space-y-1">
               <div className="flex justify-between items-center text-[10px] uppercase tracking-wider font-bold text-slate-800">
                 <span>EVIDENCE-BASED CLINICAL MEDICINE</span>
-                <span className="text-brand-700">CRITICAL APPRAISAL REPORT</span>
+                <span className={status.isDraft ? 'text-rose-700' : 'text-brand-700'}>
+                  {status.isDraft ? status.headline : 'CRITICAL APPRAISAL REPORT'}
+                </span>
               </div>
               <div className="flex justify-between items-center text-[10px] text-slate-500 italic">
                 <span className="truncate max-w-md">{displayTitle}</span>
@@ -105,6 +170,22 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
               <p className="text-slate-600 text-[11px] font-sans">
                 Authors: {displayAuthors} | Appraisal Date: {new Date(report.completedAt).toISOString().split('T')[0]} | EQUATOR & Cochrane RoB 2.0 Governed
               </p>
+              {/* Three Status Badges: Source, Engine, Review */}
+              <div className="flex flex-wrap items-center gap-2 pt-1 font-sans">
+                <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-300">
+                  Source: {status.source}
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#e3f2f2] text-[#0f6b6b] border border-[#0f6b6b]/30">
+                  Engine: {status.engine}
+                </span>
+                <span className={`px-2 py-0.5 rounded text-[10px] font-semibold border ${
+                  status.review === 'Unverified'
+                    ? 'bg-amber-50 text-amber-800 border-amber-300'
+                    : 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                }`}>
+                  Review: {status.review}
+                </span>
+              </div>
             </div>
 
             {/* Target Article Reference Box */}

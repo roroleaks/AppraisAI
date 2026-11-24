@@ -13,6 +13,7 @@ import { ExportToolbar } from '@/components/preview/ExportToolbar';
 import { LlmSettingsModal } from '@/components/common/LlmSettingsModal';
 import { ConfirmationModal } from '@/components/common/ConfirmationModal';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
+import { reportStatus } from '@/lib/status';
 import Image from 'next/image';
 import {
   FileText,
@@ -39,7 +40,20 @@ export default function HomePage() {
     appraisalError,
     clearAppraisal,
     resetAll,
+    humanVerified,
+    appraiserName,
+    llmProvider,
+    llmModel,
   } = useAppraisalStore();
+
+  const status = currentAppraisal
+    ? reportStatus(currentAppraisal, {
+        humanVerified,
+        appraiserName,
+        provider: currentAppraisal.llmDetails?.provider ?? llmProvider,
+        model: currentAppraisal.llmDetails?.model ?? llmModel,
+      })
+    : null;
 
   // Browser History & PopState Support for Seamless Back Navigation
   useEffect(() => {
@@ -343,6 +357,32 @@ export default function HomePage() {
               </div>
             )}
 
+            {/* Report Header Badges: Source, Engine, Review */}
+            {status && (
+              <div className="bg-white border border-[#d8dee6] rounded-xl p-4 shadow-sm space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <span className="text-[11px] font-bold text-[#0f6b6b] uppercase tracking-wider">
+                    {status.headline}
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 pt-1 font-sans">
+                  <span className="px-2.5 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300">
+                    Source: {status.source}
+                  </span>
+                  <span className="px-2.5 py-1 rounded text-xs font-semibold bg-[#e3f2f2] text-[#0f6b6b] border border-[#0f6b6b]/30">
+                    Engine: {status.engine}
+                  </span>
+                  <span className={`px-2.5 py-1 rounded text-xs font-semibold border ${
+                    status.review === 'Unverified'
+                      ? 'bg-amber-50 text-amber-800 border-amber-300'
+                      : 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                  }`}>
+                    Review: {status.review}
+                  </span>
+                </div>
+              </div>
+            )}
+
             {/* Sticky Export Toolbar with Appraiser Stamp, Print-Preview & Word Download */}
             <ExportToolbar />
 
@@ -369,7 +409,7 @@ export default function HomePage() {
                   Critical Appraisal Complete
                 </h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  All 4 evaluation passes verified. Return to the manuscript overview, appraise another paper, or scroll back up to export controls.
+                  {status?.headline}. Return to the manuscript overview, appraise another paper, or scroll back up to export controls.
                 </p>
               </div>
 

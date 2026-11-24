@@ -273,9 +273,8 @@ Formulate practical bottom-line recommendations for practicing clinicians and fu
     {
       number: 5,
       vancouverCitation:
-        'Oxford Centre for Evidence-Based Medicine: Levels of Evidence (March 2009). Oxford: OCEBM; 2009.',
-      doiOrUrl:
-        'https://www.cebm.ox.ac.uk/resources/levels-of-evidence/oxford-centre-for-evidence-based-medicine-levels-of-evidence-march-2009',
+        'OCEBM Levels of Evidence Working Group. "The Oxford 2011 Levels of Evidence". Oxford Centre for Evidence-Based Medicine.',
+      doiOrUrl: 'https://www.cebm.ox.ac.uk/resources/levels-of-evidence/ocebm-levels-of-evidence',
     },
   ];
 

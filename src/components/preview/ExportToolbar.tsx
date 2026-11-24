@@ -5,6 +5,7 @@ import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { ManuscriptPreviewModal } from './ManuscriptPreviewModal';
 import { ConfirmationModal } from '@/components/common/ConfirmationModal';
 import { getCleanDownloadFilename } from '@/lib/parsers/title-sanitizer';
+import { reportStatus } from '@/lib/status';
 import { isValidOrcid } from '@/lib/parsers/orcid-validator';
 import {
   Download,
@@ -29,19 +30,26 @@ const PRESET_PROFILE = {
 };
 
 export const ExportToolbar: React.FC = () => {
-  const { currentAppraisal, isEditMode, setEditMode, clearAppraisal, resetAll } =
-    useAppraisalStore();
+  const {
+    currentAppraisal,
+    isEditMode,
+    setEditMode,
+    clearAppraisal,
+    resetAll,
+    humanVerified,
+    setHumanVerified,
+    appraiserName,
+    setAppraiserName,
+  } = useAppraisalStore();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isCopiedCitation, setIsCopiedCitation] = useState(false);
   const [showResetConfirmModal, setShowResetConfirmModal] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
 
-  // Appraiser attribution persisted locally (P0-6: empty by default)
-  const [appraiserName, setAppraiserName] = useState('');
+  // Appraiser attribution persisted locally / in store
   const [appraiserAffiliation, setAppraiserAffiliation] = useState('');
   const [appraiserOrcid, setAppraiserOrcid] = useState('');
-  const [isVerified, setIsVerified] = useState(false);
   const [showAttributionPopover, setShowAttributionPopover] = useState(false);
   const [attributionError, setAttributionError] = useState<string | null>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
@@ -50,10 +58,14 @@ export const ExportToolbar: React.FC = () => {
     const savedName = localStorage.getItem('appraisai_author_name');
     const savedAffil = localStorage.getItem('appraisai_author_affiliation');
     const savedOrcid = localStorage.getItem('appraisai_author_orcid');
-    if (savedName) {
+    if (savedName && !appraiserName) {
       setAppraiserName(savedName);
-      setAppraiserAffiliation(savedAffil || '');
-      setAppraiserOrcid(savedOrcid || '');
+    }
+    if (savedAffil) {
+      setAppraiserAffiliation(savedAffil);
+    }
+    if (savedOrcid) {
+      setAppraiserOrcid(savedOrcid);
     }
   }, []);
 
@@ -105,7 +117,7 @@ export const ExportToolbar: React.FC = () => {
             name: appraiserName.trim(),
             affiliation: appraiserAffiliation.trim() || undefined,
             orcid: appraiserOrcid.trim() || undefined,
-            verified: isVerified,
+            verified: humanVerified,
           },
         }),
       });
@@ -118,9 +130,14 @@ export const ExportToolbar: React.FC = () => {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
+      const status = reportStatus(currentAppraisal, {
+        humanVerified,
+        appraiserName,
+      });
       a.download = getCleanDownloadFilename(
         currentAppraisal.metadata.authors,
-        currentAppraisal.metadata.publicationYear
+        currentAppraisal.metadata.publicationYear,
+        status.isDraft
       );
       document.body.appendChild(a);
       a.click();
@@ -299,8 +316,8 @@ export const ExportToolbar: React.FC = () => {
           <label className="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-700 cursor-pointer bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
             <input
               type="checkbox"
-              checked={isVerified}
-              onChange={(e) => setIsVerified(e.target.checked)}
+              checked={humanVerified}
+              onChange={(e) => setHumanVerified(e.target.checked)}
               className="rounded border-slate-300 text-[#0f6b6b] focus:ring-[#0f6b6b]"
             />
             <span className="font-medium text-[11px]">I have reviewed & verified this appraisal</span>
