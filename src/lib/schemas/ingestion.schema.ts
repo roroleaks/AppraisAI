@@ -38,6 +38,7 @@ export const BibliographicMetadataSchema = z.object({
   resolvedUrl: z.string().optional(),
   publicationTypes: z.array(z.string()).optional(),
   meshHeadings: z.array(z.string()).optional(),
+  affiliations: z.array(z.string()).optional(),
 });
 
 export type BibliographicMetadata = z.infer<typeof BibliographicMetadataSchema>;

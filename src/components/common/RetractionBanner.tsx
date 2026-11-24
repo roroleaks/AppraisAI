@@ -1,6 +1,7 @@
 import React from 'react';
 
 export function RetractionBanner({ citation }: { citation?: string }) {
+  const cleanCitation = citation ? citation.replace(/\.+$/, '').trim() : '';
   return (
     <div
       role="alert"
@@ -8,7 +9,7 @@ export function RetractionBanner({ citation }: { citation?: string }) {
     >
       <p className="text-base font-bold">⚠ This article has been RETRACTED</p>
       <p className="text-sm mt-1">
-        {citation ? `${citation}. ` : ''}Its findings must not be used for clinical decisions. Any
+        {cleanCitation ? `${cleanCitation}. ` : ''}Its findings must not be used for clinical decisions. Any
         appraisal below is for teaching only.
       </p>
     </div>

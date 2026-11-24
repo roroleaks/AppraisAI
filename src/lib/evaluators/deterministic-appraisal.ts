@@ -18,6 +18,7 @@ import {
 import { extractArms, armsFromTitle, extractFollowUp } from './pico-arms';
 import { includedDesigns, reviewOxfordLevel, isPredictionModelStudy, aiValidationSignals } from './review-designs';
 import { findCue, CHECKLIST_CUES, AMSTAR_CUES } from './evidence-cues';
+import { detectIndustryInvolvement } from './trial-integrity';
 import crypto from 'crypto';
 
 /**
@@ -214,96 +215,6 @@ function extractPrimaryOutcomeDefinition(abstract: string, _title?: string): str
  * When data are absent or cannot be verified, explicitly reports 'Not reported'
  * or 'Not assessed by heuristic engine' — NEVER fabricates estimates or judgements.
  */
-const COMMERCIAL_COMPANY_RE =
-  /\b(?:inc\.?|corp\.?|corporation|llc|ltd\.?|plc|gmbh|ab|s\.?a\.?|pty\.?|b\.?v\.?|pharma(?:ceuticals?)?|therapeutics|biotech(?:nology)?|biosciences|medical\s+(?:systems|devices|technologies)|diagnostics|laboratories|boehringer\s+ingelheim|eli\s+lilly|astrazeneca|novartis|pfizer|roche|merck|sanofi|glaxosmithkline|gsk|bayer|novo\s+nordisk|ferring|johnson\s*&\s*johnson|abbvie|amgen|gilead|bristol[- ]myers|takeda|medtronic|boston\s+scientific|coopersurgical|organon)\b/i;
-
-const PUBLIC_NONPROFIT_RE =
-  /\b(?:nih|nhlbi|nci|mrc|nhmrc|cihr|wellcome|national|ministry|department|university|institute|institution|hospital|clinic|council|foundation|charity|trust|public|government|academy|society|association|college|center|centre|agency|board|fund)\b/i;
-
-export interface IndustryInvolvementResult {
-  industryFunded: boolean;
-  funderSignals: string[];
-  sponsorSignals: string[];
-  authorDisclosures: string[];
-  evidence: string[];
-}
-
-export function detectIndustryInvolvement(text: string): IndustryInvolvementResult {
-  const funderSignals: string[] = [];
-  const sponsorSignals: string[] = [];
-  const authorDisclosures: string[] = [];
-  const evidence: string[] = [];
-
-  // 1. Funding statements
-  const fundingMatches = [
-    ...text.matchAll(
-      /(?:funded\s+by|sponsored\s+by|grant\s+from|support(?:ed)?\s+by|funding\s+from|supported\s+by\s+a\s+grant\s+from)\s+([^.;\n]+)/gi
-    ),
-  ];
-  let industryFunded = false;
-  for (const m of fundingMatches) {
-    const funderRaw = (m[1] || '').replace(/<\/?[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    if (!funderRaw) continue;
-    const isNamedCompany =
-      COMMERCIAL_COMPANY_RE.test(funderRaw) ||
-      (!PUBLIC_NONPROFIT_RE.test(funderRaw) &&
-        funderRaw.split(/\s+/).length <= 6 &&
-        /^[A-Z]/.test(funderRaw));
-    if (isNamedCompany) {
-      industryFunded = true;
-      const item = `Funder: ${funderRaw}`;
-      if (!funderSignals.includes(item)) {
-        funderSignals.push(item);
-        evidence.push(item);
-      }
-    }
-  }
-
-  // 2. Trial sponsor / supplier mentions
-  const sponsorMatches = [
-    ...text.matchAll(
-      /(?:trial\s+sponsor|sponsored\s+by|supplied\s+by|provided\s+by)\s+([^.;\n]{2,90})/gi
-    ),
-  ];
-  for (const m of sponsorMatches) {
-    const raw = (m[1] || '').replace(/<\/?[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    if (raw && COMMERCIAL_COMPANY_RE.test(raw)) {
-      const item = `Sponsor/Supplier: ${raw}`;
-      if (!funderSignals.some((f) => f.includes(raw)) && !sponsorSignals.includes(item)) {
-        sponsorSignals.push(item);
-        evidence.push(item);
-      }
-    }
-  }
-
-  // 3. Author competing-interests disclosures
-  const cleanText = text.replace(/<\/?[^>]+>/g, ' ').replace(/\s+/g, ' ');
-  const sentences = cleanText.split(/(?<=[.?!])\s+/);
-  for (const s of sentences) {
-    const trimmed = s.trim();
-    if (
-      /\b(?:received|reports?|declares?)\b[^.]{0,80}\b(?:honoraria|fees|grants?|consult)/i.test(
-        trimmed
-      ) &&
-      !/\bno\s+(?:conflicts?\s+of\s+interest|competing\s+interests?|disclosures?)\b/i.test(trimmed)
-    ) {
-      const item = `Author disclosure: ${trimmed.slice(0, 180)}`;
-      if (!authorDisclosures.includes(item)) {
-        authorDisclosures.push(item);
-        evidence.push(item);
-      }
-    }
-  }
-
-  return {
-    industryFunded,
-    funderSignals,
-    sponsorSignals,
-    authorDisclosures,
-    evidence,
-  };
-}
-
 export function generateDeterministicAppraisal(
   manuscript: ParsedManuscriptPayload
 ): MasterAppraisalReport {
@@ -369,7 +280,7 @@ export function generateDeterministicAppraisal(
   }
 
   // Industry / commercial manufacturer funding & disclosure detection
-  const industry = detectIndustryInvolvement(combinedText);
+  const industry = detectIndustryInvolvement(`${rawAbstract} ${rawFullText}`, meta.affiliations || []);
   const fundingManufacturerConflict = industry.industryFunded;
 
   // General post-randomization attrition / exclusions rule (D06, D07: >5% invalidates Low Risk on Domain 3)

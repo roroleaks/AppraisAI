@@ -25,6 +25,7 @@ export interface EuropePmcResolvedArticle {
   retraction?: RetractionInfo;
   publicationTypes?: string[];
   meshHeadings?: string[];
+  affiliations?: string[];
 }
 
 /**
@@ -457,6 +458,22 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
   const title = pmcResult.title || 'Untitled Article';
   const authorString: string = pmcResult.authorString || '';
   const authors: string[] = authorString ? authorString.split(',').map((a: string) => a.trim()) : [];
+  const rawAuthorList = pmcResult.authorList?.author || [];
+  const authorObjs: any[] = Array.isArray(rawAuthorList) ? rawAuthorList : [rawAuthorList];
+  const affiliations: string[] = Array.from(
+    new Set(
+      authorObjs
+        .flatMap((a: any) => {
+          const affList = a?.authorAffiliationDetailsList?.authorAffiliation;
+          if (Array.isArray(affList)) return affList.map((x: any) => x?.affiliation);
+          if (affList?.affiliation) return [affList.affiliation];
+          if (typeof a?.affiliation === 'string') return [a.affiliation];
+          return [];
+        })
+        .filter((s: unknown): s is string => typeof s === 'string' && s.trim().length > 0)
+        .map((s: string) => s.trim())
+    )
+  );
   const journal = pmcResult.journalInfo?.journal?.title || pmcResult.journalTitle || 'Unknown Journal';
   const publicationYear = Number(pmcResult.pubYear || new Date().getFullYear());
   const volume = pmcResult.journalInfo?.volume;
@@ -581,5 +598,6 @@ export async function resolveEuropePmcArticle(query: string): Promise<EuropePmcR
     retraction,
     publicationTypes: pubTypes,
     meshHeadings,
+    affiliations,
   };
 }

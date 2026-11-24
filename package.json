@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "tsx tests/suite.test.ts && tsx tests/jats-parser.test.ts && tsx tests/invalid-input.test.ts && tsx tests/identifier-normalizer.test.ts && tsx tests/appraisal-content-parity.test.ts && tsx tests/vancouver.test.ts && tsx tests/regression.test.ts",
+    "test": "tsx tests/suite.test.ts && tsx tests/jats-parser.test.ts && tsx tests/invalid-input.test.ts && tsx tests/identifier-normalizer.test.ts && tsx tests/appraisal-content-parity.test.ts && tsx tests/vancouver.test.ts && tsx tests/regression.test.ts && tsx tests/industry.test.ts",
     "test:benchmark": "tsx tests/benchmark.test.ts",
     "test:gate": "tsx tests/generalisation.test.ts",
     "test:holdout": "tsx tests/holdout/holdout.test.ts",

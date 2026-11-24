@@ -364,7 +364,7 @@ export function buildAcademicDocxManuscript(
                     new TextRun({
                       text: `⚠ This article has been RETRACTED. ${
                         report.retraction.retractionCitation
-                          ? `${report.retraction.retractionCitation}. `
+                          ? `${report.retraction.retractionCitation.replace(/\.+$/, '').trim()}. `
                           : ''
                       }Its findings must not be used for clinical decisions. Any appraisal below is for teaching only.`,
                       font: TYPOGRAPHY.FONT_PRIMARY,

@@ -292,6 +292,7 @@ export async function POST(req: NextRequest) {
         openAccess: pmcResolved.openAccess,
         publicationTypes: pmcResolved.publicationTypes,
         meshHeadings: pmcResolved.meshHeadings,
+        affiliations: pmcResolved.affiliations,
       },
       retraction: pmcResolved.retraction,
       abstract: pmcResolved.abstract,
