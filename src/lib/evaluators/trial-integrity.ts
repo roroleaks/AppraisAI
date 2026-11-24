@@ -48,6 +48,16 @@ function isCommercialEntity(raw: string): boolean {
   return false;
 }
 
+function companyKey(raw: string): string {
+  const withoutPrefix = raw
+    .replace(/^(?:Funder|Author affiliation|Author disclosure):\s*/i, '')
+    .replace(/\.+$/, '')
+    .trim();
+  const known = withoutPrefix.match(COMPANY_NAME_RE);
+  if (known) return known[0].toLowerCase();
+  return withoutPrefix.split(',')[0].trim().toLowerCase();
+}
+
 export interface IndustryInvolvementResult {
   industryFunded: boolean;
   industryAffiliatedAuthors: boolean;
@@ -63,6 +73,17 @@ export function detectIndustryInvolvement(
   const funderSignals: string[] = [];
   const authorDisclosures: string[] = [];
   const evidence: string[] = [];
+  const seenKeys = new Set<string>();
+
+  const pushEvidence = (rawItem: string) => {
+    const cleaned = rawItem.replace(/\.+$/, '').trim();
+    if (!cleaned) return;
+    const key = companyKey(cleaned);
+    if (!seenKeys.has(key)) {
+      seenKeys.add(key);
+      evidence.push(cleaned);
+    }
+  };
 
   const funderText = text.replace(/<\/?[^>]+>/g, ' ').replace(/\s+/g, ' ');
 
@@ -78,25 +99,22 @@ export function detectIndustryInvolvement(
     if (!funderRaw) continue;
     if (isCommercialEntity(funderRaw)) {
       industryFunded = true;
-      const item = `Funder: ${funderRaw}`;
+      const item = `Funder: ${funderRaw.replace(/\.+$/, '').trim()}`;
       if (!funderSignals.includes(item)) {
         funderSignals.push(item);
-        evidence.push(item);
       }
+      pushEvidence(item);
     }
   }
 
   // 2. Company-affiliated authors
   let industryAffiliatedAuthors = false;
   for (const aff of affiliations) {
-    const cleanAff = (aff || '').trim();
+    const cleanAff = (aff || '').replace(/\.+$/, '').trim();
     if (!cleanAff) continue;
     if (isCommercialEntity(cleanAff)) {
       industryAffiliatedAuthors = true;
-      const item = `Author affiliation: ${cleanAff}`;
-      if (!evidence.includes(item)) {
-        evidence.push(item);
-      }
+      pushEvidence(`Author affiliation: ${cleanAff}`);
     }
   }
 
@@ -110,11 +128,11 @@ export function detectIndustryInvolvement(
       ) &&
       !/\bno\s+(?:conflicts?\s+of\s+interest|competing\s+interests?|disclosures?)\b/i.test(trimmed)
     ) {
-      const item = `Author disclosure: ${trimmed.slice(0, 180)}`;
+      const item = `Author disclosure: ${trimmed.slice(0, 180).replace(/\.+$/, '').trim()}`;
       if (!authorDisclosures.includes(item)) {
         authorDisclosures.push(item);
-        evidence.push(item);
       }
+      pushEvidence(item);
     }
   }
 
