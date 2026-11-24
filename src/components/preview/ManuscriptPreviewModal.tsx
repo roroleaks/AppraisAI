@@ -122,7 +122,9 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
             <div className="grid grid-cols-4 gap-2 p-3 bg-slate-50 border border-slate-200 text-center font-sans text-[11px]">
               <div>
                 <span className="text-slate-500 block text-[9px] uppercase">Design</span>
-                <span className="font-bold text-slate-800">{report.classification.studyDesign}</span>
+                <span className="font-bold text-slate-800">
+                  {report.classification.studyDesign === 'PREDICTION_MODEL' ? 'AI / prediction-model study' : report.classification.studyDesign}
+                </span>
               </div>
               <div>
                 <span className="text-slate-500 block text-[9px] uppercase">Oxford Level</span>

@@ -193,6 +193,34 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
         ],
       };
 
+    case 'PREDICTION_MODEL':
+      return {
+        studyDesign: 'PREDICTION_MODEL',
+        equatorGuidelineName: 'TRIPOD+AI',
+        equatorGuidelineCitation:
+          'Collins GS, Moons KGM, Dhiman P, et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. BMJ. 2024;385:e078378. doi:10.1136/bmj-2023-078378',
+        riskOfBiasToolName: 'PROBAST+AI',
+        riskOfBiasToolCitation:
+          'Moons KGM, Damen JAA, Kaul T, et al. PROBAST+AI: an updated quality, risk of bias, and applicability assessment tool for prediction models using regression or artificial intelligence methods. BMJ. 2025;388:e082505. doi:10.1136/bmj-2024-082505',
+        defaultOxfordLevel: 'Level 3b',
+        robMandatoryDomains: [
+          { domainName: 'Domain 1: Participants and data sources', description: 'Representative data source; inclusions/exclusions; no leakage between development and test data' },
+          { domainName: 'Domain 2: Predictors', description: 'Predictors (images, clinical variables) defined and available at the time of use' },
+          { domainName: 'Domain 3: Outcome', description: 'Outcome (e.g. implantation, clinical pregnancy, live birth) defined and determined without knowledge of predictions' },
+          { domainName: 'Domain 4: Analysis', description: 'Adequate sample size; discrimination AND calibration; internal and external validation; overfitting handled' },
+        ],
+        equatorMandatoryItems: [
+          { itemNumberAndSection: 'Item 1: Title', requirement: 'Identifies the study as developing or evaluating a prediction model, the target population and outcome' },
+          { itemNumberAndSection: 'Item 5: Data source', requirement: 'Source of data, dates and setting (centres, countries)' },
+          { itemNumberAndSection: 'Item 8: Outcome', requirement: 'Outcome definition and how/when it was assessed' },
+          { itemNumberAndSection: 'Item 10: Sample size', requirement: 'Study size and how it was arrived at' },
+          { itemNumberAndSection: 'Item 12: Analysis — performance', requirement: 'Discrimination and calibration measures with uncertainty' },
+          { itemNumberAndSection: 'Item 12e: Validation', requirement: 'Internal validation method and any external / temporal / geographic validation' },
+          { itemNumberAndSection: 'Item 14: Fairness', requirement: 'Performance across relevant subgroups' },
+          { itemNumberAndSection: 'Item 27: Limitations', requirement: 'Limitations, including generalisability and risk of bias' },
+        ],
+      };
+
     case 'CLINICAL_PRACTICE_GUIDELINE':
       return {
         studyDesign: 'CLINICAL_PRACTICE_GUIDELINE',

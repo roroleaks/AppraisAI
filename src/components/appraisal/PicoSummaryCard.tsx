@@ -21,7 +21,7 @@ export const PicoSummaryCard: React.FC = () => {
           </h3>
           <div className="flex flex-wrap items-center gap-2 mt-2">
             <span className="px-3 py-1 bg-[#e3f2f2] text-[#0f6b6b] border border-[#0f6b6b]/30 text-xs font-bold rounded-md">
-              {classification.studyDesign.replace(/_/g, ' ')}
+              {classification.studyDesign === 'PREDICTION_MODEL' ? 'AI / prediction-model study' : classification.studyDesign.replace(/_/g, ' ')}
             </span>
             <span className="px-3 py-1 bg-purple-50 text-purple-800 border border-purple-200 text-xs font-bold rounded-md flex items-center gap-1">
               <Shield className="w-3.5 h-3.5 text-purple-600" />

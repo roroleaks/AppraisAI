@@ -132,6 +132,24 @@ for (const e of EXPECT) {
     fail(e.id, `primary mislabelled as process outcome "${prim.outcomeLabel}"`);
 }
 
+// Arms must come from the methods sentence, never the first title word
+const armsCases: [string, RegExp, RegExp][] = [
+  ['U1_27509101', /fresh-embryo transfer/i, /frozen-embryo transfer|cryopreservation/i],
+  ['U2_32865377', /empagliflozin/i, /placebo/i],
+  ['U3_35363951', /antihypertensive/i, /no such treatment|control/i],
+];
+for (const [id, i, c] of armsCases) {
+  const p = reports[id]?.pico;
+  if (!p || !i.test(p.interventionOrExposure) || !c.test(p.comparator)) fail(id, `arms wrong: I="${p?.interventionOrExposure}" C="${p?.comparator}"`);
+}
+// A review that includes observational studies is never Level 1a
+for (const id of Object.keys(reports)) {
+  const r = reports[id];
+  if (r.classification?.studyDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS' && r.classification.oxfordEvidenceLevel === 'Level 1a'
+      && /observational|cohort|non-?randomi[sz]ed/i.test(r.manuscriptAbstract || '') && /and (?:observational|cohort)/i.test(r.manuscriptAbstract || ''))
+    fail(id, 'mixed-design review rated Level 1a');
+}
+
 
 console.log(`\n${failures === 0 ? '✅ GENERALISATION GATE PASSED' : `❌ ${failures} failure(s)`}`);
 process.exit(failures === 0 ? 0 : 1);

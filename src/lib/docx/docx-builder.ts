@@ -587,7 +587,15 @@ export function buildAcademicDocxManuscript(
                       }),
                       new Paragraph({
                         children: [
-                          new TextRun({ text: report.classification.studyDesign.replace(/_/g, ' '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
+                          new TextRun({
+                            text: report.classification.studyDesign === 'PREDICTION_MODEL'
+                              ? 'AI / prediction-model study'
+                              : report.classification.studyDesign.replace(/_/g, ' '),
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_TABLE,
+                            bold: true,
+                            color: DOCX_COLORS.NAVY_PRIMARY,
+                          }),
                         ],
                       }),
                     ],

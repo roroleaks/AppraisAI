@@ -15,6 +15,8 @@ import {
   effectDirection,
   nonInferiorityVerdict,
 } from './outcome-logic';
+import { extractArms, armsFromTitle, extractFollowUp } from './pico-arms';
+import { includedDesigns, reviewOxfordLevel, isPredictionModelStudy, aiValidationSignals } from './review-designs';
 import crypto from 'crypto';
 
 /**
@@ -66,6 +68,13 @@ export function classifyStudyDesign(
     };
   }
 
+  // 1b. Structured systematic-review abstract (Cochrane / PRISMA headings), even without publication types
+  const srSignals = [/\bsearch methods\b/i, /\bselection criteria\b/i, /\bdata collection and analysis\b/i, /\bwe searched\b/i, /\bincluded (?:\d+|[a-z-]+) (?:randomi[sz]ed )?(?:trials|studies|RCTs)\b/i, /\bcochrane\b/i]
+    .filter((re) => re.test(rawAbstract)).length;
+  if (srSignals >= 2) {
+    return { design: 'SYSTEMATIC_REVIEW_META_ANALYSIS', rationale: 'Systematic-review structure detected in abstract (search methods / selection criteria / data collection).' };
+  }
+
   // 2. Explicit Title Phrases
   if (
     /\b(?:commentary review|clinical commentary|narrative review|expert review|state-of-the-art review|critical commentary|editorial perspective|perspective review)\b/i.test(
@@ -88,7 +97,7 @@ export function classifyStudyDesign(
   }
 
   if (
-    /randomized controlled trial|randomised controlled trial|randomised trial|randomized trial|double-blind.*placebo-controlled|placebo-controlled.*randomized|\brct\b/i.test(
+    /randomi[sz]ed(?:,?\s+[a-z-]+){0,3}\s+(?:controlled\s+)?trial|double-blind.*placebo-controlled|placebo-controlled.*randomi[sz]ed|\brct\b/i.test(
       lowerTitle
     )
   ) {
@@ -116,6 +125,11 @@ export function classifyStudyDesign(
     };
   }
 
+  // 2b. AI / prediction-model development or validation study (not a trial of AI-guided care)
+  if (isPredictionModelStudy(meta.title, rawAbstract)) {
+    return { design: 'PREDICTION_MODEL', rationale: 'Develops or evaluates an AI / prediction model (performance metrics such as AUC, accuracy, calibration). Appraised with PROBAST+AI and TRIPOD+AI, not trial tools.' };
+  }
+
   // 3. Scored Heuristics Fallback
   const scores: Record<StudyDesign, number> = {
     RCT: 0,
@@ -125,6 +139,7 @@ export function classifyStudyDesign(
     CROSS_SECTIONAL: 0,
     DIAGNOSTIC_ACCURACY: 0,
     CLINICAL_PRACTICE_GUIDELINE: 0,
+    PREDICTION_MODEL: 0,
     OTHER: 0,
   };
 
@@ -133,7 +148,7 @@ export function classifyStudyDesign(
   if (/prisma|search strategy|databases? (?:searched|queried)|pubmed.*embase|screened for eligibility|inclusion criteria/i.test(methodsText)) scores.SYSTEMATIC_REVIEW_META_ANALYSIS += 8;
 
   if (/randomi[sz]ed (?:controlled )?trial|randomi[sz]ed clinical trial|double-blind|placebo-controlled|\brct\b/i.test(meta.title)) scores.RCT += 15;
-  if (/randomi[sz]ed[^.]{0,60}?(?:controlled trial|clinical trial)|randomi[sz]ed (?:controlled )?trial|randomly (?:assigned|allocated)|double[- ]blind|placebo[- ]controlled|\brct\b|parallel[- ]group/i.test(rawAbstract)) scores.RCT += 10;
+  if (/randomi[sz]ed(?:,?\s+[a-z-]+){0,3}\s+trial|randomly (?:assigned|allocated)|we (?:randomi[sz]ed|assigned)|double-blind|placebo-controlled|\brct\b|parallel-group/i.test(rawAbstract)) scores.RCT += 10;
   if (/randomly assigned|random allocation|randomization sequence|randomisation sequence|computer-generated random|allocation concealment|intention-to-treat/i.test(methodsText)) scores.RCT += 8;
 
   if (/cohort study|prospective cohort|retrospective cohort|longitudinal study/i.test(meta.title)) scores.COHORT_STUDY += 15;
@@ -335,7 +350,7 @@ export function generateDeterministicAppraisal(
     if (cleanFirst.length > 20 && cleanFirst.length < 200) {
       population = `${cleanFirst}${sampleSizeStr}`;
     } else {
-      population = `Study cohort evaluated in ${meta.title}${sampleSizeStr}`;
+      population = sampleSizeStr ? `Not extracted${sampleSizeStr}` : 'Not extracted';
     }
   }
 
@@ -346,39 +361,11 @@ export function generateDeterministicAppraisal(
     .replace(/\s+/g, ' ')
     .trim();
 
-  // 2C. Intervention / Exposure Extraction (No templates)
-  let interventionOrExposure = '';
-  const vsPrefixMatch = meta.title.match(
-    /(?:efficacy|safety|effect of)?\s*([A-Za-z0-9\s,-]+?)\s+(?:versus|vs\.?|compared with|compared to)\b/i
-  );
-  const intMatch = meta.title.match(/^([A-Za-z0-9\s,-]+?)\s+(?:in|for|after|and)\b/i);
-
-  // Dose / regimen extraction from abstract text
-  const doseMatch = rawAbstract.match(/(?:at a dose of\s+([0-9mg\s/.-]+)|([0-9]+\s*mg(?:\/day)?(?:\s+[a-zA-Z\s-]+)?(?:daily|once daily|from\s+[0-9–-]+\s*weeks)))/i);
-  const extractedDose = doseMatch ? (doseMatch[1] || doseMatch[2])?.trim() : '';
-
-  if (vsPrefixMatch && vsPrefixMatch[1] && vsPrefixMatch[1].trim().length > 2) {
-    const drugName = vsPrefixMatch[1].trim().replace(/^(?:efficacy|safety|effect of)\s+/i, '');
-    interventionOrExposure = extractedDose ? `${drugName} (${extractedDose})` : drugName;
-  } else if (intMatch && intMatch[1] && intMatch[1].trim().length > 3) {
-    const drugName = intMatch[1].trim().replace(/^(?:efficacy|safety|effect of)\s+/i, '');
-    interventionOrExposure = extractedDose ? `${drugName} (${extractedDose})` : drugName;
-  } else {
-    interventionOrExposure = extractedDose ? `Intervention (${extractedDose})` : `Primary therapeutic intervention described in ${meta.title}`;
-  }
-
-  // 2D. Comparator Extraction (No templates)
-  let comparator = '';
-  const vsMatch = meta.title.match(/(?:versus|vs\.?|compared with|compared to)\s+([^,;:(]+)/i);
-  if (vsMatch && vsMatch[1] && vsMatch[1].trim().length > 2) {
-    comparator = vsMatch[1].trim();
-  } else if (/\bplacebo\b/i.test(combinedText)) {
-    comparator = 'Placebo control';
-  } else if (/standard of care|usual care|active control|control group|standard morphology/i.test(combinedText)) {
-    comparator = 'Standard care or active control';
-  } else {
-    comparator = 'Control group / non-exposed cohort';
-  }
+  // 2C/2D. Intervention & comparator — methods sentence first, explicit "X versus Y" title second, else not extracted
+  const armsText = extractArms(rawAbstract);
+  const armsTitle = armsFromTitle(meta.title);
+  const interventionOrExposure = armsText.intervention ?? armsTitle.intervention ?? 'Not extracted';
+  const comparator = armsText.comparator ?? armsTitle.comparator ?? (/\bplacebo\b/i.test(rawAbstract) ? 'Placebo' : 'Not extracted');
 
   // 2E. Primary & Secondary Outcomes (Task A1, A6)
   const primaryOutcomeDefinition = extractPrimaryOutcomeDefinition(rawAbstract);
@@ -409,6 +396,11 @@ export function generateDeterministicAppraisal(
     const generalFollowUp = rawAbstract.match(/(?:followed\s+for|follow-?up\s+period\s+of)\s*([0-9.]+\s*(?:months|years|weeks|days))/i);
     if (generalFollowUp && generalFollowUp[1] && !/stopped after/i.test(generalFollowUp[0])) {
       timeframe = generalFollowUp[1].trim();
+    } else {
+      const extracted = extractFollowUp(rawAbstract);
+      if (extracted) {
+        timeframe = extracted;
+      }
     }
   }
 
@@ -956,6 +948,11 @@ export function generateDeterministicAppraisal(
       minorLimitations: [
         ...(stoppedEarly ? ['Premature trial termination / under-recruitment: trial ended prior to planned sample accrual, introducing potential risk of imprecision.'] : []),
         ...(fundingManufacturerConflict ? ['Potential conflict of interest: funding source matches the commercial manufacturer or developer of the evaluated intervention.'] : []),
+        ...((detectedDesign === 'PREDICTION_MODEL' || (detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS' && includedDesigns(rawAbstract) === 'MODEL_PERFORMANCE'))
+          ? aiValidationSignals(`${rawAbstract} ${rawFullText}`)
+              .filter((s) => !s.found)
+              .map((s) => `AI validation — not found in available text: ${s.item}. Model performance metrics are not evidence of clinical benefit.`)
+          : []),
         isAbstractOnly
           ? 'Appraisal performed on abstract-only text; comprehensive methodological and table review not accessible.'
           : 'Heuristic screening draft — formal critical audit requires detailed manual or LLM review.',
@@ -1059,7 +1056,11 @@ export function generateDeterministicAppraisal(
     classification: {
       studyDesign: detectedDesign,
       studyDesignRationale: designRationale,
-      oxfordEvidenceLevel: governingRules.defaultOxfordLevel,
+      // A review is only Level 1a if it pooled randomised trials
+      oxfordEvidenceLevel:
+        detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS'
+          ? reviewOxfordLevel(includedDesigns(`${rawAbstract} ${rawFullText.slice(0, 6000)}`))
+          : governingRules.defaultOxfordLevel,
       equatorReportingGuideline: governingRules.equatorGuidelineName,
       framework: trialFramework,
       nonInferiorityMargin,

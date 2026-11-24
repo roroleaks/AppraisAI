@@ -10,6 +10,7 @@ export const StudyDesignEnum = z.enum([
   'CROSS_SECTIONAL',
   'DIAGNOSTIC_ACCURACY',
   'CLINICAL_PRACTICE_GUIDELINE',
+  'PREDICTION_MODEL',
   'OTHER'
 ]);
 
