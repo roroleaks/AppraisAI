@@ -1,0 +1,482 @@
+{
+ "id": "29234808",
+ "source": "MED",
+ "pmid": "29234808",
+ "doi": "10.1001/jama.2017.18249",
+ "title": "Effect of Levothyroxine on Miscarriage Among Women With Normal Thyroid Function and Thyroid Autoimmunity Undergoing In Vitro Fertilization and Embryo Transfer: A Randomized Clinical Trial.",
+ "authorString": "Wang H, Gao H, Chi H, Zeng L, Xiao W, Wang Y, Li R, Liu P, Wang C, Tian Q, Zhou Z, Yang J, Liu Y, Wei R, Mol BWJ, Hong T, Qiao J.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Wang H",
+    "lastName": "Wang",
+    "firstName": "Haining",
+    "initials": "H",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Gao H",
+    "lastName": "Gao",
+    "firstName": "Hongwei",
+    "initials": "H",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Chi H",
+    "lastName": "Chi",
+    "firstName": "Hongbin",
+    "initials": "H",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Zeng L",
+    "lastName": "Zeng",
+    "firstName": "Lin",
+    "initials": "L",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Clinical Epidemiology Research Center, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Xiao W",
+    "lastName": "Xiao",
+    "firstName": "Wenhua",
+    "initials": "W",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Wang Y",
+    "lastName": "Wang",
+    "firstName": "Yanrong",
+    "initials": "Y",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Li R",
+    "lastName": "Li",
+    "firstName": "Rong",
+    "initials": "R",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Liu P",
+    "lastName": "Liu",
+    "firstName": "Ping",
+    "initials": "P",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Wang C",
+    "lastName": "Wang",
+    "firstName": "Chen",
+    "initials": "C",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Tian Q",
+    "lastName": "Tian",
+    "firstName": "Qing",
+    "initials": "Q",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Zhou Z",
+    "lastName": "Zhou",
+    "firstName": "Zehong",
+    "initials": "Z",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Yang J",
+    "lastName": "Yang",
+    "firstName": "Jin",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Liu Y",
+    "lastName": "Liu",
+    "firstName": "Ye",
+    "initials": "Y",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Wei R",
+    "lastName": "Wei",
+    "firstName": "Rui",
+    "initials": "R",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8838-703X"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Mol BWJ",
+    "lastName": "Mol",
+    "firstName": "Ben Willem J",
+    "initials": "BWJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "The Robinson Research Institute, School of Pediatrics and Reproductive Health, University of Adelaide, Australia."
+      },
+      {
+       "affiliation": "South Australian Health and Medical Research Institute, Adelaide, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Hong T",
+    "lastName": "Hong",
+    "firstName": "Tianpei",
+    "initials": "T",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-5744-5129"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Qiao J",
+    "lastName": "Qiao",
+    "firstName": "Jie",
+    "initials": "J",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-2126-1376"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0002-5744-5129"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8838-703X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-2126-1376"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics"
+  ]
+ },
+ "journalInfo": {
+  "issue": "22",
+  "volume": "318",
+  "journalIssueId": 2628944,
+  "dateOfPublication": "2017 Dec",
+  "monthOfPublication": 12,
+  "yearOfPublication": 2017,
+  "journal": {
+   "medlineAbbreviation": "JAMA",
+   "title": "JAMA",
+   "essn": "1538-3598",
+   "issn": "0098-7484",
+   "isoabbreviation": "JAMA",
+   "nlmid": "7501160"
+  },
+  "printPublicationDate": "2017-12-01"
+ },
+ "pubYear": "2017",
+ "pageInfo": "2190-2198",
+ "abstractText": "<h4>Importance</h4>Presence of thyroid autoantibodies in women with normal thyroid function is associated with increased risk of miscarriage. Whether levothyroxine treatment improves pregnancy outcomes among women undergoing in vitro fertilization and embryo transfer (IVF-ET) is unknown.<h4>Objective</h4>To determine the effect of levothyroxine on miscarriage among women undergoing IVF-ET who had normal thyroid function and tested positive for thyroid autoantibodies.<h4>Design, setting, and participants</h4>An open-label, randomized clinical trial involving 600 women who tested positive for the antithyroperoxidase antibody and were being treated for infertility at Peking University Third Hospital from September 2012 to March 2017.<h4>Interventions</h4>The intervention group (n = 300) received either a 25-μg/d or 50-μg/d dose of levothyroxine at study initiation that was titrated according to the level of thyroid-stimulating hormone during pregnancy. The women in the control group (n = 300) did not receive levothyroxine. All participants received the same IVF-ET and follow-up protocols.<h4>Main outcomes and measures</h4>The primary outcome was the miscarriage rate (pregnancy loss before 28 weeks of gestation, which was calculated among women who became pregnant). The secondary outcomes were clinical intrauterine pregnancy rate (fetal cardiac activity seen at sonography observation on the 30th day after the embryo transfer), and live-birth rate (at least 1 live birth after 28 weeks of gestation).<h4>Results</h4>Among the 600 women (mean [SD] age, 31.6 [3.8] years) randomized in this trial, 567 women (94.5%) underwent IVF-ET and 565 (94.2%) completed the study. Miscarriage rates were 10.3% (11 of 107) in the intervention group and 10.6% (12 of 113) in the control group, with the absolute rate difference (RD) of -0.34% (95% CI, -8.65% to 8.12%) over the 4.5-year study period. Clinical intrauterine pregnancy rates were 35.7% (107 of 300) in the intervention group and 37.7% (113 of 300) in the control group, with an absolute RD of -2.00% (95% CI, -9.65% to 5.69%). Live-birth rates were 31.7% (95 of 300) in the intervention group and 32.3% (97 of 300) in the control group, with an absolute RD of -0.67% (95% CI, -8.09% to 6.77%).<h4>Conclusions and relevance</h4>Among women in China who had intact thyroid function and tested positive for antithyroperoxidase antibodies and were undergoing IVF-ET, treatment with levothyroxine, compared with no levothyroxine treatment, did not reduce miscarriage rates or increase live-birth rates.<h4>Trial registration</h4>Chinese Clinical Trial Registry: ChiCTR-TRC-13004097.",
+ "affiliation": "Department of Endocrinology and Metabolism, Center of Reproductive Medicine, Peking University Third Hospital, Beijing, China.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Comparative Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Thyroid Gland",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "IM",
+       "qualifierName": "immunology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PH",
+       "qualifierName": "physiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Abortion, Spontaneous",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Thyroxine",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Autoantibodies",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "BL",
+       "qualifierName": "blood"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Treatment Failure"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Embryo Transfer"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Fertilization in Vitro"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Autoimmunity"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Live Birth"
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Autoantibodies",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Thyroxine",
+    "registryNumber": "Q51BO43MG4"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://jamanetwork.com/journals/jama/articlepdf/2665776/jama_wang_2017_oi_170141.pdf"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1001/jama.2017.18249"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "29569649",
+    "reference": "Front Endocrinol (Lausanne). 2018 Mar 05;9:73. doi: 10.3389/fendo.2018.00073",
+    "type": "Comment in",
+    "orderIn": 1
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 156,
+ "hasReferences": "N",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2017-12-22",
+ "dateOfCreation": "2017-12-14",
+ "dateOfRevision": "2022-04-08",
+ "firstPublicationDate": "2017-12-01",
+ "firstIndexDate": "2017-12-14",
+ "hasEvaluations": "N"
+}

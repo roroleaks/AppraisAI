@@ -1,0 +1,328 @@
+{
+ "id": "29155965",
+ "source": "MED",
+ "pmid": "29155965",
+ "doi": "10.1093/humupd/dmx031",
+ "title": "Is frozen embryo transfer better for mothers and babies? Can cumulative meta-analysis provide a definitive answer?",
+ "authorString": "Maheshwari A, Pandey S, Amalraj Raja E, Shetty A, Hamilton M, Bhattacharya S.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Maheshwari A",
+    "lastName": "Maheshwari",
+    "firstName": "Abha",
+    "initials": "A",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-3652-2447"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Aberdeen Maternity Hopsital NHS Grampian, AB 25 2ZL, Scotland, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Pandey S",
+    "lastName": "Pandey",
+    "firstName": "Shilpi",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "CARE Fertility Nottingham, John Webster House, 6 Lawrence Drive, Nottingham Business Park, Nottingham NG8 6PZ, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Amalraj Raja E",
+    "lastName": "Amalraj Raja",
+    "firstName": "Edwin",
+    "initials": "E",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "School of Medicine and Dentistry, University of Aberdeen, Foresterhill, Aberdeen AB25 2ZD, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Shetty A",
+    "lastName": "Shetty",
+    "firstName": "Ashalatha",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Aberdeen Maternity Hopsital NHS Grampian, AB 25 2ZL, Scotland, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Hamilton M",
+    "lastName": "Hamilton",
+    "firstName": "Mark",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Aberdeen Maternity Hopsital NHS Grampian, AB 25 2ZL, Scotland, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Bhattacharya S",
+    "lastName": "Bhattacharya",
+    "firstName": "Siladitya",
+    "initials": "S",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-4588-356X"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "School of Medicine and Dentistry, University of Aberdeen, Foresterhill, Aberdeen AB25 2ZD, UK."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0002-3652-2447"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-4588-356X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-0853-9724"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics"
+  ]
+ },
+ "journalInfo": {
+  "issue": "1",
+  "volume": "24",
+  "journalIssueId": 2631005,
+  "dateOfPublication": "2018 Jan",
+  "monthOfPublication": 1,
+  "yearOfPublication": 2018,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod Update",
+   "title": "Human reproduction update",
+   "essn": "1460-2369",
+   "issn": "1355-4786",
+   "isoabbreviation": "Hum Reprod Update",
+   "nlmid": "9507614"
+  },
+  "printPublicationDate": "2018-01-01"
+ },
+ "pubYear": "2018",
+ "pageInfo": "35-58",
+ "abstractText": "<h4>Background</h4>Initial observational studies and a systematic review published 5 years ago have suggested that obstetric and perinatal outcomes are better in offspring conceived following frozen rather than fresh embryo transfers, with reduced risks of preterm birth, small for gestational age, low birth weight and pre-eclampsia. More recent primary studies are beginning to challenge some of these findings. We therefore conducted an updated systematic review and cumulative meta-analysis to examine if these results have remained consistent over time.<h4>Objective and rationale</h4>The aim of this study was to perform a systematic review and cumulative meta-analysis (trend with time) of obstetric and perinatal complications in singleton pregnancies following the transfer of frozen thawed and fresh embryos generated through in-vitro fertilisation.<h4>Search methods</h4>Data Sources from Medline, EMBASE, Cochrane Central Register of Clinical Trials DARE and CINAHL (1984-2016) were searched using appropriate key words. Observational and randomised studies comparing obstetric and perinatal outcomes in singleton pregnancies conceived through IVF using either fresh or frozen thawed embryos. Two independent reviewers extracted data in 2 × 2 tables and assessed the methodological quality of the relevant studies using CASP scoring. Both aggregated as well as cumulative meta-analysis was done using STATA.<h4>Outcomes</h4>Twenty-six studies met the inclusion criteria. Singleton babies conceived from frozen thawed embryos were at lower relative risk (RR) of preterm delivery (0.90; 95% CI 0.84-0.97) low birth weight (0.72; 95% CI 0.67-0.77) and small for gestational age (0.61; 95% CI 0.56-0.67) compared to those conceived from fresh embryo transfers, but faced an increased risk (RR) of hypertensive disorders of pregnancy (1.29; 95% CI 1.07-1.56) large for gestational age (1.54; 95% CI 1.48-1.61) and high birth weight (1.85; 95% CI 1.46-2.33). There was no difference in the risk of congenital anomalies and perinatal mortality between the two groups. The direction and magnitude of effect for these outcomes have remained virtually unchanged over time while the degree of precision has improved with the addition of data from newer studies.<h4>Wider implications</h4>The results of this cumulative meta-analysis confirm that the decreased risks of small for gestational age, low birth weight and preterm delivery and increased risks of large for gestational age and high birth weight associated with pregnancies conceived from frozen embryos have been consistent in terms of direction and magnitude of effect over several years, with increasing precision around the point estimates. Replication in a number of different populations has provided external validity for the results, for outcomes of birth weight and preterm delivery. Meanwhile, caution should be exercised about embarking on a policy of electively freezing all embryos in IVF as there are increased risks for large for gestational age babies and hypertensive disorders of pregnancy. Therefore, elective freezing should ideally be undertaken in specific cases such as ovarian hyperstimulation syndrome, fertility preservation or in the context of randomised trials.",
+ "affiliation": "Aberdeen Maternity Hopsital NHS Grampian, AB 25 2ZL, Scotland, UK.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Meta-Analysis",
+   "Systematic Review",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "National Institute for Health Research (NIHR)",
+    "acronym": "DH_",
+    "grantId": "HTA/13/115/82",
+    "orderIn": 0
+   },
+   {
+    "agency": "National Institute for Health Research (NIHR)",
+    "grantId": "13/115/82",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Pregnancy Outcome",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Transfer",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Fertilization in Vitro",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Mothers"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Freezing",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Embryo, Mammalian"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Cryopreservation",
+   "IVF",
+   "Small for gestational age",
+   "ICSI",
+   "Obstetric Outcomes",
+   "Preterm Delivery",
+   "Large For Gestational Age",
+   "Perinatal Outcomes",
+   "Fresh Embryo Transfer",
+   "Frozen Replacement Cycles"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humupd/dmx031"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "29912325",
+    "reference": "Hum Reprod Update. 2018 Jul 1;24(4):516-517. doi: 10.1093/humupd/dmy010.",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "29912342",
+    "reference": "Hum Reprod Update. 2018 Jul 1;24(4):517-518. doi: 10.1093/humupd/dmy011.",
+    "type": "Comment in",
+    "orderIn": 2
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 363,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2018-04-23",
+ "dateOfCreation": "2017-11-21",
+ "dateOfRevision": "2025-06-23",
+ "firstPublicationDate": "2018-01-01",
+ "firstIndexDate": "2017-11-21",
+ "hasEvaluations": "N"
+}

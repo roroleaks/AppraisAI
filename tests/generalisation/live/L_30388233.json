@@ -1,0 +1,338 @@
+{
+ "id": "30388233",
+ "source": "MED",
+ "pmid": "30388233",
+ "doi": "10.1093/humupd/dmy033",
+ "title": "Fresh versus elective frozen embryo transfer in IVF/ICSI cycles: a systematic review and meta-analysis of reproductive outcomes.",
+ "authorString": "Roque M, Haahr T, Geber S, Esteves SC, Humaidan P.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Roque M",
+    "lastName": "Roque",
+    "firstName": "Matheus",
+    "initials": "M",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-5600-3209"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Reproductive Medicine, ORIGEN-Center for Reproductive Medicine, Rio de Janeiro, RJ, Brazil."
+      },
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Universidade Federal de Minas Gerais (UFMG), Belo Horizonte, MG, Brazil."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Haahr T",
+    "lastName": "Haahr",
+    "firstName": "Thor",
+    "initials": "T",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-9304-5299"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Clinical Medicine, Aarhus University, Denmark and the Fertility Clinic Skive, Skive Regional Hospital, Resenvej 25, Skive, Denmark."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Geber S",
+    "lastName": "Geber",
+    "firstName": "Selmo",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Universidade Federal de Minas Gerais (UFMG), Belo Horizonte, MG, Brazil."
+      },
+      {
+       "affiliation": "Department of Reproductive Medicine, ORIGEN-Center for Reproductive Medicine, Belo Horizonte, MG, Brazil."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Esteves SC",
+    "lastName": "Esteves",
+    "firstName": "Sandro C",
+    "initials": "SC",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-1313-9680"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Clinical Medicine, Aarhus University, Denmark and the Fertility Clinic Skive, Skive Regional Hospital, Resenvej 25, Skive, Denmark."
+      },
+      {
+       "affiliation": "ANDROFERT, Andrology and Human Reproduction Clinic, Campinas, SP, Brazil."
+      },
+      {
+       "affiliation": "Department of Surgery, University of Campinas (UNICAMP), Campinas, Brazil."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Humaidan P",
+    "lastName": "Humaidan",
+    "firstName": "Peter",
+    "initials": "P",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-6884-5366"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Clinical Medicine, Aarhus University, Denmark and the Fertility Clinic Skive, Skive Regional Hospital, Resenvej 25, Skive, Denmark."
+      },
+      {
+       "affiliation": "ANDROFERT, Andrology and Human Reproduction Clinic, Campinas, SP, Brazil."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-5600-3209"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-6884-5366"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-9304-5299"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-1313-9680"
+   }
+  ]
+ },
+ "journalInfo": {
+  "issue": "1",
+  "volume": "25",
+  "journalIssueId": 2762229,
+  "dateOfPublication": "2019 Jan",
+  "monthOfPublication": 1,
+  "yearOfPublication": 2019,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod Update",
+   "title": "Human reproduction update",
+   "essn": "1460-2369",
+   "issn": "1355-4786",
+   "isoabbreviation": "Hum Reprod Update",
+   "nlmid": "9507614"
+  },
+  "printPublicationDate": "2019-01-01"
+ },
+ "pubYear": "2019",
+ "pageInfo": "2-14",
+ "abstractText": "<h4>Background</h4>Elective freezing of all good quality embryos and transfer in subsequent cycles, i.e. elective frozen embryo transfer (eFET), has recently increased significantly with the introduction of the GnRH agonist trigger protocol and improvements in cryo-techniques. The ongoing discussion focuses on whether eFET should be offered to the overall IVF population or only to specific subsets of patients. Until recently, the clinical usage of eFET was supported by only a few randomized controlled trials (RCT) and meta-analyses, suggesting that the eFET not only reduced ovarian hyperstimulation syndrome (OHSS), but also improved reproductive outcomes. However, the evidence is not unequivocal, and recent RCTs challenge the use of eFET for the general IVF population.<h4>Objective and rationale</h4>This systematic review and meta-analysis aimed at evaluating whether eFET is advantageous for reproductive, obstetric and perinatal outcomes compared with fresh embryo transfer in IVF/ICSI cycles. Additionally, we evaluated the effectiveness of eFET in comparison to fresh embryo transfer in different subgroups of patients undergoing IVF/ICSI cycles.<h4>Search methods</h4>We conducted a systematic review, using PubMed/Medline and EMBASE to identify all relevant RCTs published until March 2018. The participants included infertile couples undergoing IVF/ICSI with or without preimplantation genetic testing for aneuploidy (PGT-A). The primary outcome was the live birth rate (LBR), whereas secondary outcomes were cumulative LBR, implantation rate, miscarriage, OHSS, ectopic pregnancy, preterm birth, pregnancy-induced hypertension, pre-eclampsia, mean birthweight and congenital anomalies. Subgroup analyses included normal and hyper-responder patients, embryo developmental stage on the day of embryo transfer, freezing method and the route of progesterone administration for luteal phase support in eFET cycles.<h4>Outcomes</h4>Eleven studies, including 5379 patients, fulfilling the inclusion criteria were subjected to qualitative and quantitative analysis. A significant increase in LBR was noted with eFET compared with fresh embryo transfer in the overall IVF/ICSI population [risk ratio (RR) = 1.12; 95% CI: 1.01-1.24]. Subgroup analyses indicated higher LBRs by eFET than by fresh embryo transfer in hyper-responders (RR = 1.16; 95% CI: 1.05-1.28) and in PGT-A cycles (RR = 1.55; 95% CI: 1.14-2.10). However, no differences were observed for LBR in normo-responders (RR = 1.03; 95% CI: 0.91-1.17); moreover, the cumulative LBR was not significantly different in the overall population (RR = 1.04; 95% CI: 0.97-1.11). Regarding safety, the risk of moderate/severe OHSS was significantly lower with eFET than with fresh embryo transfer (RR = 0.42; 95% CI: 0.19-0.96). In contrast, the risk of pre-eclampsia increased with eFET (RR = 1.79; 95% CI: 1.03-3.09). No statistical differences were noted in the remaining secondary outcomes.<h4>Wider implications</h4>Although the use of eFET has steadily increased in recent years, a significant increase in LBR with eFET was solely noted in hyper-responders and in patients undergoing PGT-A. Concerning safety, eFET significantly decreases the risk of moderate and severe OHSS, albeit at the expense of an increased risk of pre-eclampsia.",
+ "affiliation": "Department of Reproductive Medicine, ORIGEN-Center for Reproductive Medicine, Rio de Janeiro, RJ, Brazil.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Meta-Analysis",
+   "Systematic Review",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infertility",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Ovarian Hyperstimulation Syndrome",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Abortion, Spontaneous",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Outcome",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Treatment Outcome"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Transfer",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Fertilization in Vitro",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Sperm Injections, Intracytoplasmic",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Birth Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humupd/dmy033"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 348,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "N",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2020-03-18",
+ "dateOfCreation": "2018-11-03",
+ "dateOfRevision": "2022-04-08",
+ "firstPublicationDate": "2019-01-01",
+ "firstIndexDate": "2018-11-03",
+ "hasEvaluations": "N"
+}

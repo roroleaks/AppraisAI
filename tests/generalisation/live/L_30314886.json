@@ -1,0 +1,237 @@
+{
+ "id": "30314886",
+ "source": "MED",
+ "pmid": "30314886",
+ "doi": "10.1016/j.rbmo.2018.06.023",
+ "title": "Sperm DNA fragmentation index as a promising predictive tool for male infertility diagnosis and treatment management - meta-analyses.",
+ "authorString": "Santi D, Spaggiari G, Simoni M.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Santi D",
+    "lastName": "Santi",
+    "firstName": "Daniele",
+    "initials": "D",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-6607-7105"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of BiomedicalMetabolic and Neural SciencesUniversity of Modena and Reggio EmiliaModenaItaly; Unit of EndocrinologyDepartment of Medical SpecialtiesAzienda Ospedaliero-Universitaria of ModenaModenaItaly."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Spaggiari G",
+    "lastName": "Spaggiari",
+    "firstName": "Giorgia",
+    "initials": "G",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-7089-7330"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of BiomedicalMetabolic and Neural SciencesUniversity of Modena and Reggio EmiliaModenaItaly; Unit of EndocrinologyDepartment of Medical SpecialtiesAzienda Ospedaliero-Universitaria of ModenaModenaItaly."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Simoni M",
+    "lastName": "Simoni",
+    "firstName": "Manuela",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of BiomedicalMetabolic and Neural SciencesUniversity of Modena and Reggio EmiliaModenaItaly; Unit of EndocrinologyDepartment of Medical SpecialtiesAzienda Ospedaliero-Universitaria of ModenaModenaItaly."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-6607-7105"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7089-7330"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "recommended_reviews"
+  ]
+ },
+ "journalInfo": {
+  "issue": "3",
+  "volume": "37",
+  "journalIssueId": 2738734,
+  "dateOfPublication": "2018 Sep",
+  "monthOfPublication": 9,
+  "yearOfPublication": 2018,
+  "journal": {
+   "medlineAbbreviation": "Reprod Biomed Online",
+   "title": "Reproductive biomedicine online",
+   "essn": "1472-6491",
+   "issn": "1472-6483",
+   "isoabbreviation": "Reprod Biomed Online",
+   "nlmid": "101122473"
+  },
+  "printPublicationDate": "2018-09-01"
+ },
+ "pubYear": "2018",
+ "pageInfo": "315-326",
+ "abstractText": "Conventional semen analyses have limitations in male infertility diagnosis and prognosis. Assessment of sperm DNA fragmentation (sDF) has been proposed to discriminate fertile from infertile men and predict FSH treatment response in infertile men, although a comprehensive evaluation of this is not available. The aims of these meta-analyses were to assess the power of sDF in male infertility diagnosis and its role in predicting FSH therapy response in infertile men. Two literature searches were conducted in MEDLINE (PubMed), Embase, the Cochrane Library, Scopus and UpToDate. First, interventional/observational clinical trials comparing fertile to infertile/subfertile men were included. Second, interventional/observational clinical trials evaluating FSH-treated infertile men were assessed. sDF levels were significantly higher in infertile men considering 28 studies (P < 0.001), independently of the sDF method applied. Receiver operator characteristics curves identified an sDF threshold of 20%, with sensitivity of 79% and specificity of 86%. Six studies showed significant sDF improvement of 4.24% (95% confidence interval: 0.24-8.25%) after 3 months of FSH treatment. These meta-analyses demonstrate the sDF relevance in male infertility, suggesting a higher accuracy in detecting sperm function than conventional semen parameters. Although larger prospective trials are needed, sDF represents a promising tool for clinical and research practice.",
+ "affiliation": "Department of BiomedicalMetabolic and Neural SciencesUniversity of Modena and Reggio EmiliaModenaItaly; Unit of EndocrinologyDepartment of Medical SpecialtiesAzienda Ospedaliero-Universitaria of ModenaModenaItaly.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Meta-Analysis",
+   "Review",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Spermatozoa",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "ME",
+       "qualifierName": "metabolism"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infertility, Male",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "DI",
+       "qualifierName": "diagnosis"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "GE",
+       "qualifierName": "genetics"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ME",
+       "qualifierName": "metabolism"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Sperm Count"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "DNA Fragmentation"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Sperm Motility",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PH",
+       "qualifierName": "physiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Male"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Semen Analysis"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "FSH",
+   "Male infertility",
+   "Sperm Dna"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://iris.unimore.it/bitstream/11380/1165678/2/1-s2.0-S1472648318303523-main.pdf"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1016/j.rbmo.2018.06.023"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 164,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2018-12-11",
+ "dateOfCreation": "2018-10-14",
+ "dateOfRevision": "2022-04-09",
+ "electronicPublicationDate": "2018-07-10",
+ "firstPublicationDate": "2018-07-10",
+ "firstIndexDate": "2018-10-13",
+ "hasEvaluations": "N"
+}

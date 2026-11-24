@@ -1,0 +1,527 @@
+{
+ "id": "27179265",
+ "source": "MED",
+ "pmid": "27179265",
+ "pmcid": "PMC5853593",
+ "fullTextIdList": {
+  "fullTextId": [
+   "PMC5853593"
+  ]
+ },
+ "doi": "10.1093/humrep/dew120",
+ "title": "A randomized controlled, non-inferiority trial of modified natural versus artificial cycle for cryo-thawed embryo transfer.",
+ "authorString": "Groenewoud ER, Cohlen BJ, Al-Oraiby A, Brinkhuis EA, Broekmans FJ, de Bruin JP, van den Dool G, Fleisher K, Friederich J, Goddijn M, Hoek A, Hoozemans DA, Kaaijk EM, Koks CA, Laven JS, van der Linden PJ, Manger AP, Slappendel E, Spinder T, Kollen BJ, Macklon NS.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Groenewoud ER",
+    "lastName": "Groenewoud",
+    "firstName": "E R",
+    "initials": "ER",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Leeuwarden Medical Centre, PO Box 888, 8901 HR Leeuwarden, The Netherlands evagroenewoud@hotmail.com."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Cohlen BJ",
+    "lastName": "Cohlen",
+    "firstName": "B J",
+    "initials": "BJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Isala Fertility Centre, Isala Clinics, PO Box 10400, 8000 GK Zwolle, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Al-Oraiby A",
+    "lastName": "Al-Oraiby",
+    "firstName": "A",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Amphia Hospital, PO Box 90157, 4800 RL Breda, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Brinkhuis EA",
+    "lastName": "Brinkhuis",
+    "firstName": "E A",
+    "initials": "EA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Meander Medical Center, Postbus 1502, 3800 BM Amersfoort, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Broekmans FJ",
+    "lastName": "Broekmans",
+    "firstName": "F J M",
+    "initials": "FJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department for Reproductive Medicine, University Medical Centre Utrecht, PO Box 85500, 3508 GA Utrecht, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "de Bruin JP",
+    "lastName": "de Bruin",
+    "firstName": "J P",
+    "initials": "JP",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Jeroen Bosch Hospital, PO Box 90153, 5200 ME 's-Hertogenbosch, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "van den Dool G",
+    "lastName": "van den Dool",
+    "firstName": "G",
+    "initials": "G",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Albert Schweitzer Hospital, PO Box 444, 3300 AK Dordrecht, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Fleisher K",
+    "lastName": "Fleisher",
+    "firstName": "K",
+    "initials": "K",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, University Medical Center Nijmegen, PO Box 9101, 6500 HB Nijmegen, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Friederich J",
+    "lastName": "Friederich",
+    "firstName": "J",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Noordwest Ziekenhuisgroep, PO Box 750, 1782 GZ Den Helder, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Goddijn M",
+    "lastName": "Goddijn",
+    "firstName": "M",
+    "initials": "M",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-9928-9673"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Centre for Reproductive Medicine, Academic Medical Centre, University of Amsterdam, PO Box 22600, 1100 DD Amsterdam, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Hoek A",
+    "lastName": "Hoek",
+    "firstName": "A",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, University of Groningen, University Medical Centre Groningen, PO Box 30001, 9700 RB Groningen, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Hoozemans DA",
+    "lastName": "Hoozemans",
+    "firstName": "D A",
+    "initials": "DA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Medical Spectrum Twente, PO Box 50000, 7500 KA Enschede, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kaaijk EM",
+    "lastName": "Kaaijk",
+    "firstName": "E M",
+    "initials": "EM",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Onze Lieve Vrouwe Gasthuis, PO Box 95500, 1090 HM Amsterdam, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Koks CA",
+    "lastName": "Koks",
+    "firstName": "C A M",
+    "initials": "CA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Máxima Medical Centre, PO Box 7777, 5500 MB Veldhoven, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Laven JS",
+    "lastName": "Laven",
+    "firstName": "J S E",
+    "initials": "JS",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Erasmus Medical Centre Rotterdam, Postbus 2040, 3000 CA Rotterdam, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "van der Linden PJ",
+    "lastName": "van der Linden",
+    "firstName": "P J Q",
+    "initials": "PJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Deventer Hospital, PO Box 5001, 7400 GC Deventer, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Manger AP",
+    "lastName": "Manger",
+    "firstName": "A P",
+    "initials": "AP",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Diakonessenhuis, PO Box 80250, 3508 TG Utrecht, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Slappendel E",
+    "lastName": "Slappendel",
+    "firstName": "E",
+    "initials": "E",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Catharina Hospital, PO Box 1350, 5602 ZA Eindhoven, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Spinder T",
+    "lastName": "Spinder",
+    "firstName": "T",
+    "initials": "T",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Leeuwarden Medical Centre, PO Box 888, 8901 HR Leeuwarden, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kollen BJ",
+    "lastName": "Kollen",
+    "firstName": "B J",
+    "initials": "BJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of General Practice, University of Groningen, University Medical Centre Groningen, PO Box 30001, 9700 RB Groningen, The Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Macklon NS",
+    "lastName": "Macklon",
+    "firstName": "N S",
+    "initials": "NS",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Academic Unit of Human Development and Health, University of Southampton, University Road, Southampton SO17 1BJ, UK."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-9928-9673"
+   },
+   {
+    "type": "ORCID",
+    "value": "0009-0004-8757-576X"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "recommended_reviews"
+  ]
+ },
+ "journalInfo": {
+  "issue": "7",
+  "volume": "31",
+  "journalIssueId": 2418778,
+  "dateOfPublication": "2016 Jul",
+  "monthOfPublication": 7,
+  "yearOfPublication": 2016,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod",
+   "title": "Human reproduction (Oxford, England)",
+   "essn": "1460-2350",
+   "issn": "0268-1161",
+   "isoabbreviation": "Hum Reprod",
+   "nlmid": "8701199"
+  },
+  "printPublicationDate": "2016-07-01"
+ },
+ "pubYear": "2016",
+ "pageInfo": "1483-1492",
+ "abstractText": "<h4>Study question</h4>Are live birth rates (LBRs) after artificial cycle frozen-thawed embryo transfer (AC-FET) non-inferior to LBRs after modified natural cycle frozen-thawed embryo transfer (mNC-FET)?<h4>Summary answer</h4>AC-FET is non-inferior to mNC-FET with regard to LBRs, clinical and ongoing pregnancy rates (OPRs) but AC-FET does result in higher cancellation rates.<h4>What is already known</h4>Pooling prior retrospective studies of AC-FET and mNC-FET results in comparable pregnancy and LBRs. However, these results have not yet been confirmed by a prospective randomized trial.<h4>Study design, size and duration</h4>In this non-inferiority prospective randomized controlled trial (acronym 'ANTARCTICA' trial), conducted from February 2009 to April 2014, 1032 patients were included of which 959 were available for analysis. The primary outcome of the study was live birth. Secondary outcomes were clinical and ongoing pregnancy, cycle cancellation and endometrium thickness. A cost-efficiency analysis was performed.<h4>Participant/materials, setting, methods</h4>This study was conducted in both secondary and tertiary fertility centres in the Netherlands. Patients included in this study had to be 18-40 years old, had to have a regular menstruation cycle between 26 and 35 days and frozen-thawed embryos to be transferred had to derive from one of the first three IVF or IVF-ICSI treatment cycles. Patients with a uterine anomaly, a contraindication for one of the prescribed medications in this study or patients undergoing a donor gamete procedure were excluded from participation. Patients were randomized based on a 1:1 allocation to either one cycle of mNC-FET or AC-FET. All embryos were cryopreserved using a slow-freeze technique.<h4>Main results and the role of chance</h4>LBR after mNC-FET was 11.5% (57/495) versus 8.8% in AC-FET (41/464) resulting in an absolute difference in LBR of -0.027 in favour of mNC-FET (95% confidence interval (CI) -0.065-0.012; P = 0.171). Clinical pregnancy occurred in 94/495 (19.0%) patients in mNC-FET versus 75/464 (16.0%) patients in AC-FET (odds ratio (OR) 0.8, 95% CI 0.6-1.1, P = 0.25). 57/495 (11.5%) mNC-FET resulted in ongoing pregnancy versus 45/464 (9.6%) AC-FET (OR 0.7, 95% CI 0.5-1.1, P = 0.15). χ(2) test confirmed the lack of superiority. Significantly more cycles were cancelled in AC-FET (124/464 versus 101/495, OR 1.4, 95% CI 1.1-1.9, P = 0.02). The costs of each of the endometrial preparation methods were comparable (€617.50 per cycle in NC-FET versus €625.73 per cycle in AC-FET, P = 0.54).<h4>Limitations, reasons for caution</h4>The minimum of 1150 patients required for adequate statistical power was not achieved. Moreover, LBRs were lower than anticipated in the sample size calculation.<h4>Wider implications of the findings</h4>LBRs after AC-FET were not inferior to those achieved by mNC-FET. No significant differences in clinical and OPR were observed. The costs of both treatment approaches were comparable.<h4>Study funding/competing interests</h4>An educational grant was received during the conduct of this study. Merck Sharpe Dohme had no influence on the design, execution and analyses of this study. E.R.G. received an education grant by Merck Sharpe Dohme (MSD) during the conduct of the present study. B.J.C. reports grants from MSD during the conduct of the study. A.H. reports grants from MSD and Ferring BV the Netherlands and personal fees from MSD. Grants from ZonMW, the Dutch Organization for Health Research and Development. J.S.E.L. reports grants from Ferring, MSD, Organon, Merck Serono and Schering-Plough during the conduct of the study. F.J.M.B. receives monetary compensation as member of the external advisory board for Merck Serono, consultancy work for Gedeon Richter, educational activities for Ferring BV, research cooperation with Ansh Labs and a strategic cooperation with Roche on automated anti Mullerian hormone assay development. N.S.M. reports receiving monetary compensations for external advisory and speaking work for Ferring BV, MSD, Anecova and Merck Serono during the conduct of the study. All reported competing interests are outside the submitted work. No other relationships or activities that could appear to have influenced the submitted work.<h4>Trial registration number</h4>Netherlands trial register, number NTR 1586.<h4>Trial registration date</h4>13 January 2009.<h4>First patient included</h4>20 April 2009.",
+ "affiliation": "Department of Obstetrics and Gynecology, Leeuwarden Medical Centre, PO Box 888, 8901 HR Leeuwarden, The Netherlands evagroenewoud@hotmail.com.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Research Support, Non-U.S. Gov't",
+   "research-article",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "Merck Sharp Dohme (MSD)",
+    "orderIn": 0
+   },
+   {
+    "agency": "National Institute for Health Research (NIHR)",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Cryopreservation"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Transfer",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EC",
+       "qualifierName": "economics"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Menstrual Cycle"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Cost-Benefit Analysis"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Live Birth"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "In Vitro Fertilization",
+   "Assisted Reproductive Techniques",
+   "Frozen-thawed Embryo Transfer",
+   "Modified Natural Cycle",
+   "Artificial Cycle"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://academic.oup.com/humrep/article-pdf/31/7/1483/24265291/dew120.pdf"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humrep/dew120"
+   },
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "html",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC5853593"
+   },
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "pdf",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC5853593?pdf=render"
+   },
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humrep/dew120"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "27742724",
+    "reference": "Hum Reprod. 2016 Dec;31(12):2892-2893. doi: 10.1093/humrep/dew256",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "27742725",
+    "reference": "Hum Reprod. 2016 Dec;31(12):2893. doi: 10.1093/humrep/dew258",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "27744379",
+    "reference": "Hum Reprod. 2016 Dec;31(12):2894. doi: 10.1093/humrep/dew255",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "27744380",
+    "reference": "Hum Reprod. 2016 Dec;31(12):2894-2895. doi: 10.1093/humrep/dew257",
+    "type": "Comment in",
+    "orderIn": 4
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "Y",
+ "inPMC": "Y",
+ "citedByCount": 163,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "Y",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2018-02-05",
+ "dateOfCreation": "2016-05-15",
+ "dateOfRevision": "2024-03-14",
+ "electronicPublicationDate": "2016-05-13",
+ "firstPublicationDate": "2016-05-13",
+ "firstIndexDate": "2016-05-15",
+ "fullTextReceivedDate": "2025-02-05",
+ "hasEvaluations": "N"
+}

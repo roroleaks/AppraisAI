@@ -1,0 +1,447 @@
+{
+ "id": "15951574",
+ "source": "MED",
+ "pmid": "15951574",
+ "doi": "10.1056/nejmoa042973",
+ "title": "Effect of treatment of gestational diabetes mellitus on pregnancy outcomes.",
+ "authorString": "Crowther CA, Hiller JE, Moss JR, McPhee AJ, Jeffries WS, Robinson JS, Australian Carbohydrate Intolerance Study in Pregnant Women (ACHOIS) Trial Group.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Crowther CA",
+    "lastName": "Crowther",
+    "firstName": "Caroline A",
+    "initials": "CA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, University of Adelaide, Adelaide, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Hiller JE",
+    "lastName": "Hiller",
+    "firstName": "Janet E",
+    "initials": "JE",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8532-4033"
+    }
+   },
+   {
+    "fullName": "Moss JR",
+    "lastName": "Moss",
+    "firstName": "John R",
+    "initials": "JR"
+   },
+   {
+    "fullName": "McPhee AJ",
+    "lastName": "McPhee",
+    "firstName": "Andrew J",
+    "initials": "AJ"
+   },
+   {
+    "fullName": "Jeffries WS",
+    "lastName": "Jeffries",
+    "firstName": "William S",
+    "initials": "WS"
+   },
+   {
+    "fullName": "Robinson JS",
+    "lastName": "Robinson",
+    "firstName": "Jeffrey S",
+    "initials": "JS"
+   },
+   {
+    "collectiveName": "Australian Carbohydrate Intolerance Study in Pregnant Women (ACHOIS) Trial Group"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0002-6363-4874"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8532-4033"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics"
+  ]
+ },
+ "journalInfo": {
+  "issue": "24",
+  "volume": "352",
+  "journalIssueId": 1234866,
+  "dateOfPublication": "2005 Jun",
+  "monthOfPublication": 6,
+  "yearOfPublication": 2005,
+  "journal": {
+   "medlineAbbreviation": "N Engl J Med",
+   "title": "The New England journal of medicine",
+   "essn": "1533-4406",
+   "issn": "0028-4793",
+   "isoabbreviation": "N Engl J Med",
+   "nlmid": "0255562"
+  },
+  "printPublicationDate": "2005-06-01"
+ },
+ "pubYear": "2005",
+ "pageInfo": "2477-2486",
+ "abstractText": "<h4>Background</h4>We conducted a randomized clinical trial to determine whether treatment of women with gestational diabetes mellitus reduced the risk of perinatal complications.<h4>Methods</h4>We randomly assigned women between 24 and 34 weeks' gestation who had gestational diabetes to receive dietary advice, blood glucose monitoring, and insulin therapy as needed (the intervention group) or routine care. Primary outcomes included serious perinatal complications (defined as death, shoulder dystocia, bone fracture, and nerve palsy), admission to the neonatal nursery, jaundice requiring phototherapy, induction of labor, cesarean birth, and maternal anxiety, depression, and health status.<h4>Results</h4>The rate of serious perinatal complications was significantly lower among the infants of the 490 women in the intervention group than among the infants of the 510 women in the routine-care group (1 percent vs. 4 percent; relative risk adjusted for maternal age, race or ethnic group, and parity, 0.33; 95 percent confidence interval, 0.14 to 0.75; P=0.01). However, more infants of women in the intervention group were admitted to the neonatal nursery (71 percent vs. 61 percent; adjusted relative risk, 1.13; 95 percent confidence interval, 1.03 to 1.23; P=0.01). Women in the intervention group had a higher rate of induction of labor than the women in the routine-care group (39 percent vs. 29 percent; adjusted relative risk, 1.36; 95 percent confidence interval, 1.15 to 1.62; P<0.001), although the rates of cesarean delivery were similar (31 percent and 32 percent, respectively; adjusted relative risk, 0.97; 95 percent confidence interval, 0.81 to 1.16; P=0.73). At three months post partum, data on the women's mood and quality of life, available for 573 women, revealed lower rates of depression and higher scores, consistent with improved health status, in the intervention group.<h4>Conclusions</h4>Treatment of gestational diabetes reduces serious perinatal morbidity and may also improve the woman's health-related quality of life.",
+ "affiliation": "Department of Obstetrics and Gynaecology, University of Adelaide, Adelaide, Australia.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Clinical Trial",
+   "Research Support, Non-U.S. Gov't",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Paralysis",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Diabetes, Gestational",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "CO",
+       "qualifierName": "complications"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "DH",
+       "qualifierName": "diet therapy"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fetal Macrosomia",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Dystocia",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Depression, Postpartum",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Birth Weight"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Insulin",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Blood Glucose",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AN",
+       "qualifierName": "analysis"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Hypoglycemic Agents",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Glucose Tolerance Test"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Outcome",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Cesarean Section",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Labor, Induced",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant Mortality"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "BL",
+       "qualifierName": "blood"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fractures, Bone",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Blood Glucose",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Hypoglycemic Agents",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Insulin",
+    "registryNumber": "0"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa042973?articleTools=true"
+   },
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa042973?articleTools=true"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1056/NEJMoa042973"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "15951575",
+    "reference": "N Engl J Med. 2005 Jun 16;352(24):2544-6. doi: 10.1056/NEJMe058100.",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "16221791",
+    "reference": "N Engl J Med. 2005 Oct 13;353(15):1629-30; author reply 1629-30. doi: 10.1056/NEJMc051898.",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "16224824",
+    "reference": "N Engl J Med. 2005 Oct 13;353(15):1629-30; author reply 1629-30.",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "16262222",
+    "reference": "ACP J Club. 2005 Nov-Dec;143(3):65.",
+    "type": "Comment in",
+    "orderIn": 4
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 2111,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2005-06-22",
+ "dateOfCreation": "2005-06-14",
+ "dateOfRevision": "2025-10-22",
+ "electronicPublicationDate": "2005-06-12",
+ "firstPublicationDate": "2005-06-12",
+ "firstIndexDate": "2008-01-29",
+ "hasEvaluations": "N"
+}

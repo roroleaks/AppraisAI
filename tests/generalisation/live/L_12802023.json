@@ -1,0 +1,581 @@
+{
+ "id": "12802023",
+ "source": "MED",
+ "pmid": "12802023",
+ "doi": "10.1056/nejmoa035140",
+ "title": "Prevention of recurrent preterm delivery by 17 alpha-hydroxyprogesterone caproate.",
+ "authorString": "Meis PJ, Klebanoff M, Thom E, Dombrowski MP, Sibai B, Moawad AH, Spong CY, Hauth JC, Miodovnik M, Varner MW, Leveno KJ, Caritis SN, Iams JD, Wapner RJ, Conway D, O'Sullivan MJ, Carpenter M, Mercer B, Ramin SM, Thorp JM, Peaceman AM, Gabbe S, National Institute of Child Health and Human Development Maternal-Fetal Medicine Units Network.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Meis PJ",
+    "lastName": "Meis",
+    "firstName": "Paul J",
+    "initials": "PJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynecology, Wake Forest University, Winston-Salem, NC 27157, USA. pmeis@wfubmc.edu"
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Klebanoff M",
+    "lastName": "Klebanoff",
+    "firstName": "Mark",
+    "initials": "M"
+   },
+   {
+    "fullName": "Thom E",
+    "lastName": "Thom",
+    "firstName": "Elizabeth",
+    "initials": "E"
+   },
+   {
+    "fullName": "Dombrowski MP",
+    "lastName": "Dombrowski",
+    "firstName": "Mitchell P",
+    "initials": "MP"
+   },
+   {
+    "fullName": "Sibai B",
+    "lastName": "Sibai",
+    "firstName": "Baha",
+    "initials": "B"
+   },
+   {
+    "fullName": "Moawad AH",
+    "lastName": "Moawad",
+    "firstName": "Atef H",
+    "initials": "AH"
+   },
+   {
+    "fullName": "Spong CY",
+    "lastName": "Spong",
+    "firstName": "Catherine Y",
+    "initials": "CY",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0009-0006-7502-1211"
+    }
+   },
+   {
+    "fullName": "Hauth JC",
+    "lastName": "Hauth",
+    "firstName": "John C",
+    "initials": "JC"
+   },
+   {
+    "fullName": "Miodovnik M",
+    "lastName": "Miodovnik",
+    "firstName": "Menachem",
+    "initials": "M"
+   },
+   {
+    "fullName": "Varner MW",
+    "lastName": "Varner",
+    "firstName": "Michael W",
+    "initials": "MW",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-9455-3973"
+    }
+   },
+   {
+    "fullName": "Leveno KJ",
+    "lastName": "Leveno",
+    "firstName": "Kenneth J",
+    "initials": "KJ"
+   },
+   {
+    "fullName": "Caritis SN",
+    "lastName": "Caritis",
+    "firstName": "Steve N",
+    "initials": "SN",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-2169-0712"
+    }
+   },
+   {
+    "fullName": "Iams JD",
+    "lastName": "Iams",
+    "firstName": "Jay D",
+    "initials": "JD"
+   },
+   {
+    "fullName": "Wapner RJ",
+    "lastName": "Wapner",
+    "firstName": "Ronald J",
+    "initials": "RJ"
+   },
+   {
+    "fullName": "Conway D",
+    "lastName": "Conway",
+    "firstName": "Deborah",
+    "initials": "D"
+   },
+   {
+    "fullName": "O'Sullivan MJ",
+    "lastName": "O'Sullivan",
+    "firstName": "Mary J",
+    "initials": "MJ"
+   },
+   {
+    "fullName": "Carpenter M",
+    "lastName": "Carpenter",
+    "firstName": "Marshall",
+    "initials": "M"
+   },
+   {
+    "fullName": "Mercer B",
+    "lastName": "Mercer",
+    "firstName": "Brian",
+    "initials": "B"
+   },
+   {
+    "fullName": "Ramin SM",
+    "lastName": "Ramin",
+    "firstName": "Susan M",
+    "initials": "SM"
+   },
+   {
+    "fullName": "Thorp JM",
+    "lastName": "Thorp",
+    "firstName": "John M",
+    "initials": "JM"
+   },
+   {
+    "fullName": "Peaceman AM",
+    "lastName": "Peaceman",
+    "firstName": "Alan M",
+    "initials": "AM",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-4515-4850"
+    }
+   },
+   {
+    "fullName": "Gabbe S",
+    "lastName": "Gabbe",
+    "firstName": "Steven",
+    "initials": "S"
+   },
+   {
+    "collectiveName": "National Institute of Child Health and Human Development Maternal-Fetal Medicine Units Network"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-9455-3973"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-2169-0712"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-4515-4850"
+   },
+   {
+    "type": "ORCID",
+    "value": "0009-0006-7502-1211"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "recommended_reviews",
+   "wikipedia"
+  ]
+ },
+ "journalInfo": {
+  "issue": "24",
+  "volume": "348",
+  "journalIssueId": 1125025,
+  "dateOfPublication": "2003 Jun",
+  "monthOfPublication": 6,
+  "yearOfPublication": 2003,
+  "journal": {
+   "medlineAbbreviation": "N Engl J Med",
+   "title": "The New England journal of medicine",
+   "essn": "1533-4406",
+   "issn": "0028-4793",
+   "isoabbreviation": "N Engl J Med",
+   "nlmid": "0255562"
+  },
+  "printPublicationDate": "2003-06-01"
+ },
+ "pubYear": "2003",
+ "pageInfo": "2379-2385",
+ "abstractText": "<h4>Background</h4>Women who have had a spontaneous preterm delivery are at greatly increased risk for preterm delivery in subsequent pregnancies. The results of several small trials have suggested that 17 alpha-hydroxyprogesterone caproate (17P) may reduce the risk of preterm delivery.<h4>Methods</h4>We conducted a double-blind, placebo-controlled trial involving pregnant women with a documented history of spontaneous preterm delivery. Women were enrolled at 19 clinical centers at 16 to 20 weeks of gestation and randomly assigned by a central data center, in a 2:1 ratio, to receive either weekly injections of 250 mg of 17P or weekly injections of an inert oil placebo; injections were continued until delivery or to 36 weeks of gestation. The primary outcome was preterm delivery before 37 weeks of gestation. Analysis was performed according to the intention-to-treat principle.<h4>Results</h4>Base-line characteristics of the 310 women in the progesterone group and the 153 women in the placebo group were similar. Treatment with 17P significantly reduced the risk of delivery at less than 37 weeks of gestation (incidence, 36.3 percent in the progesterone group vs. 54.9 percent in the placebo group; relative risk, 0.66 [95 percent confidence interval, 0.54 to 0.81]), delivery at less than 35 weeks of gestation (incidence, 20.6 percent vs. 30.7 percent; relative risk, 0.67 [95 percent confidence interval, 0.48 to 0.93]), and delivery at less than 32 weeks of gestation (11.4 percent vs. 19.6 percent; relative risk, 0.58 [95 percent confidence interval, 0.37 to 0.91]). Infants of women treated with 17P had significantly lower rates of necrotizing enterocolitis, intraventricular hemorrhage, and need for supplemental oxygen.<h4>Conclusions</h4>Weekly injections of 17P resulted in a substantial reduction in the rate of recurrent preterm delivery among women who were at particularly high risk for preterm delivery and reduced the likelihood of several complications in their infants.",
+ "affiliation": "Department of Obstetrics and Gynecology, Wake Forest University, Winston-Salem, NC 27157, USA. pmeis@wfubmc.edu",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Clinical Trial",
+   "Research Support, U.S. Gov't, P.H.S.",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD34136",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD21410",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD27860",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD27905",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD27861",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD27869",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD34122",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD36801",
+    "orderIn": 0
+   },
+   {
+    "agency": "NCRR NIH HHS",
+    "acronym": "RR",
+    "grantId": "M01-RR-000080",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD27917",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD34116",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD40500",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD40512",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD40544",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD40560",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD21414",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD27915",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD34208",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "HD34210",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Enterocolitis, Necrotizing",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Cerebral Hemorrhage",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Birth Weight"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Hydroxyprogesterones",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Progesterone Congeners",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Pregnancy Outcome"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Oxygen Inhalation Therapy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Risk"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Survival Analysis"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Double-Blind Method"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Premature"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Obstetric Labor, Premature",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "17 alpha-Hydroxyprogesterone Caproate"
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Hydroxyprogesterones",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Progesterone Congeners",
+    "registryNumber": "0"
+   },
+   {
+    "name": "17 alpha-Hydroxyprogesterone Caproate",
+    "registryNumber": "276F2O42F5"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1056/NEJMoa035140"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "reference": "N Engl J Med. 2003 Sep 25;349(13):1299",
+    "type": "Erratum in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "12802032",
+    "reference": "N Engl J Med. 2003 Jun 12;348(24):2453-5. doi: 10.1056/NEJMe030081.",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "12968095",
+    "reference": "N Engl J Med. 2003 Sep 11;349(11):1087-8; author reply 1087-8. doi: 10.1056/NEJM200309113491115.",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "15330887",
+    "reference": "Birth. 2004 Sep;31(3):230-5. doi: 10.1111/j.0730-7659.2004.00315.x.",
+    "type": "Comment in",
+    "orderIn": 4
+   },
+   {
+    "source": "MED",
+    "id": "27028883",
+    "reference": "BJOG. 2016 Nov;123(12):2000. doi: 10.1111/1471-0528.13976.",
+    "type": "Comment in",
+    "orderIn": 5
+   },
+   {
+    "source": "MED",
+    "id": "38924755",
+    "reference": "N Engl J Med. 2024 Jul 11;391(2):192. doi: 10.1056/NEJMx240004.",
+    "type": "Erratum in",
+    "orderIn": 6
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 1009,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2003-06-17",
+ "dateOfCreation": "2003-06-13",
+ "dateOfRevision": "2025-06-19",
+ "firstPublicationDate": "2003-06-01",
+ "firstIndexDate": "2008-01-29",
+ "hasEvaluations": "N"
+}

@@ -1,0 +1,2139 @@
+{
+ "id": "37018474",
+ "source": "MED",
+ "pmid": "37018474",
+ "doi": "10.1056/nejmoa2216480",
+ "title": "Bivalent Prefusion F Vaccine in Pregnancy to Prevent RSV Illness in Infants.",
+ "authorString": "Kampmann B, Madhi SA, Munjal I, Simões EAF, Pahud BA, Llapur C, Baker J, Pérez Marc G, Radley D, Shittu E, Glanternik J, Snaggs H, Baber J, Zachariah P, Barnabas SL, Fausett M, Adam T, Perreras N, Van Houten MA, Kantele A, Huang LM, Bont LJ, Otsuki T, Vargas SL, Gullam J, Tapiero B, Stein RT, Polack FP, Zar HJ, Staerke NB, Duron Padilla M, Richmond PC, Koury K, Schneider K, Kalinina EV, Cooper D, Jansen KU, Anderson AS, Swanson KA, Gruber WC, Gurtman A, MATISSE Study Group.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Kampmann B",
+    "lastName": "Kampmann",
+    "firstName": "Beate",
+    "initials": "B",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Madhi SA",
+    "lastName": "Madhi",
+    "firstName": "Shabir A",
+    "initials": "SA",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-7629-0636"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Munjal I",
+    "lastName": "Munjal",
+    "firstName": "Iona",
+    "initials": "I",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Simões EAF",
+    "lastName": "Simões",
+    "firstName": "Eric A F",
+    "initials": "EAF",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Pahud BA",
+    "lastName": "Pahud",
+    "firstName": "Barbara A",
+    "initials": "BA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Llapur C",
+    "lastName": "Llapur",
+    "firstName": "Conrado",
+    "initials": "C",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Baker J",
+    "lastName": "Baker",
+    "firstName": "Jeffrey",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Pérez Marc G",
+    "lastName": "Pérez Marc",
+    "firstName": "Gonzalo",
+    "initials": "G",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Radley D",
+    "lastName": "Radley",
+    "firstName": "David",
+    "initials": "D",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Shittu E",
+    "lastName": "Shittu",
+    "firstName": "Emma",
+    "initials": "E",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Glanternik J",
+    "lastName": "Glanternik",
+    "firstName": "Julia",
+    "initials": "J",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-9004-8558"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Snaggs H",
+    "lastName": "Snaggs",
+    "firstName": "Hasra",
+    "initials": "H",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Baber J",
+    "lastName": "Baber",
+    "firstName": "James",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Zachariah P",
+    "lastName": "Zachariah",
+    "firstName": "Philip",
+    "initials": "P",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Barnabas SL",
+    "lastName": "Barnabas",
+    "firstName": "Shaun L",
+    "initials": "SL",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Fausett M",
+    "lastName": "Fausett",
+    "firstName": "Merlin",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Adam T",
+    "lastName": "Adam",
+    "firstName": "Tyler",
+    "initials": "T",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Perreras N",
+    "lastName": "Perreras",
+    "firstName": "Nicole",
+    "initials": "N",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Van Houten MA",
+    "lastName": "Van Houten",
+    "firstName": "Marlies A",
+    "initials": "MA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kantele A",
+    "lastName": "Kantele",
+    "firstName": "Anu",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Huang LM",
+    "lastName": "Huang",
+    "firstName": "Li-Min",
+    "initials": "LM",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Bont LJ",
+    "lastName": "Bont",
+    "firstName": "Louis J",
+    "initials": "LJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Otsuki T",
+    "lastName": "Otsuki",
+    "firstName": "Takeo",
+    "initials": "T",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Vargas SL",
+    "lastName": "Vargas",
+    "firstName": "Sergio L",
+    "initials": "SL",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Gullam J",
+    "lastName": "Gullam",
+    "firstName": "Joanna",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Tapiero B",
+    "lastName": "Tapiero",
+    "firstName": "Bruce",
+    "initials": "B",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Stein RT",
+    "lastName": "Stein",
+    "firstName": "Renato T",
+    "initials": "RT",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Polack FP",
+    "lastName": "Polack",
+    "firstName": "Fernando P",
+    "initials": "FP",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Zar HJ",
+    "lastName": "Zar",
+    "firstName": "Heather J",
+    "initials": "HJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Staerke NB",
+    "lastName": "Staerke",
+    "firstName": "Nina B",
+    "initials": "NB",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Duron Padilla M",
+    "lastName": "Duron Padilla",
+    "firstName": "María",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Richmond PC",
+    "lastName": "Richmond",
+    "firstName": "Peter C",
+    "initials": "PC",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Koury K",
+    "lastName": "Koury",
+    "firstName": "Kenneth",
+    "initials": "K",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Schneider K",
+    "lastName": "Schneider",
+    "firstName": "Katherine",
+    "initials": "K",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kalinina EV",
+    "lastName": "Kalinina",
+    "firstName": "Elena V",
+    "initials": "EV",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Cooper D",
+    "lastName": "Cooper",
+    "firstName": "David",
+    "initials": "D",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Jansen KU",
+    "lastName": "Jansen",
+    "firstName": "Kathrin U",
+    "initials": "KU",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Anderson AS",
+    "lastName": "Anderson",
+    "firstName": "Annaliesa S",
+    "initials": "AS",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Swanson KA",
+    "lastName": "Swanson",
+    "firstName": "Kena A",
+    "initials": "KA",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-3389-8414"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Gruber WC",
+    "lastName": "Gruber",
+    "firstName": "William C",
+    "initials": "WC",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Gurtman A",
+    "lastName": "Gurtman",
+    "firstName": "Alejandra",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.)."
+      }
+     ]
+    }
+   },
+   {
+    "collectiveName": "MATISSE Study Group"
+   }
+  ]
+ },
+ "investigatorList": {
+  "investigator": [
+   {
+    "fullName": "Adam T",
+    "lastName": "Adam",
+    "firstName": "Tyler",
+    "initials": "T"
+   },
+   {
+    "fullName": "Aguilar M",
+    "lastName": "Aguilar",
+    "firstName": "Mario",
+    "initials": "M"
+   },
+   {
+    "fullName": "Ahmed K",
+    "lastName": "Ahmed",
+    "firstName": "Khatija",
+    "initials": "K"
+   },
+   {
+    "fullName": "Ahmed M",
+    "lastName": "Ahmed",
+    "firstName": "Mohamed",
+    "initials": "M"
+   },
+   {
+    "fullName": "Akada S",
+    "lastName": "Akada",
+    "firstName": "Shinobu",
+    "initials": "S"
+   },
+   {
+    "fullName": "Aleman R",
+    "lastName": "Aleman",
+    "firstName": "Ruben",
+    "initials": "R"
+   },
+   {
+    "fullName": "Anami A",
+    "lastName": "Anami",
+    "firstName": "Ai",
+    "initials": "A"
+   },
+   {
+    "fullName": "Anderson E",
+    "lastName": "Anderson",
+    "firstName": "Evan",
+    "initials": "E"
+   },
+   {
+    "fullName": "Anderson M",
+    "lastName": "Anderson",
+    "firstName": "Marquita",
+    "initials": "M"
+   },
+   {
+    "fullName": "Antila M",
+    "lastName": "Antila",
+    "firstName": "Martti",
+    "initials": "M"
+   },
+   {
+    "fullName": "Athan E",
+    "lastName": "Athan",
+    "firstName": "Eugene",
+    "initials": "E"
+   },
+   {
+    "fullName": "Baker J",
+    "lastName": "Baker",
+    "firstName": "Jeffrey",
+    "initials": "J"
+   },
+   {
+    "fullName": "Baker J",
+    "lastName": "Baker",
+    "firstName": "John",
+    "initials": "J"
+   },
+   {
+    "fullName": "Banooni P",
+    "lastName": "Banooni",
+    "firstName": "Peyman",
+    "initials": "P"
+   },
+   {
+    "fullName": "Barnabas S",
+    "lastName": "Barnabas",
+    "firstName": "Shaun",
+    "initials": "S"
+   },
+   {
+    "fullName": "Barnett E",
+    "lastName": "Barnett",
+    "firstName": "Elizabeth",
+    "initials": "E"
+   },
+   {
+    "fullName": "Bartha Rasero JL",
+    "lastName": "Bartha Rasero",
+    "firstName": "José Luis",
+    "initials": "JL"
+   },
+   {
+    "fullName": "Benfield T",
+    "lastName": "Benfield",
+    "firstName": "Thomas",
+    "initials": "T"
+   },
+   {
+    "fullName": "Black D",
+    "lastName": "Black",
+    "firstName": "Dawn",
+    "initials": "D"
+   },
+   {
+    "fullName": "Bloemenkamp K",
+    "lastName": "Bloemenkamp",
+    "firstName": "Kitty",
+    "initials": "K"
+   },
+   {
+    "fullName": "Brabec B",
+    "lastName": "Brabec",
+    "firstName": "Bradford",
+    "initials": "B"
+   },
+   {
+    "fullName": "Branson K",
+    "lastName": "Branson",
+    "firstName": "Kent",
+    "initials": "K"
+   },
+   {
+    "fullName": "Byron J",
+    "lastName": "Byron",
+    "firstName": "John",
+    "initials": "J"
+   },
+   {
+    "fullName": "Carr Q",
+    "lastName": "Carr",
+    "firstName": "Quito",
+    "initials": "Q"
+   },
+   {
+    "fullName": "Carter K",
+    "lastName": "Carter",
+    "firstName": "Kristina",
+    "initials": "K"
+   },
+   {
+    "fullName": "Chan TF",
+    "lastName": "Chan",
+    "firstName": "Te-Fu",
+    "initials": "TF"
+   },
+   {
+    "fullName": "Chen P",
+    "lastName": "Chen",
+    "firstName": "Peter",
+    "initials": "P"
+   },
+   {
+    "fullName": "Chiu CH",
+    "lastName": "Chiu",
+    "firstName": "Cheng-Hsun",
+    "initials": "CH"
+   },
+   {
+    "fullName": "Clifford R",
+    "lastName": "Clifford",
+    "firstName": "Robert",
+    "initials": "R"
+   },
+   {
+    "fullName": "Coonrod D",
+    "lastName": "Coonrod",
+    "firstName": "Dean",
+    "initials": "D"
+   },
+   {
+    "fullName": "Darraidou M",
+    "lastName": "Darraidou",
+    "firstName": "Martín",
+    "initials": "M"
+   },
+   {
+    "fullName": "Davidson E",
+    "lastName": "Davidson",
+    "firstName": "Elaine",
+    "initials": "E"
+   },
+   {
+    "fullName": "Davis K",
+    "lastName": "Davis",
+    "firstName": "Keith",
+    "initials": "K"
+   },
+   {
+    "fullName": "Dawson A",
+    "lastName": "Dawson",
+    "firstName": "Angela",
+    "initials": "A"
+   },
+   {
+    "fullName": "de Groot PK",
+    "lastName": "de Groot",
+    "firstName": "Pieter-Kees",
+    "initials": "PK"
+   },
+   {
+    "fullName": "Deurloo K",
+    "lastName": "Deurloo",
+    "firstName": "Koen",
+    "initials": "K"
+   },
+   {
+    "fullName": "Deville J",
+    "lastName": "Deville",
+    "firstName": "Jaime",
+    "initials": "J"
+   },
+   {
+    "fullName": "DiTeresi R",
+    "lastName": "DiTeresi",
+    "firstName": "Rachel",
+    "initials": "R"
+   },
+   {
+    "fullName": "Doreski P",
+    "lastName": "Doreski",
+    "firstName": "Pablo",
+    "initials": "P"
+   },
+   {
+    "fullName": "Downing L",
+    "lastName": "Downing",
+    "firstName": "Laura",
+    "initials": "L"
+   },
+   {
+    "fullName": "Durón Padilla MDR",
+    "lastName": "Durón Padilla",
+    "firstName": "María Del Rosario",
+    "initials": "MDR"
+   },
+   {
+    "fullName": "Englund J",
+    "lastName": "Englund",
+    "firstName": "Janet",
+    "initials": "J"
+   },
+   {
+    "fullName": "Fausett M",
+    "lastName": "Fausett",
+    "firstName": "Merlin",
+    "initials": "M"
+   },
+   {
+    "fullName": "Fernández Fraile MDP",
+    "lastName": "Fernández Fraile",
+    "firstName": "María Del Pilar",
+    "initials": "MDP"
+   },
+   {
+    "fullName": "Ferrand Miranda P",
+    "lastName": "Ferrand Miranda",
+    "firstName": "Pedro",
+    "initials": "P"
+   },
+   {
+    "fullName": "Fischer TK",
+    "lastName": "Fischer",
+    "firstName": "Thea Kølsen",
+    "initials": "TK",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-4812-980X"
+    }
+   },
+   {
+    "fullName": "Fouche L",
+    "lastName": "Fouche",
+    "firstName": "Leon",
+    "initials": "L"
+   },
+   {
+    "fullName": "Galán G",
+    "lastName": "Galán",
+    "firstName": "Guillermo",
+    "initials": "G"
+   },
+   {
+    "fullName": "Gheorghe C",
+    "lastName": "Gheorghe",
+    "firstName": "Cipiran",
+    "initials": "C"
+   },
+   {
+    "fullName": "Gilner J",
+    "lastName": "Gilner",
+    "firstName": "Jennifer",
+    "initials": "J",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8996-2972"
+    }
+   },
+   {
+    "fullName": "Gold V",
+    "lastName": "Gold",
+    "firstName": "Vanna",
+    "initials": "V"
+   },
+   {
+    "fullName": "Gonik B",
+    "lastName": "Gonik",
+    "firstName": "Bernard",
+    "initials": "B"
+   },
+   {
+    "fullName": "Gregerson G",
+    "lastName": "Gregerson",
+    "firstName": "Gary",
+    "initials": "G"
+   },
+   {
+    "fullName": "Griffith R",
+    "lastName": "Griffith",
+    "firstName": "Rebecca",
+    "initials": "R"
+   },
+   {
+    "fullName": "Grinstein S",
+    "lastName": "Grinstein",
+    "firstName": "Sebastián",
+    "initials": "S"
+   },
+   {
+    "fullName": "Gullam J",
+    "lastName": "Gullam",
+    "firstName": "Joanna",
+    "initials": "J"
+   },
+   {
+    "fullName": "Guzmán López A",
+    "lastName": "Guzmán López",
+    "firstName": "Abel",
+    "initials": "A"
+   },
+   {
+    "fullName": "Haake E",
+    "lastName": "Haake",
+    "firstName": "Erica",
+    "initials": "E"
+   },
+   {
+    "fullName": "Hamre J",
+    "lastName": "Hamre",
+    "firstName": "Jeffrey",
+    "initials": "J"
+   },
+   {
+    "fullName": "Hartvickson R",
+    "lastName": "Hartvickson",
+    "firstName": "Robyn",
+    "initials": "R"
+   },
+   {
+    "fullName": "Hashiguchi K",
+    "lastName": "Hashiguchi",
+    "firstName": "Kazunari",
+    "initials": "K"
+   },
+   {
+    "fullName": "Heller B",
+    "lastName": "Heller",
+    "firstName": "Barry",
+    "initials": "B"
+   },
+   {
+    "fullName": "Hernández Hernández LB",
+    "lastName": "Hernández Hernández",
+    "firstName": "Luis Berthin",
+    "initials": "LB"
+   },
+   {
+    "fullName": "Hernández Pichardo J",
+    "lastName": "Hernández Pichardo",
+    "firstName": "Joselito",
+    "initials": "J"
+   },
+   {
+    "fullName": "Horne E",
+    "lastName": "Horne",
+    "firstName": "Elizea",
+    "initials": "E"
+   },
+   {
+    "fullName": "Huang JP",
+    "lastName": "Huang",
+    "firstName": "Jian-Pei",
+    "initials": "JP"
+   },
+   {
+    "fullName": "Huang LM",
+    "lastName": "Huang",
+    "firstName": "Li-Min",
+    "initials": "LM"
+   },
+   {
+    "fullName": "Hurtado S",
+    "lastName": "Hurtado",
+    "firstName": "Sandra",
+    "initials": "S"
+   },
+   {
+    "fullName": "Ikeda K",
+    "lastName": "Ikeda",
+    "firstName": "Kazushige",
+    "initials": "K",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-3097-2156"
+    }
+   },
+   {
+    "fullName": "Ishihara Y",
+    "lastName": "Ishihara",
+    "firstName": "Yasunori",
+    "initials": "Y"
+   },
+   {
+    "fullName": "Jaffrani N",
+    "lastName": "Jaffrani",
+    "firstName": "Naseem",
+    "initials": "N"
+   },
+   {
+    "fullName": "Jallow O",
+    "lastName": "Jallow",
+    "firstName": "Oley",
+    "initials": "O"
+   },
+   {
+    "fullName": "Jeanfreau R",
+    "lastName": "Jeanfreau",
+    "firstName": "Robert",
+    "initials": "R"
+   },
+   {
+    "fullName": "Jiang X",
+    "lastName": "Jiang",
+    "firstName": "Xuezhi",
+    "initials": "X"
+   },
+   {
+    "fullName": "Johansen I",
+    "lastName": "Johansen",
+    "firstName": "Isik",
+    "initials": "I"
+   },
+   {
+    "fullName": "Johnson P",
+    "lastName": "Johnson",
+    "firstName": "Peter",
+    "initials": "P"
+   },
+   {
+    "fullName": "Jose L",
+    "lastName": "Jose",
+    "firstName": "Lisa",
+    "initials": "L"
+   },
+   {
+    "fullName": "Kampmann B",
+    "lastName": "Kampmann",
+    "firstName": "Beate",
+    "initials": "B"
+   },
+   {
+    "fullName": "Kantele A",
+    "lastName": "Kantele",
+    "firstName": "Anu",
+    "initials": "A"
+   },
+   {
+    "fullName": "Keblawi H",
+    "lastName": "Keblawi",
+    "firstName": "Hisham",
+    "initials": "H"
+   },
+   {
+    "fullName": "Kilianski J",
+    "lastName": "Kilianski",
+    "firstName": "Joseph",
+    "initials": "J"
+   },
+   {
+    "fullName": "Kim YH",
+    "lastName": "Kim",
+    "firstName": "Yoon Ha",
+    "initials": "YH"
+   },
+   {
+    "fullName": "Kokko S",
+    "lastName": "Kokko",
+    "firstName": "Satu",
+    "initials": "S"
+   },
+   {
+    "fullName": "Kosaka K",
+    "lastName": "Kosaka",
+    "firstName": "Kenzo",
+    "initials": "K"
+   },
+   {
+    "fullName": "Krilov L",
+    "lastName": "Krilov",
+    "firstName": "Leonard",
+    "initials": "L"
+   },
+   {
+    "fullName": "Laajalahti O",
+    "lastName": "Laajalahti",
+    "firstName": "Outi",
+    "initials": "O"
+   },
+   {
+    "fullName": "Landeen L",
+    "lastName": "Landeen",
+    "firstName": "Laurie",
+    "initials": "L"
+   },
+   {
+    "fullName": "Landry B",
+    "lastName": "Landry",
+    "firstName": "Blake",
+    "initials": "B"
+   },
+   {
+    "fullName": "Langley J",
+    "lastName": "Langley",
+    "firstName": "Joanne",
+    "initials": "J"
+   },
+   {
+    "fullName": "Larsen D",
+    "lastName": "Larsen",
+    "firstName": "David",
+    "initials": "D"
+   },
+   {
+    "fullName": "Lin CY",
+    "lastName": "Lin",
+    "firstName": "Chien-Yu",
+    "initials": "CY"
+   },
+   {
+    "fullName": "Llapur C",
+    "lastName": "Llapur",
+    "firstName": "Conrado",
+    "initials": "C"
+   },
+   {
+    "fullName": "Lombaard J",
+    "lastName": "Lombaard",
+    "firstName": "Johannes",
+    "initials": "J"
+   },
+   {
+    "fullName": "Madhi S",
+    "lastName": "Madhi",
+    "firstName": "Shabir",
+    "initials": "S"
+   },
+   {
+    "fullName": "Magloire CA",
+    "lastName": "Magloire",
+    "firstName": "Christ-Ann",
+    "initials": "CA"
+   },
+   {
+    "fullName": "Maldonado Y",
+    "lastName": "Maldonado",
+    "firstName": "Yvonne",
+    "initials": "Y"
+   },
+   {
+    "fullName": "Mann D",
+    "lastName": "Mann",
+    "firstName": "Darvy",
+    "initials": "D"
+   },
+   {
+    "fullName": "Marshall H",
+    "lastName": "Marshall",
+    "firstName": "Helen",
+    "initials": "H"
+   },
+   {
+    "fullName": "Martinón-Torres F",
+    "lastName": "Martinón-Torres",
+    "firstName": "Federico",
+    "initials": "F"
+   },
+   {
+    "fullName": "Matherne P",
+    "lastName": "Matherne",
+    "firstName": "Paul",
+    "initials": "P"
+   },
+   {
+    "fullName": "Maximos B",
+    "lastName": "Maximos",
+    "firstName": "Bassem",
+    "initials": "B"
+   },
+   {
+    "fullName": "McDay K",
+    "lastName": "McDay",
+    "firstName": "Kristin",
+    "initials": "K"
+   },
+   {
+    "fullName": "Metz D",
+    "lastName": "Metz",
+    "firstName": "David",
+    "initials": "D"
+   },
+   {
+    "fullName": "Metz T",
+    "lastName": "Metz",
+    "firstName": "Torri",
+    "initials": "T"
+   },
+   {
+    "fullName": "Miller H",
+    "lastName": "Miller",
+    "firstName": "Hugh",
+    "initials": "H"
+   },
+   {
+    "fullName": "Miller J",
+    "lastName": "Miller",
+    "firstName": "Jane",
+    "initials": "J"
+   },
+   {
+    "fullName": "Miller V",
+    "lastName": "Miller",
+    "firstName": "Vicki",
+    "initials": "V"
+   },
+   {
+    "fullName": "Miranda Valdivieso M",
+    "lastName": "Miranda Valdivieso",
+    "firstName": "Mariano",
+    "initials": "M"
+   },
+   {
+    "fullName": "Monteagudo Montesinos E",
+    "lastName": "Monteagudo Montesinos",
+    "firstName": "Emilio",
+    "initials": "E"
+   },
+   {
+    "fullName": "Moore G",
+    "lastName": "Moore",
+    "firstName": "Gregory",
+    "initials": "G"
+   },
+   {
+    "fullName": "Morgan F",
+    "lastName": "Morgan",
+    "firstName": "Franklin",
+    "initials": "F"
+   },
+   {
+    "fullName": "Moritani T",
+    "lastName": "Moritani",
+    "firstName": "Tomoko",
+    "initials": "T"
+   },
+   {
+    "fullName": "Mourad M",
+    "lastName": "Mourad",
+    "firstName": "Mirella",
+    "initials": "M"
+   },
+   {
+    "fullName": "Nader P",
+    "lastName": "Nader",
+    "firstName": "Paulo",
+    "initials": "P"
+   },
+   {
+    "fullName": "Nassir A",
+    "lastName": "Nassir",
+    "firstName": "Albert",
+    "initials": "A"
+   },
+   {
+    "fullName": "Natalini Martinez S",
+    "lastName": "Natalini Martinez",
+    "firstName": "Silvina",
+    "initials": "S"
+   },
+   {
+    "fullName": "Navarro L",
+    "lastName": "Navarro",
+    "firstName": "Luis",
+    "initials": "L"
+   },
+   {
+    "fullName": "Naz A",
+    "lastName": "Naz",
+    "firstName": "Aftab",
+    "initials": "A"
+   },
+   {
+    "fullName": "Newland J",
+    "lastName": "Newland",
+    "firstName": "Jason",
+    "initials": "J"
+   },
+   {
+    "fullName": "Novoa Pizarro J",
+    "lastName": "Novoa Pizarro",
+    "firstName": "Jose",
+    "initials": "J"
+   },
+   {
+    "fullName": "Obed M",
+    "lastName": "Obed",
+    "firstName": "Mora",
+    "initials": "M"
+   },
+   {
+    "fullName": "Oh MJ",
+    "lastName": "Oh",
+    "firstName": "Min-Jeong",
+    "initials": "MJ"
+   },
+   {
+    "fullName": "Oluwalana C",
+    "lastName": "Oluwalana",
+    "firstName": "Claire",
+    "initials": "C"
+   },
+   {
+    "fullName": "Ondrizek R",
+    "lastName": "Ondrizek",
+    "firstName": "Richard",
+    "initials": "R"
+   },
+   {
+    "fullName": "Osborn P",
+    "lastName": "Osborn",
+    "firstName": "Perry",
+    "initials": "P"
+   },
+   {
+    "fullName": "Osowo T",
+    "lastName": "Osowo",
+    "firstName": "Tolulope",
+    "initials": "T"
+   },
+   {
+    "fullName": "Otsuki T",
+    "lastName": "Otsuki",
+    "firstName": "Takeo",
+    "initials": "T"
+   },
+   {
+    "fullName": "Oyarzún Ebensperger E",
+    "lastName": "Oyarzún Ebensperger",
+    "firstName": "Enrique",
+    "initials": "E"
+   },
+   {
+    "fullName": "Paavola P",
+    "lastName": "Paavola",
+    "firstName": "Pauliina",
+    "initials": "P"
+   },
+   {
+    "fullName": "Palomares K",
+    "lastName": "Palomares",
+    "firstName": "Kristy",
+    "initials": "K"
+   },
+   {
+    "fullName": "Park J",
+    "lastName": "Park",
+    "firstName": "Joong",
+    "initials": "J"
+   },
+   {
+    "fullName": "Park-Hwang E",
+    "lastName": "Park-Hwang",
+    "firstName": "Esther",
+    "initials": "E"
+   },
+   {
+    "fullName": "Patel R",
+    "lastName": "Patel",
+    "firstName": "Rekha",
+    "initials": "R"
+   },
+   {
+    "fullName": "Peppler D",
+    "lastName": "Peppler",
+    "firstName": "Dawnette",
+    "initials": "D"
+   },
+   {
+    "fullName": "Pérez Marc G",
+    "lastName": "Pérez Marc",
+    "firstName": "Gonzalo",
+    "initials": "G"
+   },
+   {
+    "fullName": "Pero R",
+    "lastName": "Pero",
+    "firstName": "Roxanne",
+    "initials": "R"
+   },
+   {
+    "fullName": "Perreras N",
+    "lastName": "Perreras",
+    "firstName": "Nicole",
+    "initials": "N"
+   },
+   {
+    "fullName": "Plimpton C",
+    "lastName": "Plimpton",
+    "firstName": "Charles",
+    "initials": "C"
+   },
+   {
+    "fullName": "Poliakin R",
+    "lastName": "Poliakin",
+    "firstName": "Raymond",
+    "initials": "R"
+   },
+   {
+    "fullName": "Pound S",
+    "lastName": "Pound",
+    "firstName": "Stephen",
+    "initials": "S"
+   },
+   {
+    "fullName": "Pugmire H",
+    "lastName": "Pugmire",
+    "firstName": "Heather",
+    "initials": "H"
+   },
+   {
+    "fullName": "Ramirez E",
+    "lastName": "Ramirez",
+    "firstName": "Edwin",
+    "initials": "E"
+   },
+   {
+    "fullName": "Rappleye A",
+    "lastName": "Rappleye",
+    "firstName": "Alan",
+    "initials": "A"
+   },
+   {
+    "fullName": "Rausch M",
+    "lastName": "Rausch",
+    "firstName": "Michael",
+    "initials": "M"
+   },
+   {
+    "fullName": "Richmond P",
+    "lastName": "Richmond",
+    "firstName": "Peter",
+    "initials": "P"
+   },
+   {
+    "fullName": "Rickner K",
+    "lastName": "Rickner",
+    "firstName": "Kyle",
+    "initials": "K"
+   },
+   {
+    "fullName": "Robbins C",
+    "lastName": "Robbins",
+    "firstName": "Cynthia",
+    "initials": "C"
+   },
+   {
+    "fullName": "Roberts J",
+    "lastName": "Roberts",
+    "firstName": "John",
+    "initials": "J"
+   },
+   {
+    "fullName": "Robinson D",
+    "lastName": "Robinson",
+    "firstName": "Darrell",
+    "initials": "D"
+   },
+   {
+    "fullName": "Rogers C",
+    "lastName": "Rogers",
+    "firstName": "Charles",
+    "initials": "C"
+   },
+   {
+    "fullName": "Rojo Conejo P",
+    "lastName": "Rojo Conejo",
+    "firstName": "Pablo",
+    "initials": "P"
+   },
+   {
+    "fullName": "Roth T",
+    "lastName": "Roth",
+    "firstName": "Tracy",
+    "initials": "T"
+   },
+   {
+    "fullName": "Rozycki H",
+    "lastName": "Rozycki",
+    "firstName": "Henry",
+    "initials": "H"
+   },
+   {
+    "fullName": "Saad A",
+    "lastName": "Saad",
+    "firstName": "Antonio",
+    "initials": "A"
+   },
+   {
+    "fullName": "Sakihara T",
+    "lastName": "Sakihara",
+    "firstName": "Tetsuhiro",
+    "initials": "T"
+   },
+   {
+    "fullName": "Salinas Quero A",
+    "lastName": "Salinas Quero",
+    "firstName": "Abril",
+    "initials": "A"
+   },
+   {
+    "fullName": "Schellinger M",
+    "lastName": "Schellinger",
+    "firstName": "Megan",
+    "initials": "M"
+   },
+   {
+    "fullName": "Schlaudecker E",
+    "lastName": "Schlaudecker",
+    "firstName": "Elizabeth",
+    "initials": "E"
+   },
+   {
+    "fullName": "Scutella M",
+    "lastName": "Scutella",
+    "firstName": "Michael",
+    "initials": "M"
+   },
+   {
+    "fullName": "Seo K",
+    "lastName": "Seo",
+    "firstName": "Koji",
+    "initials": "K"
+   },
+   {
+    "fullName": "Seol HJ",
+    "lastName": "Seol",
+    "firstName": "Hyun-Joo",
+    "initials": "HJ"
+   },
+   {
+    "fullName": "Seppä I",
+    "lastName": "Seppä",
+    "firstName": "Ilkka",
+    "initials": "I"
+   },
+   {
+    "fullName": "Sharp C",
+    "lastName": "Sharp",
+    "firstName": "Charles",
+    "initials": "C"
+   },
+   {
+    "fullName": "Sherman J",
+    "lastName": "Sherman",
+    "firstName": "John",
+    "initials": "J"
+   },
+   {
+    "fullName": "Siebert H",
+    "lastName": "Siebert",
+    "firstName": "Heidi",
+    "initials": "H"
+   },
+   {
+    "fullName": "Simoes E",
+    "lastName": "Simoes",
+    "firstName": "Eric",
+    "initials": "E"
+   },
+   {
+    "fullName": "Skupski D",
+    "lastName": "Skupski",
+    "firstName": "Daniel",
+    "initials": "D"
+   },
+   {
+    "fullName": "Sneed J",
+    "lastName": "Sneed",
+    "firstName": "Jane",
+    "initials": "J"
+   },
+   {
+    "fullName": "Soto A",
+    "lastName": "Soto",
+    "firstName": "Adriana",
+    "initials": "A"
+   },
+   {
+    "fullName": "Soucie G",
+    "lastName": "Soucie",
+    "firstName": "Gary",
+    "initials": "G"
+   },
+   {
+    "fullName": "Staerke N",
+    "lastName": "Staerke",
+    "firstName": "Nina",
+    "initials": "N"
+   },
+   {
+    "fullName": "Stamatis S",
+    "lastName": "Stamatis",
+    "firstName": "Stephen",
+    "initials": "S"
+   },
+   {
+    "fullName": "Stanley T",
+    "lastName": "Stanley",
+    "firstName": "Thorsten",
+    "initials": "T"
+   },
+   {
+    "fullName": "Stein RT",
+    "lastName": "Stein",
+    "firstName": "Renato T",
+    "initials": "RT"
+   },
+   {
+    "fullName": "Striplin S",
+    "lastName": "Striplin",
+    "firstName": "Scott",
+    "initials": "S"
+   },
+   {
+    "fullName": "Stripling S",
+    "lastName": "Stripling",
+    "firstName": "Stephen",
+    "initials": "S"
+   },
+   {
+    "fullName": "Swanson J",
+    "lastName": "Swanson",
+    "firstName": "Jack",
+    "initials": "J"
+   },
+   {
+    "fullName": "Taguchi N",
+    "lastName": "Taguchi",
+    "firstName": "Nao",
+    "initials": "N"
+   },
+   {
+    "fullName": "Tapiero B",
+    "lastName": "Tapiero",
+    "firstName": "Bruce",
+    "initials": "B"
+   },
+   {
+    "fullName": "Thorp J",
+    "lastName": "Thorp",
+    "firstName": "John",
+    "initials": "J"
+   },
+   {
+    "fullName": "Tinoco Favila JC",
+    "lastName": "Tinoco Favila",
+    "firstName": "Juan Carlos",
+    "initials": "JC"
+   },
+   {
+    "fullName": "Tita A",
+    "lastName": "Tita",
+    "firstName": "Alan",
+    "initials": "A"
+   },
+   {
+    "fullName": "Tran V",
+    "lastName": "Tran",
+    "firstName": "Van",
+    "initials": "V"
+   },
+   {
+    "fullName": "Vachon ML",
+    "lastName": "Vachon",
+    "firstName": "Marie-Louise",
+    "initials": "ML"
+   },
+   {
+    "fullName": "van Houten M",
+    "lastName": "van Houten",
+    "firstName": "Marlies",
+    "initials": "M"
+   },
+   {
+    "fullName": "Vargas SL",
+    "lastName": "Vargas",
+    "firstName": "Sergio L",
+    "initials": "SL"
+   },
+   {
+    "fullName": "Veras T",
+    "lastName": "Veras",
+    "firstName": "Tiago",
+    "initials": "T"
+   },
+   {
+    "fullName": "Villegas T",
+    "lastName": "Villegas",
+    "firstName": "Timothy",
+    "initials": "T"
+   },
+   {
+    "fullName": "Vrbicky K",
+    "lastName": "Vrbicky",
+    "firstName": "Keith",
+    "initials": "K"
+   },
+   {
+    "fullName": "Weprin S",
+    "lastName": "Weprin",
+    "firstName": "Stuart",
+    "initials": "S"
+   },
+   {
+    "fullName": "Wideman J",
+    "lastName": "Wideman",
+    "firstName": "John",
+    "initials": "J"
+   },
+   {
+    "fullName": "Wilkinson H",
+    "lastName": "Wilkinson",
+    "firstName": "Hugh",
+    "initials": "H"
+   },
+   {
+    "fullName": "Williams F",
+    "lastName": "Williams",
+    "firstName": "Frank",
+    "initials": "F"
+   },
+   {
+    "fullName": "Wilson K",
+    "lastName": "Wilson",
+    "firstName": "Karen",
+    "initials": "K"
+   },
+   {
+    "fullName": "Wittman L",
+    "lastName": "Wittman",
+    "firstName": "Lori",
+    "initials": "L"
+   },
+   {
+    "fullName": "Wolf S",
+    "lastName": "Wolf",
+    "firstName": "Samuel",
+    "initials": "S"
+   },
+   {
+    "fullName": "Yamashita H",
+    "lastName": "Yamashita",
+    "firstName": "Hiroshi",
+    "initials": "H"
+   },
+   {
+    "fullName": "Yildirim I",
+    "lastName": "Yildirim",
+    "firstName": "Inci",
+    "initials": "I"
+   },
+   {
+    "fullName": "Zakir A",
+    "lastName": "Zakir",
+    "firstName": "Ali",
+    "initials": "A"
+   },
+   {
+    "fullName": "Zar H",
+    "lastName": "Zar",
+    "firstName": "Heather",
+    "initials": "H"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7562-7228"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-9004-8558"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-3097-2156"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-3389-8414"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-5834-2033"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-6546-4709"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7629-0636"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8996-2972"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-9046-759X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-9262-9724"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-4812-980X"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "16",
+  "volume": "388",
+  "journalIssueId": 3547556,
+  "dateOfPublication": "2023 Apr",
+  "monthOfPublication": 4,
+  "yearOfPublication": 2023,
+  "journal": {
+   "medlineAbbreviation": "N Engl J Med",
+   "title": "The New England journal of medicine",
+   "essn": "1533-4406",
+   "issn": "0028-4793",
+   "isoabbreviation": "N Engl J Med",
+   "nlmid": "0255562"
+  },
+  "printPublicationDate": "2023-04-01"
+ },
+ "pubYear": "2023",
+ "pageInfo": "1451-1464",
+ "abstractText": "<h4>Background</h4>Whether vaccination during pregnancy could reduce the burden of respiratory syncytial virus (RSV)-associated lower respiratory tract illness in newborns and infants is uncertain.<h4>Methods</h4>In this phase 3, double-blind trial conducted in 18 countries, we randomly assigned, in a 1:1 ratio, pregnant women at 24 through 36 weeks' gestation to receive a single intramuscular injection of 120 μg of a bivalent RSV prefusion F protein-based (RSVpreF) vaccine or placebo. The two primary efficacy end points were medically attended severe RSV-associated lower respiratory tract illness and medically attended RSV-associated lower respiratory tract illness in infants within 90, 120, 150, and 180 days after birth. A lower boundary of the confidence interval for vaccine efficacy (99.5% confidence interval [CI] at 90 days; 97.58% CI at later intervals) greater than 20% was considered to meet the success criterion for vaccine efficacy with respect to the primary end points.<h4>Results</h4>At this prespecified interim analysis, the success criterion for vaccine efficacy was met with respect to one primary end point. Overall, 3682 maternal participants received vaccine and 3676 received placebo; 3570 and 3558 infants, respectively, were evaluated. Medically attended severe lower respiratory tract illness occurred within 90 days after birth in 6 infants of women in the vaccine group and 33 infants of women in the placebo group (vaccine efficacy, 81.8%; 99.5% CI, 40.6 to 96.3); 19 cases and 62 cases, respectively, occurred within 180 days after birth (vaccine efficacy, 69.4%; 97.58% CI, 44.3 to 84.1). Medically attended RSV-associated lower respiratory tract illness occurred within 90 days after birth in 24 infants of women in the vaccine group and 56 infants of women in the placebo group (vaccine efficacy, 57.1%; 99.5% CI, 14.7 to 79.8); these results did not meet the statistical success criterion. No safety signals were detected in maternal participants or in infants and toddlers up to 24 months of age. The incidences of adverse events reported within 1 month after injection or within 1 month after birth were similar in the vaccine group (13.8% of women and 37.1% of infants) and the placebo group (13.1% and 34.5%, respectively).<h4>Conclusions</h4>RSVpreF vaccine administered during pregnancy was effective against medically attended severe RSV-associated lower respiratory tract illness in infants, and no safety concerns were identified. (Funded by Pfizer; MATISSE ClinicalTrials.gov number, NCT04424316.).",
+ "affiliation": "From the Medical Research Council Unit the Gambia, London School of Hygiene and Tropical Medicine, Fajara, Gambia (B.K.); the Institute for International Health Charité, Universitätsmedizin, Berlin (B.K.); the South African Medical Research Council (MRC) Vaccines and Infectious Diseases Analytics Research Unit, Infectious Diseases and Oncology Research Institute, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and Family Centre for Research with Ubuntu, Department of Paediatrics and Child Health, University of Stellenbosch (S.L.B.), and the Department of Paediatrics and Child Health, Red Cross War Memorial Children's Hospital, South African MRC Unit on Child and Adolescent Health, University of Cape Town (H.J.Z.), Cape Town - all in South Africa; Vaccine Research and Development, Pfizer, Pearl River, NY (I.M., B.A.P., D.R., J. Glanternik, H.S., P.Z., K.K., K.S., E.V.K., D.C., K.U.J., A.S.A., K.A.S., W.C.G., A.G.); Children's Hospital Colorado, Aurora (E.A.F.S.); Instituto de Maternidad y Ginecología Nuestra Señora de Las Mercedes, San Miguel de Tucumán (C.L.), and iTrials-Hospital Militar Central (G.P.M., F.P.P.) and iTrials (S.L.V.), Buenos Aires - all in Argentina; Clinical Research Prime, Idaho Falls, ID (J. Baker); Vaccine Research and Development, Pfizer, Hurley, United Kingdom (E.S.); Vaccine Clinical Research, Pfizer, Sydney, NSW (J. Baber), and the University of Western Australia School of Medicine, Vaccine Trials Group, Wesfarmers Centre of Vaccines and Infectious Diseases, Telethon Kids Institute, and Perth Children's Hospital, Nedlands, WA (P.C.R.) - all in Australia; Boeson Research, Missoula, MT (M.F.); Meridian Clinical Research, Hastings, NE (T.A.); Asian Hospital and Medical Center, Manila, Philippines (N.P.); the Department of Pediatrics, Spaarne Gasthuis, Haarlem and Hoofddorp (M.A.V.H.), and the Departments of Pediatrics and Immunology, University Medical Center Utrecht, Utrecht University, Utrecht, and Respiratory Syncytial Virus Network Foundation, Zeist (L.J.B.) - all in the Netherlands; Meilahti Vaccine Research Center, Inflammation Center, University of Helsinki and Helsinki University Hospital, Helsinki (A.K.); National Taiwan University Hospital, Taipei (L.-M.H.); the Department of Obstetrics and Gynecology, Sendai City Hospital, Sendai, Japan (T.O.); the Institute of Biomedical Sciences, University of Chile School of Medicine, Santiago, Chile (S.L.V.); University of Otago and New Zealand Clinical Research - both in Christchurch, New Zealand (J. Gullam); Centre Hospitalier Universitaire Sainte-Justine, Montreal (B.T.); Hospital Moinhos de Vento and Pontifícia Universidade Católica do Rio Grande do Sul - both in Porto Alegre, Brazil (R.T.S.); the Department of Infectious Diseases, Aarhus University Hospital, Aarhus, Denmark (N.B.S.); and Arké Study Management Organization, Mexico City (M.D.P.).",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Clinical Trial, Phase III",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "Pfizer",
+    "orderIn": 0
+   },
+   {
+    "agency": "Medical Research Council",
+    "acronym": "MRC_",
+    "grantId": "MC_UU_00026/2",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Respiratory Syncytial Viruses"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Communicable Diseases",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Respiratory Tract Infections",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Respiratory Syncytial Virus Infections",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Vaccines, Combined",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Respiratory Syncytial Virus Vaccines",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Antibodies, Viral"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Treatment Outcome"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Vaccination",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Injections, Intramuscular"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Double-Blind Method"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Vaccine Efficacy"
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Antibodies, Viral",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Vaccines, Combined",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Respiratory Syncytial Virus Vaccines",
+    "registryNumber": "0"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "html",
+    "site": "Unpaywall",
+    "url": "https://pure.au.dk/portal/en/publications/c36dfa90-5749-470f-bed6-114c3502e87b"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1056/NEJMoa2216480"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "37703561",
+    "reference": "N Engl J Med. 2023 Sep 14;389(11):1052-1053. doi: 10.1056/NEJMc2307729.",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "37703562",
+    "reference": "N Engl J Med. 2023 Sep 14;389(11):1053. doi: 10.1056/NEJMc2307729.",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "37703563",
+    "reference": "N Engl J Med. 2023 Sep 14;389(11):1053-1055. doi: 10.1056/NEJMc2307729.",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "37703564",
+    "reference": "N Engl J Med. 2023 Sep 14;389(11):1055. doi: 10.1056/NEJMc2307729.",
+    "type": "Comment in",
+    "orderIn": 4
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 878,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "nct"
+  ]
+ },
+ "dateOfCompletion": "2023-04-21",
+ "dateOfCreation": "2023-04-05",
+ "dateOfRevision": "2025-07-14",
+ "electronicPublicationDate": "2023-04-05",
+ "firstPublicationDate": "2023-04-05",
+ "firstIndexDate": "2023-04-06",
+ "hasEvaluations": "N"
+}

@@ -1,0 +1,404 @@
+{
+ "id": "37588797",
+ "source": "MED",
+ "pmid": "37588797",
+ "pmcid": "PMC10426717",
+ "fullTextIdList": {
+  "fullTextId": [
+   "PMC10426717"
+  ]
+ },
+ "doi": "10.1093/hropen/hoad031",
+ "title": "Embryo selection through artificial intelligence versus embryologists: a systematic review.",
+ "authorString": "Salih M, Austin C, Warty RR, Tiktin C, Rolnik DL, Momeni M, Rezatofighi H, Reddy S, Smith V, Vollenhoven B, Horta F.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Salih M",
+    "lastName": "Salih",
+    "firstName": "M",
+    "initials": "M",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-0577-8802"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      },
+      {
+       "affiliation": "Department of Data Science and Artificial Intelligence, Faculty of Information Technology, Monash University, Clayton, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Austin C",
+    "lastName": "Austin",
+    "firstName": "C",
+    "initials": "C",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-6328-0156"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      },
+      {
+       "affiliation": "Department of Data Science and Artificial Intelligence, Faculty of Information Technology, Monash University, Clayton, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Warty RR",
+    "lastName": "Warty",
+    "firstName": "R R",
+    "initials": "RR",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-6344-9292"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Tiktin C",
+    "lastName": "Tiktin",
+    "firstName": "C",
+    "initials": "C",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0009-0002-7517-6986"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "School of Engineering, RMIT University, Melbourne, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Rolnik DL",
+    "lastName": "Rolnik",
+    "firstName": "D L",
+    "initials": "DL",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-2263-3592"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      },
+      {
+       "affiliation": "Women's and Newborn Program, Monash Health, Melbourne, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Momeni M",
+    "lastName": "Momeni",
+    "firstName": "M",
+    "initials": "M",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-4267-4938"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Rezatofighi H",
+    "lastName": "Rezatofighi",
+    "firstName": "H",
+    "initials": "H",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8659-8773"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Data Science and Artificial Intelligence, Faculty of Information Technology, Monash University, Clayton, Victoria, Australia."
+      },
+      {
+       "affiliation": "Monash Data Future Institute, Monash University, Clayton, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Reddy S",
+    "lastName": "Reddy",
+    "firstName": "S",
+    "initials": "S",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-5824-4900"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "School of Medicine, Deakin University, Geelong, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Smith V",
+    "lastName": "Smith",
+    "firstName": "V",
+    "initials": "V",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-6099-3671"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Vollenhoven B",
+    "lastName": "Vollenhoven",
+    "firstName": "B",
+    "initials": "B",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8756-3994"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      },
+      {
+       "affiliation": "Women's and Newborn Program, Monash Health, Melbourne, Victoria, Australia."
+      },
+      {
+       "affiliation": "Monash IVF, Melbourne, Victoria, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Horta F",
+    "lastName": "Horta",
+    "firstName": "F",
+    "initials": "F",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-3212-4924"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia."
+      },
+      {
+       "affiliation": "Monash Data Future Institute, Monash University, Clayton, Victoria, Australia."
+      },
+      {
+       "affiliation": "City Fertility, Melbourne, Victoria, Australia."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-6099-3671"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-6344-9292"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-0577-8802"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-2263-3592"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-5824-4900"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-6328-0156"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8659-8773"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8756-3994"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-3212-4924"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-4267-4938"
+   },
+   {
+    "type": "ORCID",
+    "value": "0009-0002-7517-6986"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "3",
+  "volume": "2023",
+  "journalIssueId": 3583450,
+  "dateOfPublication": "2023 ",
+  "monthOfPublication": 0,
+  "yearOfPublication": 2023,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod Open",
+   "title": "Human reproduction open",
+   "essn": "2399-3529",
+   "issn": "2399-3529",
+   "nlmid": "101722764",
+   "isoabbreviation": "Hum Reprod Open"
+  },
+  "printPublicationDate": "2023-01-01"
+ },
+ "pubYear": "2023",
+ "pageInfo": "hoad031",
+ "abstractText": "<h4>Study question</h4>What is the present performance of artificial intelligence (AI) decision support during embryo selection compared to the standard embryo selection by embryologists?<h4>Summary answer</h4>AI consistently outperformed the clinical teams in all the studies focused on embryo morphology and clinical outcome prediction during embryo selection assessment.<h4>What is known already</h4>The ART success rate is ∼30%, with a worrying trend of increasing female age correlating with considerably worse results. As such, there have been ongoing efforts to address this low success rate through the development of new technologies. With the advent of AI, there is potential for machine learning to be applied in such a manner that areas limited by human subjectivity, such as embryo selection, can be enhanced through increased objectivity. Given the potential of AI to improve IVF success rates, it remains crucial to review the performance between AI and embryologists during embryo selection.<h4>Study design size duration</h4>The search was done across PubMed, EMBASE, Ovid Medline, and IEEE Xplore from 1 June 2005 up to and including 7 January 2022. Included articles were also restricted to those written in English. Search terms utilized across all databases for the study were: ('Artificial intelligence' OR 'Machine Learning' OR 'Deep learning' OR 'Neural network') AND ('IVF' OR '<i>in vitro</i> fertili*' OR 'assisted reproductive techn*' OR 'embryo'), where the character '*' refers the search engine to include any auto completion of the search term.<h4>Participants/materials setting methods</h4>A literature search was conducted for literature relating to AI applications to IVF. Primary outcomes of interest were accuracy, sensitivity, and specificity of the embryo morphology grade assessments and the likelihood of clinical outcomes, such as clinical pregnancy after IVF treatments. Risk of bias was assessed using the Modified Down and Black Checklist.<h4>Main results and the role of chance</h4>Twenty articles were included in this review. There was no specific embryo assessment day across the studies-Day 1 until Day 5/6 of embryo development was investigated. The types of input for training AI algorithms were images and time-lapse (10/20), clinical information (6/20), and both images and clinical information (4/20). Each AI model demonstrated promise when compared to an embryologist's visual assessment. On average, the models predicted the likelihood of successful clinical pregnancy with greater accuracy than clinical embryologists, signifying greater reliability when compared to human prediction. The AI models performed at a median accuracy of 75.5% (range 59-94%) on predicting embryo morphology grade. The correct prediction (Ground Truth) was defined through the use of embryo images according to post embryologists' assessment following local respective guidelines. Using blind test datasets, the embryologists' accuracy prediction was 65.4% (range 47-75%) with the same ground truth provided by the original local respective assessment. Similarly, AI models had a median accuracy of 77.8% (range 68-90%) in predicting clinical pregnancy through the use of patient clinical treatment information compared to 64% (range 58-76%) when performed by embryologists. When both images/time-lapse and clinical information inputs were combined, the median accuracy by the AI models was higher at 81.5% (range 67-98%), while clinical embryologists had a median accuracy of 51% (range 43-59%).<h4>Limitations reasons for caution</h4>The findings of this review are based on studies that have not been prospectively evaluated in a clinical setting. Additionally, a fair comparison of all the studies were deemed unfeasible owing to the heterogeneity of the studies, development of the AI models, database employed and the study design and quality.<h4>Wider implications of the findings</h4>AI provides considerable promise to the IVF field and embryo selection. However, there needs to be a shift in developers' perception of the clinical outcome from successful implantation towards ongoing pregnancy or live birth. Additionally, existing models focus on locally generated databases and many lack external validation.<h4>Study funding/competing interests</h4>This study was funded by Monash Data Future Institute. All authors have no conflicts of interest to declare.<h4>Registration number</h4>CRD42021256333.",
+ "affiliation": "Department of Obstetrics and Gynaecology, Monash University, Clayton, Victoria, Australia.",
+ "publicationStatus": "epublish",
+ "language": "eng",
+ "pubModel": "Electronic-eCollection",
+ "pubTypeList": {
+  "pubType": [
+   "research-article",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "Monash Data Future Institute",
+    "grantId": "MDFI-2021-12",
+    "orderIn": 0
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Embryo",
+   "Artificial intelligence",
+   "Embryology",
+   "IVF",
+   "Art",
+   "Machine Learning",
+   "Embryo Selection"
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://academic.oup.com/hropen/article-pdf/2023/3/hoad031/51112668/hoad031.pdf"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/hropen/hoad031"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "html",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC10426717"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC10426717?pdf=render"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "38033328",
+    "reference": "Hum Reprod Open. 2023 Nov 25;2023(4):hoad045. doi: 10.1093/hropen/hoad045",
+    "type": "Comment in",
+    "orderIn": 1
+   }
+  ]
+ },
+ "isOpenAccess": "Y",
+ "inEPMC": "Y",
+ "inPMC": "Y",
+ "citedByCount": 98,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "Y",
+ "hasBook": "N",
+ "hasSuppl": "Y",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "license": "cc by",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "doi"
+  ]
+ },
+ "dateOfCreation": "2023-08-17",
+ "dateOfRevision": "2023-11-30",
+ "electronicPublicationDate": "2023-08-15",
+ "firstPublicationDate": "2023-08-15",
+ "firstIndexDate": "2023-08-19",
+ "fullTextReceivedDate": "2025-02-04",
+ "hasEvaluations": "N"
+}

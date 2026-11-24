@@ -1,0 +1,355 @@
+{
+ "id": "31111884",
+ "source": "MED",
+ "pmid": "31111884",
+ "pmcid": "PMC6554189",
+ "fullTextIdList": {
+  "fullTextId": [
+   "PMC6554189"
+  ]
+ },
+ "doi": "10.1093/humrep/dez064",
+ "title": "Deep learning as a predictive tool for fetal heart pregnancy following time-lapse incubation and blastocyst transfer.",
+ "authorString": "Tran D, Cooke S, Illingworth PJ, Gardner DK.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Tran D",
+    "lastName": "Tran",
+    "firstName": "D",
+    "initials": "D",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Medical AI, Harrison AI, Barangaroo, NSW, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Cooke S",
+    "lastName": "Cooke",
+    "firstName": "S",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Embryology, IVF Australia, Greenwich, NSW, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Illingworth PJ",
+    "lastName": "Illingworth",
+    "firstName": "P J",
+    "initials": "PJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Embryology, IVF Australia, Greenwich, NSW, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Gardner DK",
+    "lastName": "Gardner",
+    "firstName": "D K",
+    "initials": "DK",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Embryology, Melbourne IVF, East Melbourne, Victoria, Australia."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "6",
+  "volume": "34",
+  "journalIssueId": 2824891,
+  "dateOfPublication": "2019 Jun",
+  "monthOfPublication": 6,
+  "yearOfPublication": 2019,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod",
+   "title": "Human reproduction (Oxford, England)",
+   "essn": "1460-2350",
+   "issn": "0268-1161",
+   "nlmid": "8701199",
+   "isoabbreviation": "Hum Reprod"
+  },
+  "printPublicationDate": "2019-06-01"
+ },
+ "pubYear": "2019",
+ "pageInfo": "1011-1018",
+ "abstractText": "<h4>Study question</h4>Can a deep learning model predict the probability of pregnancy with fetal heart (FH) from time-lapse videos?<h4>Summary answer</h4>We created a deep learning model named IVY, which was an objective and fully automated system that predicts the probability of FH pregnancy directly from raw time-lapse videos without the need for any manual morphokinetic annotation or blastocyst morphology assessment.<h4>What is known already</h4>The contribution of time-lapse imaging in effective embryo selection is promising. Existing algorithms for the analysis of time-lapse imaging are based on morphology and morphokinetic parameters that require subjective human annotation and thus have intrinsic inter-reader and intra-reader variability. Deep learning offers promise for the automation and standardization of embryo selection.<h4>Study design, size, duration</h4>A retrospective analysis of time-lapse videos and clinical outcomes of 10 638 embryos from eight different IVF clinics, across four different countries, between January 2014 and December 2018.<h4>Participants/materials, setting, methods</h4>The deep learning model was trained using time-lapse videos with known FH pregnancy outcome to perform a binary classification task of predicting the probability of pregnancy with FH given time-lapse video sequence. The predictive power of the model was measured using the average area under the curve (AUC) of the receiver operating characteristic curve over 5-fold stratified cross-validation.<h4>Main results and the role of chance</h4>The deep learning model was able to predict FH pregnancy from time-lapse videos with an AUC of 0.93 [95% CI 0.92-0.94] in 5-fold stratified cross-validation. A hold-out validation test across eight laboratories showed that the AUC was reproducible, ranging from 0.95 to 0.90 across different laboratories with different culture and laboratory processes.<h4>Limitations, reasons for caution</h4>This study is a retrospective analysis demonstrating that the deep learning model has a high level of predictability of the likelihood that an embryo will implant. The clinical impacts of these findings are still uncertain. Further studies, including prospective randomized controlled trials, are required to evaluate the clinical significance of this deep learning model. The time-lapse videos collected for training and validation are Day 5 embryos; hence, additional adjustment would need to be made for the model to be used in the context of Day 3 transfer.<h4>Wider implications of the findings</h4>The high predictive value for embryo implantation obtained by the deep learning model may improve the effectiveness of previous approaches used for time-lapse imaging in embryo selection. This may improve the prioritization of the most viable embryo for a single embryo transfer. The deep learning model may also prove to be useful in providing the optimal order for subsequent transfers of cryopreserved embryos.<h4>Study funding/competing interest(s)</h4>D.T. is the co-owner of Harrison AI that has patented this methodology in association with Virtus Health. P.I. is a shareholder in Virtus Health. S.C., P.I. and D.G. are all either employees or contracted with Virtus Health. D.G. has received grant support from Vitrolife, the manufacturer of the Embryoscope time-lapse imaging used in this study. The equipment and time for this study have been jointly provided by Harrison AI and Virtus Health.",
+ "affiliation": "Medical AI, Harrison AI, Barangaroo, NSW, Australia.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Research Support, Non-U.S. Gov't",
+   "research-article",
+   "Multicenter Study",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "Virtus Health",
+    "orderIn": 0
+   },
+   {
+    "agency": "Vitrolife",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fetal Heart",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "DG",
+       "qualifierName": "diagnostic imaging"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PH",
+       "qualifierName": "physiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infertility",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Treatment Outcome"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Transfer",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Retrospective Studies"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Prospective Studies"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Predictive Value of Tests"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "ROC Curve"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Implantation",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PH",
+       "qualifierName": "physiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Image Processing, Computer-Assisted",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Middle Aged"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Young Adult"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Time-Lapse Imaging"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Deep Learning"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Artificial intelligence",
+   "Neural network",
+   "Time-lapse",
+   "Embryo Selection",
+   "Deep Learning"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://academic.oup.com/humrep/article-pdf/34/6/1011/32393929/dez064.pdf"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humrep/dez064"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "html",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC6554189"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC6554189?pdf=render"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "32053171",
+    "reference": "Hum Reprod. 2020 Feb 29;35(2):482. doi: 10.1093/humrep/dez263",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "32053191",
+    "reference": "Hum Reprod. 2020 Feb 29;35(2):483. doi: 10.1093/humrep/dez264",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "32457996",
+    "reference": "Hum Reprod. 2020 Jun 1;35(6):1474. doi: 10.1093/humrep/deaa084",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "32458001",
+    "reference": "Hum Reprod. 2020 Jun 1;35(6):1473. doi: 10.1093/humrep/deaa083",
+    "type": "Comment in",
+    "orderIn": 4
+   }
+  ]
+ },
+ "isOpenAccess": "Y",
+ "inEPMC": "Y",
+ "inPMC": "Y",
+ "citedByCount": 205,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "Y",
+ "hasBook": "N",
+ "hasSuppl": "Y",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "license": "cc by-nc",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2020-07-15",
+ "dateOfCreation": "2019-05-22",
+ "dateOfRevision": "2024-07-17",
+ "firstPublicationDate": "2019-06-01",
+ "firstIndexDate": "2019-05-22",
+ "fullTextReceivedDate": "2025-02-04",
+ "hasEvaluations": "N"
+}

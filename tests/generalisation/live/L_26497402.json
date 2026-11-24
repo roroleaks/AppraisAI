@@ -1,0 +1,477 @@
+{
+ "id": "26497402",
+ "source": "MED",
+ "pmid": "26497402",
+ "doi": "10.1016/s2213-8587(15)00327-7",
+ "title": "Association of maternal thyroid function during early pregnancy with offspring IQ and brain morphology in childhood: a population-based prospective cohort study.",
+ "authorString": "Korevaar TI, Muetzel R, Medici M, Chaker L, Jaddoe VW, de Rijke YB, Steegers EA, Visser TJ, White T, Tiemeier H, Peeters RP.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Korevaar TI",
+    "lastName": "Korevaar",
+    "firstName": "Tim I M",
+    "initials": "TI",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-7961-8791"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "The Generation R Study Group, Erasmus Medical Center, Rotterdam, Netherlands; Department of Internal Medicine, Erasmus Medical Center, Rotterdam, Netherlands; Rotterdam Thyroid Center, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Muetzel R",
+    "lastName": "Muetzel",
+    "firstName": "Ryan",
+    "initials": "R",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "The Generation R Study Group, Erasmus Medical Center, Rotterdam, Netherlands; Department of Child and Adolescent Psychiatry, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Medici M",
+    "lastName": "Medici",
+    "firstName": "Marco",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "The Generation R Study Group, Erasmus Medical Center, Rotterdam, Netherlands; Department of Internal Medicine, Erasmus Medical Center, Rotterdam, Netherlands; Rotterdam Thyroid Center, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Chaker L",
+    "lastName": "Chaker",
+    "firstName": "Layal",
+    "initials": "L",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-7855-5418"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Internal Medicine, Erasmus Medical Center, Rotterdam, Netherlands; Rotterdam Thyroid Center, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Jaddoe VW",
+    "lastName": "Jaddoe",
+    "firstName": "Vincent W V",
+    "initials": "VW",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "The Generation R Study Group, Erasmus Medical Center, Rotterdam, Netherlands; Department of Pediatrics, Erasmus Medical Center, Rotterdam, Netherlands; Department of Epidemiology, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "de Rijke YB",
+    "lastName": "de Rijke",
+    "firstName": "Yolanda B",
+    "initials": "YB",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Internal Medicine, Erasmus Medical Center, Rotterdam, Netherlands; Department of Clinical Chemistry, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Steegers EA",
+    "lastName": "Steegers",
+    "firstName": "Eric A P",
+    "initials": "EA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Obstetrics and Gynaecology, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Visser TJ",
+    "lastName": "Visser",
+    "firstName": "Theo J",
+    "initials": "TJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Internal Medicine, Erasmus Medical Center, Rotterdam, Netherlands; Rotterdam Thyroid Center, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "White T",
+    "lastName": "White",
+    "firstName": "Tonya",
+    "initials": "T",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-0271-1896"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Child and Adolescent Psychiatry, Erasmus Medical Center, Rotterdam, Netherlands; Department of Radiology, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Tiemeier H",
+    "lastName": "Tiemeier",
+    "firstName": "Henning",
+    "initials": "H",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Child and Adolescent Psychiatry, Erasmus Medical Center, Rotterdam, Netherlands; Department of Epidemiology, Erasmus Medical Center, Rotterdam, Netherlands. Electronic address: h.tiemeier@erasmusmc.nl."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Peeters RP",
+    "lastName": "Peeters",
+    "firstName": "Robin P",
+    "initials": "RP",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-7732-9371"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Internal Medicine, Erasmus Medical Center, Rotterdam, Netherlands; Rotterdam Thyroid Center, Erasmus Medical Center, Rotterdam, Netherlands."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7732-9371"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7855-5418"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7961-8791"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-0271-1896"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "wikipedia"
+  ]
+ },
+ "journalInfo": {
+  "issue": "1",
+  "volume": "4",
+  "journalIssueId": 2358079,
+  "dateOfPublication": "2016 Jan",
+  "monthOfPublication": 1,
+  "yearOfPublication": 2016,
+  "journal": {
+   "medlineAbbreviation": "Lancet Diabetes Endocrinol",
+   "title": "The lancet. Diabetes & endocrinology",
+   "essn": "2213-8595",
+   "issn": "2213-8587",
+   "nlmid": "101618821",
+   "isoabbreviation": "Lancet Diabetes Endocrinol"
+  },
+  "printPublicationDate": "2016-01-01"
+ },
+ "pubYear": "2016",
+ "pageInfo": "35-43",
+ "abstractText": "<h4>Background</h4>Thyroid hormone is involved in the regulation of early brain development. Since the fetal thyroid gland is not fully functional until week 18-20 of pregnancy, neuronal migration and other crucial early stages of intrauterine brain development largely depend on the supply of maternal thyroid hormone. Current clinical practice mostly focuses on preventing the negative consequences of low thyroid hormone concentrations, but data from animal studies have shown that both low and high concentrations of thyroid hormone have negative effects on offspring brain development. We aimed to investigate the association of maternal thyroid function with child intelligence quotient (IQ) and brain morphology.<h4>Methods</h4>In this population-based prospective cohort study, embedded within the Generation R Study (Rotterdam, Netherlands), we investigated the association of maternal thyroid function with child IQ (assessed by non-verbal intelligence tests) and brain morphology (assessed on brain MRI scans). Eligible women were those living in the study area at their delivery date, which had to be between April 1, 2002, and Jan 1, 2006. For this study, women with available serum samples who presented in early pregnancy (<18 weeks) were included. Data for maternal thyroid-stimulating hormone, free thyroxine, thyroid peroxidase antibodies (at weeks 9-18 of pregnancy), and child IQ (assessed at a median of 6·0 years of age [95% range 5·6-7·9 years]) or brain MRI scans (done at a median of 8·0 years of age [6·2-10·0]) were obtained. Analyses were adjusted for potential confounders including concentrations of human chorionic gonadotropin and child thyroid-stimulating hormone and free thyroxine.<h4>Findings</h4>Data for child IQ were available for 3839 mother-child pairs, and MRI scans were available from 646 children. Maternal free thyroxine concentrations showed an inverted U-shaped association with child IQ (p=0·0044), child grey matter volume (p=0·0062), and cortex volume (p=0·0011). For both low and high maternal free thyroxine concentrations, this association corresponded to a 1·4-3·8 points reduction in mean child IQ. Maternal thyroid-stimulating hormone was not associated with child IQ or brain morphology. All associations remained similar after the exclusion of women with overt hypothyroidism and overt hyperthyroidism, and after adjustment for concentrations of human chorionic gonadotropin, child thyroid-stimulating hormone and free thyroxine or thyroid peroxidase antibodies (continuous or positivity).<h4>Interpretation</h4>Both low and high maternal free thyroxine concentrations during pregnancy were associated with lower child IQ and lower grey matter and cortex volume. The association between high maternal free thyroxine and low child IQ suggests that levothyroxine therapy during pregnancy, which is often initiated in women with subclinical hypothyroidism during pregnancy, might carry the potential risk of adverse child neurodevelopment outcomes when the aim of treatment is to achieve high-normal thyroid function test results.<h4>Funding</h4>The Netherlands Organisation for Health Research and Development (ZonMw) and the European Community's Seventh Framework Programme.",
+ "affiliation": "The Generation R Study Group, Erasmus Medical Center, Rotterdam, Netherlands; Department of Internal Medicine, Erasmus Medical Center, Rotterdam, Netherlands; Rotterdam Thyroid Center, Erasmus Medical Center, Rotterdam, Netherlands.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Research Support, Non-U.S. Gov't",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Thyroid Gland",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "ME",
+       "qualifierName": "metabolism"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Brain",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AH",
+       "qualifierName": "anatomy & histology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fetal Blood",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ME",
+       "qualifierName": "metabolism"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Thyrotropin",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "BL",
+       "qualifierName": "blood"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Thyroxine",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PH",
+       "qualifierName": "physiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Iodide Peroxidase",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "BL",
+       "qualifierName": "blood"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "IM",
+       "qualifierName": "immunology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Antibodies",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "BL",
+       "qualifierName": "blood"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Prospective Studies"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Intelligence",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "PH",
+       "qualifierName": "physiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Gestational Age"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Maternal-Fetal Exchange"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Child"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Child, Preschool"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Maternal Health"
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Antibodies",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Thyrotropin",
+    "registryNumber": "9002-71-5"
+   },
+   {
+    "name": "Iodide Peroxidase",
+    "registryNumber": "EC 1.11.1.8"
+   },
+   {
+    "name": "Thyroxine",
+    "registryNumber": "Q51BO43MG4"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://repub.eur.nl/pub/79096/15-TLDE-0385-web-appendix-3-.pdf"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1016/S2213-8587(15)00327-7"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "26497401",
+    "reference": "Lancet Diabetes Endocrinol. 2016 Jan;4(1):3-5. doi: 10.1016/S2213-8587(15)00365-4",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "26635112",
+    "reference": "Nat Rev Endocrinol. 2016 Jan;12(1):10-1. doi: 10.1038/nrendo.2015.212",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "26724592",
+    "reference": "Lancet Diabetes Endocrinol. 2016 Jan;4(1):18. doi: 10.1016/S2213-8587(15)00471-4",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "26724593",
+    "reference": "Lancet Diabetes Endocrinol. 2016 Jan;4(1):18. doi: 10.1016/S2213-8587(15)00470-2",
+    "type": "Comment in",
+    "orderIn": 4
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 352,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2016-10-13",
+ "dateOfCreation": "2015-10-27",
+ "dateOfRevision": "2022-04-08",
+ "electronicPublicationDate": "2015-10-20",
+ "firstPublicationDate": "2015-10-20",
+ "firstIndexDate": "2015-10-27",
+ "hasEvaluations": "N"
+}

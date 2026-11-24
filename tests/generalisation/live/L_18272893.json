@@ -1,0 +1,383 @@
+{
+ "id": "18272893",
+ "source": "MED",
+ "pmid": "18272893",
+ "doi": "10.1056/nejmoa072788",
+ "title": "Nasal CPAP or intubation at birth for very preterm infants.",
+ "authorString": "Morley CJ, Davis PG, Doyle LW, Brion LP, Hascoet JM, Carlin JB, COIN Trial Investigators.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Morley CJ",
+    "lastName": "Morley",
+    "firstName": "Colin J",
+    "initials": "CJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-5388-0214"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Neonatal Services, Royal Women's Hospital, Melbourne, Australia. colin.morley@rwh.org.au"
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Davis PG",
+    "lastName": "Davis",
+    "firstName": "Peter G",
+    "initials": "PG"
+   },
+   {
+    "fullName": "Doyle LW",
+    "lastName": "Doyle",
+    "firstName": "Lex W",
+    "initials": "LW",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-7667-7312"
+    }
+   },
+   {
+    "fullName": "Brion LP",
+    "lastName": "Brion",
+    "firstName": "Luc P",
+    "initials": "LP"
+   },
+   {
+    "fullName": "Hascoet JM",
+    "lastName": "Hascoet",
+    "firstName": "Jean-Michel",
+    "initials": "JM"
+   },
+   {
+    "fullName": "Carlin JB",
+    "lastName": "Carlin",
+    "firstName": "John B",
+    "initials": "JB",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-2694-9463"
+    }
+   },
+   {
+    "collectiveName": "COIN Trial Investigators"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-5388-0214"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-1058-9117"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-2694-9463"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7667-7312"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "wikipedia"
+  ]
+ },
+ "journalInfo": {
+  "issue": "7",
+  "volume": "358",
+  "journalIssueId": 1507965,
+  "dateOfPublication": "2008 Feb",
+  "monthOfPublication": 2,
+  "yearOfPublication": 2008,
+  "journal": {
+   "medlineAbbreviation": "N Engl J Med",
+   "title": "The New England journal of medicine",
+   "essn": "1533-4406",
+   "issn": "0028-4793",
+   "isoabbreviation": "N Engl J Med",
+   "nlmid": "0255562"
+  },
+  "printPublicationDate": "2008-02-01"
+ },
+ "pubYear": "2008",
+ "pageInfo": "700-708",
+ "abstractText": "<h4>Background</h4>Bronchopulmonary dysplasia is associated with ventilation and oxygen treatment. This randomized trial investigated whether nasal continuous positive airway pressure (CPAP), rather than intubation and ventilation, shortly after birth would reduce the rate of death or bronchopulmonary dysplasia in very preterm infants.<h4>Methods</h4>We randomly assigned 610 infants who were born at 25-to-28-weeks' gestation to CPAP or intubation and ventilation at 5 minutes after birth. We assessed outcomes at 28 days of age, at 36 weeks' gestational age, and before discharge.<h4>Results</h4>At 36 weeks' gestational age, 33.9% of 307 infants who were assigned to receive CPAP had died or had bronchopulmonary dysplasia, as compared with 38.9% of 303 infants who were assigned to receive intubation (odds ratio favoring CPAP, 0.80; 95% confidence interval [CI], 0.58 to 1.12; P=0.19). At 28 days, there was a lower risk of death or need for oxygen therapy in the CPAP group than in the intubation group (odds ratio, 0.63; 95% CI, 0.46 to 0.88; P=0.006). There was little difference in overall mortality. In the CPAP group, 46% of infants were intubated during the first 5 days, and the use of surfactant was halved. The incidence of pneumothorax was 9% in the CPAP group, as compared with 3% in the intubation group (P<0.001). There were no other serious adverse events. The CPAP group had fewer days of ventilation.<h4>Conclusions</h4>In infants born at 25-to-28-weeks' gestation, early nasal CPAP did not significantly reduce the rate of death or bronchopulmonary dysplasia, as compared with intubation. Even though the CPAP group had more incidences of pneumothorax, fewer infants received oxygen at 28 days, and they had fewer days of ventilation. (Australian New Zealand Clinical Trials Registry number, 12606000258550.).",
+ "affiliation": "Neonatal Services, Royal Women's Hospital, Melbourne, Australia. colin.morley@rwh.org.au",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Comparative Study",
+   "Research Support, Non-U.S. Gov't",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Bronchopulmonary Dysplasia",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Respiratory Distress Syndrome, Newborn",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "DT",
+       "qualifierName": "drug therapy"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MO",
+       "qualifierName": "mortality"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pneumothorax",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pulmonary Surfactants",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Respiration, Artificial"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Oxygen Inhalation Therapy",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Continuous Positive Airway Pressure",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant Mortality"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Logistic Models"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Odds Ratio"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Intubation, Intratracheal"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Gestational Age"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Premature"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Male"
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Pulmonary Surfactants",
+    "registryNumber": "0"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa072788?articleTools=true"
+   },
+   {
+    "availability": "Free",
+    "availabilityCode": "F",
+    "documentStyle": "abs",
+    "site": "content.nejm.org",
+    "url": "http://content.nejm.org/cgi/content/abstract/358/7/700"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "html",
+    "site": "content.nejm.org",
+    "url": "http://content.nejm.org/cgi/content/full/358/7/700"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1056/NEJMoa072788"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "reference": "N Engl J Med. 2008 Apr 3;358(14):1529",
+    "type": "Erratum in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "18525055",
+    "reference": "N Engl J Med. 2008 Jun 5;358(23):2520-1; author reply 2521. doi: 10.1056/NEJMc080578",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "18536101",
+    "reference": "N Engl J Med. 2008 Jun 5;358(23):2521; author reply 2521.",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "18536102",
+    "reference": "N Engl J Med. 2008 Jun 5;358(23):2521; author reply 2521.",
+    "type": "Comment in",
+    "orderIn": 4
+   },
+   {
+    "source": "MED",
+    "id": "18571556",
+    "reference": "J Pediatr. 2008 Jul;153(1):145. doi: 10.1016/j.jpeds.2008.04.005",
+    "type": "Comment in",
+    "orderIn": 5
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 859,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2008-02-19",
+ "dateOfCreation": "2008-02-15",
+ "dateOfRevision": "2022-03-31",
+ "firstPublicationDate": "2008-02-01",
+ "firstIndexDate": "2008-07-24",
+ "hasEvaluations": "N"
+}
