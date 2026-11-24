@@ -175,59 +175,21 @@ export const ExportToolbar: React.FC = () => {
 
   return (
     <>
-      {/* Task C2: Toolbar is inline on mobile/tablet and sticky only on desktop (lg:) */}
-      <div className="lg:sticky lg:top-[56px] z-20 bg-white/95 backdrop-blur-xs border border-[#d8dee6] rounded-xl p-3 sm:p-3.5 shadow-sm flex flex-wrap items-center justify-between gap-2.5">
-        {/* Left: Navigation, Engine Provenance Badge & Attribution Stamp */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Back to Manuscript Button */}
-          <button
-            onClick={() => {
-              clearAppraisal();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-[#e3f2f2] text-slate-700 hover:text-[#0f6b6b] border border-slate-300 hover:border-[#0f6b6b] transition shadow-xs"
-            title="Return to manuscript abstract and metadata overview"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Manuscript</span>
-          </button>
-
-          {/* New Appraisal Reset Button */}
-          <button
-            onClick={() => setShowResetConfirmModal(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-700 border border-slate-200 hover:border-rose-300 transition shadow-xs"
-            title="Clear and start new appraisal"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>New Paper</span>
-          </button>
-
-          {/* P0-3: Persistent Engine Badge */}
-          {currentAppraisal.engineUsed === 'llm' ? (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>LLM Appraisal — {currentAppraisal.llmDetails?.provider || 'neural'} ({currentAppraisal.llmDetails?.model || 'standard'})</span>
-            </span>
-          ) : currentAppraisal.engineUsed === 'deterministic-fallback' ? (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-amber-50 text-amber-800 border border-amber-300">
-              <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
-              <span>Heuristic Screening Draft (LLM Fallback)</span>
-            </span>
-          ) : (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-800 border border-slate-300">
-              <ShieldCheck className="w-3.5 h-3.5 text-slate-600" />
-              <span>Heuristic screening draft — not a critical appraisal</span>
-            </span>
-          )}
-
+      {/* Task P07: Single row <= 56px, solid bg-white, sticky only on desktop lg: */}
+      <div className="lg:sticky lg:top-[52px] z-20 bg-white border border-[#d8dee6] rounded-xl lg:rounded-none lg:border-x-0 lg:border-t-0 border-b border-slate-200 py-1.5 px-3 sm:px-4 shadow-xs flex flex-wrap lg:flex-nowrap items-center justify-between gap-2.5 h-12">
+        {/* Left: Appraiser & Verification */}
+        <div className="flex items-center gap-2">
           {/* Attribution Popover Trigger */}
           <div className="relative">
             <button
               onClick={() => setShowAttributionPopover(!showAttributionPopover)}
-              className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-[#e3f2f2] text-slate-700 transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-[#e3f2f2] text-slate-700 transition"
+              title="Set Lead Appraiser Name and ORCID"
             >
               <UserCheck className="w-3.5 h-3.5 text-[#0f6b6b]" />
-              <span>Appraiser: {appraiserName.trim() || 'Set Appraiser Name'}</span>
+              <span className="truncate max-w-[140px] sm:max-w-[200px]">
+                {appraiserName.trim() ? appraiserName.trim() : 'Appraiser'}
+              </span>
             </button>
 
             {showAttributionPopover && (
@@ -308,82 +270,125 @@ export const ExportToolbar: React.FC = () => {
               </div>
             )}
           </div>
-        </div>
 
-        {/* Right Action Buttons & Verification Checkbox */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* P0-6: Verification Checkbox */}
-          <label className="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-700 cursor-pointer bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+          {/* Verification Checkbox */}
+          <label className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-slate-700 cursor-pointer bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition shrink-0">
             <input
               type="checkbox"
               checked={humanVerified}
               onChange={(e) => setHumanVerified(e.target.checked)}
               className="rounded border-slate-300 text-[#0f6b6b] focus:ring-[#0f6b6b]"
             />
-            <span className="font-medium text-[11px]">I have reviewed & verified this appraisal</span>
+            <span className="font-medium text-xs">Verified</span>
           </label>
+        </div>
 
-          {/* Edit Mode Toggle */}
-          <button
-            onClick={() => setEditMode(!isEditMode)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition ${
-              isEditMode
-                ? 'border-[#0f6b6b] bg-[#e3f2f2] text-[#0f6b6b] shadow-xs'
-                : 'border-slate-200 hover:bg-slate-50 text-slate-700'
-            }`}
-          >
-            <Edit3 className="w-3.5 h-3.5" />
-            <span>{isEditMode ? 'Finish Editing' : 'Edit Mode'}</span>
-          </button>
-
-          {/* Copy Citation */}
-          <button
-            onClick={handleCopyCitation}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition"
-          >
-            {isCopiedCitation ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-600" /> Copied!
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5 text-slate-500" /> Copy Citation
-              </>
-            )}
-          </button>
-
-          {/* Export JSON */}
-          <button
-            onClick={handleExportJson}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition"
-          >
-            <FileCode className="w-3.5 h-3.5 text-slate-500" /> Export JSON
-          </button>
-
-          {/* Print Preview Modal */}
+        {/* Right: Preview, Download & More menu */}
+        <div className="flex items-center gap-2 ml-auto">
+          {/* Print Preview Button */}
           <button
             onClick={() => setIsPreviewOpen(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-800 transition"
           >
-            <Eye className="w-3.5 h-3.5 text-[#0f6b6b]" /> Preview Manuscript
+            <Eye className="w-3.5 h-3.5 text-[#0f6b6b]" />
+            <span className="hidden sm:inline">Preview</span>
           </button>
 
           {/* Primary Download Button */}
           <button
             onClick={handleDownloadDocx}
             disabled={isDownloading}
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#0f6b6b] hover:bg-[#0a4a4a] disabled:bg-slate-300 text-white text-xs font-bold rounded-lg shadow-sm transition"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#0f6b6b] hover:bg-[#0a4a4a] disabled:bg-slate-300 text-white text-xs font-bold rounded-lg shadow-xs transition"
           >
             {isDownloading ? (
               <>
-                <Loader2 className="w-3.5 h-3.5 animate-spin" /> Compiling .docx...
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span className="hidden sm:inline">Compiling...</span>
               </>
             ) : (
               <>
-                <Download className="w-3.5 h-3.5" /> Download Publication .docx
+                <Download className="w-3.5 h-3.5" />
+                <span>Download .docx</span>
               </>
             )}
           </button>
+
+          {/* More Menu Dropdown for Edit, Copy, JSON, New Paper */}
+          <details
+            className="relative"
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                (e.currentTarget as HTMLDetailsElement).open = false;
+              }
+            }}
+          >
+            <summary className="cursor-pointer list-none flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition select-none">
+              <span>More ▾</span>
+            </summary>
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-200 p-1.5 space-y-1 z-30 animate-in fade-in duration-100">
+              <button
+                onClick={(e) => {
+                  setEditMode(!isEditMode);
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                <Edit3 className="w-3.5 h-3.5 text-[#0f6b6b]" />
+                <span>{isEditMode ? 'Finish Editing' : 'Edit Mode'}</span>
+              </button>
+              <button
+                onClick={(e) => {
+                  handleCopyCitation();
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                {isCopiedCitation ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Copy Citation</span>
+                  </>
+                )}
+              </button>
+              <button
+                onClick={(e) => {
+                  handleExportJson();
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                <FileCode className="w-3.5 h-3.5 text-slate-500" />
+                <span>Export JSON</span>
+              </button>
+              <div className="border-t border-slate-100 my-1" />
+              <button
+                onClick={(e) => {
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                  clearAppraisal();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 text-slate-500" />
+                <span>Back to Manuscript</span>
+              </button>
+              <button
+                onClick={(e) => {
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                  setShowResetConfirmModal(true);
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-rose-50 text-rose-700"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>New Paper</span>
+              </button>
+            </div>
+          </details>
         </div>
       </div>
 

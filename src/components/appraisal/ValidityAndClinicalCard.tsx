@@ -11,6 +11,10 @@ import {
   BookOpen,
   ArrowDownCircle,
   ExternalLink,
+  CheckCircle,
+  HelpCircle,
+  AlertOctagon,
+  AlertTriangle,
 } from 'lucide-react';
 
 export const ValidityAndClinicalCard: React.FC = () => {
@@ -31,8 +35,9 @@ export const ValidityAndClinicalCard: React.FC = () => {
   const renderGradeBadge = (grade: GradeCertainty) => {
     if ((validitySynthesis as any).suppressedDueToRetraction) {
       return (
-        <span className="px-3 py-1 bg-red-100 text-red-900 border border-red-300 font-bold rounded-md text-xs">
-          Suppressed (Retracted Paper)
+        <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#FEF2F2] text-[#B91C1C] border border-[#FECACA] font-bold rounded-md text-sm">
+          <AlertOctagon className="w-3.5 h-3.5 text-[#B91C1C]" />
+          <span>Suppressed (Retracted Paper)</span>
         </span>
       );
     }
@@ -40,33 +45,38 @@ export const ValidityAndClinicalCard: React.FC = () => {
     switch (grade) {
       case 'NOT_GRADED_HEURISTIC':
         return (
-          <span className="px-3 py-1 bg-slate-100 text-slate-700 border border-slate-300 font-semibold rounded-md text-xs">
-            Not graded (heuristic mode)
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#F5F3FF] text-[#6D28D9] border border-[#DDD6FE] font-semibold rounded-md text-sm">
+            <HelpCircle className="w-3.5 h-3.5 text-[#6D28D9]" />
+            <span>Not graded (heuristic mode)</span>
           </span>
         );
       case 'HIGH':
         return (
-          <span className="px-3 py-1 bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold rounded-md text-xs">
-            HIGH Certainty
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0] font-bold rounded-md text-sm">
+            <CheckCircle className="w-3.5 h-3.5 text-[#047857]" />
+            <span>HIGH Certainty</span>
           </span>
         );
       case 'MODERATE':
         return (
-          <span className="px-3 py-1 bg-blue-100 text-blue-900 border border-blue-300 font-bold rounded-md text-xs">
-            MODERATE Certainty
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0] font-bold rounded-md text-sm">
+            <CheckCircle className="w-3.5 h-3.5 text-[#047857]" />
+            <span>MODERATE Certainty</span>
           </span>
         );
       case 'LOW':
         return (
-          <span className="px-3 py-1 bg-amber-100 text-amber-900 border border-amber-300 font-bold rounded-md text-xs">
-            LOW Certainty
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#FFFBEB] text-[#B45309] border border-[#FDE68A] font-bold rounded-md text-sm">
+            <AlertTriangle className="w-3.5 h-3.5 text-[#B45309]" />
+            <span>LOW Certainty</span>
           </span>
         );
       case 'VERY_LOW':
       default:
         return (
-          <span className="px-3 py-1 bg-red-100 text-red-900 border border-red-300 font-bold rounded-md text-xs">
-            VERY LOW Certainty
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#FEF2F2] text-[#B91C1C] border border-[#FECACA] font-bold rounded-md text-sm">
+            <AlertOctagon className="w-3.5 h-3.5 text-[#B91C1C]" />
+            <span>VERY LOW Certainty</span>
           </span>
         );
     }
@@ -77,22 +87,22 @@ export const ValidityAndClinicalCard: React.FC = () => {
       {/* Header & GRADE Certainty */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
         <div>
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
             <Award className="w-5 h-5 text-amber-600" />
             GRADE Certainty of Evidence & Validity Synthesis
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+          </h2>
+          <p className="text-sm text-slate-600 mt-0.5">
             Synthesis across internal validity, generalizability, and GRADE Working Group criteria.
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-slate-600">GRADE Rating:</span>
+          <span className="text-sm font-semibold text-slate-600">GRADE Rating:</span>
           {isEditMode ? (
             <div className="flex items-center gap-2">
               <select
                 value={validitySynthesis.gradeCertainty}
                 onChange={(e) => handleGradeChange(e.target.value as GradeCertainty)}
-                className="p-1 border border-slate-300 rounded text-xs bg-white font-bold"
+                className="p-1 border border-slate-300 rounded text-sm bg-white font-bold"
               >
                 <option value="HIGH">HIGH</option>
                 <option value="MODERATE">MODERATE</option>
@@ -119,7 +129,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
       </div>
 
       {/* GRADE Rationale & Downgrading Factors */}
-      <div className="p-4 bg-amber-50/50 border border-amber-200 rounded-lg space-y-2 text-xs">
+      <div className="p-4 bg-amber-50/50 border border-amber-200 rounded-lg space-y-2 text-sm">
         <span className="font-bold text-amber-950 flex items-center gap-1.5">
           <ArrowDownCircle className="w-4 h-4 text-amber-600" /> GRADE Evaluation Rationale
         </span>
@@ -128,8 +138,8 @@ export const ValidityAndClinicalCard: React.FC = () => {
         </p>
         {validitySynthesis.gradeDowngradingFactors.length > 0 && (
           <div className="pt-1">
-            <span className="font-semibold text-amber-950 block text-[11px]">Downgrading factors:</span>
-            <ul className="list-disc pl-4 space-y-0.5 text-amber-900 text-[11px]">
+            <span className="font-semibold text-amber-950 block text-sm">Downgrading factors:</span>
+            <ul className="list-disc pl-4 space-y-0.5 text-amber-900 text-sm">
               {validitySynthesis.gradeDowngradingFactors.map((f, idx) => (
                 <li key={idx}>{f}</li>
               ))}
@@ -139,7 +149,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
       </div>
 
       {/* Internal & External Validity Narratives */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-serif leading-relaxed">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-serif leading-relaxed">
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
           <span className="font-sans font-bold text-slate-800 flex items-center gap-1.5 mb-1">
             <ShieldCheck className="w-4 h-4 text-emerald-600" /> Internal Validity (Bias & Confounding)
@@ -148,7 +158,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
             <textarea
               value={validitySynthesis.internalValidity}
               onChange={(e) => updateAppraisalField('validitySynthesis.internalValidity', e.target.value)}
-              className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+              className="w-full p-1.5 border border-slate-300 rounded text-sm font-sans"
               rows={3}
             />
           ) : (
@@ -166,7 +176,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
               onChange={(e) =>
                 updateAppraisalField('validitySynthesis.externalValidityAndGeneralizability', e.target.value)
               }
-              className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+              className="w-full p-1.5 border border-slate-300 rounded text-sm font-sans"
               rows={3}
             />
           ) : (
@@ -176,7 +186,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
       </div>
 
       {/* Funding & Conflict of Interest */}
-      <div className="p-3 bg-slate-50/70 border border-slate-200 rounded-lg text-xs">
+      <div className="p-3 bg-slate-50/70 border border-slate-200 rounded-lg text-sm">
         <span className="font-bold text-slate-800 block mb-1">
           Conflicts of Interest & Funding Source Critique
         </span>
@@ -187,40 +197,40 @@ export const ValidityAndClinicalCard: React.FC = () => {
 
       {/* Clinical Practice Translation / Bottom Line */}
       {(clinicalPracticeBottomLine as any).suppressedDueToRetraction ? (
-        <div className="p-4 bg-red-50 border border-red-300 rounded-lg space-y-1 text-xs sm:text-sm text-red-900">
-          <span className="font-bold text-red-950 flex items-center gap-1.5">
+        <div className="p-4 bg-red-50 border border-red-300 rounded-lg space-y-1 text-sm text-red-900">
+          <h3 className="font-bold text-red-950 flex items-center gap-1.5">
             <Stethoscope className="w-4 h-4 text-red-700" /> Clinical Translation Suppressed (Retracted Paper)
-          </span>
+          </h3>
           <p className="font-serif leading-relaxed">
             This manuscript has been officially retracted. Therapeutic recommendations and clinical conclusions are suppressed and must not be implemented in clinical practice.
           </p>
         </div>
       ) : (
-        <div className="p-4 bg-[#e3f2f2] border border-[#0f6b6b]/30 rounded-lg space-y-2 text-xs sm:text-sm">
-          <span className="font-bold text-[#0f6b6b] flex items-center gap-1.5">
+        <div className="p-4 bg-[#e3f2f2] border border-[#0f6b6b]/30 rounded-lg space-y-2 text-sm">
+          <h3 className="font-bold text-[#0f6b6b] flex items-center gap-1.5">
             <Stethoscope className="w-4 h-4 text-[#0f6b6b]" /> Clinical Practice Bottom Line & Recommendations
-          </span>
+          </h3>
           {isEditMode ? (
             <div className="space-y-2">
               <div>
-                <label className="font-bold text-slate-900 block text-xs">Key Takeaway for Clinicians:</label>
+                <label className="font-bold text-slate-900 block text-sm">Key Takeaway for Clinicians:</label>
                 <textarea
                   value={clinicalPracticeBottomLine.keyTakeawayForClinicians}
                   onChange={(e) =>
                     updateAppraisalField('clinicalPracticeBottomLine.keyTakeawayForClinicians', e.target.value)
                   }
-                  className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+                  className="w-full p-1.5 border border-slate-300 rounded text-sm font-sans"
                   rows={2}
                 />
               </div>
               <div>
-                <label className="font-bold text-slate-900 block text-xs">Direct Applicability:</label>
+                <label className="font-bold text-slate-900 block text-sm">Direct Applicability:</label>
                 <textarea
                   value={clinicalPracticeBottomLine.applicabilityToPractice}
                   onChange={(e) =>
                     updateAppraisalField('clinicalPracticeBottomLine.applicabilityToPractice', e.target.value)
                   }
-                  className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans"
+                  className="w-full p-1.5 border border-slate-300 rounded text-sm font-sans"
                   rows={2}
                 />
               </div>
@@ -234,7 +244,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
                 <strong>Direct Applicability:</strong> {clinicalPracticeBottomLine.applicabilityToPractice}
               </p>
               {clinicalPracticeBottomLine.recommendationsForFutureResearch && (
-                <p className="text-slate-700 text-xs font-sans">
+                <p className="text-slate-700 text-sm font-sans">
                   <strong>Future Research Needs:</strong> {clinicalPracticeBottomLine.recommendationsForFutureResearch}
                 </p>
               )}
@@ -244,10 +254,10 @@ export const ValidityAndClinicalCard: React.FC = () => {
       )}
 
       {/* Numbered Vancouver References */}
-      <div className="pt-2 border-t border-slate-100 space-y-2 text-xs">
-        <h4 className="font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-          <BookOpen className="w-3.5 h-3.5 text-slate-400" /> Formatted Vancouver References
-        </h4>
+      <div className="pt-2 border-t border-slate-100 space-y-2 text-sm">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-slate-500" /> Numbered Vancouver References
+        </h2>
         <ol className="list-decimal pl-5 space-y-1 text-slate-700 font-serif">
           {references.map((ref, idx) => (
             <li key={ref.number} className="leading-relaxed">
@@ -255,7 +265,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
                 <textarea
                   value={ref.vancouverCitation}
                   onChange={(e) => updateAppraisalField(`references.${idx}.vancouverCitation`, e.target.value)}
-                  className="w-full p-1.5 border border-slate-300 rounded text-xs font-sans not-italic"
+                  className="w-full p-1.5 border border-slate-300 rounded text-sm font-sans not-italic"
                   rows={2}
                 />
               ) : (
@@ -266,7 +276,7 @@ export const ValidityAndClinicalCard: React.FC = () => {
                       href={ref.doiOrUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-0.5 ml-1 text-brand-700 hover:underline font-sans text-[11px]"
+                      className="inline-flex items-center gap-0.5 ml-1 text-brand-700 hover:underline font-sans text-sm"
                     >
                       <ExternalLink className="w-3 h-3" />
                     </a>
