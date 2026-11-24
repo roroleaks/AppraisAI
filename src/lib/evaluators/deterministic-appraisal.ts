@@ -17,6 +17,7 @@ import {
 } from './outcome-logic';
 import { extractArms, armsFromTitle, extractFollowUp } from './pico-arms';
 import { includedDesigns, reviewOxfordLevel, isPredictionModelStudy, aiValidationSignals } from './review-designs';
+import { findCue, CHECKLIST_CUES, AMSTAR_CUES } from './evidence-cues';
 import crypto from 'crypto';
 
 /**
@@ -425,9 +426,14 @@ export function generateDeterministicAppraisal(
       : `a ${detectedDesign.replace(/_/g, ' ')}`;
 
   const executiveAbstract = {
-    background: `${meta.title}${journalClause} addresses clinical priorities. Evaluates ${interventionOrExposure} in ${population}.`,
+    // First sentence of the paper's own background, or nothing — no generated filler
+    background:
+      (rawAbstract
+        .replace(/<\/?[a-zA-Z][^>]*>/g, ' ')
+        .replace(/^\s*(?:BACKGROUND|Background|Introduction|INTRODUCTION|Context|Objectives?|OBJECTIVES?)\s*:?\s*/, '')
+        .match(/^([A-Z][^]{20,450}?\.)(?=\s|$)/)?.[1] ?? 'Not extracted').trim(),
     methodologicalSummary: `Structured according to ${governingRules.equatorGuidelineName} and ${governingRules.riskOfBiasToolName}. The investigation utilizes ${architectureLabel} architecture${sampleSizeStr}.`,
-    keyFindings: primaryOutcomes[0] || `Reported primary clinical outcomes for ${meta.title}.`,
+    keyFindings: 'Primary result not identified in available text — see the effect-estimate table.',
     criticalVerdict: `Heuristic screening draft based on available text. Methodological validity and clinical applicability require formal evaluation.`,
   };
 
@@ -526,71 +532,16 @@ export function generateDeterministicAppraisal(
         }
       }
     } else if (detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS') {
-      if (index === 0) {
-        criticalSignificance = 'Ensures broad retrieval and minimizes publication and indexing bias.';
-        const searchMatch = findSentenceWithKeywords(
-          combinedText,
-          /searched (?:medline|pubmed|embase|cochrane)|comprehensive search|search strategy|databases.*searched/i
-        );
-        if (searchMatch) {
-          judgement = 'LOW_RISK';
-          supportiveEvidence = searchMatch;
-        } else {
-          judgement = 'UNCLEAR_NOT_REPORTED';
-          supportiveEvidence = 'Search strategy details not assessable by heuristic engine from available text.';
-        }
-      } else if (index === 1) {
-        criticalSignificance = 'Minimizes human error and reviewer bias during article selection.';
-        const screenMatch = findSentenceWithKeywords(
-          combinedText,
-          /two (?:reviewers|authors|investigators) independently|in duplicate|independent screening/i
-        );
-        if (screenMatch) {
-          judgement = 'LOW_RISK';
-          supportiveEvidence = screenMatch;
-        } else {
-          judgement = 'UNCLEAR_NOT_REPORTED';
-          supportiveEvidence = 'Dual independent screening not assessable by heuristic engine from available text.';
-        }
-      } else if (index === 2) {
-        criticalSignificance = 'Enables transparent weighting of primary study validity in synthesis conclusions.';
-        const robMatch = findSentenceWithKeywords(
-          combinedText,
-          /risk of bias was assessed|rob 2|robins|cochrane risk of bias|quality assessment|newcastle-ottawa/i
-        );
-        if (robMatch) {
-          judgement = 'LOW_RISK';
-          supportiveEvidence = robMatch;
-        } else {
-          judgement = 'UNCLEAR_NOT_REPORTED';
-          supportiveEvidence = 'Risk of bias assessment of included studies not assessable by heuristic engine.';
-        }
-      } else if (index === 3) {
-        criticalSignificance = 'Avoids invalid quantitative aggregation across heterogeneous clinical populations.';
-        const metaMatch = findSentenceWithKeywords(
-          combinedText,
-          /random-effects|fixed-effect|i2|heterogeneity was assessed|derSimonian/i
-        );
-        if (metaMatch) {
-          judgement = 'LOW_RISK';
-          supportiveEvidence = metaMatch;
-        } else {
-          judgement = 'UNCLEAR_NOT_REPORTED';
-          supportiveEvidence = 'Meta-analytical pooling methodology not assessable by heuristic engine from available text.';
-        }
+      // AMSTAR 2 critical domains — matched by domain NAME, never by position
+      const rule = AMSTAR_CUES.find((r) => r.domain.test(domainName));
+      criticalSignificance = typeof d === 'string' ? '' : d.description;
+      const hit = rule ? findCue(`${rawAbstract} ${rawFullText}`, rule.cue) : null;
+      if (hit) {
+        judgement = 'LOW_RISK'; // converted below to "favourable signal — verify"
+        supportiveEvidence = hit;
       } else {
-        criticalSignificance = 'Guarantees academic independence and transparency in evidence translation.';
-        const pubBiasMatch = findSentenceWithKeywords(
-          combinedText,
-          /funnel plot|egger|begg|publication bias was assessed/i
-        );
-        if (pubBiasMatch) {
-          judgement = 'LOW_RISK';
-          supportiveEvidence = pubBiasMatch;
-        } else {
-          judgement = 'UNCLEAR_NOT_REPORTED';
-          supportiveEvidence = 'Publication bias assessment not assessable by heuristic engine from available text.';
-        }
+        judgement = 'UNCLEAR_NOT_REPORTED';
+        supportiveEvidence = rule ? rule.note : 'Not assessable by heuristic engine from available text.';
       }
     } else {
       // Cohort & observational studies
@@ -662,9 +613,15 @@ export function generateDeterministicAppraisal(
       }
     }
 
+    // A keyword match cannot establish LOW risk. Keep the quote, downgrade the verdict to "verify".
+    if (judgement === 'LOW_RISK') {
+      judgement = 'UNCLEAR_NOT_REPORTED';
+      supportiveEvidence = `Favourable signal — verify in full text (heuristic cannot rate Low risk): ${supportiveEvidence}`;
+    }
+
     return {
       domainName,
-      judgement,
+      judgement: judgement as BiasJudgement,
       supportiveEvidence,
       criticalSignificance,
     };
@@ -683,127 +640,32 @@ export function generateDeterministicAppraisal(
   // -----------------------------------------------------------------
   // 5. EQUATOR Checklist Matrix (Task B1: real CONSORT 2025 numbering & unique evidence spans)
   // -----------------------------------------------------------------
-  const usedEvidenceSpans = new Set<string>();
+  const isStructuredAbstract = /<h4>|\b(?:background|objectives?|purpose|introduction|research question)\b[\s\S]{0,1500}?\b(?:methods?|design|search methods)\b[\s\S]{0,3000}?\b(?:results|findings|main results)\b/i.test(rawAbstract);
 
-  const findUniqueKeywordSentence = (pattern: RegExp): string | null => {
-    if (!combinedText) return null;
-    const sentences = combinedText.split(/(?<=[.?!])\s+/);
-    for (const s of sentences) {
-      const trimmed = s.trim();
-      if (pattern.test(trimmed) && trimmed.length > 15 && trimmed.length < 350 && !usedEvidenceSpans.has(trimmed)) {
-        usedEvidenceSpans.add(trimmed);
-        return trimmed;
-      }
-    }
-    return null;
+  const TITLE_DESIGN: Record<string, RegExp> = {
+    RCT: /randomi[sz]ed|\btrial\b/i,
+    SYSTEMATIC_REVIEW_META_ANALYSIS: /systematic review|meta-analy/i,
+    COHORT_STUDY: /cohort|registry|longitudinal/i,
+    CASE_CONTROL_STUDY: /case-control/i,
+    CROSS_SECTIONAL: /cross-sectional|survey|prevalence/i,
+    DIAGNOSTIC_ACCURACY: /accuracy|diagnostic/i,
+    PREDICTION_MODEL: /predict|model|algorithm|machine learning|deep learning|artificial intelligence/i,
   };
-
-  const isStructuredAbstract = /<h4>|background.*methods.*results|research question.*design.*main results|objective.*methods.*results/i.test(rawAbstract);
-
+  const checklistText = `${rawAbstract} ${rawFullText}`;
   const equatorAudit = governingRules.equatorMandatoryItems.map((item) => {
+    const label = `${item.itemNumberAndSection} ${item.requirement}`;
+    const rule = CHECKLIST_CUES.find((r) => r.label.test(item.itemNumberAndSection)) ?? CHECKLIST_CUES.find((r) => r.label.test(label));
     let status: 'REPORTED' | 'NOT_REPORTED' = 'NOT_REPORTED';
-    let evidence = 'Reporting item not assessable by heuristic engine from available text.';
-
-    const lowerReq = item.requirement.toLowerCase();
-    const itemNum = item.itemNumberAndSection.toLowerCase();
-
-    if (/title/i.test(itemNum) && /1a/i.test(itemNum)) {
-      status = 'REPORTED';
-      evidence = meta.title;
-      usedEvidenceSpans.add(meta.title);
-    } else if (/abstract/i.test(itemNum) || /1b/i.test(itemNum) || /structured summary/i.test(lowerReq)) {
-      // Structured abstract check (Task B1): headings like Background/Methods/Results satisfy item 1b
-      if (isStructuredAbstract || rawAbstract.length > 50) {
-        status = 'REPORTED';
-        evidence = 'Structured abstract format with explicit methodological sections (Background / Methods / Results / Conclusions).';
-      }
-    } else if (/registration/i.test(lowerReq) || /item 2/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:ClinicalTrials\.gov|ISRCTN|NCT[0-9]{7,}|ANZCTR|trial registration|registered at|PROSPERO)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/protocol|sap/i.test(lowerReq) || /item 3/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:statistical analysis plan|trial protocol|protocol was approved|prespecified protocol)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/funding|coi|competing interest/i.test(lowerReq) || /5a/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:funded by|financial support|conflict of interest|competing interests?|grant from|supported by)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/background/i.test(lowerReq) || /item 6\b/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:background|prior studies have shown|information on the use of|unclear whether)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/objectives|hypotheses/i.test(lowerReq) || /item 7\b/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:we evaluated|the objective of|we hypothesized|to determine whether|aimed to)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/sample size/i.test(lowerReq) || /16a/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:power calculation|sample size calculation|powered to detect|80% power|90% power)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/sequence/i.test(lowerReq) || /17a/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:computer-generated|permuted block|random number sequence|central computer sequence)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/allocation concealment/i.test(lowerReq) || /item 18\b/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:central randomisation|central interactive|sealed opaque envelopes?|allocation concealment|sequentially numbered)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/masking|blinding/i.test(lowerReq) || /20a/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:double-blind|triple-blind|matching placebo|blinded to treatment|blinded outcome assessors?)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/participant flow|flow/i.test(lowerReq) || /22a/i.test(itemNum)) {
-      // Must not match "randomly assigned" alone
-      const match = findUniqueKeywordSentence(/(?:withdrew consent|lost to follow-up|flow diagram|discontinued intervention|excluded after randomisation)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/eligibility|criteria/i.test(lowerReq)) {
-      const match = findUniqueKeywordSentence(/(?:inclusion criteria|exclusion criteria|eligible patients|enrolled community-dwelling)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/outcomes|estimation|synthesis/i.test(lowerReq) || /item 24\b/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:primary outcome|primary endpoint|hazard ratio|relative risk|odds ratio|mean difference|confidence interval)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/limitations|discussion/i.test(lowerReq) || /item 30\b/i.test(itemNum)) {
-      const match = findUniqueKeywordSentence(/(?:limitations?|caveats?|our study had several|potential weakness)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
-    } else if (/search strategy/i.test(lowerReq)) {
-      const match = findUniqueKeywordSentence(/(?:search strategy|databases|pubmed|medline|embase|cochrane library)/i);
-      if (match) {
-        status = 'REPORTED';
-        evidence = match;
-      }
+    let evidence = isAbstractOnly ? 'Not found in the abstract (may be in the full text).' : 'Not found in available text.';
+    if (rule?.structural === 'title-design') {
+      const re = TITLE_DESIGN[detectedDesign];
+      if (re && re.test(meta.title)) { status = 'REPORTED'; evidence = meta.title; }
+    } else if (rule?.structural === 'structured-abstract') {
+      if (isStructuredAbstract) { status = 'REPORTED'; evidence = 'Structured abstract with labelled sections.'; }
+    } else if (rule) {
+      const hit = findCue(checklistText, rule.cue, rule.reject);
+      if (hit) { status = 'REPORTED'; evidence = hit; }
     }
-
     return {
       itemNumberAndSection: item.itemNumberAndSection,
       requirement: item.requirement,
@@ -867,6 +729,12 @@ export function generateDeterministicAppraisal(
         nonInferiorityConclusion = `Non-inferiority ${v}: 95% CI ${primaryParsed.ciLow} to ${primaryParsed.ciHigh} vs margin ${margin}.`;
       }
     }
+  }
+
+  // Key finding = the primary RESULT (not the outcome definition, not the title)
+  if (primaryEstimate) {
+    const pe = primaryEstimate as EffectEstimateItem;
+    executiveAbstract.keyFindings = `${pe.outcomeLabel}: ${pe.metric} ${pe.pointEstimate} (${pe.confidenceInterval.replace(/^95% CI:\s*/, '95% CI ')}), ${pe.pValue}. ${pe.clinicalVsStatisticalSignificance}${nonInferiorityConclusion ? ` ${nonInferiorityConclusion}` : ''}`;
   }
 
   // Sample size & power calculation audit

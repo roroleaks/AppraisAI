@@ -94,6 +94,16 @@ for (const f of files) {
   const g = rep.validitySynthesis?.gradeCertainty;
   if (g && g !== 'NOT_GRADED_HEURISTIC') fail(id, `deterministic GRADE emitted: ${g}`);
   if (rep.statisticalAudit?.spinAndDiscrepancyAudit?.spinStatus === 'assessed-negative') fail(id, 'spin asserted negative in heuristic mode');
+  // A6: deterministic engine never rates a risk-of-bias domain LOW from keywords
+  for (const d of rep.riskOfBias?.domains || []) if (d.judgement === 'LOW_RISK') fail(id, `LOW_RISK from heuristic: ${d.domainName}`);
+  // A7: no generated filler in the executive abstract
+  if (/addresses clinical priorities|Evaluates .* in cohort evaluated/i.test(JSON.stringify(rep.executiveAbstract || {}))) fail(id, 'template text in executive abstract');
+  // A8: a checklist item marked REPORTED must quote text that exists in the source (or the title / structure note)
+  for (const it of rep.equatorChecklist?.criticalItemsAudit || []) {
+    const ev = String(it.evidenceOrPageLocation || '');
+    if (it.status === 'REPORTED' && ev !== m.metadata.title && ev !== rep.metadata?.title && !/^Structured abstract/.test(ev) && !m.abstract.includes(ev.slice(0, 40)))
+      fail(id, `checklist evidence not in source: ${it.itemNumberAndSection}`);
+  }
 }
 
 // ---------------- Part B: verified expectations (sources: Europe PMC abstracts) ----------------

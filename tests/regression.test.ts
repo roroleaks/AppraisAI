@@ -274,11 +274,16 @@ async function runRegressionSuite() {
 
     const appraisal = generateDeterministicAppraisal(manuscript);
     for (const domain of appraisal.riskOfBias.domains) {
-      if (domain.judgement === 'LOW_RISK') {
-        const grounded = isVerbatimInManuscript(domain.supportiveEvidence, manuscript);
+      if (domain.supportiveEvidence.startsWith('Favourable signal')) {
+        assert(
+          domain.judgement === 'UNCLEAR_NOT_REPORTED',
+          `Domain "${domain.domainName}" with favourable signal must be UNCLEAR_NOT_REPORTED`
+        );
+        const rawQuote = domain.supportiveEvidence.replace(/^Favourable signal — verify in full text \(heuristic cannot rate Low risk\):\s*/, '');
+        const grounded = isVerbatimInManuscript(rawQuote, manuscript);
         assert(
           grounded,
-          `Domain "${domain.domainName}" marked LOW_RISK is grounded verbatim in manuscript: "${domain.supportiveEvidence.slice(0, 50)}..."`
+          `Domain "${domain.domainName}" favourable signal is grounded verbatim in manuscript: "${rawQuote.slice(0, 50)}..."`
         );
       }
     }

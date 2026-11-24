@@ -27,7 +27,14 @@ export const RiskOfBiasMatrix: React.FC = () => {
     }
   };
 
-  const renderJudgementBadge = (judgement: BiasJudgement) => {
+  const renderJudgementBadge = (judgement: BiasJudgement, supportiveEvidence?: string) => {
+    if (supportiveEvidence?.startsWith('Favourable signal')) {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-semibold bg-[#FEF9C3] text-[#854D0E] border border-[#FDE047]">
+          <HelpCircle className="w-3.5 h-3.5 text-[#854D0E]" /> Unclear — favourable signal
+        </span>
+      );
+    }
     switch (judgement) {
       case 'LOW_RISK':
         return (
@@ -131,7 +138,7 @@ export const RiskOfBiasMatrix: React.FC = () => {
                       <option value="UNCLEAR_NOT_REPORTED">Unclear / Not Reported</option>
                     </select>
                   ) : (
-                    renderJudgementBadge(d.judgement)
+                    renderJudgementBadge(d.judgement, d.supportiveEvidence)
                   )}
                 </td>
                 <td className="py-3 px-4 leading-relaxed">
@@ -216,19 +223,26 @@ export const RiskOfBiasMatrix: React.FC = () => {
                     <td className="py-2.5 px-3 font-semibold text-slate-800">{item.itemNumberAndSection}</td>
                     <td className="py-2.5 px-3 text-slate-600">{item.requirement}</td>
                     <td className="py-2.5 px-3">
-                      <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                          item.status === 'REPORTED'
-                            ? 'bg-[#DCFCE7] text-[#166534]'
-                            : item.status === 'PARTIALLY_REPORTED'
-                            ? 'bg-[#FEF9C3] text-[#854D0E]'
-                            : item.status === 'NOT_REPORTED'
-                            ? 'bg-[#FEE2E2] text-[#991B1B]'
-                            : 'bg-slate-100 text-slate-600'
-                        }`}
-                      >
-                        {item.status.replace(/_/g, ' ')}
-                      </span>
+                      {currentAppraisal.metadata.sourceDepth === 'ABSTRACT_ONLY_FALLBACK' &&
+                      item.evidenceOrPageLocation.includes('Not found in the abstract') ? (
+                        <span className="text-xs text-slate-500 font-sans">
+                          Not found in abstract
+                        </span>
+                      ) : (
+                        <span
+                          className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                            item.status === 'REPORTED'
+                              ? 'bg-[#DCFCE7] text-[#166534]'
+                              : item.status === 'PARTIALLY_REPORTED'
+                              ? 'bg-[#FEF9C3] text-[#854D0E]'
+                              : item.status === 'NOT_REPORTED'
+                              ? 'bg-[#FEE2E2] text-[#991B1B]'
+                              : 'bg-slate-100 text-slate-600'
+                          }`}
+                        >
+                          {item.status.replace(/_/g, ' ')}
+                        </span>
+                      )}
                     </td>
                     <td className="py-2.5 px-3 text-slate-700 text-xs sm:text-sm leading-relaxed">
                       {isVerbatimInManuscript(item.evidenceOrPageLocation, currentManuscript) ? (
