@@ -15,6 +15,7 @@ import { ConfirmationModal } from '@/components/common/ConfirmationModal';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { reportStatus } from '@/lib/status';
 import Image from 'next/image';
+import { QRCodeSVG } from 'qrcode.react';
 import {
   FileText,
   Link2,
@@ -33,6 +34,13 @@ import {
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<'identifier' | 'upload'>('identifier');
   const [showResetConfirmModal, setShowResetConfirmModal] = useState(false);
+  const [appUrl, setAppUrl] = useState('https://apprais-ai.vercel.app');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.origin) {
+      setAppUrl(window.location.origin);
+    }
+  }, []);
   const {
     currentManuscript,
     currentAppraisal,
@@ -485,22 +493,45 @@ export default function HomePage() {
       </main>
 
       {/* Signature Footer - Matching AIMed & Sysrevai */}
-      <footer className="bg-[#0a4a4a] text-white/80 py-5 px-4 text-center text-xs border-t border-[#0f6b6b]/40 mt-auto space-y-1.5">
-        <div className="flex items-center justify-center gap-2">
-          <div className="relative w-5 h-5 rounded-md overflow-hidden bg-slate-900 border border-white/30 shrink-0">
-            <Image src="/appraisai-icon.png" alt="AppraisAI Logo" fill className="object-contain" />
+      <footer className="bg-[#0a4a4a] text-white/80 py-5 px-4 text-xs border-t border-[#0f6b6b]/40 mt-auto">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-4">
+          <div className="hidden sm:block" aria-hidden="true" />
+          <div className="text-center space-y-1.5">
+            <div className="flex items-center justify-center gap-2">
+              <div className="relative w-5 h-5 rounded-md overflow-hidden bg-slate-900 border border-white/30 shrink-0">
+                <Image src="/appraisai-icon.png" alt="AppraisAI Logo" fill className="object-contain" />
+              </div>
+              <span className="font-semibold text-white tracking-wide">AppraisAI v1.0</span>
+            </div>
+            <p className="font-medium text-white/95">
+              Automated Scientific Critical Appraisal & Publication-Ready DOCX Generator
+            </p>
+            <p className="text-white/60 text-[11px]">
+              EQUATOR Network (CONSORT, PRISMA, STROBE), CEBM Oxford Levels of Evidence, & GRADE Working Group Compliant
+            </p>
+            <p className="text-white/50 text-[10px] pt-1">
+              Designed & Developed by Dr. Raouf Roshdy © 2024–2026 • All Rights Reserved
+            </p>
           </div>
-          <span className="font-semibold text-white tracking-wide">AppraisAI v1.0</span>
+          <div className="flex flex-col items-center sm:items-end sm:justify-self-end gap-1.5">
+            <div
+              className="bg-white p-1.5 rounded-lg shadow-sm border border-white/20"
+              aria-label={`QR code for ${appUrl}`}
+            >
+              <QRCodeSVG
+                value={appUrl}
+                size={64}
+                level="M"
+                bgColor="#ffffff"
+                fgColor="#0a4a4a"
+                title={`Open AppraisAI at ${appUrl}`}
+              />
+            </div>
+            <span className="text-[10px] text-white/70 font-medium tracking-wide">
+              Scan to open
+            </span>
+          </div>
         </div>
-        <p className="font-medium text-white/95">
-          Automated Scientific Critical Appraisal & Publication-Ready DOCX Generator
-        </p>
-        <p className="text-white/60 text-[11px]">
-          EQUATOR Network (CONSORT, PRISMA, STROBE), CEBM Oxford Levels of Evidence, & GRADE Working Group Compliant
-        </p>
-        <p className="text-white/50 text-[10px] pt-1">
-          Designed & Developed by Dr. Raouf Roshdy © 2024–2026 • All Rights Reserved
-        </p>
       </footer>
 
       {/* In-app Confirmation Modal (Task B4) */}
