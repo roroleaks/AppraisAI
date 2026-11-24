@@ -7,11 +7,11 @@
 export const sentencesOf = (text: string): string[] =>
   text
     .replace(/<\/?[a-zA-Z][^>]*>/g, ' ')
-    .replace(/\b(vs|et al|e\.g|i\.e|Fig|No)\./gi, '$1')
+    .replace(/\b(vs|et al|e\.g|i\.e|Fig|No)\./gi, '$1__DOT__')
     // abstract section headings act as sentence breaks ("… outcomes. Search methods We searched …")
     .replace(/\s(?=(?:Background|Objectives?|Methods?|Search methods|Selection criteria|Data collection and analysis|Main results|Results|Conclusions?|Authors' conclusions|Design|Setting|Participants|Interventions|Findings|Interpretation|Funding|BACKGROUND|OBJECTIVES?|METHODS?|SEARCH METHODS|SELECTION CRITERIA|DATA COLLECTION AND ANALYSIS|MAIN RESULTS|RESULTS|CONCLUSIONS?|AUTHORS' CONCLUSIONS):?\s+[A-Z])/g, '\n')
     .split(/(?<=[.?!])\s+(?=[A-Z(\[])|\n/)
-    .map((s) => s.trim())
+    .map((s) => s.replace(/__DOT__/g, '.').trim())
     .filter((s) => s.length > 15 && s.length < 1200);
 
 export function findCue(text: string, cue: RegExp, reject?: RegExp): string | null {

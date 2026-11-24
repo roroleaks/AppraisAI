@@ -9,7 +9,7 @@ import path from 'path';
 import { generateDeterministicAppraisal } from '../src/lib/evaluators/deterministic-appraisal';
 
 type Raw = any;
-const ROOTS = ['tests/benchmark', 'tests/holdout/fixtures', 'tests/generalisation/fixtures'];
+const ROOTS = ['tests/benchmark', 'tests/holdout/fixtures', 'tests/generalisation/fixtures', 'tests/generalisation/live'];
 
 const cleanXml = (t: string) =>
   (t || '').replace(/<\/?[a-zA-Z][^>]*>/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
