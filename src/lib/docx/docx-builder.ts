@@ -1483,14 +1483,8 @@ export function buildAcademicDocxManuscript(
                         spacing: { before: 20, after: 20 },
                         children: [
                           new TextRun({
-                            text: `This report was drafted with AI assistance (engine: ${
-                              report.engineUsed === 'llm'
-                                ? `LLM — ${report.llmDetails?.provider || 'neural'} / ${report.llmDetails?.model || 'standard'}`
-                                : report.engineUsed === 'deterministic-fallback'
-                                ? `Heuristic Screening Engine (LLM fallback: ${report.fallbackReason || 'provider timeout'})`
-                                : 'Heuristic Screening Engine'
-                            }). It has ${
-                              isVerified ? 'been reviewed and verified' : 'not been independently verified'
+                            text: `Status: ${status.headline}. This report was drafted with AI assistance (engine: ${status.engine}). It has ${
+                              !status.isDraft ? 'been reviewed and verified' : 'not been independently verified'
                             } by the named clinical appraiser (${activeAppraiserName}${activeOrcid ? ', ORCID: ' + activeOrcid : ''}). Structured under EQUATOR Network guidelines (${report.classification.equatorReportingGuideline}), OCEBM Evidence Levels, and GRADE certainty criteria. Prepared for academic peer review and clinical governance.`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_SMALL,
