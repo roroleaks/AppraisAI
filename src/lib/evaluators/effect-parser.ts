@@ -92,6 +92,7 @@ export function outcomeHintBefore(sentence: string, metricIndex: number): string
   const before = sentence.slice(Math.max(0, metricIndex - 260), metricIndex);
   const O = String.raw`(?<o>[A-Za-z][A-Za-z0-9'\- ]{1,80}?)`;
   const near: RegExp[] = [
+    new RegExp(String.raw`\bdifferences?\s+in\s+(?:the\s+)?${O}\s+(?:between|among|across|with|for|\()`, 'gi'),
     new RegExp(String.raw`(?:frequency|incidence|rate|risk|odds|likelihood|chance|occurrence)\s+of\s+(?:an?\s+|the\s+|any\s+)?${O}\s*(?:\(|\[|\bwas\b|\bwere\b|\bin\b|\bwith\b|,)`, 'gi'),
     new RegExp(String.raw`\band\s+of\s+(?:the\s+)?${O}\s*\(`, 'gi'),
     new RegExp(String.raw`\b(?:reduced|increased|lowered|raised|decreased|improved|prevented)\s+(?:the\s+)?(?:(?:risk|rate|incidence|odds)\s+of\s+)?${O}\s*[\(\[]`, 'gi'),

@@ -12,6 +12,7 @@ import { ValidityAndClinicalCard } from '@/components/appraisal/ValidityAndClini
 import { ExportToolbar } from '@/components/preview/ExportToolbar';
 import { LlmSettingsModal } from '@/components/common/LlmSettingsModal';
 import { ConfirmationModal } from '@/components/common/ConfirmationModal';
+import { RetractionBanner } from '@/components/common/RetractionBanner';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { reportStatus } from '@/lib/status';
 import Image from 'next/image';
@@ -114,7 +115,7 @@ export default function HomePage() {
 
       {/* Top Header */}
       <header className="bg-gradient-to-r from-[#0f6b6b] to-[#0a4a4a] text-white py-1 px-4 sm:px-8 shadow-md lg:sticky lg:top-0 z-30 h-13 flex items-center">
-        <div className="max-w-6xl w-full mx-auto flex items-center justify-between gap-4">
+        <div className="max-w-6xl w-full mx-auto flex items-center justify-between gap-2 min-w-0">
           {/* Left: Brand & Badges with Clickable Home Reset */}
           <div
             onClick={() => {
@@ -122,7 +123,7 @@ export default function HomePage() {
                 setShowResetConfirmModal(true);
               }
             }}
-            className="flex items-center gap-2.5 cursor-pointer group select-none shrink-0"
+            className="flex items-center gap-2.5 cursor-pointer group select-none min-w-0"
             title="AppraisAI Home / Reset"
           >
             <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-white/40 shadow-sm shrink-0 bg-slate-900 group-hover:scale-105 transition-transform">
@@ -134,23 +135,23 @@ export default function HomePage() {
                 priority
               />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-white font-serif">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="text-lg sm:text-xl font-bold tracking-tight text-white font-serif shrink-0">
                   Apprais<span className="text-[#99f6e4]">AI</span>
                 </span>
-                <span className="bg-white/20 border border-white/40 text-white rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide">
+                <span className="hidden lg:inline-flex bg-white/20 border border-white/40 text-white rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide shrink-0">
                   v1.0 PRISMA & RoB 2.0
                 </span>
               </div>
-              <p className="text-xs text-white/85 italic hidden lg:block">
+              <p className="text-xs text-white/85 italic hidden lg:block truncate">
                 Automated Scientific Medical Paper Critical Appraisal & Report Engine
               </p>
             </div>
           </div>
 
           {/* Right: Actions, Author Profile & LLM Settings */}
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center gap-2 min-w-0">
             {/* Header New Appraisal Reset Button */}
             {(currentManuscript || currentAppraisal) && (
               <button
@@ -167,7 +168,7 @@ export default function HomePage() {
             <LlmSettingsModal />
 
             {/* Dr. Raouf Roshdy Signature Avatar Block */}
-            <div className="flex items-center gap-2 bg-black/15 border border-white/20 px-2.5 py-1 rounded-full shadow-inner">
+            <div className="flex items-center gap-2 bg-black/15 border border-white/20 px-1.5 md:px-2.5 py-1 rounded-full shadow-inner shrink-0">
               <div className="relative w-7 h-7 rounded-full overflow-hidden border-2 border-white/60 shrink-0 bg-teal-900">
                 <Image
                   src="/dr-raouf.jpg"
@@ -180,7 +181,7 @@ export default function HomePage() {
                   }}
                 />
               </div>
-              <span className="text-xs font-medium text-white italic tracking-wide pr-1 hidden sm:inline">
+              <span className="hidden md:inline truncate max-w-[10rem] text-xs font-medium text-white italic tracking-wide pr-1">
                 Dr Raouf Roshdy
               </span>
             </div>
@@ -396,12 +397,17 @@ export default function HomePage() {
             {/* Report Header Badges: Source, Engine, Review */}
             {status && (
               <div className="bg-white border border-[#d8dee6] rounded-xl p-4 sm:p-5 shadow-sm space-y-2">
-                <span className="text-xs font-bold text-[#0f6b6b]">
-                  {status.headline}
-                </span>
+                {!currentAppraisal.retraction?.isRetracted && (
+                  <span className="text-xs font-bold text-[#0f6b6b]">
+                    {status.headline}
+                  </span>
+                )}
                 <h1 id="report-title" className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
                   {currentAppraisal.metadata.title}
                 </h1>
+                {currentAppraisal.retraction?.isRetracted && (
+                  <RetractionBanner citation={currentAppraisal.retraction?.retractionCitation} />
+                )}
                 <div className="flex flex-wrap items-center gap-2 pt-1 font-sans">
                   <span className="px-2.5 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300">
                     Source: {status.source}

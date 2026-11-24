@@ -214,6 +214,96 @@ function extractPrimaryOutcomeDefinition(abstract: string, _title?: string): str
  * When data are absent or cannot be verified, explicitly reports 'Not reported'
  * or 'Not assessed by heuristic engine' — NEVER fabricates estimates or judgements.
  */
+const COMMERCIAL_COMPANY_RE =
+  /\b(?:inc\.?|corp\.?|corporation|llc|ltd\.?|plc|gmbh|ab|s\.?a\.?|pty\.?|b\.?v\.?|pharma(?:ceuticals?)?|therapeutics|biotech(?:nology)?|biosciences|medical\s+(?:systems|devices|technologies)|diagnostics|laboratories|boehringer\s+ingelheim|eli\s+lilly|astrazeneca|novartis|pfizer|roche|merck|sanofi|glaxosmithkline|gsk|bayer|novo\s+nordisk|ferring|johnson\s*&\s*johnson|abbvie|amgen|gilead|bristol[- ]myers|takeda|medtronic|boston\s+scientific|coopersurgical|organon)\b/i;
+
+const PUBLIC_NONPROFIT_RE =
+  /\b(?:nih|nhlbi|nci|mrc|nhmrc|cihr|wellcome|national|ministry|department|university|institute|institution|hospital|clinic|council|foundation|charity|trust|public|government|academy|society|association|college|center|centre|agency|board|fund)\b/i;
+
+export interface IndustryInvolvementResult {
+  industryFunded: boolean;
+  funderSignals: string[];
+  sponsorSignals: string[];
+  authorDisclosures: string[];
+  evidence: string[];
+}
+
+export function detectIndustryInvolvement(text: string): IndustryInvolvementResult {
+  const funderSignals: string[] = [];
+  const sponsorSignals: string[] = [];
+  const authorDisclosures: string[] = [];
+  const evidence: string[] = [];
+
+  // 1. Funding statements
+  const fundingMatches = [
+    ...text.matchAll(
+      /(?:funded\s+by|sponsored\s+by|grant\s+from|support(?:ed)?\s+by|funding\s+from|supported\s+by\s+a\s+grant\s+from)\s+([^.;\n]+)/gi
+    ),
+  ];
+  let industryFunded = false;
+  for (const m of fundingMatches) {
+    const funderRaw = (m[1] || '').replace(/<\/?[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!funderRaw) continue;
+    const isNamedCompany =
+      COMMERCIAL_COMPANY_RE.test(funderRaw) ||
+      (!PUBLIC_NONPROFIT_RE.test(funderRaw) &&
+        funderRaw.split(/\s+/).length <= 6 &&
+        /^[A-Z]/.test(funderRaw));
+    if (isNamedCompany) {
+      industryFunded = true;
+      const item = `Funder: ${funderRaw}`;
+      if (!funderSignals.includes(item)) {
+        funderSignals.push(item);
+        evidence.push(item);
+      }
+    }
+  }
+
+  // 2. Trial sponsor / supplier mentions
+  const sponsorMatches = [
+    ...text.matchAll(
+      /(?:trial\s+sponsor|sponsored\s+by|supplied\s+by|provided\s+by)\s+([^.;\n]{2,90})/gi
+    ),
+  ];
+  for (const m of sponsorMatches) {
+    const raw = (m[1] || '').replace(/<\/?[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (raw && COMMERCIAL_COMPANY_RE.test(raw)) {
+      const item = `Sponsor/Supplier: ${raw}`;
+      if (!funderSignals.some((f) => f.includes(raw)) && !sponsorSignals.includes(item)) {
+        sponsorSignals.push(item);
+        evidence.push(item);
+      }
+    }
+  }
+
+  // 3. Author competing-interests disclosures
+  const cleanText = text.replace(/<\/?[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const sentences = cleanText.split(/(?<=[.?!])\s+/);
+  for (const s of sentences) {
+    const trimmed = s.trim();
+    if (
+      /\b(?:received|reports?|declares?)\b[^.]{0,80}\b(?:honoraria|fees|grants?|consult)/i.test(
+        trimmed
+      ) &&
+      !/\bno\s+(?:conflicts?\s+of\s+interest|competing\s+interests?|disclosures?)\b/i.test(trimmed)
+    ) {
+      const item = `Author disclosure: ${trimmed.slice(0, 180)}`;
+      if (!authorDisclosures.includes(item)) {
+        authorDisclosures.push(item);
+        evidence.push(item);
+      }
+    }
+  }
+
+  return {
+    industryFunded,
+    funderSignals,
+    sponsorSignals,
+    authorDisclosures,
+    evidence,
+  };
+}
+
 export function generateDeterministicAppraisal(
   manuscript: ParsedManuscriptPayload
 ): MasterAppraisalReport {
@@ -278,17 +368,9 @@ export function generateDeterministicAppraisal(
     adherenceRate = adherenceMatch[1].trim();
   }
 
-  // Industry / commercial manufacturer funding detection (D14)
-  let fundingManufacturerConflict = false;
-  const fundingTextMatch = combinedText.match(/(?:funded\s+by|sponsored\s+by|grant\s+from|support(?:ed)?\s+by)\s+([^.;]+)/i);
-  if (fundingTextMatch && fundingTextMatch[1]) {
-    const funder = fundingTextMatch[1].toLowerCase();
-    const isPublicGov = /\b(nih|nhlbi|nci|mrc|nhmrc|cihr|wellcome|national|ministry|department|university|hospital|council|foundation|charity|trust|public)\b/i.test(funder);
-    const hasCommercialIndicator = /\b(inc\b|corp\b|ltd\b|gmbh\b|co\b|sa\b|ag\b|pharma|therapeutics|biotech|device|systems|laboratories)\b/i.test(funder);
-    if (hasCommercialIndicator || (!isPublicGov && !/\bgovernment\b/i.test(funder))) {
-      fundingManufacturerConflict = true;
-    }
-  }
+  // Industry / commercial manufacturer funding & disclosure detection
+  const industry = detectIndustryInvolvement(combinedText);
+  const fundingManufacturerConflict = industry.industryFunded;
 
   // General post-randomization attrition / exclusions rule (D06, D07: >5% invalidates Low Risk on Domain 3)
   let postRandomizationExclusionsCount = 0;
@@ -652,6 +734,12 @@ export function generateDeterministicAppraisal(
     PREDICTION_MODEL: /predict|model|algorithm|machine learning|deep learning|artificial intelligence/i,
   };
   const checklistText = `${rawAbstract} ${rawFullText}`;
+  const introText = [
+    rawAbstract,
+    ...(Array.isArray(manuscript.sections) ? manuscript.sections : [])
+      .filter((s: any) => /introduction|background/i.test(s.heading || ''))
+      .map((s: any) => s.content),
+  ].join(' ');
   const equatorAudit = governingRules.equatorMandatoryItems.map((item) => {
     const label = `${item.itemNumberAndSection} ${item.requirement}`;
     const rule = CHECKLIST_CUES.find((r) => r.label.test(item.itemNumberAndSection)) ?? CHECKLIST_CUES.find((r) => r.label.test(label));
@@ -663,7 +751,11 @@ export function generateDeterministicAppraisal(
     } else if (rule?.structural === 'structured-abstract') {
       if (isStructuredAbstract) { status = 'REPORTED'; evidence = 'Structured abstract with labelled sections.'; }
     } else if (rule) {
-      const hit = findCue(checklistText, rule.cue, rule.reject);
+      const hit = findCue(
+        /background|rationale/i.test(item.itemNumberAndSection) ? introText : checklistText,
+        rule.cue,
+        rule.reject
+      );
       if (hit) { status = 'REPORTED'; evidence = hit; }
     }
     return {
@@ -815,7 +907,11 @@ export function generateDeterministicAppraisal(
       flawsStatus: 'not-assessed' as const,
       minorLimitations: [
         ...(stoppedEarly ? ['Premature trial termination / under-recruitment: trial ended prior to planned sample accrual, introducing potential risk of imprecision.'] : []),
-        ...(fundingManufacturerConflict ? ['Potential conflict of interest: funding source matches the commercial manufacturer or developer of the evaluated intervention.'] : []),
+        ...(industry.evidence.length > 0
+          ? [
+              `Industry involvement detected — ${industry.evidence.join('; ')}. Verify whether the company makes or sells the intervention.`,
+            ]
+          : []),
         ...((detectedDesign === 'PREDICTION_MODEL' || (detectedDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS' && includedDesigns(rawAbstract) === 'MODEL_PERFORMANCE'))
           ? aiValidationSignals(`${rawAbstract} ${rawFullText}`)
               .filter((s) => !s.found)

@@ -348,6 +348,34 @@ export function buildAcademicDocxManuscript(
           }),
         },
         children: [
+          ...(report.retraction?.isRetracted
+            ? [
+                new Paragraph({
+                  alignment: AlignmentType.LEFT,
+                  spacing: { before: 0, after: 160 },
+                  shading: { type: ShadingType.CLEAR, fill: 'FEF2F2' },
+                  border: {
+                    top: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                    bottom: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                    left: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                    right: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                  },
+                  children: [
+                    new TextRun({
+                      text: `⚠ This article has been RETRACTED. ${
+                        report.retraction.retractionCitation
+                          ? `${report.retraction.retractionCitation}. `
+                          : ''
+                      }Its findings must not be used for clinical decisions. Any appraisal below is for teaching only.`,
+                      font: TYPOGRAPHY.FONT_PRIMARY,
+                      size: 22,
+                      bold: true,
+                      color: 'B91C1C',
+                    }),
+                  ],
+                }),
+              ]
+            : []),
           // ---------------------------------------------------------
           // DOCUMENT HEADER BANNER
           // ---------------------------------------------------------

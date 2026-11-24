@@ -122,14 +122,16 @@ export const LlmSettingsModal: React.FC = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-lg border border-white/20 transition-colors shadow-xs"
+        aria-label="LLM Provider settings"
+        className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-lg border border-white/20 transition-colors shadow-xs"
       >
-        <Settings className="w-3.5 h-3.5 text-teal-200" />
-        LLM Provider
+        <Settings className="w-3.5 h-3.5 text-teal-200 shrink-0" />
+        <span className="sm:hidden">LLM</span>
+        <span className="hidden sm:inline">LLM Provider</span>
         {apiKey ? (
-          <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block ml-0.5" title="Custom API Key Active" />
+          <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block ml-0.5 shrink-0" title="Custom API Key Active" />
         ) : (
-          <span className="text-[10px] bg-teal-800/80 text-teal-100 px-1.5 py-0.2 rounded font-normal">
+          <span className="hidden md:inline text-[11px] bg-teal-800/80 text-teal-100 px-1.5 py-0.2 rounded font-normal">
             Deterministic Active
           </span>
         )}

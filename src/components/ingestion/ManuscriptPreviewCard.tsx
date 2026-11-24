@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { SourceDepthBadge } from './SourceDepthBadge';
+import { RetractionBanner } from '@/components/common/RetractionBanner';
 import {
   BookOpen,
   ArrowRight,
@@ -163,6 +164,9 @@ export const ManuscriptPreviewCard: React.FC = () => {
       </div>
 
       <div className="p-6 space-y-6">
+        {currentManuscript.retraction?.isRetracted && (
+          <RetractionBanner citation={currentManuscript.retraction?.retractionCitation} />
+        )}
         {/* P0-4: Block Appraisal if Content Unavailable */}
         {currentManuscript.contentAvailable === false && (
           <div className="p-4 bg-red-50 border border-red-300 rounded-xl flex items-start gap-3 shadow-xs">
@@ -347,6 +351,12 @@ export const ManuscriptPreviewCard: React.FC = () => {
                 <>
                   <AlertTriangle className="w-4 h-4 text-slate-500" />
                   Only bibliographic metadata was found — upload the PDF
+                </>
+              ) : currentManuscript.retraction?.isRetracted ? (
+                <>
+                  <AlertTriangle className="w-4 h-4" />
+                  Appraise anyway (teaching only)
+                  <ArrowRight className="w-4 h-4" />
                 </>
               ) : (
                 <>

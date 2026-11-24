@@ -145,6 +145,19 @@ export const ManuscriptPreviewModal: React.FC<ManuscriptPreviewModalProps> = ({
           )}
 
           <div className="max-w-[760px] mx-auto bg-white p-8 sm:p-12 shadow-sm border border-slate-200 space-y-6">
+            {report.retraction?.isRetracted && (
+              <p
+                role="alert"
+                className="text-xs font-bold text-[#B91C1C] bg-[#FEF2F2] border border-[#B91C1C] rounded-md px-3 py-2 font-sans"
+              >
+                ⚠ This article has been RETRACTED.{' '}
+                {report.retraction?.retractionCitation
+                  ? `${report.retraction.retractionCitation}. `
+                  : ''}
+                Its findings must not be used for clinical decisions. Any appraisal below is for
+                teaching only.
+              </p>
+            )}
             {/* 2-Line Running Header */}
             <div className="border-b border-slate-300 pb-2.5 font-sans space-y-1">
               <div className="flex justify-between items-center text-[10px] uppercase tracking-wider font-bold text-slate-800">
