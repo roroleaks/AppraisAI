@@ -255,10 +255,10 @@ export function classifyStudyDesign(
 /**
  * Extracts a concise noun phrase representing the primary outcome definition.
  */
-function extractPrimaryOutcomeDefinition(abstract: string, title: string): string {
+function extractPrimaryOutcomeDefinition(abstract: string): string {
   // 1. Direct definition in abstract
   const defMatch = abstract.match(
-    /(?:the\s+)?primary\s+(?:review\s+)?(?:outcome|end\s*point)\s+(?:was|were|included|is|defined as)\s+(?:a\s+)?([^.;]+)/i
+    /(?:the\s+)?primary\s+(?:review\s+|efficacy\s+)?(?:outcome|end\s*point)\s+(?:was|were|included|is|defined as)\s+(?:a\s+)?([^.;]+)/i
   );
   if (defMatch && defMatch[1]) {
     return defMatch[1].trim().replace(/\s+with\s+a\s+non-?inferiority.*$/i, '');
@@ -271,12 +271,6 @@ function extractPrimaryOutcomeDefinition(abstract: string, title: string): strin
   if (compositeMatch && compositeMatch[1]) {
     return `composite of ${compositeMatch[1].trim()}`;
   }
-
-  // 3. Fallback: check if title specifies the clinical question
-  if (/preeclampsia/i.test(title)) return 'preterm preeclampsia';
-  if (/live birth/i.test(title)) return 'live birth rate';
-  if (/disability-free survival/i.test(title)) return 'disability-free survival';
-  if (/heart failure/i.test(title)) return 'worsening heart failure or cardiovascular death';
 
   return '';
 }
@@ -345,28 +339,37 @@ export function generateDeterministicAppraisal(
     rawAbstract
   );
 
-  // Adherence (Task B2): e.g. ASPREE 62-64%
+  // Adherence: extract reported percentage
   let adherenceRate: string | undefined = undefined;
   const adherenceMatch = rawAbstract.match(/(?:adherence\s+(?:rate|to\s+the\s+assigned\s+intervention)?\s+was\s+([0-9.]+%[^\.;]+))/i);
   if (adherenceMatch && adherenceMatch[1]) {
     adherenceRate = adherenceMatch[1].trim();
   }
 
-  // Funder matching intervention manufacturer (Task B2): e.g. Vitrolife -> iDAScore
+  // Industry / commercial manufacturer funding detection (D14)
   let fundingManufacturerConflict = false;
-  if (/vitrolife/i.test(combinedText) && /idascore|embryo/i.test(combinedText)) {
-    fundingManufacturerConflict = true;
+  const fundingTextMatch = combinedText.match(/(?:funded\s+by|sponsored\s+by|grant\s+from|support(?:ed)?\s+by)\s+([^.;]+)/i);
+  if (fundingTextMatch && fundingTextMatch[1]) {
+    const funder = fundingTextMatch[1].toLowerCase();
+    const isPublicGov = /\b(nih|nhlbi|nci|mrc|nhmrc|cihr|wellcome|national|ministry|department|university|hospital|council|foundation|charity|trust|public)\b/i.test(funder);
+    const hasCommercialIndicator = /\b(inc\b|corp\b|ltd\b|gmbh\b|co\b|sa\b|ag\b|pharma|therapeutics|biotech|device|systems|laboratories)\b/i.test(funder);
+    if (hasCommercialIndicator || (!isPublicGov && !/\bgovernment\b/i.test(funder))) {
+      fundingManufacturerConflict = true;
+    }
   }
 
-  // Check post-randomization attrition / exclusions (>5% invalidates Low Risk on Domain 3)
-  const exclusionMatch = rawAbstract.match(
-    /(?:withdrew\s+consent|lost\s+to\s+follow-?up|withdrawn|lost)[^.]*?(\d{1,4})/i
-  );
+  // General post-randomization attrition / exclusions rule (D06, D07: >5% invalidates Low Risk on Domain 3)
   let postRandomizationExclusionsCount = 0;
-  if (/152\s+women\s+withdrew\s+consent.*?4\s+(?:were\s+)?lost/i.test(rawAbstract)) {
-    postRandomizationExclusionsCount = 156;
-  } else if (exclusionMatch && exclusionMatch[1]) {
-    postRandomizationExclusionsCount = parseInt(exclusionMatch[1], 10);
+  const attritionMatches = [...rawAbstract.matchAll(/(\d{1,4})\s+(?:women|patients|participants|subjects)?\s*(?:withdrew(?:\s+consent)?|were\s+withdrawn|lost\s+to\s+follow-?up)/gi)];
+  if (attritionMatches.length > 0) {
+    postRandomizationExclusionsCount = attritionMatches.reduce((acc, m) => acc + parseInt(m[1], 10), 0);
+  } else {
+    const exclusionMatch = rawAbstract.match(
+      /(?:withdrew\s+consent|lost\s+to\s+follow-?up|withdrawn|lost)[^.]*?(\d{1,4})/i
+    );
+    if (exclusionMatch && exclusionMatch[1]) {
+      postRandomizationExclusionsCount = parseInt(exclusionMatch[1], 10);
+    }
   }
 
   // -----------------------------------------------------------------
@@ -462,7 +465,7 @@ export function generateDeterministicAppraisal(
   }
 
   // 2E. Primary & Secondary Outcomes (Task A1, A6)
-  const primaryOutcomeDefinition = extractPrimaryOutcomeDefinition(rawAbstract, meta.title);
+  const primaryOutcomeDefinition = extractPrimaryOutcomeDefinition(rawAbstract);
   let primaryOutcomes: string[] = [];
   if (primaryOutcomeDefinition) {
     primaryOutcomes = [primaryOutcomeDefinition];

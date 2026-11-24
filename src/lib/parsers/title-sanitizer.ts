@@ -117,8 +117,8 @@ export function cleanBiomedicalAuthors(authors?: string[] | string): string[] {
 
 /**
  * Extracts a clean first author surname for file naming.
- * Correctly handles 'Siddiqi HK' -> 'Siddiqi', 'McMurray JJV' -> 'McMurray',
- * 'Dr. Inas Taha, MD' -> 'Taha', 'van der Berg A' -> 'van der Berg'.
+ * Correctly handles 'Surname AB' -> 'Surname',
+ * 'Dr. First Last, MD' -> 'Last', 'van der Berg A' -> 'van der Berg'.
  */
 export function extractFirstAuthorSurname(authorStr: string): string {
   if (!authorStr || authorStr.startsWith('[')) return 'Manuscript';
@@ -138,7 +138,7 @@ export function extractFirstAuthorSurname(authorStr: string): string {
   const parts = clean.split(/\s+/).filter(Boolean);
   if (parts.length === 1) return parts[0];
 
-  // If last part is initials (e.g. "Siddiqi HK", "McMurray JJV", "Norman RJ")
+  // If last part is initials (e.g. "Surname HK", "Author JJV")
   const lastPart = parts[parts.length - 1];
   if (/^[A-Z]{1,4}\.?$/.test(lastPart)) {
     return parts.slice(0, parts.length - 1).join(' ');
