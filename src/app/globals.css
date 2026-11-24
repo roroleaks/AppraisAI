@@ -7,8 +7,30 @@
   --background-rgb: 248, 250, 252;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
+
+/* ---- Accessibility (focus, tap targets, reduced motion) ---- */
+:where(button, a, input, select, textarea, summary, [tabindex]):focus-visible { outline: 2px solid #0F6B6B; outline-offset: 2px; border-radius: 6px; }
+@media (max-width: 1023px) { :where(button, [role="tab"], summary, a.btn) { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ---- Report reading scale (overrides small Tailwind sizes only inside the report) ---- */
+.report { font-size: 15px; line-height: 1.6; color: #1e293b; }
+.report .text-xs { font-size: 14px; line-height: 1.55; }
+.report .text-\[10px\], .report .text-\[11px\] { font-size: 12px; line-height: 1.4; letter-spacing: .02em; }
+.report .text-sm { font-size: 15px; line-height: 1.6; }
+.report td, .report th { font-size: 14px; line-height: 1.55; padding: 10px 12px; vertical-align: top; }
+.report h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 26px; line-height: 1.25; font-weight: 700; }
+.report h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 21px; line-height: 1.3; font-weight: 700; text-transform: none; letter-spacing: 0; color: #0f172a; margin-top: 32px; }
+.report h3 { font-size: 17px; line-height: 1.35; font-weight: 600; text-transform: none; letter-spacing: 0; color: #0f172a; }
+.report .text-slate-500, .report .text-\[\#64748B\] { color: #475569; }   /* AA on light cards */
+@media (max-width: 640px) { .report { font-size: 16px; } .report td, .report th { font-size: 15px; } }

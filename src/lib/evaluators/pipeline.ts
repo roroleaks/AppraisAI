@@ -13,6 +13,7 @@ import {
 import { ParsedManuscriptPayload } from '../schemas/ingestion.schema';
 import { getGoverningFrameworkRules } from './framework-router';
 import { synthesizeGradeCertainty } from './grade-engine';
+import { includedDesigns } from './review-designs';
 import crypto from 'crypto';
 
 export type PipelineStageCallback = (stage: number, stageName: string, detail: string) => void;
@@ -122,7 +123,7 @@ export async function execute4PassAppraisalPipeline(
   onProgress?.(1, 'Pass 1: Study Classification & PICO', 'Deconstructing study design, Oxford CEBM level, and PICO/PECO framework...');
 
   const pass1System = `You are a Principal Epidemiologist and Methodologist.
-Analyze the scientific paper text provided. Accurately detect the primary study design (RCT, SYSTEMATIC_REVIEW_META_ANALYSIS, COHORT_STUDY, CASE_CONTROL_STUDY, CROSS_SECTIONAL, DIAGNOSTIC_ACCURACY, CLINICAL_PRACTICE_GUIDELINE, OTHER).
+Analyze the scientific paper text provided. Accurately detect the primary study design (RCT, SYSTEMATIC_REVIEW_META_ANALYSIS, COHORT_STUDY, CASE_CONTROL_STUDY, CROSS_SECTIONAL, DIAGNOSTIC_ACCURACY, PREDICTION_MODEL, CLINICAL_PRACTICE_GUIDELINE, OTHER).
 Deconstruct the PICO/PECO components thoroughly and write a four-part Executive Structured Commentary Abstract (Background, Methodological Summary, Key Findings, Critical Verdict).
 If the source depth is ABSTRACT_ONLY_FALLBACK, explicitly note this in the methodological summary.${INTEGRITY_RULE}`;
 
@@ -223,6 +224,13 @@ Formulate practical bottom-line recommendations for practicing clinicians and fu
   });
 
   // Programmatically synthesize GRADE certainty using rule engine
+  const rawInc = pass1Result.studyDesign === 'SYSTEMATIC_REVIEW_META_ANALYSIS'
+    ? includedDesigns(`${manuscript.abstract} ${manuscript.fullText.slice(0, 6000)}`)
+    : undefined;
+  const mappedDesigns = (rawInc === 'MODEL_PERFORMANCE' || rawInc === 'UNKNOWN')
+    ? 'OBSERVATIONAL'
+    : rawInc;
+
   const gradeEngineOutput = synthesizeGradeCertainty({
     studyDesign: pass1Result.studyDesign,
     overallRiskOfBias: pass2Result.riskOfBias.overallRisk,
@@ -232,6 +240,7 @@ Formulate practical bottom-line recommendations for practicing clinicians and fu
     publicationBiasSuspected: pass4Result.publicationBiasSuspected,
     largeEffectSize: pass4Result.largeEffectSize,
     doseResponseGradient: pass4Result.doseResponseGradient,
+    includedStudyDesigns: mappedDesigns,
   });
 
   // Compile standard Vancouver Reference List
@@ -264,9 +273,8 @@ Formulate practical bottom-line recommendations for practicing clinicians and fu
     {
       number: 5,
       vancouverCitation:
-        'Oxford Centre for Evidence-Based Medicine: Levels of Evidence (March 2009). Oxford: OCEBM; 2009.',
-      doiOrUrl:
-        'https://www.cebm.ox.ac.uk/resources/levels-of-evidence/oxford-centre-for-evidence-based-medicine-levels-of-evidence-march-2009',
+        'OCEBM Levels of Evidence Working Group. "The Oxford 2011 Levels of Evidence". Oxford Centre for Evidence-Based Medicine.',
+      doiOrUrl: 'https://www.cebm.ox.ac.uk/resources/levels-of-evidence/ocebm-levels-of-evidence',
     },
   ];
 

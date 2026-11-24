@@ -116,14 +116,45 @@ export function cleanBiomedicalAuthors(authors?: string[] | string): string[] {
 }
 
 /**
- * Derives a clean filename prefix for downloads: e.g. "Critical_Appraisal_McMurray_2026.docx"
+ * Extracts a clean first author surname for file naming.
+ * Correctly handles 'Surname AB' -> 'Surname',
+ * 'Dr. First Last, MD' -> 'Last', 'van der Berg A' -> 'van der Berg'.
  */
-export function getCleanDownloadFilename(authors?: string[] | string, year?: number | string): string {
+export function extractFirstAuthorSurname(authorStr: string): string {
+  if (!authorStr || authorStr.startsWith('[')) return 'Manuscript';
+
+  // Strip titles & degrees
+  let clean = authorStr
+    .replace(/^(?:Dr\.?|Prof\.?|Assoc\.?\s*Prof\.?)\s+/i, '')
+    .replace(/,\s*(?:MD|PhD|MBBS|FRCOG|FACOG|MS|MPH|FACS|FRCS).*$/i, '')
+    .replace(/[*0-9]/g, '')
+    .trim();
+
+  // If "LastName, FirstName"
+  if (clean.includes(',')) {
+    return clean.split(',')[0].trim();
+  }
+
+  const parts = clean.split(/\s+/).filter(Boolean);
+  if (parts.length === 1) return parts[0];
+
+  // If last part is initials (e.g. "Surname HK", "Author JJV")
+  const lastPart = parts[parts.length - 1];
+  if (/^[A-Z]{1,4}\.?$/.test(lastPart)) {
+    return parts.slice(0, parts.length - 1).join(' ');
+  }
+
+  // If first part is name and last part is surname (e.g. "John McNeil")
+  return lastPart;
+}
+
+/**
+ * Derives a clean filename prefix for downloads: e.g. "Critical_Appraisal_Siddiqi_2020.docx"
+ */
+export function getCleanDownloadFilename(authors?: string[] | string, year?: number | string, isDraft?: boolean): string {
   const cleanAuthors = cleanBiomedicalAuthors(authors);
   const first = cleanAuthors[0] && !cleanAuthors[0].startsWith('[') ? cleanAuthors[0] : 'Manuscript';
-  // Extract last name: e.g. 'Smith AB' -> 'Smith' or 'McMurray JJV' -> 'McMurray'
-  const lastNameMatch = first.match(/(?:Dr\.?\s+)?(?:[A-Z][a-z]+\s+)?([A-Z][a-zA-Z-]+)/);
-  const lastName = lastNameMatch ? lastNameMatch[1] : 'Manuscript';
+  const lastName = extractFirstAuthorSurname(first);
   const pubYear = year || new Date().getFullYear();
-  return `Critical_Appraisal_${lastName}_${pubYear}.docx`;
+  return `Critical_Appraisal_${lastName}_${pubYear}${isDraft ? '_DRAFT' : ''}.docx`;
 }

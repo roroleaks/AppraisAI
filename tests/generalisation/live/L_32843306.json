@@ -1,0 +1,274 @@
+{
+ "id": "32843306",
+ "source": "MED",
+ "pmid": "32843306",
+ "doi": "10.1016/j.rbmo.2020.07.003",
+ "title": "Embryo Ranking Intelligent Classification Algorithm (ERICA): artificial intelligence clinical assistant predicting embryo ploidy and implantation.",
+ "authorString": "Chavez-Badiola A, Flores-Saiffe-Farías A, Mendizabal-Ruiz G, Drakeley AJ, Cohen J.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Chavez-Badiola A",
+    "lastName": "Chavez-Badiola",
+    "firstName": "Alejandro",
+    "initials": "A",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-7977-3174"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "New Hope Fertility Center Mexico. Av. Prado Norte 135, Lomas de Chapultepec, Miguel Hidalgo, Mexico City, Mexico CP 11000; IVF 2.0 LTD, 1 Liverpool Road, Maghull, Merseyside, UK. Electronic address: acb@EmbryoRanking.com."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Flores-Saiffe-Farías A",
+    "lastName": "Flores-Saiffe-Farías",
+    "firstName": "Adolfo",
+    "initials": "A",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-4504-7251"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "New Hope Fertility Center Mexico. Av. Prado Norte 135, Lomas de Chapultepec, Miguel Hidalgo, Mexico City, Mexico CP 11000; IVF 2.0 LTD, 1 Liverpool Road, Maghull, Merseyside, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Mendizabal-Ruiz G",
+    "lastName": "Mendizabal-Ruiz",
+    "firstName": "Gerardo",
+    "initials": "G",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-3757-4409"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Computational Sciences, Universidad de Guadalajara, Guadalajara, Mexico."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Drakeley AJ",
+    "lastName": "Drakeley",
+    "firstName": "Andrew J",
+    "initials": "AJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "IVF 2.0 LTD, 1 Liverpool Road, Maghull, Merseyside, UK; Hewitt Fertility Centre, Liverpool Women's NHS Foundation Trust, Liverpool, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Cohen J",
+    "lastName": "Cohen",
+    "firstName": "Jacques",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "IVF 2.0 LTD, 1 Liverpool Road, Maghull, Merseyside, UK; ART Institute of Washington, Bethesda Maryland, USA; IVFqc, 1185 Sixth Avenue, New York New York, USA."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0002-3757-4409"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7977-3174"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-4504-7251"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics"
+  ]
+ },
+ "journalInfo": {
+  "issue": "4",
+  "volume": "41",
+  "journalIssueId": 3034102,
+  "dateOfPublication": "2020 Oct",
+  "monthOfPublication": 10,
+  "yearOfPublication": 2020,
+  "journal": {
+   "medlineAbbreviation": "Reprod Biomed Online",
+   "title": "Reproductive biomedicine online",
+   "essn": "1472-6491",
+   "issn": "1472-6483",
+   "nlmid": "101122473",
+   "isoabbreviation": "Reprod Biomed Online"
+  },
+  "printPublicationDate": "2020-10-01"
+ },
+ "pubYear": "2020",
+ "pageInfo": "585-593",
+ "abstractText": "<h4>Research question</h4>Can a deep machine learning artificial intelligence algorithm predict ploidy and implantation in a known data set of static blastocyst images, and how does its performance compare against chance and experienced embryologists?<h4>Design</h4>A database of blastocyst images with known outcome was applied with an algorithm dubbed ERICA (Embryo Ranking Intelligent Classification Algorithm). It was evaluated against its ability to predict euploidy, compare ploidy prediction against randomly assigned prognosis labels and against senior embryologists, and if it could rank an euploid embryo highly.<h4>Results</h4>A total of 1231 embryo images were classed as good prognosis if euploid and implanted or poor prognosis if aneuploid and failed to implant. An accuracy of 0.70 was obtained with ERICA, with positive predictive value of 0.79 for predicting euploidy. ERICA had greater normalized discontinued cumulative gain (ranking metric) than random selection (P = 0.0007), and both embryologists (P = 0.0014 and 0.0242, respectively). ERICA ranked an euploid blastocyst first in 78.9% and at least one euploid embryo within the top two blastocysts in 94.7% of cases, better than random classification and the two senior embryologists. Average embryo ranking time for four blastocysts was under 25 s.<h4>Conclusion</h4>Artificial intelligence lends itself well to image pattern recognition. We have trained ERICA to rank embryos based on ploidy and implantation potential using single static embryo image. This tool represents a potentially significant advantage to assist embryologists to choose the best embryo, saving time spent annotating and does not require time lapse or invasive biopsy. Future work should be directed to evaluate reproducibility in different data sets.",
+ "affiliation": "New Hope Fertility Center Mexico. Av. Prado Norte 135, Lomas de Chapultepec, Miguel Hidalgo, Mexico City, Mexico CP 11000; IVF 2.0 LTD, 1 Liverpool Road, Maghull, Merseyside, UK. Electronic address: acb@EmbryoRanking.com.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Prognosis"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Transfer",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fertilization in Vitro",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Reproducibility of Results"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Implantation",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "PH",
+       "qualifierName": "physiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Ploidies"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Algorithms"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Databases, Factual"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Deep Learning"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Artificial intelligence",
+   "Embryo Selection",
+   "Erica",
+   "Deep Machine-learning",
+   "Embryo Ranking",
+   "Noninvasive Embryo Assessment"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1016/j.rbmo.2020.07.003"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 115,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2021-09-28",
+ "dateOfCreation": "2020-08-27",
+ "dateOfRevision": "2021-09-28",
+ "electronicPublicationDate": "2020-07-05",
+ "firstPublicationDate": "2020-07-05",
+ "firstIndexDate": "2020-08-27",
+ "hasEvaluations": "N"
+}

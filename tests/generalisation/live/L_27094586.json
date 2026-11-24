@@ -1,0 +1,462 @@
+{
+ "id": "27094586",
+ "source": "MED",
+ "pmid": "27094586",
+ "pmcid": "PMC4837230",
+ "fullTextIdList": {
+  "fullTextId": [
+   "PMC4837230"
+  ]
+ },
+ "doi": "10.1136/bmj.i1753",
+ "title": "Clinical risk factors for pre-eclampsia determined in early pregnancy: systematic review and meta-analysis of large cohort studies.",
+ "authorString": "Bartsch E, Medcalf KE, Park AL, Ray JG, High Risk of Pre-eclampsia Identification Group.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Bartsch E",
+    "lastName": "Bartsch",
+    "firstName": "Emily",
+    "initials": "E",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "University of Toronto, Toronto, Canada."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Medcalf KE",
+    "lastName": "Medcalf",
+    "firstName": "Karyn E",
+    "initials": "KE",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "University of Toronto, Toronto, Canada."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Park AL",
+    "lastName": "Park",
+    "firstName": "Alison L",
+    "initials": "AL",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Institute for Clinical Evaluative Sciences, Toronto, Canada."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Ray JG",
+    "lastName": "Ray",
+    "firstName": "Joel G",
+    "initials": "JG",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Departments of Medicine, Health Policy Management and Evaluation, and Obstetrics and Gynecology, St Michael's Hospital, University of Toronto, Toronto, Canada rayj@smh.ca."
+      }
+     ]
+    }
+   },
+   {
+    "collectiveName": "High Risk of Pre-eclampsia Identification Group"
+   }
+  ]
+ },
+ "investigatorList": {
+  "investigator": [
+   {
+    "fullName": "Al-Rubaie ZT",
+    "lastName": "Al-Rubaie",
+    "firstName": "Ziad T A",
+    "initials": "ZT"
+   },
+   {
+    "fullName": "Askie LM",
+    "lastName": "Askie",
+    "firstName": "Lisa M",
+    "initials": "LM"
+   },
+   {
+    "fullName": "Berger H",
+    "lastName": "Berger",
+    "firstName": "Howard",
+    "initials": "H",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-3842-213X"
+    }
+   },
+   {
+    "fullName": "Blake J",
+    "lastName": "Blake",
+    "firstName": "Jennifer",
+    "initials": "J"
+   },
+   {
+    "fullName": "Graves L",
+    "lastName": "Graves",
+    "firstName": "Lisa",
+    "initials": "L"
+   },
+   {
+    "fullName": "Kingdom JC",
+    "lastName": "Kingdom",
+    "firstName": "John C",
+    "initials": "JC"
+   },
+   {
+    "fullName": "Leitch GC",
+    "lastName": "Leitch",
+    "firstName": "Gordon C",
+    "initials": "GC"
+   },
+   {
+    "fullName": "Lebovic G",
+    "lastName": "Lebovic",
+    "firstName": "Gerald",
+    "initials": "G"
+   },
+   {
+    "fullName": "Lord SJ",
+    "lastName": "Lord",
+    "firstName": "Sally J",
+    "initials": "SJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-2763-5949"
+    }
+   },
+   {
+    "fullName": "Maguire JL",
+    "lastName": "Maguire",
+    "firstName": "Jonathon L",
+    "initials": "JL"
+   },
+   {
+    "fullName": "Mamdani MM",
+    "lastName": "Mamdani",
+    "firstName": "Muhammad M",
+    "initials": "MM"
+   },
+   {
+    "fullName": "Meloche J",
+    "lastName": "Meloche",
+    "firstName": "James",
+    "initials": "J"
+   },
+   {
+    "fullName": "Urquia ML",
+    "lastName": "Urquia",
+    "firstName": "Marcelo L",
+    "initials": "ML",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8289-8090"
+    }
+   },
+   {
+    "fullName": "Van Wagner V",
+    "lastName": "Van Wagner",
+    "firstName": "Vicki",
+    "initials": "V"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8289-8090"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-2763-5949"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-3842-213X"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "supporting_data",
+   "wikipedia"
+  ]
+ },
+ "journalInfo": {
+  "volume": "353",
+  "journalIssueId": 2477502,
+  "dateOfPublication": "2016 Apr",
+  "monthOfPublication": 4,
+  "yearOfPublication": 2016,
+  "journal": {
+   "medlineAbbreviation": "BMJ",
+   "title": "BMJ (Clinical research ed.)",
+   "essn": "1756-1833",
+   "issn": "0959-8138",
+   "nlmid": "8900488",
+   "isoabbreviation": "BMJ"
+  },
+  "printPublicationDate": "2016-04-01"
+ },
+ "pubYear": "2016",
+ "pageInfo": "i1753",
+ "abstractText": "<h4>Objective</h4>To develop a practical evidence based list of clinical risk factors that can be assessed by a clinician at ≤ 16 weeks' gestation to estimate a woman's risk of pre-eclampsia.<h4>Design</h4>Systematic review and meta-analysis of cohort studies.<h4>Data sources</h4>PubMed and Embase databases, 2000-15.<h4>Eligibility criteria for selecting studies</h4>Cohort studies with ≥ 1000 participants that evaluated the risk of pre-eclampsia in relation to a common and generally accepted clinical risk factor assessed at ≤ 16 weeks' gestation.<h4>Data extraction</h4>Two independent reviewers extracted data from included studies. A pooled event rate and pooled relative risk for pre-eclampsia were calculated for each of 14 risk factors.<h4>Results</h4>There were 25,356,688 pregnancies among 92 studies. The pooled relative risk for each risk factor significantly exceeded 1.0, except for prior intrauterine growth restriction. Women with antiphospholipid antibody syndrome had the highest pooled rate of pre-eclampsia (17.3%, 95% confidence interval 6.8% to 31.4%). Those with prior pre-eclampsia had the greatest pooled relative risk (8.4, 7.1 to 9.9). Chronic hypertension ranked second, both in terms of its pooled rate (16.0%, 12.6% to 19.7%) and pooled relative risk (5.1, 4.0 to 6.5) of pre-eclampsia. Pregestational diabetes (pooled rate 11.0%, 8.4% to 13.8%; pooled relative risk 3.7, 3.1 to 4.3), prepregnancy body mass index (BMI) >30 (7.1%, 6.1% to 8.2%; 2.8, 2.6 to 3.1), and use of assisted reproductive technology (6.2%, 4.7% to 7.9%; 1.8, 1.6 to 2.1) were other prominent risk factors.<h4>Conclusions</h4>There are several practical clinical risk factors that, either alone or in combination, might identify women in early pregnancy who are at \"high risk\" of pre-eclampsia. These data can inform the generation of a clinical prediction model for pre-eclampsia and the use of aspirin prophylaxis in pregnancy.",
+ "affiliation": "University of Toronto, Toronto, Canada.",
+ "publicationStatus": "epublish",
+ "language": "eng",
+ "pubModel": "Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Meta-Analysis",
+   "Research Support, Non-U.S. Gov't",
+   "research-article",
+   "Systematic Review",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "Canadian Institutes of Health Research",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Hypertension, Pregnancy-Induced"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pre-Eclampsia",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "DI",
+       "qualifierName": "diagnosis"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy in Diabetics"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Chronic Disease"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Aspirin",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Platelet Aggregation Inhibitors",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Prenatal Diagnosis",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Body Mass Index"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Early Diagnosis"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Reproductive Techniques, Assisted",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Risk Factors"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Cohort Studies"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Trimester, First"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Trimester, Second"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Randomized Controlled Trials as Topic"
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Platelet Aggregation Inhibitors",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Aspirin",
+    "registryNumber": "R16CO5Y76E"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1136/bmj.i1753"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "html",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC4837230"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "27220841",
+    "reference": "BMJ. 2016 May 24;353:i2889. doi: 10.1136/bmj.i2889.",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "27220957",
+    "reference": "BMJ. 2016 May 24;353:i2885. doi: 10.1136/bmj.i2885.",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "27333882",
+    "reference": "BMJ. 2016 Jun 22;353:i3403. doi: 10.1136/bmj.i3403.",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "27334104",
+    "reference": "BMJ. 2016 Jun 22;353:i3402. doi: 10.1136/bmj.i3402.",
+    "type": "Comment in",
+    "orderIn": 4
+   }
+  ]
+ },
+ "isOpenAccess": "Y",
+ "inEPMC": "Y",
+ "inPMC": "Y",
+ "citedByCount": 660,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "Y",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "license": "cc by-nc",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "doi"
+  ]
+ },
+ "dateOfCompletion": "2016-08-30",
+ "dateOfCreation": "2016-04-21",
+ "dateOfRevision": "2025-06-26",
+ "electronicPublicationDate": "2016-04-19",
+ "firstPublicationDate": "2016-04-19",
+ "firstIndexDate": "2016-04-21",
+ "fullTextReceivedDate": "2025-02-03",
+ "hasEvaluations": "N"
+}

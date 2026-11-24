@@ -1,0 +1,310 @@
+{
+ "id": "29320655",
+ "source": "MED",
+ "pmid": "29320655",
+ "doi": "10.1056/nejmoa1703768",
+ "title": "IVF Transfer of Fresh or Frozen Embryos in Women without Polycystic Ovaries.",
+ "authorString": "Vuong LN, Dang VQ, Ho TM, Huynh BG, Ha DT, Pham TD, Nguyen LK, Norman RJ, Mol BW.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Vuong LN",
+    "lastName": "Vuong",
+    "firstName": "Lan N",
+    "initials": "LN",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-6529-6912"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Dang VQ",
+    "lastName": "Dang",
+    "firstName": "Vinh Q",
+    "initials": "VQ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Ho TM",
+    "lastName": "Ho",
+    "firstName": "Tuong M",
+    "initials": "TM",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Huynh BG",
+    "lastName": "Huynh",
+    "firstName": "Bao G",
+    "initials": "BG",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Ha DT",
+    "lastName": "Ha",
+    "firstName": "Duc T",
+    "initials": "DT",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Pham TD",
+    "lastName": "Pham",
+    "firstName": "Toan D",
+    "initials": "TD",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Nguyen LK",
+    "lastName": "Nguyen",
+    "firstName": "Linh K",
+    "initials": "LK",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Norman RJ",
+    "lastName": "Norman",
+    "firstName": "Robert J",
+    "initials": "RJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-3118-3896"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Mol BW",
+    "lastName": "Mol",
+    "firstName": "Ben W",
+    "initials": "BW",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-5083-938X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-6529-6912"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-3118-3896"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "2",
+  "volume": "378",
+  "journalIssueId": 2639504,
+  "dateOfPublication": "2018 Jan",
+  "monthOfPublication": 1,
+  "yearOfPublication": 2018,
+  "journal": {
+   "medlineAbbreviation": "N Engl J Med",
+   "title": "The New England journal of medicine",
+   "essn": "1533-4406",
+   "issn": "0028-4793",
+   "isoabbreviation": "N Engl J Med",
+   "nlmid": "0255562"
+  },
+  "printPublicationDate": "2018-01-01"
+ },
+ "pubYear": "2018",
+ "pageInfo": "137-147",
+ "abstractText": "<h4>Background</h4>Among women who are undergoing in vitro fertilization (IVF), the transfer of frozen embryos has been shown to result in a higher rate of live birth than the transfer of fresh embryos in those with infertility associated with the polycystic ovary syndrome. It is not known whether frozen-embryo transfer results in similar benefit in women with infertility that is not associated with the polycystic ovary syndrome.<h4>Methods</h4>We randomly assigned 782 infertile women without the polycystic ovary syndrome who were undergoing a first or second IVF cycle to receive either a frozen embryo or a fresh embryo on day 3. In the frozen-embryo group, all grade 1 and 2 embryos had been cryopreserved, and a maximum of two embryos were thawed on the day of transfer in the following cycle. In the fresh-embryo group, a maximum of two fresh embryos were transferred in the stimulated cycle. The primary outcome was ongoing pregnancy after the first embryo transfer.<h4>Results</h4>After the first completed cycle, ongoing pregnancy occurred in 142 of 391 women (36.3%) in the frozen-embryo group and in 135 of 391 (34.5%) in the fresh-embryo group (risk ratio in the frozen-embryo group, 1.05; 95% confidence interval [CI], 0.87 to 1.27; P=0.65). Rates of live birth after the first transfer were 33.8% and 31.5%, respectively (risk ratio, 1.07; 95% CI, 0.88 to 1.31).<h4>Conclusions</h4>Among infertile women without the polycystic ovary syndrome who were undergoing IVF, the transfer of frozen embryos did not result in significantly higher rates of ongoing pregnancy or live birth than the transfer of fresh embryos. (Funded by My Duc Hospital; ClinicalTrials.gov number, NCT02471573 .).",
+ "affiliation": "From the Department of Obstetrics and Gynecology, University of Medicine and Pharmacy at Ho Chi Minh City (L.N.V.), IVFMD, My Duc Hospital (L.N.V., V.Q.D., T.M.H., B.G.H., T.D.P., L.K.N.), and the Research Center for Genetics and Reproductive Health, School of Medicine, Vietnam National University (T.M.H.), Ho Chi Minh City, and the National Hospital of Can Tho, Can Tho (D.T.H.) - all in Vietnam; and the Robinson Research Institute, Department of Medicine (R.J.N., B.W.M.), Fertility South Australia (R.J.N.), and the South Australian Health and Medical Research Institute (B.W.M.) - all in Adelaide, SA, Australia.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Comparative Study",
+   "Research Support, Non-U.S. Gov't",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Polycystic Ovary Syndrome"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Infertility, Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Complications"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Cryopreservation"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Embryo Transfer",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Fertilization in Vitro"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Ovulation Induction"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Live Birth"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Intention to Treat Analysis"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1056/NEJMoa1703768"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 179,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "nct"
+  ]
+ },
+ "dateOfCompletion": "2018-01-18",
+ "dateOfCreation": "2018-01-11",
+ "dateOfRevision": "2022-04-08",
+ "firstPublicationDate": "2018-01-01",
+ "firstIndexDate": "2018-01-11",
+ "hasEvaluations": "N"
+}

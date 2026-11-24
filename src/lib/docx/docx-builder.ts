@@ -32,6 +32,7 @@ import {
 } from './styles';
 import { cleanBiomedicalTitle, cleanBiomedicalAuthors } from '../parsers/title-sanitizer';
 import { isVerbatimInManuscript } from '../parsers/quote-verifier';
+import { reportStatus } from '../status';
 
 export interface AppraiserMetadata {
   name: string;
@@ -207,6 +208,10 @@ export function buildAcademicDocxManuscript(
   const activeAffiliation = appraiser?.affiliation || 'Evidence-Based Medicine & Methodological Review';
   const activeOrcid = appraiser?.orcid || '';
   const isVerified = !!appraiser?.verified;
+  const status = reportStatus(report, {
+    humanVerified: isVerified,
+    appraiserName: appraiser?.name,
+  });
 
   // Page geometry selection: default A4, optional US Letter (P3-3)
   const pageGeom = appraiser?.pageSize === 'LETTER' ? PAGE_GEOMETRY_LETTER : PAGE_GEOMETRY_A4;
@@ -267,11 +272,11 @@ export function buildAcademicDocxManuscript(
                 spacing: { before: 0, after: 20 },
                 children: [
                   new TextRun({
-                    text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT',
+                    text: status.headline,
                     font: TYPOGRAPHY.FONT_PRIMARY,
                     size: TYPOGRAPHY.SIZE_SMALL,
                     bold: true,
-                    color: DOCX_COLORS.NAVY_PRIMARY,
+                    color: (report as any).retraction?.isRetracted || status.isDraft ? 'C53030' : DOCX_COLORS.NAVY_PRIMARY,
                   }),
                 ],
               }),
@@ -343,6 +348,34 @@ export function buildAcademicDocxManuscript(
           }),
         },
         children: [
+          ...(report.retraction?.isRetracted
+            ? [
+                new Paragraph({
+                  alignment: AlignmentType.LEFT,
+                  spacing: { before: 0, after: 160 },
+                  shading: { type: ShadingType.CLEAR, fill: 'FEF2F2' },
+                  border: {
+                    top: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                    bottom: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                    left: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                    right: { style: BorderStyle.SINGLE, size: 12, color: 'B91C1C' },
+                  },
+                  children: [
+                    new TextRun({
+                      text: `⚠ This article has been RETRACTED. ${
+                        report.retraction.retractionCitation
+                          ? `${report.retraction.retractionCitation.replace(/\.+$/, '').trim()}. `
+                          : ''
+                      }Its findings must not be used for clinical decisions. Any appraisal below is for teaching only.`,
+                      font: TYPOGRAPHY.FONT_PRIMARY,
+                      size: 22,
+                      bold: true,
+                      color: 'B91C1C',
+                    }),
+                  ],
+                }),
+              ]
+            : []),
           // ---------------------------------------------------------
           // DOCUMENT HEADER BANNER
           // ---------------------------------------------------------
@@ -351,11 +384,11 @@ export function buildAcademicDocxManuscript(
             spacing: { before: 120, after: 60 },
             children: [
               new TextRun({
-                text: 'EVIDENCE-BASED CLINICAL MEDICINE  |  EXECUTIVE CRITICAL APPRAISAL MONOGRAPH',
+                text: status.isDraft ? status.headline : 'EVIDENCE-BASED CLINICAL MEDICINE  |  CRITICAL APPRAISAL REPORT',
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 bold: true,
-                color: DOCX_COLORS.TEAL_ACCENT,
+                color: status.isDraft ? 'C53030' : DOCX_COLORS.TEAL_ACCENT,
               }),
             ],
           }),
@@ -408,6 +441,73 @@ export function buildAcademicDocxManuscript(
                 font: TYPOGRAPHY.FONT_PRIMARY,
                 size: TYPOGRAPHY.SIZE_SMALL,
                 color: DOCX_COLORS.SLATE_MUTED,
+              }),
+            ],
+          }),
+
+          // Three Status Badges: Source, Engine, Review
+          new Table({
+            width: { size: contentWidth, type: WidthType.DXA },
+            borders: TABLE_BORDERS_CLEAN,
+            rows: [
+              new TableRow({
+                cantSplit: true,
+                children: [
+                  new TableCell({
+                    width: { size: Math.floor(contentWidth / 3), type: WidthType.DXA },
+                    shading: { fill: 'F1F5F9', type: ShadingType.CLEAR, color: 'auto' },
+                    margins: CELL_PADDING_COMPACT,
+                    children: [
+                      new Paragraph({
+                        children: [
+                          new TextRun({
+                            text: `Source: ${status.source}`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            bold: true,
+                            color: DOCX_COLORS.SLATE_BODY,
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                  new TableCell({
+                    width: { size: Math.floor(contentWidth / 3), type: WidthType.DXA },
+                    shading: { fill: 'E3F2F2', type: ShadingType.CLEAR, color: 'auto' },
+                    margins: CELL_PADDING_COMPACT,
+                    children: [
+                      new Paragraph({
+                        children: [
+                          new TextRun({
+                            text: `Engine: ${status.engine}`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            bold: true,
+                            color: DOCX_COLORS.NAVY_PRIMARY,
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                  new TableCell({
+                    width: { size: contentWidth - Math.floor(contentWidth / 3) * 2, type: WidthType.DXA },
+                    shading: { fill: status.review === 'Unverified' ? 'FEF9C3' : 'DCFCE7', type: ShadingType.CLEAR, color: 'auto' },
+                    margins: CELL_PADDING_COMPACT,
+                    children: [
+                      new Paragraph({
+                        children: [
+                          new TextRun({
+                            text: `Review: ${status.review}`,
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_SMALL,
+                            bold: true,
+                            color: status.review === 'Unverified' ? '854D0E' : '166534',
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                ],
               }),
             ],
           }),
@@ -583,7 +683,15 @@ export function buildAcademicDocxManuscript(
                       }),
                       new Paragraph({
                         children: [
-                          new TextRun({ text: report.classification.studyDesign.replace(/_/g, ' '), font: TYPOGRAPHY.FONT_PRIMARY, size: TYPOGRAPHY.SIZE_TABLE, bold: true, color: DOCX_COLORS.NAVY_PRIMARY }),
+                          new TextRun({
+                            text: report.classification.studyDesign === 'PREDICTION_MODEL'
+                              ? 'AI / prediction-model study'
+                              : report.classification.studyDesign.replace(/_/g, ' '),
+                            font: TYPOGRAPHY.FONT_PRIMARY,
+                            size: TYPOGRAPHY.SIZE_TABLE,
+                            bold: true,
+                            color: DOCX_COLORS.NAVY_PRIMARY,
+                          }),
                         ],
                       }),
                     ],
@@ -1258,7 +1366,7 @@ export function buildAcademicDocxManuscript(
             ? report.statisticalAudit.strengthsAndLimitations.fatalMethodologicalFlaws.map(
                 (f) => createBodyParagraph(`•  ${f}`)
               )
-            : [createBodyParagraph('•  No fatal methodological flaws identified.')]),
+            : [createBodyParagraph('•  None identified.')]),
 
           createHeading2('Minor Methodological Limitations'),
           ...report.statisticalAudit.strengthsAndLimitations.minorLimitations.map(
@@ -1403,14 +1511,8 @@ export function buildAcademicDocxManuscript(
                         spacing: { before: 20, after: 20 },
                         children: [
                           new TextRun({
-                            text: `This report was drafted with AI assistance (engine: ${
-                              report.engineUsed === 'llm'
-                                ? `LLM — ${report.llmDetails?.provider || 'neural'} / ${report.llmDetails?.model || 'standard'}`
-                                : report.engineUsed === 'deterministic-fallback'
-                                ? `Heuristic Screening Engine (LLM fallback: ${report.fallbackReason || 'provider timeout'})`
-                                : 'Heuristic Screening Engine'
-                            }). It has ${
-                              isVerified ? 'been reviewed and verified' : 'not been independently verified'
+                            text: `Status: ${status.headline}. This report was drafted with AI assistance (engine: ${status.engine}). It has ${
+                              !status.isDraft ? 'been reviewed and verified' : 'not been independently verified'
                             } by the named clinical appraiser (${activeAppraiserName}${activeOrcid ? ', ORCID: ' + activeOrcid : ''}). Structured under EQUATOR Network guidelines (${report.classification.equatorReportingGuideline}), OCEBM Evidence Levels, and GRADE certainty criteria. Prepared for academic peer review and clinical governance.`,
                             font: TYPOGRAPHY.FONT_PRIMARY,
                             size: TYPOGRAPHY.SIZE_SMALL,

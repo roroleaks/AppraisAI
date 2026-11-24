@@ -1,0 +1,1374 @@
+{
+ "id": "32402160",
+ "source": "MED",
+ "pmid": "32402160",
+ "doi": "10.1056/nejmoa1915745",
+ "title": "Atezolizumab plus Bevacizumab in Unresectable Hepatocellular Carcinoma.",
+ "authorString": "Finn RS, Qin S, Ikeda M, Galle PR, Ducreux M, Kim TY, Kudo M, Breder V, Merle P, Kaseb AO, Li D, Verret W, Xu DZ, Hernandez S, Liu J, Huang C, Mulla S, Wang Y, Lim HY, Zhu AX, Cheng AL, IMbrave150 Investigators.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Finn RS",
+    "lastName": "Finn",
+    "firstName": "Richard S",
+    "initials": "RS",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Qin S",
+    "lastName": "Qin",
+    "firstName": "Shukui",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Ikeda M",
+    "lastName": "Ikeda",
+    "firstName": "Masafumi",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Galle PR",
+    "lastName": "Galle",
+    "firstName": "Peter R",
+    "initials": "PR",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-8294-0992"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Ducreux M",
+    "lastName": "Ducreux",
+    "firstName": "Michel",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kim TY",
+    "lastName": "Kim",
+    "firstName": "Tae-You",
+    "initials": "TY",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kudo M",
+    "lastName": "Kudo",
+    "firstName": "Masatoshi",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Breder V",
+    "lastName": "Breder",
+    "firstName": "Valeriy",
+    "initials": "V",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Merle P",
+    "lastName": "Merle",
+    "firstName": "Philippe",
+    "initials": "P",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kaseb AO",
+    "lastName": "Kaseb",
+    "firstName": "Ahmed O",
+    "initials": "AO",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Li D",
+    "lastName": "Li",
+    "firstName": "Daneng",
+    "initials": "D",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Verret W",
+    "lastName": "Verret",
+    "firstName": "Wendy",
+    "initials": "W",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Xu DZ",
+    "lastName": "Xu",
+    "firstName": "Derek-Zhen",
+    "initials": "DZ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Hernandez S",
+    "lastName": "Hernandez",
+    "firstName": "Sairy",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Liu J",
+    "lastName": "Liu",
+    "firstName": "Juan",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Huang C",
+    "lastName": "Huang",
+    "firstName": "Chen",
+    "initials": "C",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Mulla S",
+    "lastName": "Mulla",
+    "firstName": "Sohail",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Wang Y",
+    "lastName": "Wang",
+    "firstName": "Yulei",
+    "initials": "Y",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Lim HY",
+    "lastName": "Lim",
+    "firstName": "Ho Yeong",
+    "initials": "HY",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Zhu AX",
+    "lastName": "Zhu",
+    "firstName": "Andrew X",
+    "initials": "AX",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Cheng AL",
+    "lastName": "Cheng",
+    "firstName": "Ann-Lii",
+    "initials": "AL",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.)."
+      }
+     ]
+    }
+   },
+   {
+    "collectiveName": "IMbrave150 Investigators"
+   }
+  ]
+ },
+ "investigatorList": {
+  "investigator": [
+   {
+    "fullName": "Asghari R",
+    "lastName": "Asghari",
+    "firstName": "R",
+    "initials": "R"
+   },
+   {
+    "fullName": "Broadbridge V",
+    "lastName": "Broadbridge",
+    "firstName": "V",
+    "initials": "V"
+   },
+   {
+    "fullName": "Lipton L",
+    "lastName": "Lipton",
+    "firstName": "L",
+    "initials": "L"
+   },
+   {
+    "fullName": "Zekry A",
+    "lastName": "Zekry",
+    "firstName": "A",
+    "initials": "A",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-5675-1810"
+    }
+   },
+   {
+    "fullName": "Asselah J",
+    "lastName": "Asselah",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Castel H",
+    "lastName": "Castel",
+    "firstName": "H",
+    "initials": "H"
+   },
+   {
+    "fullName": "Goel R",
+    "lastName": "Goel",
+    "firstName": "R",
+    "initials": "R"
+   },
+   {
+    "fullName": "Kavan P",
+    "lastName": "Kavan",
+    "firstName": "P",
+    "initials": "P"
+   },
+   {
+    "fullName": "Bai Y",
+    "lastName": "Bai",
+    "firstName": "Y",
+    "initials": "Y"
+   },
+   {
+    "fullName": "Cao B",
+    "lastName": "Cao",
+    "firstName": "B",
+    "initials": "B"
+   },
+   {
+    "fullName": "Chen M",
+    "lastName": "Chen",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Chen X",
+    "lastName": "Chen",
+    "firstName": "X",
+    "initials": "X"
+   },
+   {
+    "fullName": "Cheng Y",
+    "lastName": "Cheng",
+    "firstName": "Y",
+    "initials": "Y"
+   },
+   {
+    "fullName": "Fang W",
+    "lastName": "Fang",
+    "firstName": "W",
+    "initials": "W"
+   },
+   {
+    "fullName": "Gu K",
+    "lastName": "Gu",
+    "firstName": "K",
+    "initials": "K"
+   },
+   {
+    "fullName": "Gu S",
+    "lastName": "Gu",
+    "firstName": "S",
+    "initials": "S"
+   },
+   {
+    "fullName": "Guo Y",
+    "lastName": "Guo",
+    "firstName": "Y",
+    "initials": "Y"
+   },
+   {
+    "fullName": "He Y",
+    "lastName": "He",
+    "firstName": "Y",
+    "initials": "Y"
+   },
+   {
+    "fullName": "Li W",
+    "lastName": "Li",
+    "firstName": "W",
+    "initials": "W"
+   },
+   {
+    "fullName": "Meng Z",
+    "lastName": "Meng",
+    "firstName": "Z",
+    "initials": "Z"
+   },
+   {
+    "fullName": "Pan H",
+    "lastName": "Pan",
+    "firstName": "H",
+    "initials": "H"
+   },
+   {
+    "fullName": "Qin S",
+    "lastName": "Qin",
+    "firstName": "S",
+    "initials": "S"
+   },
+   {
+    "fullName": "Ren Z",
+    "lastName": "Ren",
+    "firstName": "Z",
+    "initials": "Z"
+   },
+   {
+    "fullName": "Wang B",
+    "lastName": "Wang",
+    "firstName": "B",
+    "initials": "B"
+   },
+   {
+    "fullName": "Wang W",
+    "lastName": "Wang",
+    "firstName": "W",
+    "initials": "W"
+   },
+   {
+    "fullName": "Xing B",
+    "lastName": "Xing",
+    "firstName": "B",
+    "initials": "B"
+   },
+   {
+    "fullName": "Ying J",
+    "lastName": "Ying",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Yuan X",
+    "lastName": "Yuan",
+    "firstName": "X",
+    "initials": "X"
+   },
+   {
+    "fullName": "Zhao H",
+    "lastName": "Zhao",
+    "firstName": "H",
+    "initials": "H"
+   },
+   {
+    "fullName": "Bencsikova B",
+    "lastName": "Bencsikova",
+    "firstName": "B",
+    "initials": "B"
+   },
+   {
+    "fullName": "Melichar B",
+    "lastName": "Melichar",
+    "firstName": "B",
+    "initials": "B",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-5474-6866"
+    }
+   },
+   {
+    "fullName": "Anty R",
+    "lastName": "Anty",
+    "firstName": "R",
+    "initials": "R",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-8194-9805"
+    }
+   },
+   {
+    "fullName": "Assenat E",
+    "lastName": "Assenat",
+    "firstName": "E",
+    "initials": "E"
+   },
+   {
+    "fullName": "Bronowicki JP",
+    "lastName": "Bronowicki",
+    "firstName": "J P",
+    "initials": "JP"
+   },
+   {
+    "fullName": "Cattan S",
+    "lastName": "Cattan",
+    "firstName": "S",
+    "initials": "S"
+   },
+   {
+    "fullName": "Di Fiore F",
+    "lastName": "Di Fiore",
+    "firstName": "F",
+    "initials": "F"
+   },
+   {
+    "fullName": "Ducreux M",
+    "lastName": "Ducreux",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Gerolami Santandrea R",
+    "lastName": "Gerolami Santandrea",
+    "firstName": "R",
+    "initials": "R"
+   },
+   {
+    "fullName": "Merle P",
+    "lastName": "Merle",
+    "firstName": "P",
+    "initials": "P"
+   },
+   {
+    "fullName": "Nguimpi Tambou M",
+    "lastName": "Nguimpi Tambou",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Touchefeu Y",
+    "lastName": "Touchefeu",
+    "firstName": "Y",
+    "initials": "Y"
+   },
+   {
+    "fullName": "Tran A",
+    "lastName": "Tran",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Berg T",
+    "lastName": "Berg",
+    "firstName": "T",
+    "initials": "T"
+   },
+   {
+    "fullName": "Kandulski A",
+    "lastName": "Kandulski",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Müller T",
+    "lastName": "Müller",
+    "firstName": "T",
+    "initials": "T"
+   },
+   {
+    "fullName": "Trojan J",
+    "lastName": "Trojan",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Vogel A",
+    "lastName": "Vogel",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Wege H",
+    "lastName": "Wege",
+    "firstName": "H",
+    "initials": "H"
+   },
+   {
+    "fullName": "Wörns M",
+    "lastName": "Wörns",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Chan L",
+    "lastName": "Chan",
+    "firstName": "L",
+    "initials": "L"
+   },
+   {
+    "fullName": "Yau T",
+    "lastName": "Yau",
+    "firstName": "T",
+    "initials": "T"
+   },
+   {
+    "fullName": "Frassineti G",
+    "lastName": "Frassineti",
+    "firstName": "G",
+    "initials": "G"
+   },
+   {
+    "fullName": "Germano D",
+    "lastName": "Germano",
+    "firstName": "D",
+    "initials": "D"
+   },
+   {
+    "fullName": "Masi G",
+    "lastName": "Masi",
+    "firstName": "G",
+    "initials": "G"
+   },
+   {
+    "fullName": "Scagliotti G",
+    "lastName": "Scagliotti",
+    "firstName": "G",
+    "initials": "G"
+   },
+   {
+    "fullName": "Scartozzi M",
+    "lastName": "Scartozzi",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Zagonel V",
+    "lastName": "Zagonel",
+    "firstName": "V",
+    "initials": "V",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-0829-2525"
+    }
+   },
+   {
+    "fullName": "Aramaki T",
+    "lastName": "Aramaki",
+    "firstName": "T",
+    "initials": "T"
+   },
+   {
+    "fullName": "Hagihara A",
+    "lastName": "Hagihara",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Hidaka H",
+    "lastName": "Hidaka",
+    "firstName": "H",
+    "initials": "H"
+   },
+   {
+    "fullName": "Hige S",
+    "lastName": "Hige",
+    "firstName": "S",
+    "initials": "S"
+   },
+   {
+    "fullName": "Ikeda M",
+    "lastName": "Ikeda",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Kato N",
+    "lastName": "Kato",
+    "firstName": "N",
+    "initials": "N"
+   },
+   {
+    "fullName": "Koga H",
+    "lastName": "Koga",
+    "firstName": "H",
+    "initials": "H"
+   },
+   {
+    "fullName": "Kudo M",
+    "lastName": "Kudo",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Ogawa K",
+    "lastName": "Ogawa",
+    "firstName": "K",
+    "initials": "K"
+   },
+   {
+    "fullName": "Oza N",
+    "lastName": "Oza",
+    "firstName": "N",
+    "initials": "N"
+   },
+   {
+    "fullName": "Tanaka M",
+    "lastName": "Tanaka",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Tsuchiya K",
+    "lastName": "Tsuchiya",
+    "firstName": "K",
+    "initials": "K"
+   },
+   {
+    "fullName": "Yamashita T",
+    "lastName": "Yamashita",
+    "firstName": "T",
+    "initials": "T"
+   },
+   {
+    "fullName": "Baek JH",
+    "lastName": "Baek",
+    "firstName": "J-H",
+    "initials": "JH"
+   },
+   {
+    "fullName": "Cheon JK",
+    "lastName": "Cheon",
+    "firstName": "J-K",
+    "initials": "JK"
+   },
+   {
+    "fullName": "Choi HJ",
+    "lastName": "Choi",
+    "firstName": "H-J",
+    "initials": "HJ"
+   },
+   {
+    "fullName": "Hwang JE",
+    "lastName": "Hwang",
+    "firstName": "J-E",
+    "initials": "JE"
+   },
+   {
+    "fullName": "Kim TY",
+    "lastName": "Kim",
+    "firstName": "T-Y",
+    "initials": "TY"
+   },
+   {
+    "fullName": "Lim HY",
+    "lastName": "Lim",
+    "firstName": "H-Y",
+    "initials": "HY"
+   },
+   {
+    "fullName": "Ryoo BY",
+    "lastName": "Ryoo",
+    "firstName": "B-Y",
+    "initials": "BY"
+   },
+   {
+    "fullName": "Cencelewicz A",
+    "lastName": "Cencelewicz",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Hudziec P",
+    "lastName": "Hudziec",
+    "firstName": "P",
+    "initials": "P"
+   },
+   {
+    "fullName": "Janczewska E",
+    "lastName": "Janczewska",
+    "firstName": "E",
+    "initials": "E"
+   },
+   {
+    "fullName": "Rozanowski P",
+    "lastName": "Rozanowski",
+    "firstName": "P",
+    "initials": "P"
+   },
+   {
+    "fullName": "Wieczorek-Rutkowska M",
+    "lastName": "Wieczorek-Rutkowska",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Wojcik-Tomaszewska J",
+    "lastName": "Wojcik-Tomaszewska",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Breder V",
+    "lastName": "Breder",
+    "firstName": "V",
+    "initials": "V"
+   },
+   {
+    "fullName": "Volkov N",
+    "lastName": "Volkov",
+    "firstName": "N",
+    "initials": "N"
+   },
+   {
+    "fullName": "Samol J",
+    "lastName": "Samol",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Toh HC",
+    "lastName": "Toh",
+    "firstName": "H-C",
+    "initials": "HC"
+   },
+   {
+    "fullName": "Cubillo Gracian A",
+    "lastName": "Cubillo Gracian",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Feli J",
+    "lastName": "Feli",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Macarulla Mercade T",
+    "lastName": "Macarulla Mercade",
+    "firstName": "T",
+    "initials": "T"
+   },
+   {
+    "fullName": "Pazo Cid R",
+    "lastName": "Pazo Cid",
+    "firstName": "R",
+    "initials": "R",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8026-7391"
+    }
+   },
+   {
+    "fullName": "Sastre Valera J",
+    "lastName": "Sastre Valera",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Chao Y",
+    "lastName": "Chao",
+    "firstName": "Y",
+    "initials": "Y"
+   },
+   {
+    "fullName": "Cheng AL",
+    "lastName": "Cheng",
+    "firstName": "A L",
+    "initials": "AL"
+   },
+   {
+    "fullName": "Feng YH",
+    "lastName": "Feng",
+    "firstName": "Y-H",
+    "initials": "YH"
+   },
+   {
+    "fullName": "Yang TS",
+    "lastName": "Yang",
+    "firstName": "T-S",
+    "initials": "TS"
+   },
+   {
+    "fullName": "Yen CJ",
+    "lastName": "Yen",
+    "firstName": "C-J",
+    "initials": "CJ"
+   },
+   {
+    "fullName": "Evans J",
+    "lastName": "Evans",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Hubner R",
+    "lastName": "Hubner",
+    "firstName": "R",
+    "initials": "R"
+   },
+   {
+    "fullName": "Meyer T",
+    "lastName": "Meyer",
+    "firstName": "T",
+    "initials": "T"
+   },
+   {
+    "fullName": "Ross P",
+    "lastName": "Ross",
+    "firstName": "P",
+    "initials": "P"
+   },
+   {
+    "fullName": "Baron A",
+    "lastName": "Baron",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Burgoyne A",
+    "lastName": "Burgoyne",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Cancel W",
+    "lastName": "Cancel",
+    "firstName": "W",
+    "initials": "W"
+   },
+   {
+    "fullName": "Chiu V",
+    "lastName": "Chiu",
+    "firstName": "V",
+    "initials": "V"
+   },
+   {
+    "fullName": "Dayyani F",
+    "lastName": "Dayyani",
+    "firstName": "F",
+    "initials": "F"
+   },
+   {
+    "fullName": "Finn R",
+    "lastName": "Finn",
+    "firstName": "R",
+    "initials": "R"
+   },
+   {
+    "fullName": "Franses J",
+    "lastName": "Franses",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Gold P",
+    "lastName": "Gold",
+    "firstName": "P",
+    "initials": "P"
+   },
+   {
+    "fullName": "He AR",
+    "lastName": "He",
+    "firstName": "A R",
+    "initials": "AR"
+   },
+   {
+    "fullName": "Kaseb A",
+    "lastName": "Kaseb",
+    "firstName": "A",
+    "initials": "A"
+   },
+   {
+    "fullName": "Kim R",
+    "lastName": "Kim",
+    "firstName": "R",
+    "initials": "R"
+   },
+   {
+    "fullName": "Kundranda M",
+    "lastName": "Kundranda",
+    "firstName": "M",
+    "initials": "M"
+   },
+   {
+    "fullName": "Li D",
+    "lastName": "Li",
+    "firstName": "D",
+    "initials": "D"
+   },
+   {
+    "fullName": "Lin D",
+    "lastName": "Lin",
+    "firstName": "D",
+    "initials": "D"
+   },
+   {
+    "fullName": "Salgia R",
+    "lastName": "Salgia",
+    "firstName": "R",
+    "initials": "R"
+   },
+   {
+    "fullName": "Suga J",
+    "lastName": "Suga",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Trikalinos N",
+    "lastName": "Trikalinos",
+    "firstName": "N",
+    "initials": "N"
+   },
+   {
+    "fullName": "Wu J",
+    "lastName": "Wu",
+    "firstName": "J",
+    "initials": "J"
+   },
+   {
+    "fullName": "Zhu A",
+    "lastName": "Zhu",
+    "firstName": "A",
+    "initials": "A"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-8194-9805"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-8294-0992"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-0829-2525"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-5474-6866"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-5675-1810"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-6244-4294"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8026-7391"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-9057-9786"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-9152-6512"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "20",
+  "volume": "382",
+  "journalIssueId": 2955243,
+  "dateOfPublication": "2020 May",
+  "monthOfPublication": 5,
+  "yearOfPublication": 2020,
+  "journal": {
+   "medlineAbbreviation": "N Engl J Med",
+   "title": "The New England journal of medicine",
+   "essn": "1533-4406",
+   "issn": "0028-4793",
+   "isoabbreviation": "N Engl J Med",
+   "nlmid": "0255562"
+  },
+  "printPublicationDate": "2020-05-01"
+ },
+ "pubYear": "2020",
+ "pageInfo": "1894-1905",
+ "abstractText": "<h4>Background</h4>The combination of atezolizumab and bevacizumab showed encouraging antitumor activity and safety in a phase 1b trial involving patients with unresectable hepatocellular carcinoma.<h4>Methods</h4>In a global, open-label, phase 3 trial, patients with unresectable hepatocellular carcinoma who had not previously received systemic treatment were randomly assigned in a 2:1 ratio to receive either atezolizumab plus bevacizumab or sorafenib until unacceptable toxic effects occurred or there was a loss of clinical benefit. The coprimary end points were overall survival and progression-free survival in the intention-to-treat population, as assessed at an independent review facility according to Response Evaluation Criteria in Solid Tumors, version 1.1 (RECIST 1.1).<h4>Results</h4>The intention-to-treat population included 336 patients in the atezolizumab-bevacizumab group and 165 patients in the sorafenib group. At the time of the primary analysis (August 29, 2019), the hazard ratio for death with atezolizumab-bevacizumab as compared with sorafenib was 0.58 (95% confidence interval [CI], 0.42 to 0.79; P<0.001). Overall survival at 12 months was 67.2% (95% CI, 61.3 to 73.1) with atezolizumab-bevacizumab and 54.6% (95% CI, 45.2 to 64.0) with sorafenib. Median progression-free survival was 6.8 months (95% CI, 5.7 to 8.3) and 4.3 months (95% CI, 4.0 to 5.6) in the respective groups (hazard ratio for disease progression or death, 0.59; 95% CI, 0.47 to 0.76; P<0.001). Grade 3 or 4 adverse events occurred in 56.5% of 329 patients who received at least one dose of atezolizumab-bevacizumab and in 55.1% of 156 patients who received at least one dose of sorafenib. Grade 3 or 4 hypertension occurred in 15.2% of patients in the atezolizumab-bevacizumab group; however, other high-grade toxic effects were infrequent.<h4>Conclusions</h4>In patients with unresectable hepatocellular carcinoma, atezolizumab combined with bevacizumab resulted in better overall and progression-free survival outcomes than sorafenib. (Funded by F. Hoffmann-La Roche/Genentech; ClinicalTrials.gov number, NCT03434379.).",
+ "affiliation": "From the Jonsson Comprehensive Cancer Center, Geffen School of Medicine at UCLA, Los Angeles (R.S.F.), the City of Hope Comprehensive Cancer Center and Beckman Research Institute, Duarte (D.L.), and Genentech, South San Francisco (W.V., S.H., Y.W.) - all in California; the People's Liberation Army Cancer Center, Jinling Hospital, Nanjing (S.Q.), and Roche Product Development (D.-Z.X., J.L., C.H.) and Jiahui International Cancer Center, Jiahui Health (A.X.Z.), Shanghai - all in China; National Cancer Center Hospital East, Kashiwa (M.I.), and Kindai University Faculty of Medicine, Osaka (M.K.) - both in Japan; University Medical Center Mainz, Mainz, Germany (P.R.G.); Gustave Roussy Cancer Center, Paris-Saclay University, Villejuif (M.D.), and University Hospital La Croix-Rousse, Lyon (P.M.) - both in France; Seoul National University College of Medicine (T.-Y.K.) and Samsung Medical Center, Sungkyunkwan University School of Medicine (H.Y.L.) - both in Seoul, South Korea; N.N. Blokhin Russian Cancer Research Center, Moscow (V.B.); the University of Texas M.D. Anderson Cancer Center, Houston (A.O.K.); Hoffmann-La Roche, Mississauga, ON, Canada (S.M.); Massachusetts General Hospital Cancer Center, Harvard Medical School, Boston (A.X.Z.); and the National Taiwan University Cancer Center and National Taiwan University Hospital, Taipei (A.-L.C.).",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Clinical Trial, Phase III",
+   "Research Support, Non-U.S. Gov't",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "F. Hoffmann-La Roche",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Carcinoma, Hepatocellular",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "DT",
+       "qualifierName": "drug therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Liver Neoplasms",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "DT",
+       "qualifierName": "drug therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Antineoplastic Combined Chemotherapy Protocols",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Survival Analysis"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Quality of Life"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Aged"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Middle Aged"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Male"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Intention to Treat Analysis"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Kaplan-Meier Estimate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Antibodies, Monoclonal, Humanized",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Programmed Cell Death 1 Receptor",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AI",
+       "qualifierName": "antagonists & inhibitors"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Bevacizumab",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Antibodies, Monoclonal, Humanized",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Programmed Cell Death 1 Receptor",
+    "registryNumber": "0"
+   },
+   {
+    "name": "bevacizumab",
+    "registryNumber": "2S9ZZM9Q9V"
+   },
+   {
+    "name": "atezolizumab",
+    "registryNumber": "52CMI0WC3Y"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1056/NEJMoa1915745"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "MED",
+    "id": "32402168",
+    "reference": "N Engl J Med. 2020 May 14;382(20):1953-1955. doi: 10.1056/NEJMe2004851",
+    "type": "Comment in",
+    "orderIn": 1
+   },
+   {
+    "source": "MED",
+    "id": "32457541",
+    "reference": "Nat Rev Clin Oncol. 2020 Jul;17(7):389. doi: 10.1038/s41571-020-0396-9",
+    "type": "Comment in",
+    "orderIn": 2
+   },
+   {
+    "source": "MED",
+    "id": "32786198",
+    "reference": "N Engl J Med. 2020 Aug 13;383(7):693-694. doi: 10.1056/NEJMc2021840",
+    "type": "Comment in",
+    "orderIn": 3
+   },
+   {
+    "source": "MED",
+    "id": "32786199",
+    "reference": "N Engl J Med. 2020 Aug 13;383(7):694. doi: 10.1056/NEJMc2021840",
+    "type": "Comment in",
+    "orderIn": 4
+   },
+   {
+    "source": "MED",
+    "id": "32786200",
+    "reference": "N Engl J Med. 2020 Aug 13;383(7):694-695. doi: 10.1056/NEJMc2021840",
+    "type": "Comment in",
+    "orderIn": 5
+   },
+   {
+    "source": "MED",
+    "id": "33310087",
+    "reference": "Gastroenterology. 2021 Mar;160(4):1423-1424. doi: 10.1053/j.gastro.2020.12.013",
+    "type": "Comment in",
+    "orderIn": 6
+   },
+   {
+    "source": "MED",
+    "id": "33422270",
+    "reference": "Int J Radiat Oncol Biol Phys. 2021 Feb 1;109(2):305-311. doi: 10.1016/j.ijrobp.2020.09.033",
+    "type": "Comment in",
+    "orderIn": 7
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 6258,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "N",
+ "hasData": "Y",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "nct"
+  ]
+ },
+ "dateOfCompletion": "2020-05-22",
+ "dateOfCreation": "2020-05-14",
+ "dateOfRevision": "2021-07-28",
+ "firstPublicationDate": "2020-05-01",
+ "firstIndexDate": "2020-05-15",
+ "hasEvaluations": "N"
+}

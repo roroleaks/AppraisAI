@@ -1,0 +1,424 @@
+{
+  "id": "30954433",
+  "source": "MED",
+  "pmid": "30954433",
+  "doi": "10.1016/j.rbmo.2019.02.003",
+  "title": "Human growth hormone for poor responders: a randomized placebo-controlled trial provides no evidence for improved live birth rate.",
+  "authorString": "Norman RJ, Alvino H, Hull LM, Mol BW, Hart RJ, Kelly TL, Rombauts L, LIGHT investigators.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Norman RJ",
+        "lastName": "Norman",
+        "firstName": "Robert J",
+        "initials": "RJ",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "University of Adelaide, Robinson Research Institute, North Adelaide, SA 5006, Australia; , Fertility SA, 431 King William Road, Adelaide, SA 5000, Australia. Electronic address: robert.norman@adelaide.edu.au."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Alvino H",
+        "lastName": "Alvino",
+        "firstName": "Helen",
+        "initials": "H",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "University of Adelaide, Robinson Research Institute, North Adelaide, SA 5006, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Hull LM",
+        "lastName": "Hull",
+        "firstName": "Louise M",
+        "initials": "LM",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0003-1813-3971"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "University of Adelaide, Robinson Research Institute, North Adelaide, SA 5006, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Mol BW",
+        "lastName": "Mol",
+        "firstName": "Ben W",
+        "initials": "BW",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0001-8337-550X"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "University of Adelaide, Robinson Research Institute, North Adelaide, SA 5006, Australia; South Australian Health and Medical Research Institute, Robinson Research Institute, North Adelaide, SA 5006; Monash University, Clayton, VIC 3800, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Hart RJ",
+        "lastName": "Hart",
+        "firstName": "Roger J",
+        "initials": "RJ",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-6610-3040"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Fertility Specialists of Western Australia, Claremont, WA 6010; The University of Western Australia, Crawley, WA 6009, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Kelly TL",
+        "lastName": "Kelly",
+        "firstName": "Thu-Lan",
+        "initials": "TL",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-7691-9289"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Adelaide Health Technology Assessment, School of Public Health, The University of Adelaide, Adelaide, SA 5006; Quality Use of Medicines Pharmacy Research Centre, University of South Australia, Adelaide, SA 5001, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Rombauts L",
+        "lastName": "Rombauts",
+        "firstName": "Luk",
+        "initials": "L",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0003-2656-2792"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Monash IVF, Monash Surgical Private Hospital, Clayton, VIC 3168, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "collectiveName": "LIGHT investigators"
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0000-0001-8337-550X"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-6610-3040"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-7691-9289"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0003-1813-3971"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0003-2656-2792"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "altmetrics"
+    ]
+  },
+  "journalInfo": {
+    "issue": "6",
+    "volume": "38",
+    "journalIssueId": 2820338,
+    "dateOfPublication": "2019 Jun",
+    "monthOfPublication": 6,
+    "yearOfPublication": 2019,
+    "journal": {
+      "medlineAbbreviation": "Reprod Biomed Online",
+      "title": "Reproductive biomedicine online",
+      "essn": "1472-6491",
+      "issn": "1472-6483",
+      "nlmid": "101122473",
+      "isoabbreviation": "Reprod Biomed Online"
+    },
+    "printPublicationDate": "2019-06-01"
+  },
+  "pubYear": "2019",
+  "pageInfo": "908-915",
+  "abstractText": "<h4>Research question</h4>Does the addition of human growth hormone (HGH) to an IVF cycle improve the live birth rate in previously documented poor responders to FSH?<h4>Design</h4>Double-blind, placebo-controlled, randomized clinical trial comparing HGH to placebo in maximal stimulation in an IVF cycle. The study was stopped after 4 years. Women receiving ovarian stimulation in one IVF cycle, having failed to produce more than 5 eggs in a previous cycle with more than 250 IU/day of FSH were included. Basal FSH was ≤15 IU/l, body mass index <33 kg/m<sup>2</sup>, age <41 years. HGH or placebo were added from the start of the cycle in a double-blinded manner. The primary outcome was live birth rate.<h4>Main results</h4>The live birth rates following an IVF cycle were 9/62 (14.5%) for growth hormone and 7/51 (13.7%) for the placebo group (risk difference 0.8%, 95% confidence interval [CI] -12.1 to 13.7%; odds ratio [OR] 1.07, 95% CI 0.37-3.10). There was a greater odds of oocyte retrieval with growth hormone (OR 5.67, 95% CI 1.54-20.80) but no better chance of embryo transfer (OR 1.42, 95% CI 0.50-4.00). Birth weights were comparable.<h4>Conclusions</h4>Planned participant numbers were not reached. It was not possible to demonstrate an increase in live birth rate from the addition of growth hormone in women with a previous poor ovarian response to IVF.",
+  "affiliation": "University of Adelaide, Robinson Research Institute, North Adelaide, SA 5006, Australia; , Fertility SA, 431 King William Road, Adelaide, SA 5000, Australia. Electronic address: robert.norman@adelaide.edu.au.",
+  "publicationStatus": "ppublish",
+  "language": "eng",
+  "pubModel": "Print-Electronic",
+  "pubTypeList": {
+    "pubType": [
+      "Multicenter Study",
+      "Randomized Controlled Trial",
+      "Journal Article"
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Ovary",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "ME",
+              "qualifierName": "metabolism"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Oocytes",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "CY",
+              "qualifierName": "cytology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Infertility, Male",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "TH",
+              "qualifierName": "therapy"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Infertility, Female",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "TH",
+              "qualifierName": "therapy"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Follicle Stimulating Hormone",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "ME",
+              "qualifierName": "metabolism"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Human Growth Hormone",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Recombinant Proteins",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Body Mass Index"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Treatment Outcome"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Fertilization in Vitro",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "MT",
+              "qualifierName": "methods"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Ovulation Induction"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy Rate"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Birth Rate"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Double-Blind Method"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Adult"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Infant, Newborn"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Male"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Live Birth"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Oocyte Retrieval"
+      }
+    ]
+  },
+  "keywordList": {
+    "keyword": [
+      "IVF",
+      "Human growth hormone",
+      "Randomized controlled trial",
+      "Live Birth",
+      "Poor Responders"
+    ]
+  },
+  "chemicalList": {
+    "chemical": [
+      {
+        "name": "Follicle Stimulating Hormone",
+        "registryNumber": "9002-68-0"
+      },
+      {
+        "name": "Human Growth Hormone",
+        "registryNumber": "12629-01-5"
+      },
+      {
+        "name": "Recombinant Proteins",
+        "registryNumber": "0"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Free",
+        "availabilityCode": "F",
+        "documentStyle": "html",
+        "site": "Unpaywall",
+        "url": "https://unisa.alma.exlibrisgroup.com/view/delivery/61USOUTHAUS_INST/12176658760001831"
+      },
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1016/j.rbmo.2019.02.003"
+      }
+    ]
+  },
+  "isOpenAccess": "N",
+  "inEPMC": "N",
+  "inPMC": "N",
+  "citedByCount": 54,
+  "hasReferences": "Y",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "N",
+  "hasBook": "N",
+  "hasSuppl": "N",
+  "hasLabsLinks": "Y",
+  "hasData": "N",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "N",
+  "dateOfCompletion": "2020-07-10",
+  "dateOfCreation": "2019-04-08",
+  "dateOfRevision": "2020-07-10",
+  "electronicPublicationDate": "2019-02-27",
+  "firstPublicationDate": "2019-02-27",
+  "firstIndexDate": "2019-04-11",
+  "hasEvaluations": "N"
+}

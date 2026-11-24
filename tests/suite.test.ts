@@ -73,6 +73,9 @@ async function runAllTests() {
 
     const dlFilename = getCleanDownloadFilename(['Dr. Inas Taha, MD', 'Dr. Raouf Roshdy, MD'], 2026);
     assert(dlFilename === 'Critical_Appraisal_Taha_2026.docx', 'Clean download filename matches convention');
+
+    const dlFilename2 = getCleanDownloadFilename(['Siddiqi HK', 'Mehra MR'], 2020);
+    assert(dlFilename2 === 'Critical_Appraisal_Siddiqi_2020.docx', 'Siddiqi HK produces Critical_Appraisal_Siddiqi_2020.docx (not HK)');
   }
 
   // -----------------------------------------------------------------
@@ -144,7 +147,7 @@ async function runAllTests() {
     assert(typeof appraisal.statisticalAudit.spinAndDiscrepancyAudit.spinDetected === 'boolean', 'Pass 3: Abstract spin audited');
 
     // Check Pass 4: GRADE Synthesis
-    assert(['HIGH', 'MODERATE', 'LOW', 'VERY_LOW'].includes(appraisal.validitySynthesis.gradeCertainty), 'Pass 4: GRADE certainty rating synthesized');
+    assert(['HIGH', 'MODERATE', 'LOW', 'VERY_LOW', 'NOT_GRADED_HEURISTIC'].includes(appraisal.validitySynthesis.gradeCertainty), 'Pass 4: GRADE certainty rating synthesized');
     assert(appraisal.references.length >= 4, 'Pass 4: Vancouver references generated (>= 4 references)');
   }
 

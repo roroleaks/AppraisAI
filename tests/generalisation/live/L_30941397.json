@@ -1,0 +1,337 @@
+{
+ "id": "30941397",
+ "source": "MED",
+ "pmid": "30941397",
+ "doi": "10.1093/humupd/dmz011",
+ "title": "Female obesity is negatively associated with live birth rate following IVF: a systematic review and meta-analysis.",
+ "authorString": "Sermondade N, Huberlant S, Bourhis-Lefebvre V, Arbo E, Gallot V, Colombani M, Fréour T.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Sermondade N",
+    "lastName": "Sermondade",
+    "firstName": "Nathalie",
+    "initials": "N",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Service de Biologie de la Reproduction, Hôpital Tenon, Hôpitaux Universitaires Est Parisien, Assistance Publique-Hôpitaux de Paris, PARIS, France."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Huberlant S",
+    "lastName": "Huberlant",
+    "firstName": "Stéphanie",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Département de Gynécologie Obstétrique et Médecine de la Reproduction, CHU Carémeau, NIMES, France."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Bourhis-Lefebvre V",
+    "lastName": "Bourhis-Lefebvre",
+    "firstName": "Vanessa",
+    "initials": "V",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Institut de Médecine de la Reproduction, Marseille, France."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Arbo E",
+    "lastName": "Arbo",
+    "firstName": "Elisangela",
+    "initials": "E",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-5180-4082"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Gedeon Richter France, Paris, France."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Gallot V",
+    "lastName": "Gallot",
+    "firstName": "Vanessa",
+    "initials": "V",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Service de Médecine de la Reproduction et Préservation de la Fertilité, Hôpital Antoine Béclère, Assistance Publique-Hôpitaux de Paris, Clamart, France."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Colombani M",
+    "lastName": "Colombani",
+    "firstName": "Marina",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Institut de Médecine de la Reproduction, Marseille, France."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Fréour T",
+    "lastName": "Fréour",
+    "firstName": "Thomas",
+    "initials": "T",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Service de biologie et médecine de la reproduction, CHU de Nantes, NANTES 44093, France-Faculté de médecine, Université de Nantes, France-INSERM UMR1064, Nantes, France."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-5180-4082"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics"
+  ]
+ },
+ "journalInfo": {
+  "issue": "4",
+  "volume": "25",
+  "journalIssueId": 2832779,
+  "dateOfPublication": "2019 Jul",
+  "monthOfPublication": 7,
+  "yearOfPublication": 2019,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod Update",
+   "title": "Human reproduction update",
+   "essn": "1460-2369",
+   "issn": "1355-4786",
+   "isoabbreviation": "Hum Reprod Update",
+   "nlmid": "9507614"
+  },
+  "printPublicationDate": "2019-07-01"
+ },
+ "pubYear": "2019",
+ "pageInfo": "439-451",
+ "abstractText": "<h4>Background</h4>A worldwide increase in the prevalence of obesity has been observed in the past three decades, particularly in women of reproductive age. Female obesity has been clearly associated with impaired spontaneous fertility, as well as adverse pregnancy outcomes. Increasing evidence in the literature shows that obesity also contributes to adverse clinical outcomes following in vitro fertilization (IVF) procedures. However, the heterogeneity of the available studies in terms of populations, group definition and outcomes prevents drawing firm conclusions. A previous meta-analysis published in 2011 identified a marginal but significant negative effect of increased female body mass index (BMI) on IVF results, but numerous studies have been published since then, including large cohort studies from national registries, highlighting the need for an updated review and meta-analysis.<h4>Objective and rationale</h4>Our systematic review and meta-analysis of the available literature aims to evaluate the association of female obesity with the probability of live birth following IVF. Subgroup analyses according to ovulatory status, oocyte origin, fresh or frozen-embryo transfer and cycle rank were performed.<h4>Search methods</h4>A systematic review was performed using the following key words: ('obesity', 'body mass index', 'live birth', 'IVF', 'ICSI'). Searches were conducted in MEDLINE, EMBASE, Cochrane Library, Eudract and clinicaltrial.gov from 01 January 2007 to 30 November 2017. Study selection was based on title and abstract. Full texts of potentially relevant articles were retrieved and assessed for inclusion by two reviewers. Subsequently, quality was assessed using the Newcastle-Ottawa Quality Assessment Scales for patient selection, comparability and assessment of outcomes. Two independent reviewers carried out study selection and data extraction according to Cochrane methods. Random-effect meta-analysis was performed using Review Manager software on all data (overall analysis), followed by subgroup analyses.<h4>Outcomes</h4>A total of 21 studies were included in the meta-analysis. A decreased probability of live birth following IVF was observed in obese (BMI ≥ 30 kg/m2) women when compared with normal weight (BMI 18.5-24.9 kg/m2) women: risk ratio (RR) (95% CI) 0.85 (0.82-0.87). Subgroups analyses demonstrated that prognosis was poorer when obesity was associated with polycystic ovary syndrome, while the oocyte origin (donor or non-donor) did not modify the overall interpretation.<h4>Wider implications</h4>Our meta-analysis clearly demonstrates that female obesity negatively and significantly impacts live birth rates following IVF. Whether weight loss can reverse this deleterious effect through lifestyle modifications or bariatric surgery should be further evaluated.",
+ "affiliation": "Service de Biologie de la Reproduction, Hôpital Tenon, Hôpitaux Universitaires Est Parisien, Assistance Publique-Hôpitaux de Paris, PARIS, France.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Meta-Analysis",
+   "Research Support, Non-U.S. Gov't",
+   "Systematic Review",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "GEDEON-RICHTER",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Complications",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Obesity",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "CO",
+       "qualifierName": "complications"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Outcome",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Transfer",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fertilization in Vitro",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "SN",
+       "qualifierName": "statistics & numerical data"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Birth Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Live Birth",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "EP",
+       "qualifierName": "epidemiology"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "IVF",
+   "Meta-analysis",
+   "BMI",
+   "Art",
+   "Female Obesity",
+   "Live Birth Rate"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humupd/dmz011"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 231,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2020-05-25",
+ "dateOfCreation": "2019-04-04",
+ "dateOfRevision": "2024-08-01",
+ "firstPublicationDate": "2019-07-01",
+ "firstIndexDate": "2019-04-04",
+ "hasEvaluations": "N"
+}

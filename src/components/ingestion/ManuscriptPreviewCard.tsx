@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { SourceDepthBadge } from './SourceDepthBadge';
+import { RetractionBanner } from '@/components/common/RetractionBanner';
 import {
   BookOpen,
   ArrowRight,
@@ -37,6 +38,11 @@ export const ManuscriptPreviewCard: React.FC = () => {
 
   const { metadata, abstract, sections, pageCount } = currentManuscript;
   const isAbstractOnly = metadata.sourceDepth === 'ABSTRACT_ONLY_FALLBACK';
+  const sourceText = isAbstractOnly
+    ? metadata.pmcid
+      ? 'Full text not machine-retrievable (PMCID present, no open XML)'
+      : 'Abstract only — full text not available'
+    : `Full text parsed (${sections.length} sections)`;
 
   // Format and segment abstract into clean paragraphs
   const abstractParagraphs = abstract
@@ -158,6 +164,9 @@ export const ManuscriptPreviewCard: React.FC = () => {
       </div>
 
       <div className="p-6 space-y-6">
+        {currentManuscript.retraction?.isRetracted && (
+          <RetractionBanner citation={currentManuscript.retraction?.retractionCitation} />
+        )}
         {/* P0-4: Block Appraisal if Content Unavailable */}
         {currentManuscript.contentAvailable === false && (
           <div className="p-4 bg-red-50 border border-red-300 rounded-xl flex items-start gap-3 shadow-xs">
@@ -242,7 +251,7 @@ export const ManuscriptPreviewCard: React.FC = () => {
               Structured Manuscript Abstract
             </h4>
             <span className="text-[11px] text-slate-500">
-              Full text parsed and indexed for analytical pipeline
+              {sourceText}
             </span>
           </div>
 
@@ -342,6 +351,12 @@ export const ManuscriptPreviewCard: React.FC = () => {
                 <>
                   <AlertTriangle className="w-4 h-4 text-slate-500" />
                   Only bibliographic metadata was found — upload the PDF
+                </>
+              ) : currentManuscript.retraction?.isRetracted ? (
+                <>
+                  <AlertTriangle className="w-4 h-4" />
+                  Appraise anyway (teaching only)
+                  <ArrowRight className="w-4 h-4" />
                 </>
               ) : (
                 <>

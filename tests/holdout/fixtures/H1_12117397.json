@@ -1,0 +1,659 @@
+{
+  "id": "12117397",
+  "source": "MED",
+  "pmid": "12117397",
+  "doi": "10.1001/jama.288.3.321",
+  "title": "Risks and benefits of estrogen plus progestin in healthy postmenopausal women: principal results From the Women's Health Initiative randomized controlled trial.",
+  "authorString": "Rossouw JE, Anderson GL, Prentice RL, LaCroix AZ, Kooperberg C, Stefanick ML, Jackson RD, Beresford SA, Howard BV, Johnson KC, Kotchen JM, Ockene J, Writing Group for the Women's Health Initiative Investigators.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Rossouw JE",
+        "lastName": "Rossouw",
+        "firstName": "Jacques E",
+        "initials": "JE",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Division of Women's Health Initiative, National Heart, Lung, and Blood Institute, 6705 Rockledge Dr, One Rockledge Ctr, Suite 300, Bethesda, MD 20817, USA.rossouw@nih.gov"
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Anderson GL",
+        "lastName": "Anderson",
+        "firstName": "Garnet L",
+        "initials": "GL"
+      },
+      {
+        "fullName": "Prentice RL",
+        "lastName": "Prentice",
+        "firstName": "Ross L",
+        "initials": "RL"
+      },
+      {
+        "fullName": "LaCroix AZ",
+        "lastName": "LaCroix",
+        "firstName": "Andrea Z",
+        "initials": "AZ"
+      },
+      {
+        "fullName": "Kooperberg C",
+        "lastName": "Kooperberg",
+        "firstName": "Charles",
+        "initials": "C"
+      },
+      {
+        "fullName": "Stefanick ML",
+        "lastName": "Stefanick",
+        "firstName": "Marcia L",
+        "initials": "ML"
+      },
+      {
+        "fullName": "Jackson RD",
+        "lastName": "Jackson",
+        "firstName": "Rebecca D",
+        "initials": "RD"
+      },
+      {
+        "fullName": "Beresford SA",
+        "lastName": "Beresford",
+        "firstName": "Shirley A A",
+        "initials": "SA"
+      },
+      {
+        "fullName": "Howard BV",
+        "lastName": "Howard",
+        "firstName": "Barbara V",
+        "initials": "BV"
+      },
+      {
+        "fullName": "Johnson KC",
+        "lastName": "Johnson",
+        "firstName": "Karen C",
+        "initials": "KC",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-3493-4077"
+        }
+      },
+      {
+        "fullName": "Kotchen JM",
+        "lastName": "Kotchen",
+        "firstName": "Jane Morley",
+        "initials": "JM"
+      },
+      {
+        "fullName": "Ockene J",
+        "lastName": "Ockene",
+        "firstName": "Judith",
+        "initials": "J"
+      },
+      {
+        "collectiveName": "Writing Group for the Women's Health Initiative Investigators"
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0000-0002-3493-4077"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "altmetrics",
+      "wikipedia"
+    ]
+  },
+  "journalInfo": {
+    "issue": "3",
+    "volume": "288",
+    "journalIssueId": 1101229,
+    "dateOfPublication": "2002 Jul",
+    "monthOfPublication": 7,
+    "yearOfPublication": 2002,
+    "journal": {
+      "medlineAbbreviation": "JAMA",
+      "title": "JAMA",
+      "essn": "1538-3598",
+      "issn": "0098-7484",
+      "isoabbreviation": "JAMA",
+      "nlmid": "7501160"
+    },
+    "printPublicationDate": "2002-07-01"
+  },
+  "pubYear": "2002",
+  "pageInfo": "321-333",
+  "abstractText": "<h4>Context</h4>Despite decades of accumulated observational evidence, the balance of risks and benefits for hormone use in healthy postmenopausal women remains uncertain.<h4>Objective</h4>To assess the major health benefits and risks of the most commonly used combined hormone preparation in the United States.<h4>Design</h4>Estrogen plus progestin component of the Women's Health Initiative, a randomized controlled primary prevention trial (planned duration, 8.5 years) in which 16608 postmenopausal women aged 50-79 years with an intact uterus at baseline were recruited by 40 US clinical centers in 1993-1998.<h4>Interventions</h4>Participants received conjugated equine estrogens, 0.625 mg/d, plus medroxyprogesterone acetate, 2.5 mg/d, in 1 tablet (n = 8506) or placebo (n = 8102).<h4>Main outcomes measures</h4>The primary outcome was coronary heart disease (CHD) (nonfatal myocardial infarction and CHD death), with invasive breast cancer as the primary adverse outcome. A global index summarizing the balance of risks and benefits included the 2 primary outcomes plus stroke, pulmonary embolism (PE), endometrial cancer, colorectal cancer, hip fracture, and death due to other causes.<h4>Results</h4>On May 31, 2002, after a mean of 5.2 years of follow-up, the data and safety monitoring board recommended stopping the trial of estrogen plus progestin vs placebo because the test statistic for invasive breast cancer exceeded the stopping boundary for this adverse effect and the global index statistic supported risks exceeding benefits. This report includes data on the major clinical outcomes through April 30, 2002. Estimated hazard ratios (HRs) (nominal 95% confidence intervals [CIs]) were as follows: CHD, 1.29 (1.02-1.63) with 286 cases; breast cancer, 1.26 (1.00-1.59) with 290 cases; stroke, 1.41 (1.07-1.85) with 212 cases; PE, 2.13 (1.39-3.25) with 101 cases; colorectal cancer, 0.63 (0.43-0.92) with 112 cases; endometrial cancer, 0.83 (0.47-1.47) with 47 cases; hip fracture, 0.66 (0.45-0.98) with 106 cases; and death due to other causes, 0.92 (0.74-1.14) with 331 cases. Corresponding HRs (nominal 95% CIs) for composite outcomes were 1.22 (1.09-1.36) for total cardiovascular disease (arterial and venous disease), 1.03 (0.90-1.17) for total cancer, 0.76 (0.69-0.85) for combined fractures, 0.98 (0.82-1.18) for total mortality, and 1.15 (1.03-1.28) for the global index. Absolute excess risks per 10 000 person-years attributable to estrogen plus progestin were 7 more CHD events, 8 more strokes, 8 more PEs, and 8 more invasive breast cancers, while absolute risk reductions per 10 000 person-years were 6 fewer colorectal cancers and 5 fewer hip fractures. The absolute excess risk of events included in the global index was 19 per 10 000 person-years.<h4>Conclusions</h4>Overall health risks exceeded benefits from use of combined estrogen plus progestin for an average 5.2-year follow-up among healthy postmenopausal US women. All-cause mortality was not affected during the trial. The risk-benefit profile found in this trial is not consistent with the requirements for a viable intervention for primary prevention of chronic diseases, and the results indicate that this regimen should not be initiated or continued for primary prevention of CHD.",
+  "affiliation": "Division of Women's Health Initiative, National Heart, Lung, and Blood Institute, 6705 Rockledge Dr, One Rockledge Ctr, Suite 300, Bethesda, MD 20817, USA.rossouw@nih.gov",
+  "publicationStatus": "ppublish",
+  "language": "eng",
+  "pubModel": "Print",
+  "pubTypeList": {
+    "pubType": [
+      "Clinical Trial",
+      "Research Support, U.S. Gov't, P.H.S.",
+      "Multicenter Study",
+      "Randomized Controlled Trial",
+      "Journal Article"
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Breast Neoplasms",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PC",
+              "qualifierName": "prevention & control"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Colorectal Neoplasms",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Endometrial Neoplasms",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pulmonary Embolism",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Coronary Disease",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PC",
+              "qualifierName": "prevention & control"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Myocardial Infarction",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Thrombosis",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Estrogens, Conjugated (USP)",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Progesterone Congeners",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Treatment Outcome"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Estrogen Replacement Therapy",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Proportional Hazards Models"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Risk"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Survival Analysis"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Postmenopause"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Aged"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Middle Aged"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Clinical Trials Data Monitoring Committees"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Fractures, Bone",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PC",
+              "qualifierName": "prevention & control"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Stroke",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Medroxyprogesterone Acetate",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "chemicalList": {
+    "chemical": [
+      {
+        "name": "Estrogens, Conjugated (USP)",
+        "registryNumber": "0"
+      },
+      {
+        "name": "Progesterone Congeners",
+        "registryNumber": "0"
+      },
+      {
+        "name": "Medroxyprogesterone Acetate",
+        "registryNumber": "C2QI4IOI2G"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1001/jama.288.3.321"
+      }
+    ]
+  },
+  "commentCorrectionList": {
+    "commentCorrection": [
+      {
+        "source": "MED",
+        "id": "12117403",
+        "reference": "JAMA. 2002 Jul 17;288(3):366-8. doi: 10.1001/jama.288.3.366.",
+        "type": "Comment in",
+        "orderIn": 1
+      },
+      {
+        "source": "MED",
+        "id": "12197697",
+        "reference": "CMAJ. 2002 Aug 20;167(4):377-8.",
+        "type": "Comment in",
+        "orderIn": 2
+      },
+      {
+        "source": "MED",
+        "id": "12207419",
+        "reference": "ACP J Club. 2002 Sep-Oct;137(2):41.",
+        "type": "Comment in",
+        "orderIn": 3
+      },
+      {
+        "source": "MED",
+        "id": "12401147",
+        "reference": "J Fam Pract. 2002 Oct;51(10):821.",
+        "type": "Comment in",
+        "orderIn": 4
+      },
+      {
+        "source": "MED",
+        "id": "12472311",
+        "reference": "JAMA. 2002 Dec 11;288(22):2819; author reply 2823-4. doi: 10.1001/jama.288.22.2819.",
+        "type": "Comment in",
+        "orderIn": 5
+      },
+      {
+        "source": "MED",
+        "id": "12472312",
+        "reference": "JAMA. 2002 Dec 11;288(22):2822; author reply 2823-4. doi: 10.1001/jama.288.22.2822-jlt1211-1-10.",
+        "type": "Comment in",
+        "orderIn": 6
+      },
+      {
+        "source": "MED",
+        "id": "12472313",
+        "reference": "JAMA. 2002 Dec 11;288(22):2822; author reply 2823-4. doi: 10.1001/jama.288.22.2822-jlt1211-1-9.",
+        "type": "Comment in",
+        "orderIn": 7
+      },
+      {
+        "source": "MED",
+        "id": "12472314",
+        "reference": "JAMA. 2002 Dec 11;288(22):2821-2; author reply 2823-4. doi: 10.1001/jama.288.22.2821-jlt1211-1-8.",
+        "type": "Comment in",
+        "orderIn": 8
+      },
+      {
+        "source": "MED",
+        "id": "12472315",
+        "reference": "JAMA. 2002 Dec 11;288(22):2821; author reply 2823-4. doi: 10.1001/jama.288.22.2821-jlt1211-1-7.",
+        "type": "Comment in",
+        "orderIn": 9
+      },
+      {
+        "source": "MED",
+        "id": "12472316",
+        "reference": "JAMA. 2002 Dec 11;288(22):2822-3; author reply 2823-4. doi: 10.1001/jama.288.22.2822-jlt1211-1-11.",
+        "type": "Comment in",
+        "orderIn": 10
+      },
+      {
+        "source": "MED",
+        "id": "12472317",
+        "reference": "JAMA. 2002 Dec 11;288(22):2821; author reply 2823-4. doi: 10.1001/jama.288.22.2821-jlt1211-1-6.",
+        "type": "Comment in",
+        "orderIn": 11
+      },
+      {
+        "source": "MED",
+        "id": "12472318",
+        "reference": "JAMA. 2002 Dec 11;288(22):2820-1; author reply 2823-4. doi: 10.1001/jama.288.22.2820-jlt1211-1-5.",
+        "type": "Comment in",
+        "orderIn": 12
+      },
+      {
+        "source": "MED",
+        "id": "12472319",
+        "reference": "JAMA. 2002 Dec 11;288(22):2820; author reply 2823-4. doi: 10.1001/jama.288.22.2820-jlt1211-1-4.",
+        "type": "Comment in",
+        "orderIn": 13
+      },
+      {
+        "source": "MED",
+        "id": "12472320",
+        "reference": "JAMA. 2002 Dec 11;288(22):2820; author reply 2823-4. doi: 10.1001/jama.288.22.2820-jlt1211-1-3.",
+        "type": "Comment in",
+        "orderIn": 14
+      },
+      {
+        "source": "MED",
+        "id": "12472321",
+        "reference": "JAMA. 2002 Dec 11;288(22):2819-20; author reply 2823-4. doi: 10.1001/jama.288.22.2819-jlt1211-1-2.",
+        "type": "Comment in",
+        "orderIn": 15
+      },
+      {
+        "source": "MED",
+        "id": "12472322",
+        "reference": "JAMA. 2002 Dec 11;288(22):2824-5; author reply 2825.",
+        "type": "Comment in",
+        "orderIn": 16
+      },
+      {
+        "source": "MED",
+        "id": "12546038",
+        "reference": "Evid Based Nurs. 2003 Jan;6(1):20. doi: 10.1136/ebn.6.1.20.",
+        "type": "Comment in",
+        "orderIn": 17
+      },
+      {
+        "source": "MED",
+        "id": "12590884",
+        "reference": "Curr Rheumatol Rep. 2003 Feb;5(1):43-4. doi: 10.1007/s11926-003-0082-9.",
+        "type": "Comment in",
+        "orderIn": 18
+      },
+      {
+        "source": "MED",
+        "id": "12619737",
+        "reference": "Can Fam Physician. 2003 Feb;49:157-9.",
+        "type": "Comment in",
+        "orderIn": 19
+      },
+      {
+        "source": "MED",
+        "id": "12824204",
+        "reference": "JAMA. 2003 Jun 25;289(24):3241-2. doi: 10.1001/jama.289.24.3241.",
+        "type": "Comment in",
+        "orderIn": 20
+      },
+      {
+        "source": "MED",
+        "id": "14531100",
+        "reference": "S Afr Med J. 2003 Aug;93(8):554-5.",
+        "type": "Comment in",
+        "orderIn": 21
+      },
+      {
+        "source": "MED",
+        "id": "14693869",
+        "reference": "JAMA. 2003 Dec 24;290(24):3193; author reply 3193. doi: 10.1001/jama.290.24.3193-a.",
+        "type": "Comment in",
+        "orderIn": 22
+      },
+      {
+        "source": "MED",
+        "id": "15304457",
+        "reference": "JAMA. 2004 Aug 11;292(6):683-4; author reply 685-6. doi: 10.1001/jama.292.6.683-c.",
+        "type": "Comment in",
+        "orderIn": 23
+      },
+      {
+        "source": "MED",
+        "id": "15304459",
+        "reference": "JAMA. 2004 Aug 11;292(6):684-5; author reply 685-6. doi: 10.1001/jama.292.6.684-c.",
+        "type": "Comment in",
+        "orderIn": 24
+      },
+      {
+        "source": "MED",
+        "id": "15769960",
+        "reference": "JAMA. 2005 Mar 16;293(11):1322; author reply 1322-3. doi: 10.1001/jama.293.11.1322-b.",
+        "type": "Comment in",
+        "orderIn": 25
+      },
+      {
+        "source": "MED",
+        "id": "16849659",
+        "reference": "JAMA. 2006 Jul 19;296(3):280; author reply 280-1. doi: 10.1001/jama.296.3.280-a.",
+        "type": "Comment in",
+        "orderIn": 26
+      },
+      {
+        "source": "MED",
+        "id": "18836110",
+        "reference": "Evid Based Med. 2008 Oct;13(5):142. doi: 10.1136/ebm.13.5.142.",
+        "type": "Comment in",
+        "orderIn": 27
+      },
+      {
+        "source": "MED",
+        "id": "25365436",
+        "reference": "South Med J. 2014 Nov;107(11):696-7. doi: 10.14423/SMJ.0000000000000191.",
+        "type": "Comment in",
+        "orderIn": 28
+      },
+      {
+        "source": "MED",
+        "id": "30262631",
+        "reference": "Br J Gen Pract. 2018 Oct;68(675):499-500. doi: 10.3399/bjgp18X699353.",
+        "type": "Comment in",
+        "orderIn": 29
+      },
+      {
+        "source": "MED",
+        "id": "31672802",
+        "reference": "Br J Gen Pract. 2019 Oct 31;69(688):540-541. doi: 10.3399/bjgp19X706169.",
+        "type": "Comment in",
+        "orderIn": 30
+      }
+    ]
+  },
+  "isOpenAccess": "N",
+  "inEPMC": "N",
+  "inPMC": "N",
+  "citedByCount": 10248,
+  "hasReferences": "N",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "N",
+  "hasBook": "N",
+  "hasSuppl": "N",
+  "hasLabsLinks": "Y",
+  "hasData": "N",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "N",
+  "dateOfCompletion": "2002-07-25",
+  "dateOfCreation": "2002-07-19",
+  "dateOfRevision": "2026-01-21",
+  "firstPublicationDate": "2002-07-01",
+  "firstIndexDate": "2008-10-10",
+  "hasEvaluations": "N"
+}

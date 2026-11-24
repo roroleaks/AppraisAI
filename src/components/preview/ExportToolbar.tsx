@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
 import { ManuscriptPreviewModal } from './ManuscriptPreviewModal';
+import { ConfirmationModal } from '@/components/common/ConfirmationModal';
 import { getCleanDownloadFilename } from '@/lib/parsers/title-sanitizer';
+import { reportStatus } from '@/lib/status';
 import { isValidOrcid } from '@/lib/parsers/orcid-validator';
 import {
   Download,
@@ -28,27 +30,42 @@ const PRESET_PROFILE = {
 };
 
 export const ExportToolbar: React.FC = () => {
-  const { currentAppraisal, isEditMode, setEditMode, clearAppraisal, resetAll } =
-    useAppraisalStore();
+  const {
+    currentAppraisal,
+    isEditMode,
+    setEditMode,
+    clearAppraisal,
+    resetAll,
+    humanVerified,
+    setHumanVerified,
+    appraiserName,
+    setAppraiserName,
+  } = useAppraisalStore();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isCopiedCitation, setIsCopiedCitation] = useState(false);
+  const [showResetConfirmModal, setShowResetConfirmModal] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
 
-  // Appraiser attribution persisted locally (P0-6: empty by default)
-  const [appraiserName, setAppraiserName] = useState('');
+  // Appraiser attribution persisted locally / in store
   const [appraiserAffiliation, setAppraiserAffiliation] = useState('');
   const [appraiserOrcid, setAppraiserOrcid] = useState('');
-  const [isVerified, setIsVerified] = useState(false);
   const [showAttributionPopover, setShowAttributionPopover] = useState(false);
+  const [attributionError, setAttributionError] = useState<string | null>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const savedName = localStorage.getItem('appraisai_author_name');
     const savedAffil = localStorage.getItem('appraisai_author_affiliation');
     const savedOrcid = localStorage.getItem('appraisai_author_orcid');
-    if (savedName) {
+    if (savedName && !appraiserName) {
       setAppraiserName(savedName);
-      setAppraiserAffiliation(savedAffil || '');
-      setAppraiserOrcid(savedOrcid || '');
+    }
+    if (savedAffil) {
+      setAppraiserAffiliation(savedAffil);
+    }
+    if (savedOrcid) {
+      setAppraiserOrcid(savedOrcid);
     }
   }, []);
 
@@ -72,16 +89,19 @@ export const ExportToolbar: React.FC = () => {
 
   const handleDownloadDocx = async () => {
     if (!currentAppraisal || isDownloading) return;
+    setExportError(null);
+    setAttributionError(null);
 
     if (!appraiserName.trim()) {
       setShowAttributionPopover(true);
-      alert('Appraiser name is required before exporting the publication manuscript. Please enter your name.');
+      setAttributionError('Appraiser name is required before exporting the publication manuscript.');
+      setTimeout(() => nameInputRef.current?.focus(), 50);
       return;
     }
 
     if (!isOrcidValid) {
       setShowAttributionPopover(true);
-      alert('The entered ORCID iD is invalid. Please correct the checksum or leave it blank.');
+      setAttributionError('The entered ORCID iD is invalid. Please correct the checksum or leave it blank.');
       return;
     }
 
@@ -97,7 +117,7 @@ export const ExportToolbar: React.FC = () => {
             name: appraiserName.trim(),
             affiliation: appraiserAffiliation.trim() || undefined,
             orcid: appraiserOrcid.trim() || undefined,
-            verified: isVerified,
+            verified: humanVerified,
           },
         }),
       });
@@ -110,16 +130,21 @@ export const ExportToolbar: React.FC = () => {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
+      const status = reportStatus(currentAppraisal, {
+        humanVerified,
+        appraiserName,
+      });
       a.download = getCleanDownloadFilename(
         currentAppraisal.metadata.authors,
-        currentAppraisal.metadata.publicationYear
+        currentAppraisal.metadata.publicationYear,
+        status.isDraft
       );
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
     } catch (err: any) {
-      alert(`Export error: ${err.message}`);
+      setExportError(`Export error: ${err.message}`);
     } finally {
       setIsDownloading(false);
     }
@@ -150,63 +175,21 @@ export const ExportToolbar: React.FC = () => {
 
   return (
     <>
-      <div className="sticky top-16 z-20 bg-white/95 backdrop-blur-xs border border-[#d8dee6] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
-        {/* Left: Navigation, Engine Provenance Badge & Attribution Stamp */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Back to Manuscript Button */}
-          <button
-            onClick={() => {
-              clearAppraisal();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-[#e3f2f2] text-slate-700 hover:text-[#0f6b6b] border border-slate-300 hover:border-[#0f6b6b] transition shadow-xs"
-            title="Return to manuscript abstract and metadata overview"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Manuscript</span>
-          </button>
-
-          {/* New Appraisal Reset Button */}
-          <button
-            onClick={() => {
-              if (window.confirm('Start a new appraisal? Current report will be cleared.')) {
-                resetAll();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-700 border border-slate-200 hover:border-rose-300 transition shadow-xs"
-            title="Clear and start new appraisal"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>New Paper</span>
-          </button>
-
-          {/* P0-3: Persistent Engine Badge */}
-          {currentAppraisal.engineUsed === 'llm' ? (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>LLM Appraisal — {currentAppraisal.llmDetails?.provider || 'neural'} ({currentAppraisal.llmDetails?.model || 'standard'})</span>
-            </span>
-          ) : currentAppraisal.engineUsed === 'deterministic-fallback' ? (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-amber-50 text-amber-800 border border-amber-300">
-              <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
-              <span>Heuristic Screening Draft (LLM Fallback)</span>
-            </span>
-          ) : (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-800 border border-slate-300">
-              <ShieldCheck className="w-3.5 h-3.5 text-slate-600" />
-              <span>Heuristic screening draft — not a critical appraisal</span>
-            </span>
-          )}
-
+      {/* Task P07: Single row <= 56px, solid bg-white, sticky only on desktop lg: */}
+      <div className="lg:sticky lg:top-[52px] z-20 bg-white border border-[#d8dee6] rounded-xl lg:rounded-none lg:border-x-0 lg:border-t-0 border-b border-slate-200 py-1.5 px-3 sm:px-4 shadow-xs flex flex-wrap lg:flex-nowrap items-center justify-between gap-2.5 h-12">
+        {/* Left: Appraiser & Verification */}
+        <div className="flex items-center gap-2">
           {/* Attribution Popover Trigger */}
           <div className="relative">
             <button
               onClick={() => setShowAttributionPopover(!showAttributionPopover)}
-              className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-[#e3f2f2] text-slate-700 transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-[#e3f2f2] text-slate-700 transition"
+              title="Set Lead Appraiser Name and ORCID"
             >
               <UserCheck className="w-3.5 h-3.5 text-[#0f6b6b]" />
-              <span>Appraiser: {appraiserName.trim() || 'Set Appraiser Name'}</span>
+              <span className="truncate max-w-[140px] sm:max-w-[200px]">
+                {appraiserName.trim() ? appraiserName.trim() : 'Appraiser'}
+              </span>
             </button>
 
             {showAttributionPopover && (
@@ -221,13 +204,23 @@ export const ExportToolbar: React.FC = () => {
                     <Sparkles className="w-3 h-3" /> Load Preset
                   </button>
                 </div>
+                {attributionError && (
+                  <div className="p-2 bg-red-50 border border-red-200 text-red-700 text-[11px] rounded flex items-center gap-1.5 animate-in fade-in duration-150">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0 text-red-500" />
+                    <span>{attributionError}</span>
+                  </div>
+                )}
                 <div className="space-y-2 text-xs">
                   <div>
                     <label className="text-[11px] font-medium text-slate-500">Your Full Name & Degree *</label>
                     <input
+                      ref={nameInputRef}
                       type="text"
                       value={appraiserName}
-                      onChange={(e) => setAppraiserName(e.target.value)}
+                      onChange={(e) => {
+                        setAppraiserName(e.target.value);
+                        if (attributionError) setAttributionError(null);
+                      }}
                       placeholder="e.g. Dr. Raouf Roshdy, MD"
                       className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#0f6b6b]"
                     />
@@ -277,82 +270,125 @@ export const ExportToolbar: React.FC = () => {
               </div>
             )}
           </div>
-        </div>
 
-        {/* Right Action Buttons & Verification Checkbox */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* P0-6: Verification Checkbox */}
-          <label className="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-700 cursor-pointer bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+          {/* Verification Checkbox */}
+          <label className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-slate-700 cursor-pointer bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition shrink-0">
             <input
               type="checkbox"
-              checked={isVerified}
-              onChange={(e) => setIsVerified(e.target.checked)}
+              checked={humanVerified}
+              onChange={(e) => setHumanVerified(e.target.checked)}
               className="rounded border-slate-300 text-[#0f6b6b] focus:ring-[#0f6b6b]"
             />
-            <span className="font-medium text-[11px]">I have reviewed & verified this appraisal</span>
+            <span className="font-medium text-xs">Verified</span>
           </label>
+        </div>
 
-          {/* Edit Mode Toggle */}
-          <button
-            onClick={() => setEditMode(!isEditMode)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition ${
-              isEditMode
-                ? 'border-[#0f6b6b] bg-[#e3f2f2] text-[#0f6b6b] shadow-xs'
-                : 'border-slate-200 hover:bg-slate-50 text-slate-700'
-            }`}
-          >
-            <Edit3 className="w-3.5 h-3.5" />
-            <span>{isEditMode ? 'Finish Editing' : 'Edit Mode'}</span>
-          </button>
-
-          {/* Copy Citation */}
-          <button
-            onClick={handleCopyCitation}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition"
-          >
-            {isCopiedCitation ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-600" /> Copied!
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5 text-slate-500" /> Copy Citation
-              </>
-            )}
-          </button>
-
-          {/* Export JSON */}
-          <button
-            onClick={handleExportJson}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition"
-          >
-            <FileCode className="w-3.5 h-3.5 text-slate-500" /> Export JSON
-          </button>
-
-          {/* Print Preview Modal */}
+        {/* Right: Preview, Download & More menu */}
+        <div className="flex items-center gap-2 ml-auto">
+          {/* Print Preview Button */}
           <button
             onClick={() => setIsPreviewOpen(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-800 transition"
           >
-            <Eye className="w-3.5 h-3.5 text-[#0f6b6b]" /> Preview Manuscript
+            <Eye className="w-3.5 h-3.5 text-[#0f6b6b]" />
+            <span className="hidden sm:inline">Preview</span>
           </button>
 
           {/* Primary Download Button */}
           <button
             onClick={handleDownloadDocx}
             disabled={isDownloading}
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#0f6b6b] hover:bg-[#0a4a4a] disabled:bg-slate-300 text-white text-xs font-bold rounded-lg shadow-sm transition"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#0f6b6b] hover:bg-[#0a4a4a] disabled:bg-slate-300 text-white text-xs font-bold rounded-lg shadow-xs transition"
           >
             {isDownloading ? (
               <>
-                <Loader2 className="w-3.5 h-3.5 animate-spin" /> Compiling .docx...
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span className="hidden sm:inline">Compiling...</span>
               </>
             ) : (
               <>
-                <Download className="w-3.5 h-3.5" /> Download Publication .docx
+                <Download className="w-3.5 h-3.5" />
+                <span>Download .docx</span>
               </>
             )}
           </button>
+
+          {/* More Menu Dropdown for Edit, Copy, JSON, New Paper */}
+          <details
+            className="relative"
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                (e.currentTarget as HTMLDetailsElement).open = false;
+              }
+            }}
+          >
+            <summary className="cursor-pointer list-none flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition select-none">
+              <span>More ▾</span>
+            </summary>
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-200 p-1.5 space-y-1 z-30 animate-in fade-in duration-100">
+              <button
+                onClick={(e) => {
+                  setEditMode(!isEditMode);
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                <Edit3 className="w-3.5 h-3.5 text-[#0f6b6b]" />
+                <span>{isEditMode ? 'Finish Editing' : 'Edit Mode'}</span>
+              </button>
+              <button
+                onClick={(e) => {
+                  handleCopyCitation();
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                {isCopiedCitation ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Copy Citation</span>
+                  </>
+                )}
+              </button>
+              <button
+                onClick={(e) => {
+                  handleExportJson();
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                <FileCode className="w-3.5 h-3.5 text-slate-500" />
+                <span>Export JSON</span>
+              </button>
+              <div className="border-t border-slate-100 my-1" />
+              <button
+                onClick={(e) => {
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                  clearAppraisal();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-slate-50 text-slate-700"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 text-slate-500" />
+                <span>Back to Manuscript</span>
+              </button>
+              <button
+                onClick={(e) => {
+                  (e.currentTarget.closest('details') as HTMLDetailsElement).open = false;
+                  setShowResetConfirmModal(true);
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-left rounded-lg hover:bg-rose-50 text-rose-700"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>New Paper</span>
+              </button>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -363,6 +399,38 @@ export const ExportToolbar: React.FC = () => {
         report={currentAppraisal}
         onDownloadDocx={handleDownloadDocx}
       />
+
+      {/* Confirmation Modal for Resetting Session (Task B4) */}
+      <ConfirmationModal
+        isOpen={showResetConfirmModal}
+        title="Start a new appraisal?"
+        message="Your current critical appraisal session will be reset. Any unsaved edits will be cleared."
+        confirmLabel="Reset & Start New"
+        cancelLabel="Cancel"
+        variant="warning"
+        onConfirm={() => {
+          resetAll();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onCancel={() => setShowResetConfirmModal(false)}
+      />
+
+      {/* Export Error Alert (Task B4) */}
+      {exportError && (
+        <div
+          role="alert"
+          className="fixed bottom-4 right-4 z-50 p-4 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl shadow-lg flex items-center gap-3 animate-in fade-in duration-200"
+        >
+          <AlertCircle className="w-5 h-5 text-red-500 shrink-0" />
+          <span>{exportError}</span>
+          <button
+            onClick={() => setExportError(null)}
+            className="text-red-400 hover:text-red-600 font-bold ml-2"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </>
   );
 };

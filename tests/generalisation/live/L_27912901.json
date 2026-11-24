@@ -1,0 +1,810 @@
+{
+ "id": "27912901",
+ "source": "MED",
+ "pmid": "27912901",
+ "doi": "10.1016/j.fertnstert.2016.10.033",
+ "title": "Individualized versus conventional ovarian stimulation for in vitro fertilization: a multicenter, randomized, controlled, assessor-blinded, phase 3 noninferiority trial.",
+ "authorString": "Nyboe Andersen A, Nelson SM, Fauser BC, García-Velasco JA, Klein BM, Arce JC, ESTHER-1 study group.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Nyboe Andersen A",
+    "lastName": "Nyboe Andersen",
+    "firstName": "Anders",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Fertility Clinic, Rigshospitalet, Copenhagen University Hospital, Copenhagen, Denmark."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Nelson SM",
+    "lastName": "Nelson",
+    "firstName": "Scott M",
+    "initials": "SM",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "School of Medicine, University of Glasgow, Glasgow, United Kingdom."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Fauser BC",
+    "lastName": "Fauser",
+    "firstName": "Bart C J M",
+    "initials": "BC",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division Woman & Baby, University Medical Center Utrecht, Utrecht, the Netherlands."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "García-Velasco JA",
+    "lastName": "García-Velasco",
+    "firstName": "Juan Antonio",
+    "initials": "JA",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "IVI Madrid, Madrid, Spain."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Klein BM",
+    "lastName": "Klein",
+    "firstName": "Bjarke M",
+    "initials": "BM",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Biometrics, Ferring Pharmaceuticals, Copenhagen, Denmark."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Arce JC",
+    "lastName": "Arce",
+    "firstName": "Joan-Carles",
+    "initials": "JC",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Reproductive Health, Ferring Pharmaceuticals, Copenhagen, Denmark. Electronic address: jca@ferring.com."
+      }
+     ]
+    }
+   },
+   {
+    "collectiveName": "ESTHER-1 study group"
+   }
+  ]
+ },
+ "investigatorList": {
+  "investigator": [
+   {
+    "fullName": "Tournaye H",
+    "lastName": "Tournaye",
+    "firstName": "Herman",
+    "initials": "H"
+   },
+   {
+    "fullName": "De Sutter P",
+    "lastName": "De Sutter",
+    "firstName": "Petra",
+    "initials": "P"
+   },
+   {
+    "fullName": "Decleer W",
+    "lastName": "Decleer",
+    "firstName": "Wim",
+    "initials": "W"
+   },
+   {
+    "fullName": "Petracco A",
+    "lastName": "Petracco",
+    "firstName": "Alvaro",
+    "initials": "A"
+   },
+   {
+    "fullName": "Borges E",
+    "lastName": "Borges",
+    "firstName": "Edson",
+    "initials": "E"
+   },
+   {
+    "fullName": "Barbosa CP",
+    "lastName": "Barbosa",
+    "firstName": "Caio Parente",
+    "initials": "CP",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-2922-0264"
+    }
+   },
+   {
+    "fullName": "Havelock J",
+    "lastName": "Havelock",
+    "firstName": "Jon",
+    "initials": "J"
+   },
+   {
+    "fullName": "Claman P",
+    "lastName": "Claman",
+    "firstName": "Paul",
+    "initials": "P"
+   },
+   {
+    "fullName": "Yuzpe A",
+    "lastName": "Yuzpe",
+    "firstName": "Albert",
+    "initials": "A"
+   },
+   {
+    "fullName": "Višnová H",
+    "lastName": "Višnová",
+    "firstName": "Hana",
+    "initials": "H"
+   },
+   {
+    "fullName": "Ventruba P",
+    "lastName": "Ventruba",
+    "firstName": "Pavel",
+    "initials": "P",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-9264-0336"
+    }
+   },
+   {
+    "fullName": "Uher P",
+    "lastName": "Uher",
+    "firstName": "Petr",
+    "initials": "P",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-1933-3548"
+    }
+   },
+   {
+    "fullName": "Mrazek M",
+    "lastName": "Mrazek",
+    "firstName": "Milan",
+    "initials": "M"
+   },
+   {
+    "fullName": "Andersen AN",
+    "lastName": "Andersen",
+    "firstName": "Anders Nyboe",
+    "initials": "AN"
+   },
+   {
+    "fullName": "Knudsen UB",
+    "lastName": "Knudsen",
+    "firstName": "Ulla Breth",
+    "initials": "UB"
+   },
+   {
+    "fullName": "Dewailly D",
+    "lastName": "Dewailly",
+    "firstName": "Didier",
+    "initials": "D",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-8521-5163"
+    }
+   },
+   {
+    "fullName": "Leveque AG",
+    "lastName": "Leveque",
+    "firstName": "Anne Guivarc'h",
+    "initials": "AG"
+   },
+   {
+    "fullName": "La Marca A",
+    "lastName": "La Marca",
+    "firstName": "Antonio",
+    "initials": "A",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-7921-9547"
+    }
+   },
+   {
+    "fullName": "Papaleo E",
+    "lastName": "Papaleo",
+    "firstName": "Enrico",
+    "initials": "E",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-0281-9143"
+    }
+   },
+   {
+    "fullName": "Kuczynski W",
+    "lastName": "Kuczynski",
+    "firstName": "Waldemar",
+    "initials": "W"
+   },
+   {
+    "fullName": "Kozioł K",
+    "lastName": "Kozioł",
+    "firstName": "Katarzyna",
+    "initials": "K"
+   },
+   {
+    "fullName": "Anshina M",
+    "lastName": "Anshina",
+    "firstName": "Margarita",
+    "initials": "M",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8446-5387"
+    }
+   },
+   {
+    "fullName": "Zazerskaya I",
+    "lastName": "Zazerskaya",
+    "firstName": "Irina",
+    "initials": "I"
+   },
+   {
+    "fullName": "Gzgzyan A",
+    "lastName": "Gzgzyan",
+    "firstName": "Alexander",
+    "initials": "A"
+   },
+   {
+    "fullName": "Bulychova E",
+    "lastName": "Bulychova",
+    "firstName": "Elena",
+    "initials": "E"
+   },
+   {
+    "fullName": "Verdú V",
+    "lastName": "Verdú",
+    "firstName": "Victoria",
+    "initials": "V"
+   },
+   {
+    "fullName": "Barri P",
+    "lastName": "Barri",
+    "firstName": "Pedro",
+    "initials": "P"
+   },
+   {
+    "fullName": "García-Velasco JA",
+    "lastName": "García-Velasco",
+    "firstName": "Juan Antonio",
+    "initials": "JA"
+   },
+   {
+    "fullName": "Fernández-Sánchez M",
+    "lastName": "Fernández-Sánchez",
+    "firstName": "Manuel",
+    "initials": "M",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-1214-2984"
+    }
+   },
+   {
+    "fullName": "Martin FS",
+    "lastName": "Martin",
+    "firstName": "Fernando Sánchez",
+    "initials": "FS"
+   },
+   {
+    "fullName": "Bosch E",
+    "lastName": "Bosch",
+    "firstName": "Ernesto",
+    "initials": "E"
+   },
+   {
+    "fullName": "Serna J",
+    "lastName": "Serna",
+    "firstName": "José",
+    "initials": "J"
+   },
+   {
+    "fullName": "Castillon G",
+    "lastName": "Castillon",
+    "firstName": "Gemma",
+    "initials": "G"
+   },
+   {
+    "fullName": "Bernabeu R",
+    "lastName": "Bernabeu",
+    "firstName": "Rafael",
+    "initials": "R"
+   },
+   {
+    "fullName": "Ferrando M",
+    "lastName": "Ferrando",
+    "firstName": "Marcos",
+    "initials": "M"
+   },
+   {
+    "fullName": "Lavery S",
+    "lastName": "Lavery",
+    "firstName": "Stuart",
+    "initials": "S"
+   },
+   {
+    "fullName": "Gaudoin M",
+    "lastName": "Gaudoin",
+    "firstName": "Marco",
+    "initials": "M"
+   },
+   {
+    "fullName": "Nelson SM",
+    "lastName": "Nelson",
+    "firstName": "Scott M",
+    "initials": "SM"
+   },
+   {
+    "fullName": "Fauser BC",
+    "lastName": "Fauser",
+    "firstName": "Bart C J M",
+    "initials": "BC"
+   },
+   {
+    "fullName": "Klein BM",
+    "lastName": "Klein",
+    "firstName": "Bjarke M",
+    "initials": "BM"
+   },
+   {
+    "fullName": "Helmgaard L",
+    "lastName": "Helmgaard",
+    "firstName": "Lisbeth",
+    "initials": "L"
+   },
+   {
+    "fullName": "Mannaerts B",
+    "lastName": "Mannaerts",
+    "firstName": "Bernadette",
+    "initials": "B"
+   },
+   {
+    "fullName": "Arce JC",
+    "lastName": "Arce",
+    "firstName": "Joan-Carles",
+    "initials": "JC"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7921-9547"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-8521-5163"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-9264-0336"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-1214-2984"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-1933-3548"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-2922-0264"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8446-5387"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-9099-3047"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-0281-9143"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-1005-8727"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "2",
+  "volume": "107",
+  "journalIssueId": 2521827,
+  "dateOfPublication": "2017 Feb",
+  "monthOfPublication": 2,
+  "yearOfPublication": 2017,
+  "journal": {
+   "medlineAbbreviation": "Fertil Steril",
+   "title": "Fertility and sterility",
+   "essn": "1556-5653",
+   "issn": "0015-0282",
+   "isoabbreviation": "Fertil Steril",
+   "nlmid": "0372772"
+  },
+  "printPublicationDate": "2017-02-01"
+ },
+ "pubYear": "2017",
+ "pageInfo": "387-396.e4",
+ "abstractText": "<h4>Objective</h4>To compare the efficacy and safety of follitropin delta, a new human recombinant FSH with individualized dosing based on serum antimüllerian hormone (AMH) and body weight, with conventional follitropin alfa dosing for ovarian stimulation in women undergoing IVF.<h4>Design</h4>Randomized, multicenter, assessor-blinded, noninferiority trial (ESTHER-1).<h4>Setting</h4>Reproductive medicine clinics.<h4>Patient(s)</h4>A total of 1,329 women (aged 18-40 years).<h4>Intervention(s)</h4>Follitropin delta (AMH <15 pmol/L: 12 μg/d; AMH ≥15 pmol/L: 0.10-0.19 μg/kg/d; maximum 12 μg/d), or follitropin alfa (150 IU/d for 5 days, potential subsequent dose adjustments; maximum 450 IU/d).<h4>Main outcomes measure(s)</h4>Ongoing pregnancy and ongoing implantation rates; noninferiority margins -8.0%.<h4>Result(s)</h4>Ongoing pregnancy (30.7% vs. 31.6%; difference -0.9% [95% confidence interval (CI) -5.9% to 4.1%]), ongoing implantation (35.2% vs. 35.8%; -0.6% [95% CI -6.1% to 4.8%]), and live birth (29.8% vs. 30.7%; -0.9% [95% CI -5.8% to 4.0%]) rates were similar for individualized follitropin delta and conventional follitropin alfa. Individualized follitropin delta resulted in more women with target response (8-14 oocytes) (43.3% vs. 38.4%), fewer poor responses (fewer than four oocytes in patients with AMH <15 pmol/L) (11.8% vs. 17.9%), fewer excessive responses (≥15 or ≥20 oocytes in patients with AMH ≥15 pmol/L) (27.9% vs. 35.1% and 10.1% vs. 15.6%, respectively), and fewer measures taken to prevent ovarian hyperstimulation syndrome (2.3% vs. 4.5%), despite similar oocyte yield (10.0 ± 5.6 vs. 10.4 ± 6.5) and similar blastocyst numbers (3.3 ± 2.8 vs. 3.5 ± 3.2), and less gonadotropin use (90.0 ± 25.3 vs. 103.7 ± 33.6 μg).<h4>Conclusion(s)</h4>Optimizing ovarian response in IVF by individualized dosing according to pretreatment patient characteristics results in similar efficacy and improved safety compared with conventional ovarian stimulation.<h4>Clinical trial registration number</h4>NCT01956110.",
+ "affiliation": "Fertility Clinic, Rigshospitalet, Copenhagen University Hospital, Copenhagen, Denmark.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Clinical Trial, Phase III",
+   "Comparative Study",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infertility",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "DI",
+       "qualifierName": "diagnosis"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PP",
+       "qualifierName": "physiopathology"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Ovarian Hyperstimulation Syndrome",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Body Weight",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "DE",
+       "qualifierName": "drug effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Follicle Stimulating Hormone, Human",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fertility Agents, Female",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Recombinant Proteins",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Treatment Outcome"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Transfer"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Fertilization in Vitro",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Ovulation Induction",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo Implantation"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fertility",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "DE",
+       "qualifierName": "drug effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Ovulation",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "DE",
+       "qualifierName": "drug effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adolescent"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Canada"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Brazil"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Europe"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Live Birth"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Anti-Mullerian Hormone",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "BL",
+       "qualifierName": "blood"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Young Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Biomarkers",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "BL",
+       "qualifierName": "blood"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Pregnancy",
+   "Ovarian response",
+   "Ohss",
+   "Antimüllerian Hormone",
+   "Follitropin Delta"
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Fertility Agents, Female",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Recombinant Proteins",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Follicle Stimulating Hormone, Human",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Anti-Mullerian Hormone",
+    "registryNumber": "80497-65-0"
+   },
+   {
+    "name": "follitropin alfa",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Biomarkers",
+    "registryNumber": "0"
+   },
+   {
+    "name": "follitropin delta",
+    "registryNumber": "076WHW89TW"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1016/j.fertnstert.2016.10.033"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 203,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "license": "cc by-nc-nd",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "nct"
+  ]
+ },
+ "dateOfCompletion": "2017-06-13",
+ "dateOfCreation": "2016-12-04",
+ "dateOfRevision": "2022-04-08",
+ "electronicPublicationDate": "2016-11-29",
+ "firstPublicationDate": "2016-11-29",
+ "firstIndexDate": "2016-12-03",
+ "hasEvaluations": "N"
+}

@@ -1,0 +1,293 @@
+{
+ "id": "29703793",
+ "source": "MED",
+ "pmid": "29703793",
+ "doi": "10.1530/eje-18-0175",
+ "title": "Liraglutide increases IVF pregnancy rates in obese PCOS women with poor response to first-line reproductive treatments: a pilot randomized study.",
+ "authorString": "Salamun V, Jensterle M, Janez A, Vrtacnik Bokal E.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Salamun V",
+    "lastName": "Salamun",
+    "firstName": "Vesna",
+    "initials": "V",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division of Obstetrics and Gynecology, Department of Human Reproduction."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Jensterle M",
+    "lastName": "Jensterle",
+    "firstName": "Mojca",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology, Diabetes and Metabolic Diseases, University Medical Centre Ljubljana, Ljubljana, Slovenia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Janez A",
+    "lastName": "Janez",
+    "firstName": "Andrej",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Endocrinology, Diabetes and Metabolic Diseases, University Medical Centre Ljubljana, Ljubljana, Slovenia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Vrtacnik Bokal E",
+    "lastName": "Vrtacnik Bokal",
+    "firstName": "Eda",
+    "initials": "E",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division of Obstetrics and Gynecology, Department of Human Reproduction."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "recommended_reviews"
+  ]
+ },
+ "journalInfo": {
+  "issue": "1",
+  "volume": "179",
+  "journalIssueId": 2693145,
+  "dateOfPublication": "2018 Jul",
+  "monthOfPublication": 7,
+  "yearOfPublication": 2018,
+  "journal": {
+   "medlineAbbreviation": "Eur J Endocrinol",
+   "title": "European journal of endocrinology",
+   "essn": "1479-683X",
+   "issn": "0804-4643",
+   "isoabbreviation": "Eur J Endocrinol",
+   "nlmid": "9423848"
+  },
+  "printPublicationDate": "2018-07-01"
+ },
+ "pubYear": "2018",
+ "pageInfo": "1-11",
+ "abstractText": "<h4>Objective</h4>Glucagon-like peptide-1 (GLP-1) has been investigated in regulation of reproductive system in animal models. The potential impact of short-term preconception intervention with liraglutide on fertility potential in polycystic ovary syndrome (PCOS) has not been evaluated yet.<h4>Design</h4>A prospective randomized open-label study was conducted in 28 infertile obese PCOS patients (age: 31.07 ± 4.75, BMI: 36.7 ± 3.5 kg/m<sup>2</sup>, mean ± s.d.). They were assigned to metformin (MET) 1000 mg BID or to MET 1000 mg BID combined with low-dose liraglutide 1.2 mg QD s.c. (COMBI) for 12 weeks. Ovarian stimulation protocol was started after a 4-week medication-free period.<h4>Methods</h4>The <i>in vitro</i> fertilization pregnancy rate (PR) was defined as the number of clinical pregnancies confirmed by ultrasound visualization of the fetal cardiac activity, divided by the total number of cycles performed or embryo transfers (ET). The spontaneous PR was followed for 12 months.<h4>Results</h4>Patients in the MET group on average lost 7.0 ± 6.0 kg (<i>P</i> = 0.001) compared with 7.5 ± 3.9 kg in the COMBI group (<i>P</i> < 0.001) with no significant between-treatment difference (<i>P</i> = 0.246). The PR per ET was significantly higher in the COMBI (85.7%) compared with the MET (28.6%) group (<i>P</i> = 0.03). The cumulative PR in the time frame of 12 months was 69.2% in the COMBI group compared to 35.7% in the MET group.<h4>Conclusions</h4>Preconception intervention with low-dose liraglutide added to metformin is superior to metformin alone in increasing PRs per ET and cumulative PRs in infertile obese women with PCOS, despite comparable weight reduction in both groups. A potential impact of liraglutide on the reproductive system needs further exploration, in particular the GLP-1 impact on endometrial quality and receptivity.",
+ "affiliation": "Division of Obstetrics and Gynecology, Department of Human Reproduction.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Polycystic Ovary Syndrome",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "CO",
+       "qualifierName": "complications"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infertility, Female",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Obesity",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "CO",
+       "qualifierName": "complications"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Metformin",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Hypoglycemic Agents",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Treatment Outcome"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Drug Therapy, Combination"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Fertilization in Vitro"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Sperm Injections, Intracytoplasmic"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Ovulation Induction"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Pregnancy Rate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pilot Projects"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Liraglutide",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Hypoglycemic Agents",
+    "registryNumber": "0"
+   },
+   {
+    "name": "liraglutide",
+    "registryNumber": "839I73S42A"
+   },
+   {
+    "name": "Metformin",
+    "registryNumber": "9100L32L2N"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1530/EJE-18-0175"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 155,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2018-06-11",
+ "dateOfCreation": "2018-04-29",
+ "dateOfRevision": "2019-02-17",
+ "electronicPublicationDate": "2018-04-27",
+ "firstPublicationDate": "2018-04-27",
+ "firstIndexDate": "2018-04-29",
+ "hasEvaluations": "N"
+}

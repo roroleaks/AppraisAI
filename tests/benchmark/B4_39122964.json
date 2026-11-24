@@ -1,0 +1,613 @@
+{
+  "id": "39122964",
+  "source": "MED",
+  "pmid": "39122964",
+  "pmcid": "PMC11564097",
+  "fullTextIdList": {
+    "fullTextId": [
+      "PMC11564097"
+    ]
+  },
+  "doi": "10.1038/s41591-024-03166-5",
+  "title": "Deep learning versus manual morphology-based embryo selection in IVF: a randomized, double-blind noninferiority trial.",
+  "authorString": "Illingworth PJ, Venetis C, Gardner DK, Nelson SM, Berntsen J, Larman MG, Agresta F, Ahitan S, Ahlström A, Cattrall F, Cooke S, Demmers K, Gabrielsen A, Hindkjær J, Kelley RL, Knight C, Lee L, Lahoud R, Mangat M, Park H, Price A, Trew G, Troest B, Vincent A, Wennerström S, Zujovic L, Hardarson T.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Illingworth PJ",
+        "lastName": "Illingworth",
+        "firstName": "Peter J",
+        "initials": "PJ",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0009-0008-1319-6643"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Virtus Health, Sydney, New South Wales, Australia. peter.illingworth@virtushealth.com.au."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Venetis C",
+        "lastName": "Venetis",
+        "firstName": "Christos",
+        "initials": "C",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0001-9591-7222"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "IVFAustralia, Sydney, New South Wales, Australia."
+            },
+            {
+              "affiliation": "Unit for Human Reproduction, 1st Dept of Ob/Gyn, Medical School, Faculty of Health Sciences, Aristotle University of Thessaloniki, Thessaloniki, Greece."
+            },
+            {
+              "affiliation": "Centre for Big Data Research in Health, Faculty of Medicine and Health, University of New South Wales, Sydney, New South Wales, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Gardner DK",
+        "lastName": "Gardner",
+        "firstName": "David K",
+        "initials": "DK",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Melbourne IVF, Melbourne, Victoria, Australia."
+            },
+            {
+              "affiliation": "School of BioSciences, University of Melbourne, Parkville, Victoria, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Nelson SM",
+        "lastName": "Nelson",
+        "firstName": "Scott M",
+        "initials": "SM",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "School of Medicine, Dentistry and Nursing, University of Glasgow, Glasgow, UK."
+            },
+            {
+              "affiliation": "TFP Fertility, Institute of Reproductive Sciences, Oxford, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Berntsen J",
+        "lastName": "Berntsen",
+        "firstName": "Jørgen",
+        "initials": "J",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-5976-1002"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Vitrolife, Viby J, Denmark."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Larman MG",
+        "lastName": "Larman",
+        "firstName": "Mark G",
+        "initials": "MG",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Vitrolife, Gothenburg, Sweden."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Agresta F",
+        "lastName": "Agresta",
+        "firstName": "Franca",
+        "initials": "F",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Virtus Health, Melbourne, Victoria, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Ahitan S",
+        "lastName": "Ahitan",
+        "firstName": "Saran",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "TFP Fertility, Nottingham, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Ahlström A",
+        "lastName": "Ahlström",
+        "firstName": "Aisling",
+        "initials": "A",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-5074-912X"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "IVIRMA Global Research Alliance, Livio Gothenburg, Gothenburg, Sweden."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Cattrall F",
+        "lastName": "Cattrall",
+        "firstName": "Fleur",
+        "initials": "F",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Melbourne IVF, Melbourne, Victoria, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Cooke S",
+        "lastName": "Cooke",
+        "firstName": "Simon",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "IVFAustralia, Sydney, New South Wales, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Demmers K",
+        "lastName": "Demmers",
+        "firstName": "Kristy",
+        "initials": "K",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0009-0005-8610-1754"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Queensland Fertility Group, Brisbane, Queensland, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Gabrielsen A",
+        "lastName": "Gabrielsen",
+        "firstName": "Anette",
+        "initials": "A",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-7632-6299"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "The Fertility Unit, Horsens Hospital, Horsens, Denmark."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Hindkjær J",
+        "lastName": "Hindkjær",
+        "firstName": "Johnny",
+        "initials": "J",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Aagaard, Aarhus, Denmark."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Kelley RL",
+        "lastName": "Kelley",
+        "firstName": "Rebecca L",
+        "initials": "RL",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Melbourne IVF, Melbourne, Victoria, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Knight C",
+        "lastName": "Knight",
+        "firstName": "Charlotte",
+        "initials": "C",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "IVFAustralia, Sydney, New South Wales, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Lee L",
+        "lastName": "Lee",
+        "firstName": "Lisa",
+        "initials": "L",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0000-0002-0778-9636"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Melbourne IVF, Melbourne, Victoria, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Lahoud R",
+        "lastName": "Lahoud",
+        "firstName": "Robert",
+        "initials": "R",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "IVFAustralia, Sydney, New South Wales, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Mangat M",
+        "lastName": "Mangat",
+        "firstName": "Manveen",
+        "initials": "M",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "IVFAustralia, Sydney, New South Wales, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Park H",
+        "lastName": "Park",
+        "firstName": "Hannah",
+        "initials": "H",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Dept of Reproductive Medicine, Sahlgrenska University Hospital, Gothenburg, Sweden."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Price A",
+        "lastName": "Price",
+        "firstName": "Anthony",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "TFP Fertility, Southampton, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Trew G",
+        "lastName": "Trew",
+        "firstName": "Geoffrey",
+        "initials": "G",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "TFP Fertility, Institute of Reproductive Sciences, Oxford, UK."
+            },
+            {
+              "affiliation": "Imperial College London, London, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Troest B",
+        "lastName": "Troest",
+        "firstName": "Bettina",
+        "initials": "B",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "The Fertility Unit, Aalborg University Hospital, Aalborg, Denmark."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Vincent A",
+        "lastName": "Vincent",
+        "firstName": "Anna",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "TFP Fertility, Institute of Reproductive Sciences, Oxford, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Wennerström S",
+        "lastName": "Wennerström",
+        "firstName": "Susanne",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "IVIRMA Global Research Alliance, Livio Gothenburg, Gothenburg, Sweden."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Zujovic L",
+        "lastName": "Zujovic",
+        "firstName": "Lyndsey",
+        "initials": "L",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "TFP Fertility, Nottingham, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Hardarson T",
+        "lastName": "Hardarson",
+        "firstName": "Thorir",
+        "initials": "T",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Vitrolife, Gothenburg, Sweden."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0000-0001-9591-7222"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-0778-9636"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-5074-912X"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-5976-1002"
+      },
+      {
+        "type": "ORCID",
+        "value": "0000-0002-7632-6299"
+      },
+      {
+        "type": "ORCID",
+        "value": "0009-0005-8610-1754"
+      },
+      {
+        "type": "ORCID",
+        "value": "0009-0008-1319-6643"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "supporting_data"
+    ]
+  },
+  "journalInfo": {
+    "issue": "11",
+    "volume": "30",
+    "journalIssueId": 3853388,
+    "dateOfPublication": "2024 Nov",
+    "monthOfPublication": 11,
+    "yearOfPublication": 2024,
+    "journal": {
+      "medlineAbbreviation": "Nat Med",
+      "title": "Nature medicine",
+      "essn": "1546-170X",
+      "issn": "1078-8956",
+      "nlmid": "9502015",
+      "isoabbreviation": "Nat Med"
+    },
+    "printPublicationDate": "2024-11-01"
+  },
+  "pubYear": "2024",
+  "pageInfo": "3114-3120",
+  "abstractText": "To assess the value of deep learning in selecting the optimal embryo for in vitro fertilization, a multicenter, randomized, double-blind, noninferiority parallel-group trial was conducted across 14 in vitro fertilization clinics in Australia and Europe. Women under 42 years of age with at least two early-stage blastocysts on day 5 were randomized to either the control arm, using standard morphological assessment, or the study arm, employing a deep learning algorithm, intelligent Data Analysis Score (iDAScore), for embryo selection. The primary endpoint was a clinical pregnancy rate with a noninferiority margin of 5%. The trial included 1,066 patients (533 in the iDAScore group and 533 in the morphology group). The iDAScore group exhibited a clinical pregnancy rate of 46.5% (248 of 533 patients), compared to 48.2% (257 of 533 patients) in the morphology arm (risk difference -1.7%; 95% confidence interval -7.7, 4.3; P = 0.62). This study was not able to demonstrate noninferiority of deep learning for clinical pregnancy rate when compared to standard morphology and a predefined prioritization scheme. Australian New Zealand Clinical Trials Registry (ANZCTR) registration: 379161 .",
+  "affiliation": "Virtus Health, Sydney, New South Wales, Australia. peter.illingworth@virtushealth.com.au.",
+  "publicationStatus": "ppublish",
+  "language": "eng",
+  "pubModel": "Print-Electronic",
+  "pubTypeList": {
+    "pubType": [
+      "research-article",
+      "Multicenter Study",
+      "Randomized Controlled Trial",
+      "Journal Article"
+    ]
+  },
+  "grantsList": {
+    "grant": [
+      {
+        "agency": "Vitrolife, Sweden",
+        "orderIn": 0
+      }
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Blastocyst"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Embryo Transfer",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "MT",
+              "qualifierName": "methods"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Fertilization in Vitro",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "MT",
+              "qualifierName": "methods"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy Rate"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Double-Blind Method"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Adult"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Australia"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Deep Learning"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1038/s41591-024-03166-5"
+      },
+      {
+        "availability": "Open access",
+        "availabilityCode": "OA",
+        "documentStyle": "html",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC11564097"
+      },
+      {
+        "availability": "Open access",
+        "availabilityCode": "OA",
+        "documentStyle": "pdf",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC11564097?pdf=render"
+      }
+    ]
+  },
+  "isOpenAccess": "Y",
+  "inEPMC": "Y",
+  "inPMC": "Y",
+  "citedByCount": 92,
+  "hasReferences": "Y",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "Y",
+  "hasBook": "N",
+  "hasSuppl": "Y",
+  "hasLabsLinks": "Y",
+  "hasData": "Y",
+  "license": "cc by",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "N",
+  "dateOfCompletion": "2024-11-15",
+  "dateOfCreation": "2024-08-09",
+  "dateOfRevision": "2025-03-22",
+  "electronicPublicationDate": "2024-08-09",
+  "firstPublicationDate": "2024-08-09",
+  "firstIndexDate": "2024-08-11",
+  "fullTextReceivedDate": "2025-02-05",
+  "hasEvaluations": "N"
+}

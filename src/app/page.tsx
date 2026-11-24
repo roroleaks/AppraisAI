@@ -11,8 +11,12 @@ import { StatisticalAuditViewer } from '@/components/appraisal/StatisticalAuditV
 import { ValidityAndClinicalCard } from '@/components/appraisal/ValidityAndClinicalCard';
 import { ExportToolbar } from '@/components/preview/ExportToolbar';
 import { LlmSettingsModal } from '@/components/common/LlmSettingsModal';
+import { ConfirmationModal } from '@/components/common/ConfirmationModal';
+import { RetractionBanner } from '@/components/common/RetractionBanner';
 import { useAppraisalStore } from '@/store/useAppraisalStore';
+import { reportStatus } from '@/lib/status';
 import Image from 'next/image';
+import { QRCodeSVG } from 'qrcode.react';
 import {
   FileText,
   Link2,
@@ -30,6 +34,14 @@ import {
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<'identifier' | 'upload'>('identifier');
+  const [showResetConfirmModal, setShowResetConfirmModal] = useState(false);
+  const [appUrl, setAppUrl] = useState('https://apprais-ai.vercel.app');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.origin) {
+      setAppUrl(window.location.origin);
+    }
+  }, []);
   const {
     currentManuscript,
     currentAppraisal,
@@ -37,7 +49,20 @@ export default function HomePage() {
     appraisalError,
     clearAppraisal,
     resetAll,
+    humanVerified,
+    appraiserName,
+    llmProvider,
+    llmModel,
   } = useAppraisalStore();
+
+  const status = currentAppraisal
+    ? reportStatus(currentAppraisal, {
+        humanVerified,
+        appraiserName,
+        provider: currentAppraisal.llmDetails?.provider ?? llmProvider,
+        model: currentAppraisal.llmDetails?.model ?? llmModel,
+      })
+    : null;
 
   // Browser History & PopState Support for Seamless Back Navigation
   useEffect(() => {
@@ -88,23 +113,20 @@ export default function HomePage() {
         Skip to main content
       </a>
 
-      {/* Top Header - Exact AIMed & Sysrevai Signature Gradient & Avatar */}
-      <header className="bg-gradient-to-r from-[#0f6b6b] to-[#0a4a4a] text-white py-4 px-4 sm:px-8 shadow-md sticky top-0 z-30">
-        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      {/* Top Header */}
+      <header className="bg-gradient-to-r from-[#0f6b6b] to-[#0a4a4a] text-white py-1 px-4 sm:px-8 shadow-md lg:sticky lg:top-0 z-30 h-13 flex items-center">
+        <div className="max-w-6xl w-full mx-auto flex items-center justify-between gap-2 min-w-0">
           {/* Left: Brand & Badges with Clickable Home Reset */}
           <div
             onClick={() => {
               if (currentManuscript || currentAppraisal) {
-                if (window.confirm('Return to home? Current appraisal session will be reset.')) {
-                  resetAll();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
+                setShowResetConfirmModal(true);
               }
             }}
-            className="flex items-center gap-3 cursor-pointer group select-none"
+            className="flex items-center gap-2.5 cursor-pointer group select-none min-w-0"
             title="AppraisAI Home / Reset"
           >
-            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-white/40 shadow-md shrink-0 bg-slate-900 group-hover:scale-105 transition-transform">
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-white/40 shadow-sm shrink-0 bg-slate-900 group-hover:scale-105 transition-transform">
               <Image
                 src="/appraisai-icon.png"
                 alt="AppraisAI Logo"
@@ -113,33 +135,28 @@ export default function HomePage() {
                 priority
               />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-bold tracking-tight text-white font-serif">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="text-lg sm:text-xl font-bold tracking-tight text-white font-serif shrink-0">
                   Apprais<span className="text-[#99f6e4]">AI</span>
                 </span>
-                <span className="bg-white/20 border border-white/40 text-white rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide">
+                <span className="hidden lg:inline-flex bg-white/20 border border-white/40 text-white rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide shrink-0">
                   v1.0 PRISMA & RoB 2.0
                 </span>
               </div>
-              <p className="text-xs text-white/85 italic hidden sm:block mt-0.5">
+              <p className="text-xs text-white/85 italic hidden lg:block truncate">
                 Automated Scientific Medical Paper Critical Appraisal & Report Engine
               </p>
             </div>
           </div>
 
           {/* Right: Actions, Author Profile & LLM Settings */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 min-w-0">
             {/* Header New Appraisal Reset Button */}
             {(currentManuscript || currentAppraisal) && (
               <button
                 type="button"
-                onClick={() => {
-                  if (window.confirm('Start a new appraisal? Current report will be reset.')) {
-                    resetAll();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => setShowResetConfirmModal(true)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-xs font-semibold text-white transition shadow-xs"
                 title="Start New Appraisal"
               >
@@ -151,8 +168,8 @@ export default function HomePage() {
             <LlmSettingsModal />
 
             {/* Dr. Raouf Roshdy Signature Avatar Block */}
-            <div className="flex items-center gap-2.5 bg-black/15 border border-white/20 px-3 py-1.5 rounded-full shadow-inner">
-              <div className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-white/60 shrink-0 bg-teal-900">
+            <div className="flex items-center gap-2 bg-black/15 border border-white/20 px-1.5 md:px-2.5 py-1 rounded-full shadow-inner shrink-0">
+              <div className="relative w-7 h-7 rounded-full overflow-hidden border-2 border-white/60 shrink-0 bg-teal-900">
                 <Image
                   src="/dr-raouf.jpg"
                   alt="Dr Raouf Roshdy"
@@ -164,7 +181,7 @@ export default function HomePage() {
                   }}
                 />
               </div>
-              <span className="text-xs font-medium text-white italic tracking-wide pr-1 hidden sm:inline">
+              <span className="hidden md:inline truncate max-w-[10rem] text-xs font-medium text-white italic tracking-wide pr-1">
                 Dr Raouf Roshdy
               </span>
             </div>
@@ -257,8 +274,24 @@ export default function HomePage() {
         {/* Ingestion Tabs */}
         {!currentManuscript && (
           <div className="bg-white border border-[#d8dee6] rounded-xl shadow-sm p-6 sm:p-8 space-y-6">
-            <div className="flex border-b border-slate-200">
+            <div
+              role="tablist"
+              aria-label="Input type"
+              className="flex border-b border-slate-200"
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                  e.preventDefault();
+                  setActiveTab((prev) => (prev === 'identifier' ? 'upload' : 'identifier'));
+                }
+              }}
+            >
               <button
+                type="button"
+                role="tab"
+                id="tab-identifier"
+                aria-selected={activeTab === 'identifier'}
+                aria-controls="panel-identifier"
+                tabIndex={activeTab === 'identifier' ? 0 : -1}
                 onClick={() => setActiveTab('identifier')}
                 className={`flex items-center gap-2 pb-3 px-4 text-sm font-medium border-b-2 transition-all ${
                   activeTab === 'identifier'
@@ -270,6 +303,12 @@ export default function HomePage() {
                 DOI / PMID / PMCID / URL
               </button>
               <button
+                type="button"
+                role="tab"
+                id="tab-upload"
+                aria-selected={activeTab === 'upload'}
+                aria-controls="panel-upload"
+                tabIndex={activeTab === 'upload' ? 0 : -1}
                 onClick={() => setActiveTab('upload')}
                 className={`flex items-center gap-2 pb-3 px-4 text-sm font-medium border-b-2 transition-all ${
                   activeTab === 'upload'
@@ -282,7 +321,13 @@ export default function HomePage() {
               </button>
             </div>
 
-            {activeTab === 'identifier' ? <IdentifierInput /> : <DropzoneUpload />}
+            <div
+              id={activeTab === 'identifier' ? 'panel-identifier' : 'panel-upload'}
+              role="tabpanel"
+              aria-labelledby={activeTab === 'identifier' ? 'tab-identifier' : 'tab-upload'}
+            >
+              {activeTab === 'identifier' ? <IdentifierInput /> : <DropzoneUpload />}
+            </div>
           </div>
         )}
 
@@ -349,98 +394,166 @@ export default function HomePage() {
               </div>
             )}
 
+            {/* Report Header Badges: Source, Engine, Review */}
+            {status && (
+              <div className="bg-white border border-[#d8dee6] rounded-xl p-4 sm:p-5 shadow-sm space-y-2">
+                {!currentAppraisal.retraction?.isRetracted && (
+                  <span className="text-xs font-bold text-[#0f6b6b]">
+                    {status.headline}
+                  </span>
+                )}
+                <h1 id="report-title" className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+                  {currentAppraisal.metadata.title}
+                </h1>
+                {currentAppraisal.retraction?.isRetracted && (
+                  <RetractionBanner citation={currentAppraisal.retraction?.retractionCitation} />
+                )}
+                <div className="flex flex-wrap items-center gap-2 pt-1 font-sans">
+                  <span className="px-2.5 py-1 rounded text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300">
+                    Source: {status.source}
+                  </span>
+                  <span className="px-2.5 py-1 rounded text-xs font-semibold bg-[#e3f2f2] text-[#0f6b6b] border border-[#0f6b6b]/30">
+                    Engine: {status.engine}
+                  </span>
+                  <span className={`px-2.5 py-1 rounded text-xs font-semibold border ${
+                    status.review === 'Unverified'
+                      ? 'bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]'
+                      : 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
+                  }`}>
+                    Review: {status.review}
+                  </span>
+                </div>
+              </div>
+            )}
+
             {/* Sticky Export Toolbar with Appraiser Stamp, Print-Preview & Word Download */}
             <ExportToolbar />
 
             {/* Stepper Status */}
             <AppraisalProgressStepper />
 
-            {/* Pass 1: Classification & PICO */}
-            <PicoSummaryCard />
+            {/* Report Root Scoped Article */}
+            <article className="report space-y-6" aria-labelledby="report-title">
+              {/* Pass 1: Classification & PICO */}
+              <PicoSummaryCard />
 
-            {/* Pass 2: RoB & EQUATOR */}
-            <RiskOfBiasMatrix />
+              {/* Pass 2: RoB & EQUATOR */}
+              <RiskOfBiasMatrix />
 
-            {/* Pass 3: Statistical Rigor & Spin */}
-            <StatisticalAuditViewer />
+              {/* Pass 3: Statistical Rigor & Spin */}
+              <StatisticalAuditViewer />
 
-            {/* Pass 4: Validity Synthesis, GRADE & References */}
-            <ValidityAndClinicalCard />
+              {/* Pass 4: Validity Synthesis, GRADE & References */}
+              <ValidityAndClinicalCard />
 
-            {/* End-of-Report Navigation & Completion Card */}
-            <div className="bg-white border border-[#d8dee6] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="space-y-1 text-center sm:text-left">
-                <h4 className="text-sm font-bold text-slate-900 flex items-center justify-center sm:justify-start gap-2">
-                  <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600" />
-                  Critical Appraisal Complete
-                </h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  All 4 evaluation passes verified. Return to the manuscript overview, appraise another paper, or scroll back up to export controls.
-                </p>
-              </div>
+              {/* End-of-Report Navigation & Completion Card */}
+              <div className="bg-white border border-[#d8dee6] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="space-y-1 text-center sm:text-left">
+                  <h3 className="text-sm font-bold text-slate-900 flex items-center justify-center sm:justify-start gap-2">
+                    <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600" />
+                    Critical Appraisal Complete
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    {status?.headline}. Return to the manuscript overview, appraise another paper, or scroll back up to export controls.
+                  </p>
+                </div>
 
-              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2.5 w-full sm:w-auto">
-                <button
-                  type="button"
-                  onClick={() => {
-                    clearAppraisal();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-[#e3f2f2] text-slate-700 hover:text-[#0f6b6b] hover:border-[#0f6b6b] transition shadow-xs"
-                  title="Return to manuscript overview"
-                >
-                  <ArrowLeft className="w-3.5 h-3.5" />
-                  <span>Back to Manuscript</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (window.confirm('Start a new appraisal? Current report will be cleared.')) {
-                      resetAll();
+                <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2.5 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      clearAppraisal();
                       window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
-                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition shadow-xs"
-                  title="Start a fresh appraisal"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Appraise Another Paper</span>
-                </button>
+                    }}
+                    className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-[#e3f2f2] text-slate-700 hover:text-[#0f6b6b] hover:border-[#0f6b6b] transition shadow-xs"
+                    title="Return to manuscript overview"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>Back to Manuscript</span>
+                  </button>
 
-                <button
-                  type="button"
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[#0f6b6b] hover:bg-[#0a4a4a] text-white transition shadow-xs"
-                  title="Scroll back to top of report"
-                >
-                  <ArrowUp className="w-3.5 h-3.5" />
-                  <span>Back to Top</span>
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowResetConfirmModal(true)}
+                    className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition shadow-xs"
+                    title="Start a fresh appraisal"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Appraise Another Paper</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[#0f6b6b] hover:bg-[#0a4a4a] text-white transition shadow-xs"
+                    title="Scroll back to top of report"
+                  >
+                    <ArrowUp className="w-3.5 h-3.5" />
+                    <span>Back to Top</span>
+                  </button>
+                </div>
               </div>
-            </div>
+            </article>
           </div>
         )}
       </main>
 
       {/* Signature Footer - Matching AIMed & Sysrevai */}
-      <footer className="bg-[#0a4a4a] text-white/80 py-5 px-4 text-center text-xs border-t border-[#0f6b6b]/40 mt-auto space-y-1.5">
-        <div className="flex items-center justify-center gap-2">
-          <div className="relative w-5 h-5 rounded-md overflow-hidden bg-slate-900 border border-white/30 shrink-0">
-            <Image src="/appraisai-icon.png" alt="AppraisAI Logo" fill className="object-contain" />
+      <footer className="bg-[#0a4a4a] text-white/80 py-5 px-4 text-xs border-t border-[#0f6b6b]/40 mt-auto">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-4">
+          <div className="hidden sm:block" aria-hidden="true" />
+          <div className="text-center space-y-1.5">
+            <div className="flex items-center justify-center gap-2">
+              <div className="relative w-5 h-5 rounded-md overflow-hidden bg-slate-900 border border-white/30 shrink-0">
+                <Image src="/appraisai-icon.png" alt="AppraisAI Logo" fill className="object-contain" />
+              </div>
+              <span className="font-semibold text-white tracking-wide">AppraisAI v1.0</span>
+            </div>
+            <p className="font-medium text-white/95">
+              Automated Scientific Critical Appraisal & Publication-Ready DOCX Generator
+            </p>
+            <p className="text-white/60 text-[11px]">
+              EQUATOR Network (CONSORT, PRISMA, STROBE), CEBM Oxford Levels of Evidence, & GRADE Working Group Compliant
+            </p>
+            <p className="text-white/50 text-[10px] pt-1">
+              Designed & Developed by Dr. Raouf Roshdy © 2024–2026 • All Rights Reserved
+            </p>
           </div>
-          <span className="font-semibold text-white tracking-wide">AppraisAI v1.0</span>
+          <div className="flex flex-col items-center sm:items-end sm:justify-self-end gap-1.5">
+            <div
+              className="bg-white p-1.5 rounded-lg shadow-sm border border-white/20"
+              aria-label={`QR code for ${appUrl}`}
+            >
+              <QRCodeSVG
+                value={appUrl}
+                size={64}
+                level="M"
+                bgColor="#ffffff"
+                fgColor="#0a4a4a"
+                title={`Open AppraisAI at ${appUrl}`}
+              />
+            </div>
+            <span className="text-[10px] text-white/70 font-medium tracking-wide">
+              Scan to open
+            </span>
+          </div>
         </div>
-        <p className="font-medium text-white/95">
-          Automated Scientific Critical Appraisal & Publication-Ready DOCX Generator
-        </p>
-        <p className="text-white/60 text-[11px]">
-          EQUATOR Network (CONSORT, PRISMA, STROBE), CEBM Oxford Levels of Evidence, & GRADE Working Group Compliant
-        </p>
-        <p className="text-white/50 text-[10px] pt-1">
-          Designed & Developed by Dr. Raouf Roshdy © 2024–2026 • All Rights Reserved
-        </p>
       </footer>
+
+      {/* In-app Confirmation Modal (Task B4) */}
+      <ConfirmationModal
+        isOpen={showResetConfirmModal}
+        title="Start a new appraisal?"
+        message="Return to home? Your current manuscript appraisal session will be reset."
+        confirmLabel="Reset & Start New"
+        cancelLabel="Cancel"
+        variant="warning"
+        onConfirm={() => {
+          resetAll();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onCancel={() => setShowResetConfirmModal(false)}
+      />
     </div>
   );
 }

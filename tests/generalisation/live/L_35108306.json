@@ -1,0 +1,304 @@
+{
+ "id": "35108306",
+ "source": "MED",
+ "pmid": "35108306",
+ "pmcid": "PMC8809568",
+ "fullTextIdList": {
+  "fullTextId": [
+   "PMC8809568"
+  ]
+ },
+ "doi": "10.1371/journal.pone.0262661",
+ "title": "Robust and generalizable embryo selection based on artificial intelligence and time-lapse image sequences.",
+ "authorString": "Berntsen J, Rimestad J, Lassen JT, Tran D, Kragh MF.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Berntsen J",
+    "lastName": "Berntsen",
+    "firstName": "Jørgen",
+    "initials": "J",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-5976-1002"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Vitrolife A/S, Aarhus, Denmark."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Rimestad J",
+    "lastName": "Rimestad",
+    "firstName": "Jens",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Vitrolife A/S, Aarhus, Denmark."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Lassen JT",
+    "lastName": "Lassen",
+    "firstName": "Jacob Theilgaard",
+    "initials": "JT",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Vitrolife A/S, Aarhus, Denmark."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Tran D",
+    "lastName": "Tran",
+    "firstName": "Dang",
+    "initials": "D",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Harrison AI, Sydney, New South Wales, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Kragh MF",
+    "lastName": "Kragh",
+    "firstName": "Mikkel Fly",
+    "initials": "MF",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-0829-1450"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Vitrolife A/S, Aarhus, Denmark."
+      },
+      {
+       "affiliation": "Department of Electrical and Computer Engineering, Aarhus University, Aarhus, Denmark."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0002-0829-1450"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-5976-1002"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "2",
+  "volume": "17",
+  "journalIssueId": 3302780,
+  "dateOfPublication": "2022 ",
+  "monthOfPublication": 0,
+  "yearOfPublication": 2022,
+  "journal": {
+   "medlineAbbreviation": "PLoS One",
+   "title": "PloS one",
+   "essn": "1932-6203",
+   "issn": "1932-6203",
+   "nlmid": "101285081",
+   "isoabbreviation": "PLoS One"
+  },
+  "printPublicationDate": "2022-01-01"
+ },
+ "pubYear": "2022",
+ "pageInfo": "e0262661",
+ "abstractText": "Assessing and selecting the most viable embryos for transfer is an essential part of in vitro fertilization (IVF). In recent years, several approaches have been made to improve and automate the procedure using artificial intelligence (AI) and deep learning. Based on images of embryos with known implantation data (KID), AI models have been trained to automatically score embryos related to their chance of achieving a successful implantation. However, as of now, only limited research has been conducted to evaluate how embryo selection models generalize to new clinics and how they perform in subgroup analyses across various conditions. In this paper, we investigate how a deep learning-based embryo selection model using only time-lapse image sequences performs across different patient ages and clinical conditions, and how it correlates with traditional morphokinetic parameters. The model was trained and evaluated based on a large dataset from 18 IVF centers consisting of 115,832 embryos, of which 14,644 embryos were transferred KID embryos. In an independent test set, the AI model sorted KID embryos with an area under the curve (AUC) of a receiver operating characteristic curve of 0.67 and all embryos with an AUC of 0.95. A clinic hold-out test showed that the model generalized to new clinics with an AUC range of 0.60-0.75 for KID embryos. Across different subgroups of age, insemination method, incubation time, and transfer protocol, the AUC ranged between 0.63 and 0.69. Furthermore, model predictions correlated positively with blastocyst grading and negatively with direct cleavages. The fully automated iDAScore v1.0 model was shown to perform at least as good as a state-of-the-art manual embryo selection model. Moreover, full automatization of embryo scoring implies fewer manual evaluations and eliminates biases due to inter- and intraobserver variation.",
+ "affiliation": "Vitrolife A/S, Aarhus, Denmark.",
+ "publicationStatus": "epublish",
+ "language": "eng",
+ "pubModel": "Electronic-eCollection",
+ "pubTypeList": {
+  "pubType": [
+   "Research Support, Non-U.S. Gov't",
+   "research-article",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "Innovation Fund Denmark",
+    "grantId": "7039-00068B",
+    "orderIn": 0
+   },
+   {
+    "agency": "Harrison.AI",
+    "orderIn": 0
+   },
+   {
+    "agency": "Vitrolife",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Cells, Cultured"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fertilization in Vitro"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Area Under Curve"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Retrospective Studies"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "ROC Curve"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Artificial Intelligence"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Databases, Factual"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Adult"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Embryo, Mammalian",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AH",
+       "qualifierName": "anatomy & histology"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "CY",
+       "qualifierName": "cytology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Time-Lapse Imaging",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Unpaywall",
+    "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0262661&type=printable"
+   },
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1371/journal.pone.0262661"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "html",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC8809568"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC8809568?pdf=render"
+   }
+  ]
+ },
+ "isOpenAccess": "Y",
+ "inEPMC": "Y",
+ "inPMC": "Y",
+ "citedByCount": 97,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "Y",
+ "hasBook": "N",
+ "hasSuppl": "Y",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "license": "cc by",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "doi"
+  ]
+ },
+ "dateOfCompletion": "2022-03-01",
+ "dateOfCreation": "2022-02-02",
+ "dateOfRevision": "2024-08-22",
+ "electronicPublicationDate": "2022-02-02",
+ "firstPublicationDate": "2022-02-02",
+ "firstIndexDate": "2022-02-03",
+ "fullTextReceivedDate": "2025-02-04",
+ "hasEvaluations": "N"
+}

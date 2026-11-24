@@ -1,0 +1,292 @@
+{
+  "id": "34808697",
+  "source": "MED",
+  "pmid": "34808697",
+  "pmcid": "PMC8608438",
+  "fullTextIdList": {
+    "fullTextId": [
+      "PMC8608438"
+    ]
+  },
+  "doi": "10.1002/14651858.cd000099.pub4",
+  "title": "Growth hormone for in vitro fertilisation (IVF).",
+  "authorString": "Sood A, Mohiyiddeen G, Ahmad G, Fitzgerald C, Watson A, Mohiyiddeen L.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Sood A",
+        "lastName": "Sood",
+        "firstName": "Akanksha",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Obstetrics, Gynaecology and Reproductive Medicine, St. Mary's Hospital, Manchester University Hospitals NHS Foundation Trust, Manchester, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Mohiyiddeen G",
+        "lastName": "Mohiyiddeen",
+        "firstName": "Gadha",
+        "initials": "G",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Obstetrics and Gynaecology, Sidra Medicine, Doha, Qatar."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Ahmad G",
+        "lastName": "Ahmad",
+        "firstName": "Gaity",
+        "initials": "G",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Obstetrics and Gynaecology, Pennine Acute Hospitals NHS Trust, Manchester, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Fitzgerald C",
+        "lastName": "Fitzgerald",
+        "firstName": "Cheryl",
+        "initials": "C",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Reproductive Medicine, St. Mary's Hospital, Manchester University Hospitals NHS Foundation Trust, Manchester, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Watson A",
+        "lastName": "Watson",
+        "firstName": "Andrew",
+        "initials": "A",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Obstetrics and Gynaecology, Tameside & Glossop Acute Services NHS Trust, Ashton-Under-Lyne, UK."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Mohiyiddeen L",
+        "lastName": "Mohiyiddeen",
+        "firstName": "Lamiya",
+        "initials": "L",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Reproductive Medicine, St. Mary's Hospital, Manchester University Hospitals NHS Foundation Trust, Manchester, UK."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0000-0002-4616-5893"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "supporting_data"
+    ]
+  },
+  "journalInfo": {
+    "volume": "11",
+    "journalIssueId": 3262651,
+    "dateOfPublication": "2021 Nov",
+    "monthOfPublication": 11,
+    "yearOfPublication": 2021,
+    "journal": {
+      "medlineAbbreviation": "Cochrane Database Syst Rev",
+      "title": "The Cochrane database of systematic reviews",
+      "essn": "1469-493X",
+      "issn": "1469-493X",
+      "nlmid": "100909747",
+      "isoabbreviation": "Cochrane Database Syst Rev"
+    },
+    "printPublicationDate": "2021-11-01"
+  },
+  "pubYear": "2021",
+  "pageInfo": "CD000099",
+  "abstractText": "<h4>Background</h4>In an effort to improve outcomes of in vitro fertilisation (IVF) cycles, the use of growth hormone (GH) has been considered as adjuvant treatment in ovarian stimulation. Improving the outcomes of IVF is especially important for women with infertility who are considered 'poor responders'. We have compared the outcomes of IVF with adjuvant GH versus no adjuvant treatment in routine use, and specifically in poor responders.<h4>Objectives</h4>To assess the effectiveness and safety of growth hormone as an adjunct to IVF compared to standard IVF for women with infertility SEARCH METHODS: We searched the following databases (to November 2020): Cochrane Gynaecology and Fertility (CGF) Group specialised register, CENTRAL, MEDLINE, Embase, CINAHL, Epistemonikos database and trial registers together with reference checking and contact with study authors and experts in the field to identify additional trials.<h4>Selection criteria</h4>We included all randomised controlled trials (RCTs) of adjuvant GH treatment in IVF compared with no adjuvant treatment for women with infertility. We excluded trials where additional adjuvant treatments were used with GH. We also excluded trials comparing different IVF protocols.<h4>Data collection and analysis</h4>We used standard methodological procedures recommended by Cochrane. Two review authors independently performed assessment of trial risk of bias and extraction of relevant data. The primary review outcome was live birth rate. The secondary outcomes were clinical pregnancy rate, oocytes retrieved, embryo transfer, units of gonadotropin used and adverse events, i.e. ectopic pregnancy, multiple pregnancy, ovarian hyperstimulation syndrome (OHSS), congenital anomalies, oedema.<h4>Main results</h4>We included 16 RCTs (1352 women). Two RCTs (80 women) studied GH in routine use, and 14 RCTs (1272 women) studied GH in poor responders. The evidence was low to very low certainty, the main limitations being risk of bias, imprecision and heterogeneity. Adjuvant growth hormone compared to no adjuvant: routine use for in vitro fertilisation (IVF) The evidence is very uncertain about the effect of GH on live birth rate per woman randomised for routine use in IVF (odds ratio (OR) 1.32, 95% confidence interval (CI) 0.40 to 4.43; I<sup>2</sup> = 0%; 2 trials, 80 participants; very low-certainty evidence). If the chance of live birth without adjuvant GH is assumed to be 15%, the chance of live birth with GH would be between 6% and 43%. There was insufficient evidence to reach a conclusion regarding clinical pregnancy rates per woman randomised, number of women with at least one oocyte retrieved per woman randomised and embryo transfer achieved per woman randomised; reported data were unsuitable for analysis. The evidence is very uncertain about the effect of GH on mean number of oocytes retrieved in normal responders (mean difference (MD) -0.02, 95% CI -0.79 to 0.74; I<sup>2</sup> = 0%; 2 trials, 80 participants; very low-certainty evidence). The evidence is very uncertain about the effect of GH on mean units of gonadotropin used in normal responders (MD 13.57, 95% CI -112.88 to 140.01; I<sup>2</sup> = 0%; 2 trials, 80 participants; very low-certainty evidence). We are uncertain of the effect of GH on adverse events in normal responders. Adjuvant growth hormone compared to no adjuvant: use in poor responders for in vitro fertilisation (IVF) The evidence is very uncertain about the effect of GH on live birth rate per woman randomised for poor responders (OR 1.77, 95% CI 1.17 to 2.70; I<sup>2</sup> = 0%; 8 trials, 737 participants; very low-certainty evidence). If the chance of live birth without adjuvant GH is assumed to be 11%, the chance of live birth with GH would be between 13% and 25%. Adjuvant GH results in a slight increase in pregnancy rates in poor responders (OR 1.85, 95% CI 1.35 to 2.53; I<sup>2</sup> = 15%; 11 trials, 1033 participants; low-certainty evidence). The results suggest, if the pregnancy rate without adjuvant GH is assumed to be 15%, with GH the pregnancy rate in poor responders would be between 19% and 31%. The evidence suggests that GH results in little to no difference in number of women with at least one oocyte retrieved (OR 5.67, 95% CI 1.54 to 20.83; I<sup>2</sup> = 0%; 2 trials, 148 participants; low-certainty evidence). If the chance of retrieving at least one oocyte in poor responders was 81%, with GH the chance is between 87% and 99%. There is a slight increase in mean number of oocytes retrieved with the use of GH for poor responders (MD 1.40, 95% CI 1.16 to 1.64; I<sup>2</sup> = 87%; 12 trials, 1153 participants; low-certainty evidence). The evidence is very uncertain about the effect of GH on embryo transfer achieved (OR 2.32, 95% CI 1.08 to 4.96; I<sup>2</sup> = 25%; 4 trials, 214 participants; very low-certainty evidence). If the chance of achieving embryo transfer is assumed to be 77%, the chance with GH will be 78% to 94%. Use of GH results in reduction of mean units of gonadotropins used for stimulation in poor responders (MD -1088.19, 95% CI -1203.20 to -973.18; I<sup>2</sup> = 91%; 8 trials, 685 participants; low-certainty evidence). High heterogeneity in the analyses for mean number of oocytes retrieved and units of GH used suggests quite different effects according to differences including in trial protocols (populations, GH dose and schedule), so these results should be interpreted with caution. We are uncertain of the effect of GH on adverse events in poor responders as six of the 14 included trials failed to report this outcome.<h4>Authors' conclusions</h4>The use of adjuvant GH in IVF treatment protocols has uncertain effect on live birth rates and mean number of oocytes retrieved in normal responders. However, it slightly increases the number of oocytes retrieved and pregnancy rates in poor responders, while there is an uncertain effect on live birth rates in this group. The results however, need to be interpreted with caution, as the included trials were small and few in number, with significant bias and imprecision. Also, the dose and regimen of GH used in trials was variable. Therefore, further research is necessary to fully define the role of GH as adjuvant therapy in IVF.",
+  "affiliation": "Department of Obstetrics, Gynaecology and Reproductive Medicine, St. Mary's Hospital, Manchester University Hospitals NHS Foundation Trust, Manchester, UK.",
+  "publicationStatus": "epublish",
+  "language": "eng",
+  "pubModel": "Electronic",
+  "pubTypeList": {
+    "pubType": [
+      "Research Support, Non-U.S. Gov't",
+      "Systematic Review",
+      "systematic-review",
+      "Journal Article"
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Abortion, Spontaneous"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Growth Hormone",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Fertilization in Vitro"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Sperm Injections, Intracytoplasmic"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Ovulation Induction"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy Rate"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Live Birth",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "EP",
+              "qualifierName": "epidemiology"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "chemicalList": {
+    "chemical": [
+      {
+        "name": "Growth Hormone",
+        "registryNumber": "9002-72-6"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1002/14651858.CD000099.pub4"
+      },
+      {
+        "availability": "Free",
+        "availabilityCode": "F",
+        "documentStyle": "html",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC8608438"
+      },
+      {
+        "availability": "Free",
+        "availabilityCode": "F",
+        "documentStyle": "pdf",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC8608438?pdf=render"
+      },
+      {
+        "availability": "Free",
+        "availabilityCode": "F",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1002/14651858.cd000099.pub4"
+      }
+    ]
+  },
+  "commentCorrectionList": {
+    "commentCorrection": [
+      {
+        "source": "MED",
+        "id": "20091500",
+        "reference": "Cochrane Database Syst Rev. 2010 Jan 20;(1):CD000099. doi: 10.1002/14651858.CD000099.pub3.",
+        "type": "Update of",
+        "orderIn": 1
+      }
+    ]
+  },
+  "isOpenAccess": "N",
+  "inEPMC": "Y",
+  "inPMC": "Y",
+  "citedByCount": 21,
+  "hasReferences": "Y",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "Y",
+  "hasBook": "N",
+  "hasSuppl": "N",
+  "hasLabsLinks": "Y",
+  "hasData": "Y",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "Y",
+  "tmAccessionTypeList": {
+    "accessionType": [
+      "nct",
+      "doi"
+    ]
+  },
+  "dateOfCompletion": "2021-12-03",
+  "dateOfCreation": "2021-11-22",
+  "dateOfRevision": "2025-06-23",
+  "electronicPublicationDate": "2021-11-22",
+  "firstPublicationDate": "2021-11-22",
+  "firstIndexDate": "2021-11-30",
+  "fullTextReceivedDate": "2025-02-05",
+  "embargoDate": "2022-11-22",
+  "hasEvaluations": "N"
+}

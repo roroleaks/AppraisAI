@@ -1,0 +1,544 @@
+{
+ "id": "34498060",
+ "source": "MED",
+ "pmid": "34498060",
+ "pmcid": "PMC8730311",
+ "fullTextIdList": {
+  "fullTextId": [
+   "PMC8730311"
+  ]
+ },
+ "doi": "10.1093/humupd/dmab030",
+ "title": "A systematic review of the validated monogenic causes of human male infertility: 2020 update and a discussion of emerging gene-disease relationships.",
+ "authorString": "Houston BJ, Riera-Escamilla A, Wyrwoll MJ, Salas-Huetos A, Xavier MJ, Nagirnaja L, Friedrich C, Conrad DF, Aston KI, Krausz C, Tüttelmann F, O'Bryan MK, Veltman JA, Oud MS.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Houston BJ",
+    "lastName": "Houston",
+    "firstName": "Brendan J",
+    "initials": "BJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-1078-756X"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "School of BioSciences and Bio21 Institute, The University of Melbourne, Parkville, VIC, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Riera-Escamilla A",
+    "lastName": "Riera-Escamilla",
+    "firstName": "Antoni",
+    "initials": "A",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-4485-3094"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Andrology Department, Fundació Puigvert, Universitat Autònoma de Barcelona, Instituto de Investigaciones Biomédicas Sant Pau (IIB-Sant Pau), Barcelona, Catalonia, Spain."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Wyrwoll MJ",
+    "lastName": "Wyrwoll",
+    "firstName": "Margot J",
+    "initials": "MJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-7651-2403"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Institute of Reproductive Genetics, University of Münster, Münster, Germany."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Salas-Huetos A",
+    "lastName": "Salas-Huetos",
+    "firstName": "Albert",
+    "initials": "A",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-5914-6862"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Andrology and IVF Laboratory, Division of Urology, Department of Surgery, University of Utah School of Medicine, Salt Lake City, UT, USA."
+      },
+      {
+       "affiliation": "Department of Nutrition, Harvard T.H. Chan School of Public Health, Harvard University, Boston, MA, USA."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Xavier MJ",
+    "lastName": "Xavier",
+    "firstName": "Miguel J",
+    "initials": "MJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-0709-7223"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Faculty of Medical Sciences, Biosciences Institute, Newcastle University, Newcastle upon Tyne, UK."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Nagirnaja L",
+    "lastName": "Nagirnaja",
+    "firstName": "Liina",
+    "initials": "L",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division of Genetics, Oregon National Primate Research Center, Oregon Health & Science University, Beaverton, OR, USA."
+      },
+      {
+       "affiliation": "Genetics of Male Infertility Initiative (GEMINI)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Friedrich C",
+    "lastName": "Friedrich",
+    "firstName": "Corinna",
+    "initials": "C",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Institute of Reproductive Genetics, University of Münster, Münster, Germany."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Conrad DF",
+    "lastName": "Conrad",
+    "firstName": "Don F",
+    "initials": "DF",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division of Genetics, Oregon National Primate Research Center, Oregon Health & Science University, Beaverton, OR, USA."
+      },
+      {
+       "affiliation": "Genetics of Male Infertility Initiative (GEMINI)."
+      },
+      {
+       "affiliation": "International Male Infertility Genomics Consortium (IMIGC)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Aston KI",
+    "lastName": "Aston",
+    "firstName": "Kenneth I",
+    "initials": "KI",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Andrology and IVF Laboratory, Division of Urology, Department of Surgery, University of Utah School of Medicine, Salt Lake City, UT, USA."
+      },
+      {
+       "affiliation": "Genetics of Male Infertility Initiative (GEMINI)."
+      },
+      {
+       "affiliation": "International Male Infertility Genomics Consortium (IMIGC)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Krausz C",
+    "lastName": "Krausz",
+    "firstName": "Csilla",
+    "initials": "C",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-6748-8918"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Genetics of Male Infertility Initiative (GEMINI)."
+      },
+      {
+       "affiliation": "International Male Infertility Genomics Consortium (IMIGC)."
+      },
+      {
+       "affiliation": "Department of Experimental and Clinical Biomedical Sciences \"Mario Serio\", Centre of Excellence DeNothe, University of Florence, Florence, Italy."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Tüttelmann F",
+    "lastName": "Tüttelmann",
+    "firstName": "Frank",
+    "initials": "F",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-2745-9965"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Institute of Reproductive Genetics, University of Münster, Münster, Germany."
+      },
+      {
+       "affiliation": "International Male Infertility Genomics Consortium (IMIGC)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "O'Bryan MK",
+    "lastName": "O'Bryan",
+    "firstName": "Moira K",
+    "initials": "MK",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-7298-4940"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "School of BioSciences and Bio21 Institute, The University of Melbourne, Parkville, VIC, Australia."
+      },
+      {
+       "affiliation": "Genetics of Male Infertility Initiative (GEMINI)."
+      },
+      {
+       "affiliation": "International Male Infertility Genomics Consortium (IMIGC)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Veltman JA",
+    "lastName": "Veltman",
+    "firstName": "Joris A",
+    "initials": "JA",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-3218-8250"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Faculty of Medical Sciences, Biosciences Institute, Newcastle University, Newcastle upon Tyne, UK."
+      },
+      {
+       "affiliation": "International Male Infertility Genomics Consortium (IMIGC)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Oud MS",
+    "lastName": "Oud",
+    "firstName": "Manon S",
+    "initials": "MS",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-9513-3030"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Human Genetics, Donders Institute for Brain, Cognition and Behaviour, Radboudumc, Nijmegen, the Netherlands."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-5914-6862"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-6748-8918"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7298-4940"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-9513-3030"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-1078-756X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-3218-8250"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-4485-3094"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7651-2403"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-0709-7223"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-2745-9965"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "1",
+  "volume": "28",
+  "journalIssueId": 3289056,
+  "dateOfPublication": "2021 Dec",
+  "monthOfPublication": 12,
+  "yearOfPublication": 2021,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod Update",
+   "title": "Human reproduction update",
+   "essn": "1460-2369",
+   "issn": "1355-4786",
+   "isoabbreviation": "Hum Reprod Update",
+   "nlmid": "9507614"
+  },
+  "printPublicationDate": "2021-12-01"
+ },
+ "pubYear": "2021",
+ "pageInfo": "15-29",
+ "abstractText": "<h4>Background</h4>Human male infertility has a notable genetic component, including well-established diagnoses such as Klinefelter syndrome, Y-chromosome microdeletions and monogenic causes. Approximately 4% of all infertile men are now diagnosed with a genetic cause, but a majority (60-70%) remain without a clear diagnosis and are classified as unexplained. This is likely in large part due to a delay in the field adopting next-generation sequencing (NGS) technologies, and the absence of clear statements from field leaders as to what constitutes a validated cause of human male infertility (the current paper aims to address this). Fortunately, there has been a significant increase in the number of male infertility NGS studies. These have revealed a considerable number of novel gene-disease relationships (GDRs), which each require stringent assessment to validate the strength of genotype-phenotype associations. To definitively assess which of these GDRs are clinically relevant, the International Male Infertility Genomics Consortium (IMIGC) has identified the need for a systematic review and a comprehensive overview of known male infertility genes and an assessment of the evidence for reported GDRs.<h4>Objective and rationale</h4>In 2019, the first standardised clinical validity assessment of monogenic causes of male infertility was published. Here, we provide a comprehensive update of the subsequent 1.5 years, employing the joint expertise of the IMIGC to systematically evaluate all available evidence (as of 1 July 2020) for monogenic causes of isolated or syndromic male infertility, endocrine disorders or reproductive system abnormalities affecting the male sex organs. In addition, we systematically assessed the evidence for all previously reported possible monogenic causes of male infertility, using a framework designed for a more appropriate clinical interpretation of disease genes.<h4>Search methods</h4>We performed a literature search according to the PRISMA guidelines up until 1 July 2020 for publications in English, using search terms related to 'male infertility' in combination with the word 'genetics' in PubMed. Next, the quality and the extent of all evidence supporting selected genes were assessed using an established and standardised scoring method. We assessed the experimental quality, patient phenotype assessment and functional evidence based on gene expression, mutant in-vitro cell and in-vivo animal model phenotypes. A final score was used to determine the clinical validity of each GDR, across the following five categories: no evidence, limited, moderate, strong or definitive. Variants were also reclassified according to the American College of Medical Genetics and Genomics-Association for Molecular Pathology (ACMG-AMP) guidelines and were recorded in spreadsheets for each GDR, which are available at imigc.org.<h4>Outcomes</h4>The primary outcome of this review was an overview of all known GDRs for monogenic causes of human male infertility and their clinical validity. We identified a total of 120 genes that were moderately, strongly or definitively linked to 104 infertility phenotypes.<h4>Wider implications</h4>Our systematic review curates all currently available evidence to reveal the strength of GDRs in male infertility. The existing guidelines for genetic testing in male infertility cases are based on studies published 25 years ago, and an update is far overdue. The identification of 104 high-probability 'human male infertility genes' is a 33% increase from the number identified in 2019. The insights generated in the current review will provide the impetus for an update of existing guidelines, will inform novel evidence-based genetic testing strategies used in clinics, and will identify gaps in our knowledge of male infertility genetics. We discuss the relevant international guidelines regarding research related to gene discovery and provide specific recommendations to the field of male infertility. Based on our findings, the IMIGC consortium recommend several updates to the genetic testing standards currently employed in the field of human male infertility, most important being the adoption of exome sequencing, or at least sequencing of the genes validated in this study, and expanding the patient groups for which genetic testing is recommended.",
+ "affiliation": "School of BioSciences and Bio21 Institute, The University of Melbourne, Parkville, VIC, Australia.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Research Support, Non-U.S. Gov't",
+   "Systematic Review",
+   "review-article",
+   "Journal Article",
+   "Research Support, N.I.H., Extramural"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "National Health and Medical Research Council",
+    "grantId": "APP1120356",
+    "orderIn": 0
+   },
+   {
+    "agency": "Spanish Ministry of Health Instituto Carlos III-FIS-FEDER",
+    "grantId": "PI17/01822 PI20/01562",
+    "orderIn": 0
+   },
+   {
+    "agency": "National Institutes of Health: Genomics of Spermatogenic Impairment",
+    "grantId": "R01HD078641",
+    "orderIn": 0
+   },
+   {
+    "agency": "Wellcome Trust",
+    "acronym": "WT_",
+    "grantId": "209451",
+    "orderIn": 0
+   },
+   {
+    "agency": "Dutch Research Council (NWO)",
+    "grantId": "918-15-667",
+    "orderIn": 0
+   },
+   {
+    "agency": "Wellcome Trust",
+    "acronym": "WT_",
+    "grantId": "209451/Z/17/Z",
+    "orderIn": 0
+   },
+   {
+    "agency": "German Research Foundation sponsored Clinical Research Unit ‘Male Germ Cells: from Genes to Function’",
+    "orderIn": 0
+   },
+   {
+    "agency": "NICHD NIH HHS",
+    "acronym": "HD",
+    "grantId": "R01 HD078641",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Animals"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Infertility, Male",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "GE",
+       "qualifierName": "genetics"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Chromosome Deletion"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Genomics"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Male"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Genetic Testing",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "MT",
+       "qualifierName": "methods"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "High-Throughput Nucleotide Sequencing"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Genetics",
+   "Male infertility",
+   "Systematic review",
+   "Next-generation Sequencing",
+   "Clinical Validity",
+   "Spermatogenic Failure",
+   "Gene Panel",
+   "Multiple Morphological Abnormalities Of The Sperm Flagella",
+   "Gene–disease Relationship"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humupd/dmab030"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "html",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC8730311"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC8730311?pdf=render"
+   }
+  ]
+ },
+ "commentCorrectionList": {
+  "commentCorrection": [
+   {
+    "source": "PPR",
+    "id": "PPR334954",
+    "type": "Preprint in",
+    "note": "CrossRef Pre-print loader",
+    "orderIn": 10002
+   }
+  ]
+ },
+ "isOpenAccess": "Y",
+ "inEPMC": "Y",
+ "inPMC": "Y",
+ "citedByCount": 220,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "Y",
+ "hasBook": "N",
+ "hasSuppl": "Y",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "license": "cc by",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "omim"
+  ]
+ },
+ "dateOfCompletion": "2022-03-01",
+ "dateOfCreation": "2021-09-09",
+ "dateOfRevision": "2025-05-30",
+ "firstPublicationDate": "2021-12-01",
+ "firstIndexDate": "2021-09-10",
+ "fullTextReceivedDate": "2025-02-04",
+ "hasEvaluations": "N"
+}

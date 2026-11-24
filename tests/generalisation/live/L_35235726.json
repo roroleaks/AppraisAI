@@ -1,0 +1,1338 @@
+{
+ "id": "35235726",
+ "source": "MED",
+ "pmid": "35235726",
+ "doi": "10.1056/nejmoa2110275",
+ "title": "Nirsevimab for Prevention of RSV in Healthy Late-Preterm and Term Infants.",
+ "authorString": "Hammitt LL, Dagan R, Yuan Y, Baca Cots M, Bosheva M, Madhi SA, Muller WJ, Zar HJ, Brooks D, Grenham A, Wählby Hamrén U, Mankad VS, Ren P, Takas T, Abram ME, Leach A, Griffin MP, Villafana T, MELODY Study Group.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Hammitt LL",
+    "lastName": "Hammitt",
+    "firstName": "Laura L",
+    "initials": "LL",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Dagan R",
+    "lastName": "Dagan",
+    "firstName": "Ron",
+    "initials": "R",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8888-1046"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Yuan Y",
+    "lastName": "Yuan",
+    "firstName": "Yuan",
+    "initials": "Y",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Baca Cots M",
+    "lastName": "Baca Cots",
+    "firstName": "Manuel",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Bosheva M",
+    "lastName": "Bosheva",
+    "firstName": "Miroslava",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Madhi SA",
+    "lastName": "Madhi",
+    "firstName": "Shabir A",
+    "initials": "SA",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-7629-0636"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Muller WJ",
+    "lastName": "Muller",
+    "firstName": "William J",
+    "initials": "WJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-7690-0695"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Zar HJ",
+    "lastName": "Zar",
+    "firstName": "Heather J",
+    "initials": "HJ",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Brooks D",
+    "lastName": "Brooks",
+    "firstName": "Dennis",
+    "initials": "D",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Grenham A",
+    "lastName": "Grenham",
+    "firstName": "Amy",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Wählby Hamrén U",
+    "lastName": "Wählby Hamrén",
+    "firstName": "Ulrika",
+    "initials": "U",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Mankad VS",
+    "lastName": "Mankad",
+    "firstName": "Vaishali S",
+    "initials": "VS",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Ren P",
+    "lastName": "Ren",
+    "firstName": "Pin",
+    "initials": "P",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Takas T",
+    "lastName": "Takas",
+    "firstName": "Therese",
+    "initials": "T",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Abram ME",
+    "lastName": "Abram",
+    "firstName": "Michael E",
+    "initials": "ME",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Leach A",
+    "lastName": "Leach",
+    "firstName": "Amanda",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Griffin MP",
+    "lastName": "Griffin",
+    "firstName": "M Pamela",
+    "initials": "MP",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Villafana T",
+    "lastName": "Villafana",
+    "firstName": "Tonya",
+    "initials": "T",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.)."
+      }
+     ]
+    }
+   },
+   {
+    "collectiveName": "MELODY Study Group"
+   }
+  ]
+ },
+ "investigatorList": {
+  "investigator": [
+   {
+    "fullName": "Binder C",
+    "lastName": "Binder",
+    "firstName": "Christoph",
+    "initials": "C"
+   },
+   {
+    "fullName": "Resch B",
+    "lastName": "Resch",
+    "firstName": "Bernhard",
+    "initials": "B"
+   },
+   {
+    "fullName": "De Wachter E",
+    "lastName": "De Wachter",
+    "firstName": "Elke",
+    "initials": "E"
+   },
+   {
+    "fullName": "Decaluwe W",
+    "lastName": "Decaluwe",
+    "firstName": "Wim",
+    "initials": "W"
+   },
+   {
+    "fullName": "Goetghebuer T",
+    "lastName": "Goetghebuer",
+    "firstName": "Tessa",
+    "initials": "T"
+   },
+   {
+    "fullName": "Atanosova V",
+    "lastName": "Atanosova",
+    "firstName": "Victoria",
+    "initials": "V"
+   },
+   {
+    "fullName": "Blazheva A",
+    "lastName": "Blazheva",
+    "firstName": "Antoaneta",
+    "initials": "A"
+   },
+   {
+    "fullName": "Bosheva M",
+    "lastName": "Bosheva",
+    "firstName": "Miroslava",
+    "initials": "M"
+   },
+   {
+    "fullName": "Krasteva-Vilmosh M",
+    "lastName": "Krasteva-Vilmosh",
+    "firstName": "Maya",
+    "initials": "M"
+   },
+   {
+    "fullName": "Chilvers M",
+    "lastName": "Chilvers",
+    "firstName": "Mark",
+    "initials": "M"
+   },
+   {
+    "fullName": "Mitchell I",
+    "lastName": "Mitchell",
+    "firstName": "Ian",
+    "initials": "I"
+   },
+   {
+    "fullName": "Papenburg J",
+    "lastName": "Papenburg",
+    "firstName": "Jesse",
+    "initials": "J",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-4232-871X"
+    }
+   },
+   {
+    "fullName": "Lanno R",
+    "lastName": "Lanno",
+    "firstName": "Riin",
+    "initials": "R"
+   },
+   {
+    "fullName": "Nellis G",
+    "lastName": "Nellis",
+    "firstName": "Georgi",
+    "initials": "G"
+   },
+   {
+    "fullName": "Toome L",
+    "lastName": "Toome",
+    "firstName": "Liis",
+    "initials": "L"
+   },
+   {
+    "fullName": "Kokko S",
+    "lastName": "Kokko",
+    "firstName": "Satu",
+    "initials": "S"
+   },
+   {
+    "fullName": "Koski S",
+    "lastName": "Koski",
+    "firstName": "Susanna",
+    "initials": "S"
+   },
+   {
+    "fullName": "Laajalahti O",
+    "lastName": "Laajalahti",
+    "firstName": "Outi",
+    "initials": "O"
+   },
+   {
+    "fullName": "Peltonen L",
+    "lastName": "Peltonen",
+    "firstName": "Lauri",
+    "initials": "L"
+   },
+   {
+    "fullName": "Rämet M",
+    "lastName": "Rämet",
+    "firstName": "Mika",
+    "initials": "M"
+   },
+   {
+    "fullName": "Ukkonen B",
+    "lastName": "Ukkonen",
+    "firstName": "Benita",
+    "initials": "B"
+   },
+   {
+    "fullName": "Adamon L",
+    "lastName": "Adamon",
+    "firstName": "Latif",
+    "initials": "L"
+   },
+   {
+    "fullName": "Epaud R",
+    "lastName": "Epaud",
+    "firstName": "Ralph",
+    "initials": "R"
+   },
+   {
+    "fullName": "Nguyen K",
+    "lastName": "Nguyen",
+    "firstName": "Kim",
+    "initials": "K"
+   },
+   {
+    "fullName": "Panzer F",
+    "lastName": "Panzer",
+    "firstName": "Falko",
+    "initials": "F"
+   },
+   {
+    "fullName": "Thome U",
+    "lastName": "Thome",
+    "firstName": "Ulrich",
+    "initials": "U"
+   },
+   {
+    "fullName": "Dagan R",
+    "lastName": "Dagan",
+    "firstName": "Ron",
+    "initials": "R"
+   },
+   {
+    "fullName": "Simmonds A",
+    "lastName": "Simmonds",
+    "firstName": "Aryeh",
+    "initials": "A"
+   },
+   {
+    "fullName": "Shiomi M",
+    "lastName": "Shiomi",
+    "firstName": "Masashi",
+    "initials": "M"
+   },
+   {
+    "fullName": "Tamai K",
+    "lastName": "Tamai",
+    "firstName": "Kei",
+    "initials": "K"
+   },
+   {
+    "fullName": "Grantina I",
+    "lastName": "Grantina",
+    "firstName": "Ineta",
+    "initials": "I"
+   },
+   {
+    "fullName": "Tameliene R",
+    "lastName": "Tameliene",
+    "firstName": "Rasa",
+    "initials": "R"
+   },
+   {
+    "fullName": "Czajka H",
+    "lastName": "Czajka",
+    "firstName": "Hanna",
+    "initials": "H"
+   },
+   {
+    "fullName": "Boguslaw B",
+    "lastName": "Boguslaw",
+    "firstName": "Boguslaw",
+    "initials": "B"
+   },
+   {
+    "fullName": "Tetiurka T",
+    "lastName": "Tetiurka",
+    "firstName": "Tetiurka",
+    "initials": "T"
+   },
+   {
+    "fullName": "Park MS",
+    "lastName": "Park",
+    "firstName": "Min Soo",
+    "initials": "MS"
+   },
+   {
+    "fullName": "Antonova T",
+    "lastName": "Antonova",
+    "firstName": "Tatiana",
+    "initials": "T"
+   },
+   {
+    "fullName": "Baltserovich N",
+    "lastName": "Baltserovich",
+    "firstName": "Nina",
+    "initials": "N"
+   },
+   {
+    "fullName": "Galustyan A",
+    "lastName": "Galustyan",
+    "firstName": "Anna",
+    "initials": "A"
+   },
+   {
+    "fullName": "Perminova O",
+    "lastName": "Perminova",
+    "firstName": "Olga",
+    "initials": "O"
+   },
+   {
+    "fullName": "Ballot D",
+    "lastName": "Ballot",
+    "firstName": "Daynia",
+    "initials": "D"
+   },
+   {
+    "fullName": "Barnabas SL",
+    "lastName": "Barnabas",
+    "firstName": "Shaun Lawrence",
+    "initials": "SL"
+   },
+   {
+    "fullName": "Diacon AH",
+    "lastName": "Diacon",
+    "firstName": "Andreas H",
+    "initials": "AH"
+   },
+   {
+    "fullName": "Madhi S",
+    "lastName": "Madhi",
+    "firstName": "Shabir",
+    "initials": "S"
+   },
+   {
+    "fullName": "Strehlau R",
+    "lastName": "Strehlau",
+    "firstName": "Renata",
+    "initials": "R",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-9113-6584"
+    }
+   },
+   {
+    "fullName": "Venter E",
+    "lastName": "Venter",
+    "firstName": "Esme",
+    "initials": "E"
+   },
+   {
+    "fullName": "Walele AH",
+    "lastName": "Walele",
+    "firstName": "Azeem Hassan",
+    "initials": "AH"
+   },
+   {
+    "fullName": "Zar HJ",
+    "lastName": "Zar",
+    "firstName": "Heather Joy",
+    "initials": "HJ"
+   },
+   {
+    "fullName": "Arimany Montaña JL",
+    "lastName": "Arimany Montaña",
+    "firstName": "Josep Lluis",
+    "initials": "JL"
+   },
+   {
+    "fullName": "Baca Cots M",
+    "lastName": "Baca Cots",
+    "firstName": "Manuel",
+    "initials": "M"
+   },
+   {
+    "fullName": "Cabañas F",
+    "lastName": "Cabañas",
+    "firstName": "Fernando",
+    "initials": "F"
+   },
+   {
+    "fullName": "Garcia-Garcia ML",
+    "lastName": "Garcia-Garcia",
+    "firstName": "Maria Luz",
+    "initials": "ML",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-4906-4227"
+    }
+   },
+   {
+    "fullName": "García JL",
+    "lastName": "García",
+    "firstName": "Jesus Lucas",
+    "initials": "JL"
+   },
+   {
+    "fullName": "Martinez Orgado JA",
+    "lastName": "Martinez Orgado",
+    "firstName": "Jose Antonio",
+    "initials": "JA"
+   },
+   {
+    "fullName": "Martinon-Torres F",
+    "lastName": "Martinon-Torres",
+    "firstName": "Federico",
+    "initials": "F",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-9023-581X"
+    }
+   },
+   {
+    "fullName": "Martinez SN",
+    "lastName": "Martinez",
+    "firstName": "Silvina Natalini",
+    "initials": "SN"
+   },
+   {
+    "fullName": "Pineda Caplliure A",
+    "lastName": "Pineda Caplliure",
+    "firstName": "Ana",
+    "initials": "A"
+   },
+   {
+    "fullName": "Ramos-Diaz JC",
+    "lastName": "Ramos-Diaz",
+    "firstName": "Juan Carlos",
+    "initials": "JC"
+   },
+   {
+    "fullName": "Ruiz González MD",
+    "lastName": "Ruiz González",
+    "firstName": "María Dolores",
+    "initials": "MD"
+   },
+   {
+    "fullName": "Sánchez Ferrer FJ",
+    "lastName": "Sánchez Ferrer",
+    "firstName": "Francisco José",
+    "initials": "FJ"
+   },
+   {
+    "fullName": "Solé Mir E",
+    "lastName": "Solé Mir",
+    "firstName": "Eduard",
+    "initials": "E"
+   },
+   {
+    "fullName": "Collados CT",
+    "lastName": "Collados",
+    "firstName": "Caridad Tapia",
+    "initials": "CT"
+   },
+   {
+    "fullName": "Berggren Broström E",
+    "lastName": "Berggren Broström",
+    "firstName": "Eva",
+    "initials": "E",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0001-8441-5497"
+    }
+   },
+   {
+    "fullName": "Galiza E",
+    "lastName": "Galiza",
+    "firstName": "Eva",
+    "initials": "E",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-2653-6079"
+    }
+   },
+   {
+    "fullName": "Hawcutt DB",
+    "lastName": "Hawcutt",
+    "firstName": "Daniel B",
+    "initials": "DB",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-8120-6507"
+    }
+   },
+   {
+    "fullName": "Adams G",
+    "lastName": "Adams",
+    "firstName": "Gregory",
+    "initials": "G"
+   },
+   {
+    "fullName": "Anderson E",
+    "lastName": "Anderson",
+    "firstName": "Evan",
+    "initials": "E"
+   },
+   {
+    "fullName": "Bailony M",
+    "lastName": "Bailony",
+    "firstName": "Mohammed",
+    "initials": "M"
+   },
+   {
+    "fullName": "Benton T",
+    "lastName": "Benton",
+    "firstName": "Thomas",
+    "initials": "T"
+   },
+   {
+    "fullName": "Bhatt A",
+    "lastName": "Bhatt",
+    "firstName": "Abhay",
+    "initials": "A"
+   },
+   {
+    "fullName": "Bula-Rudas F",
+    "lastName": "Bula-Rudas",
+    "firstName": "Fernando",
+    "initials": "F"
+   },
+   {
+    "fullName": "Carlin S",
+    "lastName": "Carlin",
+    "firstName": "Susan",
+    "initials": "S"
+   },
+   {
+    "fullName": "Collins MA",
+    "lastName": "Collins",
+    "firstName": "Mary Ann",
+    "initials": "MA"
+   },
+   {
+    "fullName": "Cruz M",
+    "lastName": "Cruz",
+    "firstName": "Marilou",
+    "initials": "M"
+   },
+   {
+    "fullName": "Dailey Pierce R",
+    "lastName": "Dailey Pierce",
+    "firstName": "Rebecca",
+    "initials": "R"
+   },
+   {
+    "fullName": "Domachowske J",
+    "lastName": "Domachowske",
+    "firstName": "Joseph",
+    "initials": "J"
+   },
+   {
+    "fullName": "Englund J",
+    "lastName": "Englund",
+    "firstName": "Janet",
+    "initials": "J"
+   },
+   {
+    "fullName": "Finn D",
+    "lastName": "Finn",
+    "firstName": "Daniel",
+    "initials": "D"
+   },
+   {
+    "fullName": "Garscadden A",
+    "lastName": "Garscadden",
+    "firstName": "Alan",
+    "initials": "A"
+   },
+   {
+    "fullName": "Halpern J",
+    "lastName": "Halpern",
+    "firstName": "Jane",
+    "initials": "J"
+   },
+   {
+    "fullName": "Hammitt L",
+    "lastName": "Hammitt",
+    "firstName": "Laura",
+    "initials": "L"
+   },
+   {
+    "fullName": "Honrubia D",
+    "lastName": "Honrubia",
+    "firstName": "Dynio",
+    "initials": "D"
+   },
+   {
+    "fullName": "Kagan R",
+    "lastName": "Kagan",
+    "firstName": "Ryan",
+    "initials": "R"
+   },
+   {
+    "fullName": "Keller E",
+    "lastName": "Keller",
+    "firstName": "Emily",
+    "initials": "E"
+   },
+   {
+    "fullName": "Koch W",
+    "lastName": "Koch",
+    "firstName": "William",
+    "initials": "W"
+   },
+   {
+    "fullName": "Leonardi M",
+    "lastName": "Leonardi",
+    "firstName": "Michael",
+    "initials": "M"
+   },
+   {
+    "fullName": "Mann D",
+    "lastName": "Mann",
+    "firstName": "Darvy",
+    "initials": "D"
+   },
+   {
+    "fullName": "Martin J",
+    "lastName": "Martin",
+    "firstName": "Judith",
+    "initials": "J"
+   },
+   {
+    "fullName": "Muller W",
+    "lastName": "Muller",
+    "firstName": "William",
+    "initials": "W"
+   },
+   {
+    "fullName": "Narendran V",
+    "lastName": "Narendran",
+    "firstName": "Vivek",
+    "initials": "V"
+   },
+   {
+    "fullName": "Nelson D",
+    "lastName": "Nelson",
+    "firstName": "David",
+    "initials": "D"
+   },
+   {
+    "fullName": "Nguyen D",
+    "lastName": "Nguyen",
+    "firstName": "Diana",
+    "initials": "D"
+   },
+   {
+    "fullName": "Okorie U",
+    "lastName": "Okorie",
+    "firstName": "Uzoma",
+    "initials": "U"
+   },
+   {
+    "fullName": "Pardalos J",
+    "lastName": "Pardalos",
+    "firstName": "John",
+    "initials": "J"
+   },
+   {
+    "fullName": "Pelzer D",
+    "lastName": "Pelzer",
+    "firstName": "Daniel",
+    "initials": "D"
+   },
+   {
+    "fullName": "Polak M",
+    "lastName": "Polak",
+    "firstName": "Mark",
+    "initials": "M",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-3817-9088"
+    }
+   },
+   {
+    "fullName": "Ramilo O",
+    "lastName": "Ramilo",
+    "firstName": "Octavio",
+    "initials": "O",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-0565-5239"
+    }
+   },
+   {
+    "fullName": "Ren C",
+    "lastName": "Ren",
+    "firstName": "Clement",
+    "initials": "C"
+   },
+   {
+    "fullName": "Roessler K",
+    "lastName": "Roessler",
+    "firstName": "Kirsten",
+    "initials": "K"
+   },
+   {
+    "fullName": "Russell S",
+    "lastName": "Russell",
+    "firstName": "Stephen",
+    "initials": "S"
+   },
+   {
+    "fullName": "Senders S",
+    "lastName": "Senders",
+    "firstName": "Shelley",
+    "initials": "S"
+   },
+   {
+    "fullName": "Shepard J",
+    "lastName": "Shepard",
+    "firstName": "Julie",
+    "initials": "J"
+   },
+   {
+    "fullName": "Simões EAF",
+    "lastName": "Simões",
+    "firstName": "Eric AF",
+    "initials": "EAF"
+   },
+   {
+    "fullName": "Simon M",
+    "lastName": "Simon",
+    "firstName": "Michael",
+    "initials": "M"
+   },
+   {
+    "fullName": "Simonsen K",
+    "lastName": "Simonsen",
+    "firstName": "Kari",
+    "initials": "K"
+   },
+   {
+    "fullName": "Sutcliffe CG",
+    "lastName": "Sutcliffe",
+    "firstName": "Catherine G",
+    "initials": "CG"
+   },
+   {
+    "fullName": "Tekippe M",
+    "lastName": "Tekippe",
+    "firstName": "Michael",
+    "initials": "M"
+   },
+   {
+    "fullName": "Tipton M",
+    "lastName": "Tipton",
+    "firstName": "Mary",
+    "initials": "M"
+   },
+   {
+    "fullName": "Twiggs J",
+    "lastName": "Twiggs",
+    "firstName": "Jerry",
+    "initials": "J"
+   },
+   {
+    "fullName": "VanDeRiet D",
+    "lastName": "VanDeRiet",
+    "firstName": "Daniel",
+    "initials": "D"
+   },
+   {
+    "fullName": "Wisman P",
+    "lastName": "Wisman",
+    "firstName": "Paul",
+    "initials": "P"
+   },
+   {
+    "fullName": "Abram ME",
+    "lastName": "Abram",
+    "firstName": "Michael E",
+    "initials": "ME"
+   },
+   {
+    "fullName": "Ahuja S",
+    "lastName": "Ahuja",
+    "firstName": "Sanjeev",
+    "initials": "S"
+   },
+   {
+    "fullName": "Auge C",
+    "lastName": "Auge",
+    "firstName": "Catherine",
+    "initials": "C"
+   },
+   {
+    "fullName": "Chen S",
+    "lastName": "Chen",
+    "firstName": "Stephanie",
+    "initials": "S"
+   },
+   {
+    "fullName": "Fakoya L",
+    "lastName": "Fakoya",
+    "firstName": "Lillian",
+    "initials": "L"
+   },
+   {
+    "fullName": "Kubiak RJ",
+    "lastName": "Kubiak",
+    "firstName": "Robert J",
+    "initials": "RJ",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0003-2953-1131"
+    }
+   },
+   {
+    "fullName": "Khan AA",
+    "lastName": "Khan",
+    "firstName": "Anis A",
+    "initials": "AA"
+   },
+   {
+    "fullName": "Larick M",
+    "lastName": "Larick",
+    "firstName": "Melissa",
+    "initials": "M"
+   },
+   {
+    "fullName": "Markanday S",
+    "lastName": "Markanday",
+    "firstName": "Sumit",
+    "initials": "S"
+   },
+   {
+    "fullName": "Trivedi R",
+    "lastName": "Trivedi",
+    "firstName": "Roopa",
+    "initials": "R"
+   },
+   {
+    "fullName": "Heinrichs J",
+    "lastName": "Heinrichs",
+    "firstName": "Jon",
+    "initials": "J"
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7594-504X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-7690-0695"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-8441-5497"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0001-9113-6584"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-0565-5239"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-2653-6079"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-6505-7281"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7629-0636"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7939-246X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-7944-8793"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8120-6507"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-8888-1046"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-9023-581X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0002-9046-759X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-2953-1131"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-3817-9088"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-4232-871X"
+   },
+   {
+    "type": "ORCID",
+    "value": "0000-0003-4906-4227"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "9",
+  "volume": "386",
+  "journalIssueId": 3322088,
+  "dateOfPublication": "2022 Mar",
+  "monthOfPublication": 3,
+  "yearOfPublication": 2022,
+  "journal": {
+   "medlineAbbreviation": "N Engl J Med",
+   "title": "The New England journal of medicine",
+   "essn": "1533-4406",
+   "issn": "0028-4793",
+   "isoabbreviation": "N Engl J Med",
+   "nlmid": "0255562"
+  },
+  "printPublicationDate": "2022-03-01"
+ },
+ "pubYear": "2022",
+ "pageInfo": "837-846",
+ "abstractText": "<h4>Background</h4>Respiratory syncytial virus (RSV) is a major cause of lower respiratory tract infection and hospitalization in infants. Nirsevimab is a monoclonal antibody to the RSV fusion protein that has an extended half-life. The efficacy and safety of nirsevimab in healthy late-preterm and term infants are uncertain.<h4>Methods</h4>We randomly assigned, in a 2:1 ratio, infants who had been born at a gestational age of at least 35 weeks to receive a single intramuscular injection of nirsevimab or placebo before the start of an RSV season. The primary efficacy end point was medically attended RSV-associated lower respiratory tract infection through 150 days after the injection. The secondary efficacy end point was hospitalization for RSV-associated lower respiratory tract infection through 150 days after the injection.<h4>Results</h4>A total of 1490 infants underwent randomization: 994 were assigned to the nirsevimab group and 496 to the placebo group. Medically attended RSV-associated lower respiratory tract infection occurred in 12 infants (1.2%) in the nirsevimab group and in 25 infants (5.0%) in the placebo group; these findings correspond to an efficacy of 74.5% (95% confidence interval [CI], 49.6 to 87.1; P<0.001) for nirsevimab. Hospitalization for RSV-associated lower respiratory tract infection occurred in 6 infants (0.6%) in the nirsevimab group and in 8 infants (1.6%) in the placebo group (efficacy, 62.1%; 95% CI, -8.6 to 86.8; P = 0.07). Among infants with data available to day 361, antidrug antibodies after baseline were detected in 58 of 951 (6.1%) in the nirsevimab group and in 5 of 473 (1.1%) in the placebo group. Serious adverse events were reported in 67 of 987 infants (6.8%) who received nirsevimab and in 36 of 491 infants (7.3%) who received placebo.<h4>Conclusions</h4>A single injection of nirsevimab administered before the RSV season protected healthy late-preterm and term infants from medically attended RSV-associated lower respiratory tract infection. (Funded by MedImmune/AstraZeneca and Sanofi; MELODY ClinicalTrials.gov number, NCT03979313.).",
+ "affiliation": "From the Department of International Health, Johns Hopkins University, Baltimore (L.L.H.), and AstraZeneca, Gaithersburg (Y.Y., D.B., A.G., P.R., T.T., M.E.A., A.L., M.P.G., T.V.) - both in Maryland; the Faculty of Health Sciences, Ben-Gurion University of the Negev, Beer-Sheva, Israel (R.D.); Quirónsalud Málaga Hospital, Malaga, Spain (M.B.C.); University Multiprofile Hospital for Active Treatment, St. George Medical University, Plovdiv, Bulgaria (M.B.); the South African Medical Research Council Vaccines and Infectious Diseases Analytics Research Unit and African Leadership in Vaccinology Expertise, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg (S.A.M.), and the Department of Paediatrics and Child Health, Red Cross Children's Hospital, and the Medical Research Council Unit on Child and Adolescent Health, University of Cape Town, Cape Town (H.J.Z.) - all in South Africa; Ann and Robert H. Lurie Children's Hospital of Chicago and Northwestern University Feinberg School of Medicine, Chicago (W.J.M.); AstraZeneca, Gothenburg, Sweden (U.W.H.); and AstraZeneca, Durham, NC (V.S.M.).",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Clinical Trial, Phase III",
+   "Research Support, Non-U.S. Gov't",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "Sanofi Pasteur",
+    "orderIn": 0
+   },
+   {
+    "agency": "AstraZeneca",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Respiratory Syncytial Virus Infections",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Premature, Diseases",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "PC",
+       "qualifierName": "prevention & control"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Antiviral Agents",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Injections, Intramuscular"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Drug Administration Schedule"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infant, Newborn"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Infant, Premature"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Male"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Kaplan-Meier Estimate"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Antibodies, Monoclonal, Humanized",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AD",
+       "qualifierName": "administration & dosage"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TU",
+       "qualifierName": "therapeutic use"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "chemicalList": {
+  "chemical": [
+   {
+    "name": "Antiviral Agents",
+    "registryNumber": "0"
+   },
+   {
+    "name": "Antibodies, Monoclonal, Humanized",
+    "registryNumber": "0"
+   },
+   {
+    "name": "nirsevimab",
+    "registryNumber": "VRN8S9CW5V"
+   }
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1056/NEJMoa2110275"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 899,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "nct"
+  ]
+ },
+ "dateOfCompletion": "2022-03-15",
+ "dateOfCreation": "2022-03-02",
+ "dateOfRevision": "2022-09-09",
+ "firstPublicationDate": "2022-03-01",
+ "firstIndexDate": "2022-03-03",
+ "hasEvaluations": "N"
+}

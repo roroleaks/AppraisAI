@@ -28,6 +28,12 @@ interface AppraisalState {
   llmApiKey: string;
   llmModel: string;
 
+  // Human Verification & Attribution
+  humanVerified: boolean;
+  appraiserName: string;
+  setHumanVerified: (v: boolean) => void;
+  setAppraiserName: (n: string) => void;
+
   // Actions
   setManuscript: (manuscript: ParsedManuscriptPayload) => void;
   clearManuscript: () => void;
@@ -69,14 +75,19 @@ export const useAppraisalStore = create<AppraisalState>()(
       llmApiKey: '',
       llmModel: 'gemini-2.5-flash',
 
-      setManuscript: (manuscript) => set({ currentManuscript: manuscript, ingestionError: null }),
+      humanVerified: false,
+      appraiserName: '',
+      setHumanVerified: (v) => set({ humanVerified: v }),
+      setAppraiserName: (n) => set({ appraiserName: n }),
+
+      setManuscript: (manuscript) => set({ currentManuscript: manuscript, ingestionError: null, humanVerified: false }),
       clearManuscript: () =>
         set({ currentManuscript: null, currentAppraisal: null, appraisalProgressStep: 0, appraisalError: null }),
       setIngesting: (isIngesting) => set({ isIngesting }),
       setIngestionError: (ingestionError) => set({ ingestionError }),
 
       setAppraisal: (appraisal) =>
-        set({ currentAppraisal: appraisal, isAppraising: false, appraisalError: null, appraisalProgressStep: 4 }),
+        set({ currentAppraisal: appraisal, isAppraising: false, appraisalError: null, appraisalProgressStep: 4, humanVerified: false }),
       clearAppraisal: () =>
         set({ currentAppraisal: null, appraisalProgressStep: 0, appraisalError: null, isAppraising: false, isEditMode: false }),
       setAppraising: (isAppraising) => set({ isAppraising }),
@@ -218,6 +229,8 @@ export const useAppraisalStore = create<AppraisalState>()(
           currentStepMessage: '',
           appraisalError: null,
           isEditMode: false,
+          humanVerified: false,
+          appraiserName: '',
         }),
     }),
     {
@@ -225,6 +238,8 @@ export const useAppraisalStore = create<AppraisalState>()(
       partialize: (state) => ({
         currentManuscript: state.currentManuscript,
         currentAppraisal: state.currentAppraisal,
+        humanVerified: state.humanVerified,
+        appraiserName: state.appraiserName,
         llmProvider: state.llmProvider,
         llmModel: state.llmModel,
         // P5-3: llmApiKey is NOT persisted in localStorage

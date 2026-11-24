@@ -1,0 +1,324 @@
+{
+ "id": "32240301",
+ "source": "MED",
+ "pmid": "32240301",
+ "pmcid": "PMC7192535",
+ "fullTextIdList": {
+  "fullTextId": [
+   "PMC7192535"
+  ]
+ },
+ "doi": "10.1093/humrep/deaa013",
+ "title": "Development of an artificial intelligence-based assessment model for prediction of embryo viability using static images captured by optical light microscopy during IVF.",
+ "authorString": "VerMilyea M, Hall JMM, Diakiw SM, Johnston A, Nguyen T, Perugini D, Miller A, Picou A, Murphy AP, Perugini M.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "VerMilyea M",
+    "lastName": "VerMilyea",
+    "firstName": "M",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Laboratory Operations, Ovation Fertility, Austin, TX 78731, USA."
+      },
+      {
+       "affiliation": "IVF Laboratory, Texas Fertility Center, Austin, TX 78731, USA."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Hall JMM",
+    "lastName": "Hall",
+    "firstName": "J M M",
+    "initials": "JMM",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Life Whisperer Diagnostics, Presagen Pty Ltd., Adelaide, SA 5000, Australia."
+      },
+      {
+       "affiliation": "Australian Research Council Centre of Excellence for Nanoscale BioPhotonics, The University of Adelaide, Adelaide, SA 5000, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Diakiw SM",
+    "lastName": "Diakiw",
+    "firstName": "S M",
+    "initials": "SM",
+    "authorId": {
+     "type": "ORCID",
+     "value": "0000-0002-4554-7224"
+    },
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Life Whisperer Diagnostics, Presagen Pty Ltd., Adelaide, SA 5000, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Johnston A",
+    "lastName": "Johnston",
+    "firstName": "A",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Life Whisperer Diagnostics, Presagen Pty Ltd., Adelaide, SA 5000, Australia."
+      },
+      {
+       "affiliation": "Australian Institute for Machine Learning, School of Computer Science, The University of Adelaide, Adelaide, SA 5000, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Nguyen T",
+    "lastName": "Nguyen",
+    "firstName": "T",
+    "initials": "T",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Life Whisperer Diagnostics, Presagen Pty Ltd., Adelaide, SA 5000, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Perugini D",
+    "lastName": "Perugini",
+    "firstName": "D",
+    "initials": "D",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Life Whisperer Diagnostics, Presagen Pty Ltd., Adelaide, SA 5000, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Miller A",
+    "lastName": "Miller",
+    "firstName": "A",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Laboratory Operations, Ovation Fertility, Austin, TX 78731, USA."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Picou A",
+    "lastName": "Picou",
+    "firstName": "A",
+    "initials": "A",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Laboratory Operations, Ovation Fertility, Austin, TX 78731, USA."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Murphy AP",
+    "lastName": "Murphy",
+    "firstName": "A P",
+    "initials": "AP",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Life Whisperer Diagnostics, Presagen Pty Ltd., Adelaide, SA 5000, Australia."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Perugini M",
+    "lastName": "Perugini",
+    "firstName": "M",
+    "initials": "M",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Life Whisperer Diagnostics, Presagen Pty Ltd., Adelaide, SA 5000, Australia."
+      },
+      {
+       "affiliation": "Adelaide Medical School, Faculty of Health Sciences, The University of Adelaide, Adelaide, SA 5000, Australia."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "authorIdList": {
+  "authorId": [
+   {
+    "type": "ORCID",
+    "value": "0000-0002-4554-7224"
+   }
+  ]
+ },
+ "dataLinksTagsList": {
+  "dataLinkstag": [
+   "altmetrics",
+   "supporting_data"
+  ]
+ },
+ "journalInfo": {
+  "issue": "4",
+  "volume": "35",
+  "journalIssueId": 2948344,
+  "dateOfPublication": "2020 Apr",
+  "monthOfPublication": 4,
+  "yearOfPublication": 2020,
+  "journal": {
+   "medlineAbbreviation": "Hum Reprod",
+   "title": "Human reproduction (Oxford, England)",
+   "essn": "1460-2350",
+   "issn": "0268-1161",
+   "nlmid": "8701199",
+   "isoabbreviation": "Hum Reprod"
+  },
+  "printPublicationDate": "2020-04-01"
+ },
+ "pubYear": "2020",
+ "pageInfo": "770-784",
+ "abstractText": "<h4>Study question</h4>Can an artificial intelligence (AI)-based model predict human embryo viability using images captured by optical light microscopy?<h4>Summary answer</h4>We have combined computer vision image processing methods and deep learning techniques to create the non-invasive Life Whisperer AI model for robust prediction of embryo viability, as measured by clinical pregnancy outcome, using single static images of Day 5 blastocysts obtained from standard optical light microscope systems.<h4>What is known already</h4>Embryo selection following IVF is a critical factor in determining the success of ensuing pregnancy. Traditional morphokinetic grading by trained embryologists can be subjective and variable, and other complementary techniques, such as time-lapse imaging, require costly equipment and have not reliably demonstrated predictive ability for the endpoint of clinical pregnancy. AI methods are being investigated as a promising means for improving embryo selection and predicting implantation and pregnancy outcomes.<h4>Study design, size, duration</h4>These studies involved analysis of retrospectively collected data including standard optical light microscope images and clinical outcomes of 8886 embryos from 11 different IVF clinics, across three different countries, between 2011 and 2018.<h4>Participants/materials, setting, methods</h4>The AI-based model was trained using static two-dimensional optical light microscope images with known clinical pregnancy outcome as measured by fetal heartbeat to provide a confidence score for prediction of pregnancy. Predictive accuracy was determined by evaluating sensitivity, specificity and overall weighted accuracy, and was visualized using histograms of the distributions of predictions. Comparison to embryologists' predictive accuracy was performed using a binary classification approach and a 5-band ranking comparison.<h4>Main results and the role of chance</h4>The Life Whisperer AI model showed a sensitivity of 70.1% for viable embryos while maintaining a specificity of 60.5% for non-viable embryos across three independent blind test sets from different clinics. The weighted overall accuracy in each blind test set was >63%, with a combined accuracy of 64.3% across both viable and non-viable embryos, demonstrating model robustness and generalizability beyond the result expected from chance. Distributions of predictions showed clear separation of correctly and incorrectly classified embryos. Binary comparison of viable/non-viable embryo classification demonstrated an improvement of 24.7% over embryologists' accuracy (P = 0.047, n = 2, Student's t test), and 5-band ranking comparison demonstrated an improvement of 42.0% over embryologists (P = 0.028, n = 2, Student's t test).<h4>Limitations, reasons for caution</h4>The AI model developed here is limited to analysis of Day 5 embryos; therefore, further evaluation or modification of the model is needed to incorporate information from different time points. The endpoint described is clinical pregnancy as measured by fetal heartbeat, and this does not indicate the probability of live birth. The current investigation was performed with retrospectively collected data, and hence it will be of importance to collect data prospectively to assess real-world use of the AI model.<h4>Wider implications of the findings</h4>These studies demonstrated an improved predictive ability for evaluation of embryo viability when compared with embryologists' traditional morphokinetic grading methods. The superior accuracy of the Life Whisperer AI model could lead to improved pregnancy success rates in IVF when used in a clinical setting. It could also potentially assist in standardization of embryo selection methods across multiple clinical environments, while eliminating the need for complex time-lapse imaging equipment. Finally, the cloud-based software application used to apply the Life Whisperer AI model in clinical practice makes it broadly applicable and globally scalable to IVF clinics worldwide.<h4>Study funding/competing interest(s)</h4>Life Whisperer Diagnostics, Pty Ltd is a wholly owned subsidiary of the parent company, Presagen Pty Ltd. Funding for the study was provided by Presagen with grant funding received from the South Australian Government: Research, Commercialisation and Startup Fund (RCSF). 'In kind' support and embryology expertise to guide algorithm development were provided by Ovation Fertility. J.M.M.H., D.P. and M.P. are co-owners of Life Whisperer and Presagen. Presagen has filed a provisional patent for the technology described in this manuscript (52985P pending). A.P.M. owns stock in Life Whisperer, and S.M.D., A.J., T.N. and A.P.M. are employees of Life Whisperer.",
+ "affiliation": "Laboratory Operations, Ovation Fertility, Austin, TX 78731, USA.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print",
+ "pubTypeList": {
+  "pubType": [
+   "Research Support, Non-U.S. Gov't",
+   "research-article",
+   "Journal Article"
+  ]
+ },
+ "grantsList": {
+  "grant": [
+   {
+    "agency": "South Australian Government: Research, Commercialisation and Startup Fund",
+    "orderIn": 0
+   }
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Microscopy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fertilization in Vitro"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Retrospective Studies"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "Y",
+    "descriptorName": "Artificial Intelligence"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Australia"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Artificial intelligence",
+   "Embryo quality",
+   "Assisted reproduction",
+   "Machine Learning",
+   "Ivf/icsi Outcome"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1093/humrep/deaa013"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "html",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC7192535"
+   },
+   {
+    "availability": "Open access",
+    "availabilityCode": "OA",
+    "documentStyle": "pdf",
+    "site": "Europe_PMC",
+    "url": "https://europepmc.org/articles/PMC7192535?pdf=render"
+   }
+  ]
+ },
+ "isOpenAccess": "Y",
+ "inEPMC": "Y",
+ "inPMC": "Y",
+ "citedByCount": 201,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "Y",
+ "hasBook": "N",
+ "hasSuppl": "Y",
+ "hasLabsLinks": "Y",
+ "hasData": "Y",
+ "license": "cc by-nc",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "Y",
+ "tmAccessionTypeList": {
+  "accessionType": [
+   "doi"
+  ]
+ },
+ "dateOfCompletion": "2021-04-27",
+ "dateOfCreation": "2020-04-03",
+ "dateOfRevision": "2021-04-27",
+ "firstPublicationDate": "2020-04-01",
+ "firstIndexDate": "2020-04-03",
+ "fullTextReceivedDate": "2025-02-03",
+ "hasEvaluations": "N"
+}

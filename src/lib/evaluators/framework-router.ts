@@ -29,10 +29,10 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
         studyDesign: 'RCT',
         equatorGuidelineName: 'CONSORT 2025',
         equatorGuidelineCitation:
-          'Hopewell S, Clarke M, Moher D, et al. CONSORT 2025 statement: updated guideline for reporting randomised trials. BMJ. 2025;389:e081123. doi:10.1136/bmj-2024-081123',
+          'Hopewell S, Chan AW, Collins GS, et al. CONSORT 2025 statement: updated guideline for reporting randomised trials. BMJ. 2025;389:e081123. doi:10.1136/bmj-2024-081123',
         riskOfBiasToolName: 'Cochrane Risk of Bias 2.0 (RoB 2)',
         riskOfBiasToolCitation:
-          'Sterne JAC, Savovic J, Page MJ, et al. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 2019;366:l4898. doi:10.1136/bmj.l4898',
+          'Sterne JAC, Savović J, Page MJ, et al. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 2019;366:l4898. doi:10.1136/bmj.l4898',
         defaultOxfordLevel: 'Level 1b',
         robMandatoryDomains: [
           { domainName: 'Domain 1: Bias arising from the randomisation process', description: 'Generation of random sequence and allocation concealment' },
@@ -42,14 +42,20 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
           { domainName: 'Domain 5: Bias in selection of the reported result', description: 'Adherence to pre-specified analysis plan or trial registry' },
         ],
         equatorMandatoryItems: [
-          { itemNumberAndSection: 'Item 1: Title', requirement: 'Identification as a randomised trial in the title' },
-          { itemNumberAndSection: 'Item 2: Structured Summary', requirement: 'Structured summary of trial design, methods, results, and conclusions' },
-          { itemNumberAndSection: 'Item 3: Background & Objectives', requirement: 'Scientific background, rational, and specific objectives/hypotheses' },
-          { itemNumberAndSection: 'Item 8: Randomisation & Concealment', requirement: 'Mechanism to implement random allocation and sequence concealment' },
-          { itemNumberAndSection: 'Item 11: Masking / Blinding', requirement: 'Blinding of participants, care providers, and outcome assessors' },
-          { itemNumberAndSection: 'Item 13: Participant Flow', requirement: 'Participant flow through enrolment, allocation, follow-up, and analysis' },
-          { itemNumberAndSection: 'Item 17: Outcomes & Estimation', requirement: 'Primary and secondary outcome estimates with precision (e.g. 95% CI)' },
-          { itemNumberAndSection: 'Item 20: Limitations', requirement: 'Trial limitations, addressing potential bias, imprecision, and multiplicity' },
+          { itemNumberAndSection: 'Item 1a: Title', requirement: 'Identification as a randomised trial in the title' },
+          { itemNumberAndSection: 'Item 1b: Structured abstract', requirement: 'Structured summary of trial design, methods, results, and conclusions' },
+          { itemNumberAndSection: 'Item 2: Trial registration', requirement: 'Trial registration name and unique registry identifier' },
+          { itemNumberAndSection: 'Item 3: Protocol & SAP', requirement: 'Where the full trial protocol and statistical analysis plan can be accessed' },
+          { itemNumberAndSection: 'Item 5a-b: Funding & COI', requirement: 'Sources of trial funding, role of funders, and competing interests of authors' },
+          { itemNumberAndSection: 'Item 6: Background', requirement: 'Scientific background and explanation of clinical rationale' },
+          { itemNumberAndSection: 'Item 7: Objectives', requirement: 'Specific objectives or hypotheses addressed by the trial' },
+          { itemNumberAndSection: 'Item 16a: Sample size', requirement: 'How sample size was determined and power calculation parameters' },
+          { itemNumberAndSection: 'Item 17a: Sequence generation', requirement: 'Method used to generate the random allocation sequence' },
+          { itemNumberAndSection: 'Item 18: Allocation concealment', requirement: 'Mechanism to implement random allocation (e.g. central randomisation, sealed envelopes)' },
+          { itemNumberAndSection: 'Item 20a: Blinding / Masking', requirement: 'Blinding of participants, healthcare providers, and outcome assessors' },
+          { itemNumberAndSection: 'Item 22a: Participant flow', requirement: 'Participant flow through enrollment, allocation, follow-up, and analysis' },
+          { itemNumberAndSection: 'Item 24: Outcomes & Estimation', requirement: 'Primary and secondary outcome estimates with precision (e.g. 95% CI)' },
+          { itemNumberAndSection: 'Item 30: Limitations', requirement: 'Trial limitations addressing potential bias, imprecision, and multiplicity' },
         ],
       };
 
@@ -187,6 +193,34 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
         ],
       };
 
+    case 'PREDICTION_MODEL':
+      return {
+        studyDesign: 'PREDICTION_MODEL',
+        equatorGuidelineName: 'TRIPOD+AI',
+        equatorGuidelineCitation:
+          'Collins GS, Moons KGM, Dhiman P, et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. BMJ. 2024;385:e078378. doi:10.1136/bmj-2023-078378',
+        riskOfBiasToolName: 'PROBAST+AI',
+        riskOfBiasToolCitation:
+          'Moons KGM, Damen JAA, Kaul T, et al. PROBAST+AI: an updated quality, risk of bias, and applicability assessment tool for prediction models using regression or artificial intelligence methods. BMJ. 2025;388:e082505. doi:10.1136/bmj-2024-082505',
+        defaultOxfordLevel: 'Level 3b',
+        robMandatoryDomains: [
+          { domainName: 'Domain 1: Participants and data sources', description: 'Representative data source; inclusions/exclusions; no leakage between development and test data' },
+          { domainName: 'Domain 2: Predictors', description: 'Predictors (images, clinical variables) defined and available at the time of use' },
+          { domainName: 'Domain 3: Outcome', description: 'Outcome (e.g. implantation, clinical pregnancy, live birth) defined and determined without knowledge of predictions' },
+          { domainName: 'Domain 4: Analysis', description: 'Adequate sample size; discrimination AND calibration; internal and external validation; overfitting handled' },
+        ],
+        equatorMandatoryItems: [
+          { itemNumberAndSection: 'Item 1: Title', requirement: 'Identifies the study as developing or evaluating a prediction model, the target population and outcome' },
+          { itemNumberAndSection: 'Item 5: Data source', requirement: 'Source of data, dates and setting (centres, countries)' },
+          { itemNumberAndSection: 'Item 8: Outcome', requirement: 'Outcome definition and how/when it was assessed' },
+          { itemNumberAndSection: 'Item 10: Sample size', requirement: 'Study size and how it was arrived at' },
+          { itemNumberAndSection: 'Item 12: Analysis — performance', requirement: 'Discrimination and calibration measures with uncertainty' },
+          { itemNumberAndSection: 'Item 12e: Validation', requirement: 'Internal validation method and any external / temporal / geographic validation' },
+          { itemNumberAndSection: 'Item 14: Fairness', requirement: 'Performance across relevant subgroups' },
+          { itemNumberAndSection: 'Item 27: Limitations', requirement: 'Limitations, including generalisability and risk of bias' },
+        ],
+      };
+
     case 'CLINICAL_PRACTICE_GUIDELINE':
       return {
         studyDesign: 'CLINICAL_PRACTICE_GUIDELINE',
@@ -223,15 +257,20 @@ export function getGoverningFrameworkRules(design: StudyDesign): GoverningFramew
           'Baethge C, Goldbeck-Wood S, Mertens S. SANRA—a scale for the quality assessment of narrative review articles. Res Integr Peer Rev. 2019;4:5. doi:10.1186/s41073-019-0064-8',
         defaultOxfordLevel: 'Level 5',
         robMandatoryDomains: [
-          { domainName: 'Methodological Scope', description: 'Evaluation of scientific rationale and focused clinical inquiry' },
-          { domainName: 'Literature Search Transparency', description: 'Description of bibliographic sources and literature selection' },
-          { domainName: 'Evidence Grounding', description: 'Referencing of primary clinical evidence supporting claims' },
-          { domainName: 'Critical Synthesis', description: 'Balanced presentation of conflicting evidence and clinical caveats' },
+          { domainName: 'Item 1: Justification of article importance', description: 'Evaluation of scientific rationale and clinical significance for the readership' },
+          { domainName: 'Item 2: Statement of concrete aims / questions', description: 'Explicit formulation of key review inquiry or clinical questions' },
+          { domainName: 'Item 3: Description of literature search', description: 'Transparency regarding bibliographic databases, search terms, and inclusion limits' },
+          { domainName: 'Item 4: Referencing of primary evidence', description: 'Direct grounding of clinical claims in cited primary studies' },
+          { domainName: 'Item 5: Scientific reasoning and critical balance', description: 'Balanced presentation of conflicting evidence and clinical caveats' },
+          { domainName: 'Item 6: Appropriate presentation of data', description: 'Clear presentation of outcome data and synthesis findings' },
         ],
         equatorMandatoryItems: [
-          { itemNumberAndSection: 'Item 1: Rationale & Objectives', requirement: 'Explicit scientific background and question' },
-          { itemNumberAndSection: 'Item 2: Methodological Design', requirement: 'Clear description of sample, variables, and measurements' },
-          { itemNumberAndSection: 'Item 3: Findings & Limitations', requirement: 'Accurate reporting of primary findings and limitations' },
+          { itemNumberAndSection: 'Item 1: Importance & Rationale', requirement: 'Explicit scientific background and readership importance' },
+          { itemNumberAndSection: 'Item 2: Concrete Aims', requirement: 'Formulation of concrete review aims and focus' },
+          { itemNumberAndSection: 'Item 3: Search Strategy', requirement: 'Description of bibliographic search and databases' },
+          { itemNumberAndSection: 'Item 4: Evidence Referencing', requirement: 'Comprehensive citation of primary studies' },
+          { itemNumberAndSection: 'Item 5: Critical Reasoning', requirement: 'Unbiased scientific synthesis and balanced caveats' },
+          { itemNumberAndSection: 'Item 6: Synthesis & Presentation', requirement: 'Transparent presentation of clinical conclusions' },
         ],
       };
   }

@@ -1,0 +1,254 @@
+{
+ "id": "26453266",
+ "source": "MED",
+ "pmid": "26453266",
+ "doi": "10.1016/j.fertnstert.2015.09.007",
+ "title": "Assisted reproductive technology and the risk of pregnancy-related complications and adverse pregnancy outcomes in singleton pregnancies: a meta-analysis of cohort studies.",
+ "authorString": "Qin J, Liu X, Sheng X, Wang H, Gao S.",
+ "authorList": {
+  "author": [
+   {
+    "fullName": "Qin J",
+    "lastName": "Qin",
+    "firstName": "Jiabi",
+    "initials": "J",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division of Medical Genetics, Maternal and Child Health Hospital of Hunan Province, Hunan, People's Republic of China; Department of Epidemiology and Health Statistics, School of Public Health, Central South University, Hunan, People's Republic of China. Electronic address: qinjiabi123@hotmail.com."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Liu X",
+    "lastName": "Liu",
+    "firstName": "Xiaoying",
+    "initials": "X",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Department of Epidemiology and Health Statistics, School of Public Health, Central South University, Hunan, People's Republic of China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Sheng X",
+    "lastName": "Sheng",
+    "firstName": "Xiaoqi",
+    "initials": "X",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division of Medical Genetics, Maternal and Child Health Hospital of Hunan Province, Hunan, People's Republic of China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Wang H",
+    "lastName": "Wang",
+    "firstName": "Hua",
+    "initials": "H",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Division of Medical Genetics, Maternal and Child Health Hospital of Hunan Province, Hunan, People's Republic of China."
+      }
+     ]
+    }
+   },
+   {
+    "fullName": "Gao S",
+    "lastName": "Gao",
+    "firstName": "Shiyou",
+    "initials": "S",
+    "authorAffiliationDetailsList": {
+     "authorAffiliation": [
+      {
+       "affiliation": "Reproductive Center, Maternal and Child Health Hospital of Hunan Province, Hunan, People's Republic of China."
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "journalInfo": {
+  "issue": "1",
+  "volume": "105",
+  "journalIssueId": 2360841,
+  "dateOfPublication": "2016 Jan",
+  "monthOfPublication": 1,
+  "yearOfPublication": 2016,
+  "journal": {
+   "medlineAbbreviation": "Fertil Steril",
+   "title": "Fertility and sterility",
+   "essn": "1556-5653",
+   "issn": "0015-0282",
+   "nlmid": "0372772",
+   "isoabbreviation": "Fertil Steril"
+  },
+  "printPublicationDate": "2016-01-01"
+ },
+ "pubYear": "2016",
+ "pageInfo": "73-85.e1-6",
+ "abstractText": "<h4>Objective</h4>To determine whether there are any increases in pregnancy-related complications and adverse pregnancy outcomes in singleton pregnancies after assisted reproductive technology (ART) compared with those conceived naturally.<h4>Design</h4>Meta-analysis.<h4>Setting</h4>University-affiliated teaching hospital.<h4>Patient(s)</h4>Singleton pregnancies conceived with ART and naturally.<h4>Intervention(s)</h4>PubMed, Google Scholar, Cochrane Libraries and Chinese database were searched through March 2015 to identify studies that met pre-stated inclusion criteria. Either a fixed- or a random-effects model was used to calculate the overall combined risk estimates. Subgroup analysis was performed to explore potential heterogeneity moderators.<h4>Main outcome measure(s)</h4>Pregnancy-related complications and adverse pregnancy outcomes.<h4>Result(s)</h4>Fifty cohort studies comprising 161,370 ART and 2,280,241 spontaneously conceived singleton pregnancies were identified. The ART singleton pregnancies had a significantly increased risk of pregnancy-induced hypertension (relative risk [RR] 1.30, 95% confidence interval [CI] 1.04-1.62; I(2) = 79%), gestational diabetes mellitus (RR 1.31, 95% CI 1.13-1.53; I(2) = 6%), placenta previa (RR 3.71, 95% CI 2.67-5.16; I(2) = 72%), placental abruption (RR 1.83, 95% CI 1.49-2.24; I(2) = 22%), antepartum hemorrhage (RR 2.11, 95% CI 1.86-2.38; I(2) = 47%), postpartum hemorrhage (RR 1.29, 95% CI 1.06-1.57; I(2) = 65%), polyhydramnios (RR 1.74, 95% CI 1.24-2.45; I(2) = 0%), oligohydramnios (RR 2.14, 95% CI 1.53-3.01; I(2) = 0%), cesarean sections (RR 1.58, 95% CI 1.48-1.70; I(2) = 92%), preterm birth (RR 1.71, 95% CI 1.59-1.83; I(2)=80%), very preterm birth (RR 2.12, 95% CI 1.73-2.59; I(2) = 90%), low birth weight (RR 1.61, 95% CI 1.49-1.75; I(2) = 80%), very low birth weight (RR 2.12, 95% CI 1.84-2.43; I(2) = 67%), small for gestational age (RR 1.35, 95% CI 1.20-1.52; I(2) = 82%), perinatal mortality (RR 1.64, 95% CI 1.41-1.90; I(2)=45%), and congenital malformation (RR 1.37, 95% CI 1.29-1.45; I(2)=41%). Relevant heterogeneity moderators have been identified by subgroup analysis. Sensitivity analysis yielded consistent results. No evidence of publication bias was observed.<h4>Conclusion(s)</h4>The ART singleton pregnancies are associated with higher risks of adverse obstetric outcomes. Obstetricians should manage these pregnancies as high risk.",
+ "affiliation": "Division of Medical Genetics, Maternal and Child Health Hospital of Hunan Province, Hunan, People's Republic of China; Department of Epidemiology and Health Statistics, School of Public Health, Central South University, Hunan, People's Republic of China. Electronic address: qinjiabi123@hotmail.com.",
+ "publicationStatus": "ppublish",
+ "language": "eng",
+ "pubModel": "Print-Electronic",
+ "pubTypeList": {
+  "pubType": [
+   "Meta-Analysis",
+   "Research Support, Non-U.S. Gov't",
+   "Review",
+   "Journal Article"
+  ]
+ },
+ "meshHeadingList": {
+  "meshHeading": [
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Humans"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Infertility",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "DI",
+       "qualifierName": "diagnosis"
+      },
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "PP",
+       "qualifierName": "physiopathology"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "TH",
+       "qualifierName": "therapy"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy Complications",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "N",
+       "abbreviation": "DI",
+       "qualifierName": "diagnosis"
+      },
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "ET",
+       "qualifierName": "etiology"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Reproductive Techniques, Assisted",
+    "meshQualifierList": {
+     "meshQualifier": [
+      {
+       "majorTopic_YN": "Y",
+       "abbreviation": "AE",
+       "qualifierName": "adverse effects"
+      }
+     ]
+    }
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Linear Models"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Odds Ratio"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Risk Assessment"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Risk Factors"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Chi-Square Distribution"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Fertility"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Pregnancy"
+   },
+   {
+    "majorTopic_YN": "N",
+    "descriptorName": "Female"
+   }
+  ]
+ },
+ "keywordList": {
+  "keyword": [
+   "Meta-analysis",
+   "Adverse pregnancy outcomes",
+   "Assisted reproductive technology",
+   "Singleton Pregnancies",
+   "Pregnancy-related Complications"
+  ]
+ },
+ "subsetList": {
+  "subset": [
+   {
+    "code": "IM",
+    "name": "Index Medicus"
+   }
+  ]
+ },
+ "fullTextUrlList": {
+  "fullTextUrl": [
+   {
+    "availability": "Subscription required",
+    "availabilityCode": "S",
+    "documentStyle": "doi",
+    "site": "DOI",
+    "url": "https://doi.org/10.1016/j.fertnstert.2015.09.007"
+   }
+  ]
+ },
+ "isOpenAccess": "N",
+ "inEPMC": "N",
+ "inPMC": "N",
+ "citedByCount": 341,
+ "hasReferences": "Y",
+ "hasTextMinedTerms": "Y",
+ "hasDbCrossReferences": "N",
+ "hasPDF": "N",
+ "hasBook": "N",
+ "hasSuppl": "N",
+ "hasLabsLinks": "N",
+ "hasData": "N",
+ "authMan": "N",
+ "epmcAuthMan": "N",
+ "nihAuthMan": "N",
+ "hasTMAccessionNumbers": "N",
+ "dateOfCompletion": "2016-05-11",
+ "dateOfCreation": "2015-10-11",
+ "dateOfRevision": "2022-04-08",
+ "electronicPublicationDate": "2015-10-09",
+ "firstPublicationDate": "2015-10-09",
+ "firstIndexDate": "2015-10-11",
+ "hasEvaluations": "N"
+}

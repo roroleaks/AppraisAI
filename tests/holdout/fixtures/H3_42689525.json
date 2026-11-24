@@ -1,0 +1,364 @@
+{
+  "id": "42689525",
+  "source": "MED",
+  "pmid": "42689525",
+  "pmcid": "PMC13539583",
+  "fullTextIdList": {
+    "fullTextId": [
+      "PMC13539583"
+    ]
+  },
+  "doi": "10.1002/14651858.cd004661.pub5",
+  "title": "Magnesium sulphate for women at risk of preterm birth for neuroprotection of the fetus.",
+  "authorString": "Shepherd ES, Goldsmith S, Doyle LW, Middleton P, Marret S, Rouse DJ, Pryde P, Wolf HT, Crowther CA.",
+  "authorList": {
+    "author": [
+      {
+        "fullName": "Shepherd ES",
+        "lastName": "Shepherd",
+        "firstName": "Emily S",
+        "initials": "ES",
+        "authorId": {
+          "type": "ORCID",
+          "value": "0009-0005-2608-2061"
+        },
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "SAHMRI Women and Kids, South Australian Health and Medical Research Institute, Adelaide, Australia."
+            },
+            {
+              "affiliation": "Adelaide Medical School, The University of Adelaide, Adelaide, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Goldsmith S",
+        "lastName": "Goldsmith",
+        "firstName": "Shona",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Cerebral Palsy Alliance Research Institute, Specialty of Child and Adolescent Health, Sydney Medical School, Faculty of Medicine and Health, The University of Sydney, Sydney, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Doyle LW",
+        "lastName": "Doyle",
+        "firstName": "Lex W",
+        "initials": "LW",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Obstetrics, Gynaecology and Newborn Health, The University of Melbourne, Melbourne, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Middleton P",
+        "lastName": "Middleton",
+        "firstName": "Philippa",
+        "initials": "P",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "SAHMRI Women and Kids, South Australian Health and Medical Research Institute, Adelaide, Australia."
+            },
+            {
+              "affiliation": "Adelaide Medical School, The University of Adelaide, Adelaide, Australia."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Marret S",
+        "lastName": "Marret",
+        "firstName": "Stéphane",
+        "initials": "S",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "INSERM Unit 1245, Team 4, Rouen School of Medicine, Normandy University, Rouen, France."
+            },
+            {
+              "affiliation": "Department of Neonatal Pediatrics, Intensive Care, and Neuropediatrics, Rouen University Hospital, Rouen, France."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Rouse DJ",
+        "lastName": "Rouse",
+        "firstName": "Dwight J",
+        "initials": "DJ",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Women & Infants Hospital of Rhode Island, The Alpert Medical School of Brown University, Providence, Rhode Island, USA."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Pryde P",
+        "lastName": "Pryde",
+        "firstName": "Peter",
+        "initials": "P",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Anesthesiology, The University of Wisconsin School of Medicine and Public Health, Madison, Wisconsin, USA."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Wolf HT",
+        "lastName": "Wolf",
+        "firstName": "Hanne T",
+        "initials": "HT",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Department of Gynaecology and Obstetrics, Hvidovre University Hospital, Hvidovre, Denmark."
+            }
+          ]
+        }
+      },
+      {
+        "fullName": "Crowther CA",
+        "lastName": "Crowther",
+        "firstName": "Caroline A",
+        "initials": "CA",
+        "authorAffiliationDetailsList": {
+          "authorAffiliation": [
+            {
+              "affiliation": "Liggins Institute, The University of Auckland, Auckland, New Zealand."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "authorIdList": {
+    "authorId": [
+      {
+        "type": "ORCID",
+        "value": "0009-0005-2608-2061"
+      }
+    ]
+  },
+  "dataLinksTagsList": {
+    "dataLinkstag": [
+      "supporting_data"
+    ]
+  },
+  "journalInfo": {
+    "volume": "9",
+    "journalIssueId": 4251783,
+    "dateOfPublication": "2026 Sep",
+    "monthOfPublication": 9,
+    "yearOfPublication": 2026,
+    "journal": {
+      "medlineAbbreviation": "Cochrane Database Syst Rev",
+      "title": "The Cochrane database of systematic reviews",
+      "essn": "1469-493X",
+      "issn": "1469-493X",
+      "isoabbreviation": "Cochrane Database Syst Rev",
+      "nlmid": "100909747"
+    },
+    "printPublicationDate": "2026-09-01"
+  },
+  "pubYear": "2026",
+  "pageInfo": "CD004661",
+  "abstractText": "<h4>Background</h4>Magnesium sulphate is a common therapy in perinatal care. Its benefits when given to women at risk of preterm birth for fetal neuroprotection (prevention of cerebral palsy for children) were shown in a 2009 Cochrane review. Internationally, use of magnesium sulphate for preterm cerebral palsy prevention is now recommended practice. As new randomised controlled trials (RCTs) and longer-term follow-up of prior RCTs have since been conducted, this review updates the previously published version.<h4>Objectives</h4>To assess the effectiveness and safety of magnesium sulphate as a fetal neuroprotective agent when given to women considered to be at risk of preterm birth.<h4>Search methods</h4>We searched Cochrane Pregnancy and Childbirth's Trials Register, ClinicalTrials.gov, and the World Health Organization (WHO) International Clinical Trials Registry Platform (ICTRP) on 17 March 2023, as well as reference lists of retrieved studies.<h4>Selection criteria</h4>We included RCTs and cluster-RCTs of women at risk of preterm birth that assessed prenatal magnesium sulphate for fetal neuroprotection compared with placebo or no treatment. All methods of administration (intravenous, intramuscular, and oral) were eligible. We did not include studies where magnesium sulphate was used with the primary aim of preterm labour tocolysis, or the prevention and/or treatment of eclampsia.<h4>Data collection and analysis</h4>Two review authors independently assessed RCTs for inclusion, extracted data, and assessed risk of bias and trustworthiness. Dichotomous data were presented as summary risk ratios (RR) with 95% confidence intervals (CI), and continuous data were presented as mean differences with 95% CI. We assessed the certainty of the evidence using the GRADE approach.<h4>Main results</h4>We included six RCTs (5917 women and their 6759 fetuses alive at randomisation). All RCTs were conducted in high-income countries. The RCTs compared magnesium sulphate with placebo in women at risk of preterm birth at less than 34 weeks' gestation; however, treatment regimens and inclusion/exclusion criteria varied. Though the RCTs were at an overall low risk of bias, the certainty of evidence ranged from high to very low, due to concerns regarding study limitations, imprecision, and inconsistency. Primary outcomes for infants/children: Up to two years' corrected age, magnesium sulphate compared with placebo reduced cerebral palsy (RR 0.71, 95% CI 0.57 to 0.89; 6 RCTs, 6107 children; number needed to treat for additional beneficial outcome (NNTB) 60, 95% CI 41 to 158) and death or cerebral palsy (RR 0.87, 95% CI 0.77 to 0.98; 6 RCTs, 6481 children; NNTB 56, 95% CI 32 to 363) (both high-certainty evidence). Magnesium sulphate probably resulted in little to no difference in death (fetal, neonatal, or later) (RR 0.96, 95% CI 0.82 to 1.13; 6 RCTs, 6759 children); major neurodevelopmental disability (RR 1.09, 95% CI 0.83 to 1.44; 1 RCT, 987 children); or death or major neurodevelopmental disability (RR 0.95, 95% CI 0.85 to 1.07; 3 RCTs, 4279 children) (all moderate-certainty evidence). At early school age, magnesium sulphate may have resulted in little to no difference in death (fetal, neonatal, or later) (RR 0.82, 95% CI 0.66 to 1.02; 2 RCTs, 1758 children); cerebral palsy (RR 0.99, 95% CI 0.69 to 1.41; 2 RCTs, 1038 children); death or cerebral palsy (RR 0.90, 95% CI 0.67 to 1.20; 1 RCT, 503 children); and death or major neurodevelopmental disability (RR 0.81, 95% CI 0.59 to 1.12; 1 RCT, 503 children) (all low-certainty evidence). Magnesium sulphate may also have resulted in little to no difference in major neurodevelopmental disability, but the evidence is very uncertain (average RR 0.92, 95% CI 0.53 to 1.62; 2 RCTs, 940 children; very low-certainty evidence). Secondary outcomes for infants/children: Magnesium sulphate probably resulted in little to no difference in severe intraventricular haemorrhage (grade 3 or 4) (RR 0.81, 95% CI 0.64 to 1.04; 6 RCTs, 6542 infants; moderate-certainty evidence) and may have resulted in little to no difference in chronic lung disease/bronchopulmonary dysplasia (average RR 0.92, 95% CI 0.77 to 1.10; 5 RCTs, 6689 infants; low-certainty evidence). Primary outcomes for women: Magnesium sulphate may have resulted in little or no difference in severe maternal outcomes potentially related to treatment (death, cardiac arrest, respiratory arrest) (RR 0.32, 95% CI 0.01 to 7.92; 4 RCTs, 5300 women; low-certainty evidence). However, magnesium sulphate probably increased maternal adverse effects severe enough to stop treatment (average RR 3.21, 95% CI 1.88 to 5.48; 3 RCTs, 4736 women; moderate-certainty evidence). Secondary outcomes for women: Magnesium sulphate probably resulted in little to no difference in caesarean section (RR 0.96, 95% CI 0.91 to 1.02; 5 RCTs, 5861 women) and postpartum haemorrhage (RR 0.94, 95% CI 0.80 to 1.09; 2 RCTs, 2495 women) (both moderate-certainty evidence). Breastfeeding at hospital discharge and women's views of treatment were not reported.<h4>Authors' conclusions</h4>The currently available evidence indicates that magnesium sulphate for women at risk of preterm birth for neuroprotection of the fetus, compared with placebo, reduces cerebral palsy, and death or cerebral palsy, in children up to two years' corrected age. Magnesium sulphate may result in little to no difference in outcomes in children at school age. While magnesium sulphate may result in little to no difference in severe maternal outcomes (death, cardiac arrest, respiratory arrest), it probably increases maternal adverse effects severe enough to stop treatment. Further research is needed on the longer-term benefits and harms for children, into adolescence and adulthood. Additional studies to determine variation in effects by characteristics of women treated and magnesium sulphate regimens used, along with the generalisability of findings to low- and middle-income countries, should be considered.",
+  "affiliation": "SAHMRI Women and Kids, South Australian Health and Medical Research Institute, Adelaide, Australia.",
+  "publicationStatus": "epublish",
+  "language": "eng",
+  "pubModel": "Electronic",
+  "pubTypeList": {
+    "pubType": [
+      "Meta-Analysis",
+      "Systematic Review",
+      "systematic-review",
+      "Journal Article"
+    ]
+  },
+  "meshHeadingList": {
+    "meshHeading": [
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Humans"
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Cerebral Palsy",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PC",
+              "qualifierName": "prevention & control"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Premature Birth",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "PC",
+              "qualifierName": "prevention & control"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Magnesium Sulfate",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "Y",
+        "descriptorName": "Neuroprotective Agents",
+        "meshQualifierList": {
+          "meshQualifier": [
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "AE",
+              "qualifierName": "adverse effects"
+            },
+            {
+              "majorTopic_YN": "N",
+              "abbreviation": "TU",
+              "qualifierName": "therapeutic use"
+            }
+          ]
+        }
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Pregnancy"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Infant, Newborn"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Female"
+      },
+      {
+        "majorTopic_YN": "N",
+        "descriptorName": "Randomized Controlled Trials as Topic"
+      }
+    ]
+  },
+  "chemicalList": {
+    "chemical": [
+      {
+        "name": "Magnesium Sulfate",
+        "registryNumber": "7487-88-9"
+      },
+      {
+        "name": "Neuroprotective Agents",
+        "registryNumber": "0"
+      }
+    ]
+  },
+  "subsetList": {
+    "subset": [
+      {
+        "code": "IM",
+        "name": "Index Medicus"
+      }
+    ]
+  },
+  "fullTextUrlList": {
+    "fullTextUrl": [
+      {
+        "availability": "Subscription required",
+        "availabilityCode": "S",
+        "documentStyle": "doi",
+        "site": "DOI",
+        "url": "https://doi.org/10.1002/14651858.CD004661.pub5"
+      },
+      {
+        "availability": "Open access",
+        "availabilityCode": "OA",
+        "documentStyle": "html",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC13539583"
+      },
+      {
+        "availability": "Open access",
+        "availabilityCode": "OA",
+        "documentStyle": "pdf",
+        "site": "Europe_PMC",
+        "url": "https://europepmc.org/articles/PMC13539583?pdf=render"
+      }
+    ]
+  },
+  "commentCorrectionList": {
+    "commentCorrection": [
+      {
+        "source": "MED",
+        "id": "38726883",
+        "reference": "Cochrane Database Syst Rev. 2024 May 10;5:CD004661. doi: 10.1002/14651858.CD004661.pub4.",
+        "type": "Update of",
+        "orderIn": 1
+      }
+    ]
+  },
+  "isOpenAccess": "Y",
+  "inEPMC": "Y",
+  "inPMC": "Y",
+  "citedByCount": 0,
+  "hasReferences": "Y",
+  "hasTextMinedTerms": "Y",
+  "hasDbCrossReferences": "N",
+  "hasPDF": "Y",
+  "hasBook": "N",
+  "hasSuppl": "N",
+  "hasLabsLinks": "N",
+  "hasData": "Y",
+  "license": "cc by-nc",
+  "authMan": "N",
+  "epmcAuthMan": "N",
+  "nihAuthMan": "N",
+  "hasTMAccessionNumbers": "Y",
+  "tmAccessionTypeList": {
+    "accessionType": [
+      "nct"
+    ]
+  },
+  "dateOfCompletion": "2026-09-03",
+  "dateOfCreation": "2026-09-03",
+  "dateOfRevision": "2026-10-15",
+  "electronicPublicationDate": "2026-09-03",
+  "firstPublicationDate": "2026-09-03",
+  "firstIndexDate": "2026-09-04",
+  "fullTextReceivedDate": "2026-09-11",
+  "hasEvaluations": "N"
+}

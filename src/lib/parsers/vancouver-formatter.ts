@@ -81,6 +81,38 @@ export function formatVancouverAuthors(
 }
 
 /**
+ * Capitalizes and formats journal titles accurately (Task C7).
+ */
+export function formatJournalTitle(journal: string): string {
+  if (!journal) return 'Biomedical Journal';
+  const clean = journal.replace(/\.*$/, '').trim();
+
+  const acronyms: Record<string, string> = {
+    bmj: 'BMJ',
+    nejm: 'NEJM',
+    jama: 'JAMA',
+    cmaj: 'CMAJ',
+    plos: 'PLoS',
+    pnas: 'PNAS',
+    rbmo: 'RBMO',
+    'nat med': 'Nat Med',
+    'nature med': 'Nature Med',
+    'nature medicine': 'Nature Medicine',
+    lancet: 'The Lancet',
+    'the lancet': 'The Lancet',
+  };
+
+  const lower = clean.toLowerCase();
+  if (acronyms[lower]) return acronyms[lower];
+
+  if (/[A-Z]/.test(clean) && /[a-z]/.test(clean) && !/^[a-z]/.test(clean)) {
+    return clean;
+  }
+
+  return clean.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase());
+}
+
+/**
  * Builds standard NLM / Vancouver Journal Article citation:
  * Author(s). Article Title. Journal Title. Year;Volume(Issue):Pages. doi:xxx.
  */
@@ -96,9 +128,11 @@ export function buildVancouverCitation(params: {
 }): string {
   const authorPart = formatVancouverAuthors(params.authors);
   const cleanTitle = params.title.replace(/\.*$/, '');
-  const cleanJournal = params.journal.replace(/\.*$/, '');
+  const cleanJournal = formatJournalTitle(params.journal);
   
-  let citation = `${authorPart}. ${cleanTitle}. ${cleanJournal}. ${params.year}`;
+  // Prevent duplicate trailing period when authors end with "et al." (Task C7)
+  const authorSegment = authorPart.endsWith('.') ? authorPart : `${authorPart}.`;
+  let citation = `${authorSegment} ${cleanTitle}. ${cleanJournal}. ${params.year}`;
 
   if (params.volume) {
     citation += `;${params.volume}`;

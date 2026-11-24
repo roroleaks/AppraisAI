@@ -3,6 +3,7 @@ import { Packer } from 'docx';
 import { buildAcademicDocxManuscript, AppraiserMetadata } from '@/lib/docx/docx-builder';
 import { MasterAppraisalReport } from '@/lib/schemas/appraisal.schema';
 import { getCleanDownloadFilename } from '@/lib/parsers/title-sanitizer';
+import { reportStatus } from '@/lib/status';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -26,10 +27,15 @@ export async function POST(req: NextRequest) {
     // Pack into a Node buffer
     const buffer = await Packer.toBuffer(doc);
 
-    // Clean, academic filename: e.g. Critical_Appraisal_Roshdy_2026.docx
+    // Clean, academic filename: e.g. Critical_Appraisal_Roshdy_2026.docx or ..._DRAFT.docx
+    const status = reportStatus(report, {
+      humanVerified: !!appraiserMeta?.verified,
+      appraiserName: appraiserMeta?.name,
+    });
     const filename = getCleanDownloadFilename(
       report.metadata.authors,
-      report.metadata.publicationYear
+      report.metadata.publicationYear,
+      status.isDraft
     );
 
     return new NextResponse(buffer as any, {
