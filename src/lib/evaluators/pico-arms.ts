@@ -14,7 +14,16 @@ export function extractArms(text: string): { intervention: string | null; compar
   for (const s of sentences) {
     const m = s.match(re);
     if (m?.groups) {
-      const tidy = (x: string) => x.trim().replace(/^(?:the|a|an)\s+/i, '').replace(/[,\s]+$/, '').replace(/\s+/g, ' ');
+      const tidy = (x: string) => {
+        let s = x.trim().replace(/^(?:the|a|an)\s+/i, '').replace(/[,\s]+$/, '').replace(/\s+/g, ' ');
+        const open = (s.match(/\(/g) || []).length;
+        const close = (s.match(/\)/g) || []).length;
+        if (open > close) {
+          const idx = s.lastIndexOf('(');
+          if (idx !== -1) s = s.slice(0, idx).trim();
+        }
+        return s;
+      };
       let a = tidy(m.groups.a), b = tidy(m.groups.b);
       const bad = (x: string) => x.length > 110 || /\b(?:who|had|were|was|underwent)\b/i.test(x);
       if (bad(a) || bad(b)) continue;
